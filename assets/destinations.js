@@ -14,18 +14,17 @@
     en: {
       locale: "en-GB",
       close: "Close",
-      facts: "{time} from the nearest marina",
-      pin: "{name}: {time} from the nearest marina",
-      route: "{nm} nm{how}, {time} at 16 knots",
-      bySea: " by sea",
+      facts: "{time} from Phuket",
+      pin: "{name}: {time} from Phuket",
       today: "Today",
       hl: "H:{hi}° L:{lo}°",
       mm: "{n} mm",
-      kn: "{n} kn",
-      knots: ["knots", "knots", "knots"],
+      windCell: "{n} km/h",
+      windWord: ["km/h", "km/h", "km/h"],
+      windMul: 3.6,
       srRow: "{day}: {sky}{rain}, low {lo}°, high {hi}°{wind}.",
       srRain: ", {mm} of rain",
-      srWind: ", wind {n} {knots} from the {point}",
+      srWind: ", wind {n} {unit} from the {point}",
       points: ["north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"],
       thunder: "Thunderstorms",
       words: {
@@ -42,18 +41,17 @@
     ru: {
       locale: "ru-RU",
       close: "Закрыть",
-      facts: "{time} от {marina}",
-      pin: "{name}: {time} от {marina}",
-      route: "{nm} мор. миль{how}, {time} на скорости 16 узлов",
-      bySea: " морем",
+      facts: "{time} от {from}",
+      pin: "{name}: {time} от {from}",
       today: "Сегодня",
       hl: "Макс.: {hi}°, мин.: {lo}°",
       mm: "{n} мм",
-      kn: "{n} уз",
-      knots: ["узел", "узла", "узлов"],
+      windCell: "{n} уз",
+      windWord: ["узел", "узла", "узлов"],
+      windMul: 1.94384,
       srRow: "{day}: {sky}{rain}, минимум {lo}°, максимум {hi}°{wind}.",
       srRain: ", осадки {mm}",
-      srWind: ", ветер {n} {knots}, {point}",
+      srWind: ", ветер {n} {unit}, {point}",
       points: ["с севера", "с северо-востока", "с востока", "с юго-востока", "с юга", "с юго-запада", "с запада", "с северо-запада"],
       thunder: "Гроза",
       words: {
@@ -189,28 +187,8 @@
     return new lib.Marker({element: node, anchor: "center"}).setLngLat(lngLat).addTo(map);
   }
 
-  var MARINA_SIDE = {chalong: "left", aopo: "right", rpm: "top", lagoon: "bottom"};
   var ALL_SIDE = {"racha-yai-racha-noi": "left", "maiton-island": "left", "hong-island-krabi": "top",
                   "phang-nga-bay-james-bond-island": "left"};
-
-  function addRoute(map, id, coords) {
-    var gj = {type: "Feature", geometry: {type: "LineString", coordinates: coords || []}};
-    if (map.getSource(id)) { map.getSource(id).setData(gj); return; }
-    map.addSource(id, {type: "geojson", data: gj});
-    map.addLayer({id: id, type: "line", source: id,
-                  paint: {"line-color": "#126368", "line-width": 2.2, "line-dasharray": [2, 1.6]}});
-  }
-
-  function midpoint(coords) {
-    var a = coords[Math.floor((coords.length - 1) / 2)], b = coords[Math.floor((coords.length - 1) / 2) + 1];
-    return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-  }
-
-  function routeText(d) {
-    var how = d.kind === "overnight" ? S.bySea : "";
-    var nm = LANG === "ru" ? String(d.nearest_nm).replace(".", ",") : d.nearest_nm;
-    return fmt(S.route, {nm: nm, how: how, time: L(d, "t16", d.nearest_t16)});
-  }
 
   function boundsOf(lib, points) {
     var b = new lib.LngLatBounds(points[0], points[0]);
@@ -244,7 +222,7 @@
     card.appendChild(close);
     var body = el("div", "place-body");
     body.appendChild(el("p", "place-name", L(d, "name", d.name)));
-    body.appendChild(el("p", "place-facts", fmt(S.facts, {time: cap(L(d, "t16", d.nearest_t16)), marina: L(d, "nearest", d.nearest_name)})));
+    body.appendChild(el("p", "place-facts", fmt(S.facts, {time: cap(L(d, "time", d.time)), from: L(d, "nearest", "")})));
     body.appendChild(el("p", "place-verdict", L(d, "verdict", d.verdict)));
     var a = el("a", "place-action", L(d, "link", "See " + d.short));
     a.href = ROOT + d.page;
@@ -273,6 +251,8 @@
     return card;
   }
 
+  var PHUKET_VIEW = [98.37, 7.95];   // lng, lat: the middle of Phuket island, to frame a single-place map
+
   function initMap(node, data, lib) {
     var mode = node.getAttribute("data-dest-map");
     var single = mode !== "all" ? byId(data, mode) : null;
@@ -288,58 +268,34 @@
     var map = new lib.Map(options);
     map.touchZoomRotate.disableRotation();
     map.addControl(new lib.NavigationControl({showCompass: false}), "top-right");
-    var marinas = data.marinas;
     var pts = [];
     map.on("error", function () { /* a missing tile is not a failure */ });
-    var routeCoords = null;
-    map.on("load", function () {
-      node.classList.add("is-ready");
-      if (routeCoords) addRoute(map, "route", routeCoords);
-    });
+    map.on("load", function () { node.classList.add("is-ready"); });
     node.classList.add("is-ready");
     if (single) {
-      var near = single.nearest;
-      marinas.forEach(function (m) {
-        marker(lib, map, [m.lon, m.lat], "mk-marina" + (m.id === near ? " is-nearest" : ""), L(m, "short", m.short || m.name), MARINA_SIDE[m.id]);
-        pts.push([m.lon, m.lat]);
-      });
       marker(lib, map, [single.lon, single.lat], "mk-dest", L(single, "short", single.short));
-      pts.push([single.lon, single.lat]);
-      routeCoords = single.route_line;
-      if (node.clientWidth >= 600) {
-        var lbl = el("div", "mk-route", routeText(single));
-        new lib.Marker({element: lbl, anchor: "center"}).setLngLat(midpoint(single.route_line)).addTo(map);
-      }
-      single.route_line.forEach(function (p) { pts.push(p); });
-      map.fitBounds(boundsOf(lib, pts), {padding: {top: 50, bottom: 50, left: 70, right: 96}, duration: 0});
+      pts.push([single.lon, single.lat], PHUKET_VIEW);
+      map.fitBounds(boundsOf(lib, pts), {padding: {top: 50, bottom: 50, left: 70, right: 96}, maxZoom: 10, duration: 0});
       return;
     }
-    marinas.forEach(function (m) {
-      marker(lib, map, [m.lon, m.lat], "mk-marina mk-quiet", null);
-      pts.push([m.lon, m.lat]);
-    });
     var open = null;   // {card, pin}
     function closeCard() {
       if (!open) return;
       open.card.remove();
       open.pin.classList.remove("is-active");
       open = null;
-      if (map.getSource("route")) addRoute(map, "route", []);
-      else routeCoords = null;
     }
     data.destinations.forEach(function (d) {
       var mk = marker(lib, map, [d.lon, d.lat], "mk-dest mk-button", L(d, "short", d.short), ALL_SIDE[d.slug]);
       var pin = mk.getElement();
       pin.setAttribute("role", "button");
       pin.setAttribute("tabindex", "0");
-      pin.setAttribute("aria-label", fmt(S.pin, {name: L(d, "name", d.name), time: L(d, "t16", d.nearest_t16), marina: L(d, "nearest", d.nearest_name)}));
+      pin.setAttribute("aria-label", fmt(S.pin, {name: L(d, "name", d.name), time: L(d, "time", d.time), from: L(d, "nearest", "")}));
       var show = function (ev, keyboard) {
         if (ev) ev.stopPropagation();
         closeCard();
         pin.classList.add("is-active");
         open = {pin: pin, card: placeCard(node, map, d, closeCard)};
-        if (map.isStyleLoaded()) addRoute(map, "route", d.route_line);
-        else routeCoords = d.route_line;
         if (keyboard) open.card.querySelector(".place-action").focus({preventScroll: true});
       };
       pin.addEventListener("click", function (ev) { show(ev, false); });
@@ -447,7 +403,7 @@
     return (Math.atan2(x, y) * 180 / Math.PI + 360) % 360;
   }
 
-  function knots(ms) { return Math.round(ms * 1.94384); }
+  function windSpeed(ms) { return Math.round(ms * S.windMul); }
 
   function analyse(json) {
     var ts = json.properties.timeseries;
@@ -487,7 +443,7 @@
         lo: d.temps.length ? Math.round(Math.min.apply(null, d.temps)) : null,
         hi: d.temps.length ? Math.round(Math.max.apply(null, d.temps)) : null,
         rain: d.rain, sky: sky,
-        wind: w.length ? knots(Math.max.apply(null, w.map(function (p) { return p[1]; }))) : null,
+        wind: w.length ? windSpeed(Math.max.apply(null, w.map(function (p) { return p[1]; }))) : null,
         dir: w.length ? meanDir(w) : null
       };
     }).filter(function (d) { return d.lo != null; });
@@ -517,7 +473,7 @@
     var sr = fmt(S.srRow, {
       day: longDay(d.date, i), sky: SKY_TEXT[d.sky], lo: d.lo, hi: d.hi,
       rain: rainy ? fmt(S.srRain, {mm: mm}) : "",
-      wind: d.wind != null ? fmt(S.srWind, {n: d.wind, knots: plural(d.wind, S.knots), point: POINTS[Math.round(d.dir / 45) % 8]}) : ""
+      wind: d.wind != null ? fmt(S.srWind, {n: d.wind, unit: plural(d.wind, S.windWord), point: POINTS[Math.round(d.dir / 45) % 8]}) : ""
     });
     li.appendChild(el("span", "sr-only", sr));
     var vis = el("span", "wx-cells");
@@ -547,7 +503,7 @@
     var wind = el("span", "wx-wind");
     if (d.wind != null) {
       wind.appendChild(arrow(d.dir));
-      wind.appendChild(document.createTextNode(fmt(S.kn, {n: d.wind})));
+      wind.appendChild(document.createTextNode(fmt(S.windCell, {n: d.wind})));
     }
     vis.appendChild(wind);
     li.appendChild(vis);

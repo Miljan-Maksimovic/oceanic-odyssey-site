@@ -488,42 +488,27 @@ svg { display: block; }
 
 
     
+    
     .dest-glance {
-      margin: 48px auto 0;
-      padding: 30px 0 32px;
+      margin: 40px auto 0;
+      padding: 26px 0 28px;
       background: var(--navy);
       box-shadow: 0 0 0 100vmax var(--navy);
       clip-path: inset(0 -100vmax);
       color: #fff;
     }
-    .dest-glance dl { display: grid; gap: 18px; margin: 0; }
+    .dest-glance dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; margin: 0; }
     .dest-glance div { min-width: 0; }
-    .dest-glance dt { color: var(--sea); font-size: 11px; font-weight: 700; letter-spacing: .16em; line-height: 1.6; text-transform: uppercase; }
-    .dest-glance dd { margin: 4px 0 0; font-size: 17px; line-height: 1.5; font-weight: 500; }
-    .dest-glance .is-verdict dd { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+    .dest-glance dt { color: var(--sea); font-size: 11px; font-weight: 700; letter-spacing: .14em; line-height: 1.5; text-transform: uppercase; }
+    .dest-glance dd { margin: 5px 0 0; font-size: 16px; line-height: 1.4; font-weight: 600; }
+    .dest-glance .is-rate { grid-column: 1 / -1; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .16); }
+    .dest-glance .is-rate dd { font-size: 24px; font-weight: 800; letter-spacing: -.03em; line-height: 1.2; }
 
     .dest-module { margin-top: 30px; }
     .module-note { max-width: 760px; margin-top: 18px; color: var(--muted); font-size: 15px; line-height: 1.6; }
     .dest-module + .article-body { margin-top: 30px; }
     .module-note + .module-note { margin-top: 10px; }
     .module-note a { color: var(--teal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-
-    
-    .dist-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-    .dist-table caption { text-align: left; margin-bottom: 12px; color: var(--muted); font-size: 15px; }
-    .dist-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .dist-table, .dist-table tbody { display: block; }
-    .dist-table tbody { overflow: hidden; border-radius: 14px; background: var(--ice); }
-    .dist-table tr { display: block; padding: 13px 16px 8px; }
-    .dist-table tr + tr { border-top: 1px solid rgba(16, 45, 59, .1); }
-    .dist-table th[scope="row"] { display: block; margin-bottom: 4px; text-align: left; font-size: 17px; font-weight: 700; color: var(--navy); }
-    
-    .dist-table td { display: flex; align-items: baseline; gap: 0; padding: 7px 0; font-size: 16px; line-height: 1.35; }
-    .dist-table td + td { border-top: 1px solid rgba(16, 45, 59, .07); }
-    .dist-table td::before { content: attr(data-label); flex: 0 0 auto; margin-right: auto; padding-right: 12px; color: var(--muted); font-size: 15px; font-weight: 500; }
-    .dist-table .km { margin-left: 6px; color: var(--muted); font-size: 14px; }
-    .near-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--teal); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; vertical-align: 2px; }
-    .dist-table tr.is-nearest { background: #DDF0EC; }
 
     
     .dest-map { position: relative; height: 340px; margin-top: 26px; background: #C9E6E1; overflow: hidden; }
@@ -537,19 +522,14 @@ svg { display: block; }
     .mk { position: relative; width: 0; height: 0; font-family: var(--sans); }
     .mk-dot { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3px #fff, 0 2px 8px rgba(6, 28, 40, .35); }
     .mk-label { position: absolute; left: 12px; top: -10px; white-space: nowrap; padding: 2px 7px; background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .04em; line-height: 1.6; }
-    .mk-marina .mk-dot { left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 1px; background: var(--teal); box-shadow: 0 0 0 2px #fff; }
-    .mk-marina .mk-label { background: rgba(255, 255, 255, .92); color: var(--teal); font-weight: 600; font-size: 10px; letter-spacing: .02em; }
-    .mk-marina.is-nearest .mk-label { background: var(--teal); color: #fff; font-weight: 700; }
     .mk-left .mk-label { left: auto; right: 10px; }
     .mk-top .mk-label { top: -27px; left: -6px; }
     .mk-dest.mk-top .mk-label { top: -34px; left: -10px; }
     .mk-dest.mk-left .mk-label { right: 12px; }
     .mk-bottom .mk-label { top: 8px; left: -6px; }
-    .mk-quiet .mk-dot { opacity: .85; }
     .mk-button { cursor: pointer; }
     .mk-button:focus-visible { outline: none; }
     .mk-button:focus-visible .mk-label { outline: 3px solid #299CA2; outline-offset: 2px; }
-    .mk-route { padding: 3px 9px; background: #fff; color: var(--navy); border: 1px solid var(--teal); font-family: var(--sans); font-size: 11px; font-weight: 700; white-space: nowrap; }
     .dest-map { border-radius: 18px; }
     .mk-dest.is-active .mk-dot { background: var(--teal); transform: scale(1.3); }
     .mk-dest.is-active .mk-label { background: var(--teal); }
@@ -578,23 +558,10 @@ svg { display: block; }
     .dest-gallery img { width: 100%; height: 100%; object-fit: cover; }
 
     
-    .route-yachts { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
-    .route-yachts li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 4px 14px; padding: 14px; background: var(--ice); align-items: start; }
-    .route-yachts .ry-photo { grid-row: span 2; width: 88px; height: 59px; object-fit: cover; }
-    .route-yachts .ry-name { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-family: var(--serif); font-size: 19px; letter-spacing: .08em; line-height: 1.25; text-transform: uppercase; }
-    .route-yachts a.ry-name:hover { color: var(--teal); }
-    .route-yachts .ry-name .arrow { width: 16px; height: 16px; color: var(--teal); }
-    .route-yachts .ry-spec { color: var(--muted); font-size: 14px; line-height: 1.45; }
-    .route-yachts .ry-price { grid-column: 1 / -1; margin-top: 8px; font-size: 15px; line-height: 1.45; }
-    .route-yachts .ry-price strong { display: block; color: var(--navy); font-size: 21px; font-weight: 800; letter-spacing: -.03em; }
-    .route-yachts .ry-note { display: block; color: var(--muted); font-size: 13px; }
-    .more-yachts { margin-top: 8px; }
-    .more-yachts summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 14px 16px; background: var(--navy); color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; list-style: none; }
-    .more-yachts summary::-webkit-details-marker { display: none; }
-    .more-yachts summary::after { content: "+"; font-size: 22px; font-weight: 500; line-height: 1; }
-    .more-yachts[open] summary::after { content: "\2212"; }
-    .more-yachts .route-yachts { margin-top: 8px; }
-    .overnight-yachts li { grid-template-columns: 88px minmax(0, 1fr); }
+    .yacht-names { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .yacht-names a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1.2; transition: background-color .15s, color .15s; }
+    .yacht-names a:hover { background: var(--navy); color: #fff; }
+    .module-link { margin-top: 14px; }
 
     
     .wx { margin-top: 24px; }
@@ -614,7 +581,7 @@ svg { display: block; }
     .wx-hl { margin-top: 2px !important; font-size: 17px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .92); word-spacing: .2em; }
     .wx-rows { list-style: none; margin: 18px 0 0; padding: 0; }
     .wx-row { border-top: 1px solid rgba(255, 255, 255, .16); }
-    .wx-cells { display: grid; grid-template-columns: 52px 30px 34px minmax(40px, 1fr) 34px 56px; align-items: center; column-gap: 7px; min-height: 54px; padding: 6px 0; }
+    .wx-cells { display: grid; grid-template-columns: 50px 28px 32px minmax(30px, 1fr) 34px 68px; align-items: center; column-gap: 6px; min-height: 54px; padding: 6px 0; }
     .wx-day { font-size: 17px; font-weight: 600; white-space: nowrap; }
     .wx-icon { display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .wx-glyph { width: 28px; height: 28px; }
@@ -624,7 +591,7 @@ svg { display: block; }
     .wx-bar { position: relative; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .16); }
     .wx-fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; background-image: linear-gradient(90deg, #5FD3C4 0%, #A8E07A 34%, #FFD25A 64%, #FF9A3D 100%); background-repeat: no-repeat; }
     .wx-now-dot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #0E3D49; }
-    .wx-wind { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 15px; font-weight: 600; color: rgba(255, 255, 255, .85); white-space: nowrap; }
+    .wx-wind { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, .85); white-space: nowrap; }
     .wx-arrow { flex: 0 0 auto; width: 13px; height: 13px; color: #fff; }
     .wx-status { margin-top: 10px; font-size: 15px; }
     .wx-status:empty { display: none; }
@@ -654,44 +621,33 @@ svg { display: block; }
     .dest-card .card-link .arrow { width: 18px; height: 18px; transition: transform .2s; }
     .dest-card:hover .card-link .arrow { transform: translateX(4px); }
 
+    @media (max-width: 359px) {
+      .wx-cells { grid-template-columns: 44px 26px 30px minmax(14px, 1fr) 30px 62px; column-gap: 4px; }
+      .wx-day { font-size: 15px; }
+      .wx-lo, .wx-hi { font-size: 16px; }
+      .wx-wind { font-size: 13px; }
+    }
     @media (min-width: 700px) {
       .place { left: 14px; right: auto; top: 14px; bottom: auto; width: 300px; max-width: none; margin: 0; }
       .place-photo { aspect-ratio: 3 / 2; }
     }
     @media (min-width: 600px) {
-      .dest-glance dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 32px; }
       .dest-map { height: 420px; }
       .dest-map[data-dest-map="all"] { height: 480px; }
       .dest-gallery { gap: 12px; }
-      .route-yachts li { grid-template-columns: 120px minmax(0, 1fr) auto; gap: 4px 20px; align-items: center; padding: 14px 18px 14px 14px; }
-      .route-yachts .ry-photo { width: 120px; height: 80px; }
-      .route-yachts .ry-price { grid-column: 3; grid-row: 1 / span 2; margin-top: 0; text-align: right; max-width: 260px; }
       .wx-card { margin-inline: 0; padding: 26px 24px 10px; }
-      .wx-cells { grid-template-columns: 64px 34px 38px minmax(60px, 1fr) 38px 64px; column-gap: 12px; min-height: 56px; }
+      .wx-cells { grid-template-columns: 64px 34px 38px minmax(60px, 1fr) 38px 80px; column-gap: 12px; min-height: 56px; }
+      .wx-wind { font-size: 15px; }
       .dest-cards { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 30px 0 0; padding: 0; overflow: visible; scroll-snap-type: none; }
     }
     @media (min-width: 700px) {
-      .dist-table { display: table; border-collapse: separate; border-spacing: 0; }
-      .dist-table thead { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: table-header-group; }
-      .dist-table tbody { display: table-row-group; border-radius: 0; background: none; }
-      .dist-table tr { display: table-row; padding: 0; background: none; }
-      .dist-table th, .dist-table td { display: table-cell; padding: 15px 16px; vertical-align: middle; background: var(--ice); text-align: left; }
-      .dist-table tbody tr + tr th, .dist-table tbody tr + tr td { border-top: 1px solid rgba(16, 45, 59, .1); }
-      .dist-table tbody tr:first-child th { border-top-left-radius: 14px; }
-      .dist-table tbody tr:first-child td:last-child { border-top-right-radius: 14px; }
-      .dist-table tbody tr:last-child th { border-bottom-left-radius: 14px; }
-      .dist-table tbody tr:last-child td:last-child { border-bottom-right-radius: 14px; }
-      .dist-table thead th { padding: 0 16px 8px; background: none; color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-      .dist-table td::before { display: none; }
-      .dist-table td + td { border-top: 0; }
-      .dist-table tr.is-nearest th, .dist-table tr.is-nearest td { background: #DDF0EC; }
-      .dist-table .km { margin-left: 8px; font-size: 13px; }
+      .dest-glance dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; }
+      .dest-glance .is-rate { grid-column: auto; padding-top: 0; border-top: 0; }
     }
     @media (min-width: 900px) {
       .dest-glance { margin-top: 64px; padding: 38px 0 40px; }
       .dest-glance dl { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
-      .dest-glance dd { font-size: 16px; }
-      .dest-glance .is-verdict dd { font-size: 18px; }
+      .dest-glance .is-rate dd { font-size: 22px; }
       .dest-module { margin-top: 36px; }
       .dest-map, .dest-map[data-dest-map="all"] { height: 500px; }
       .dest-gallery { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; }
@@ -971,7 +927,7 @@ svg { display: block; }
         <div class="card-body">
           <p class="price"><span class="price-main"><span class="from">From </span>375,000 <span class="currency">THB</span></span> <span class="basis">for up to 8 guests</span></p>
           <p class="extra">3,500 THB for each guest after 8</p>
-          <p class="best">Cruises at 25 knots, for a quick run out to the islands.</p>
+          <p class="best">An inflatable pool at anchor, and a day of 4, 6 or 8 hours.</p>
           <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Moonglider%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Moonglider free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/+66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Moonglider%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Moonglider on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
         </div>
       </article>
@@ -1105,28 +1061,28 @@ svg { display: block; }
         <details class="faq-row" name="faq" data-faq="T5">
           <summary><span>If the weather turns</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">The sea is calmest from November to April. From mid-May to mid-October the south-west monsoon brings rain and rougher water on the west coast. Amy confirms the weather terms with your quote.</p>
+            <p class="faq-text">The sea is calmest from November to April. If the sea is too rough, there is no trip that day. In light rain the captain picks a calmer route, or the day moves to another date, subject to availability.</p>
             <p class="faq-contact"><span class="faq-lead">Message Amy on</span> <a class="faq-chat" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a> <span class="faq-or">or</span> <a class="faq-chat" href="https://t.me/+66644518232?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a></p>
           </div>
         </details>
         <details class="faq-row" name="faq" data-faq="T6">
           <summary><span>Islands in one day</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Maiton, Racha, Hong Island and Phang Nga Bay fit a day of 8 hours on most yachts. Phi Phi and the 4 Islands fit on the faster yachts. Similan and Surin are overnight charters of 2 to 4 days.</p>
+            <p class="faq-text">Phi Phi, the 4 Islands, Racha, Hong Island, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with Amy case by case.</p>
             <a class="faq-link" href="phuket-island-hopping-private-yacht.html"><span>See every place</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
         <details class="faq-row" name="faq" data-faq="T7">
-          <summary><span>Pier and start time</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
+          <summary><span>When do we leave?</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">A full day is 8 hours. Amy confirms the departure pier and the start time with your date. Most yachts list transport for 10 guests in the rate, so tell Amy where you are staying.</p>
-            <p class="faq-contact"><span class="faq-lead">Message Amy on</span> <a class="faq-chat" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20where%20and%20when%20would%20we%20leave%3F%20We%20are%20staying%20at%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a> <span class="faq-or">or</span> <a class="faq-chat" href="https://t.me/+66644518232?text=Hi%20Amy%2C%20where%20and%20when%20would%20we%20leave%3F%20We%20are%20staying%20at%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a></p>
+            <p class="faq-text">A full day is 8 hours, usually 09:00 to 17:00 or 10:00 to 18:00, to suit you. Amy confirms the meeting point with your date.</p>
+            <p class="faq-contact"><span class="faq-lead">Message Amy on</span> <a class="faq-chat" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a> <span class="faq-or">or</span> <a class="faq-chat" href="https://t.me/+66644518232?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a></p>
           </div>
         </details>
         <details class="faq-row" name="faq" data-faq="T8">
           <summary><span>National park fees</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Park fees are paid per guest at the park, unless the yacht's rate lists them. Of the yachts on this site, only Song of Songs does. The fee depends on the park, and your route decides which.</p>
+            <p class="faq-text">Park fees are paid by each guest, in cash, at the park. Your captain or hostess helps with the local formalities. Only Song of Songs lists them in its rate.</p>
             <a class="faq-link" href="phuket-island-hopping-private-yacht.html#season-and-park-rules"><span>Season and park rules</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
@@ -1140,7 +1096,7 @@ svg { display: block; }
         <details class="faq-row" name="faq" data-faq="T10">
           <summary><span>More than one day</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Yes. Song of Songs, a 42 m yacht for up to 12 guests, is USD 46,000 for two days and one night, all inclusive. The Similan and Surin Islands are overnight charters of 2 to 4 days, quoted per yacht.</p>
+            <p class="faq-text">Yes. Song of Songs, a 42 m yacht for up to 12 guests, is USD 46,000 for two days and one night, all inclusive. Similan and Surin are overnight charters of 2 to 4 days, quoted case by case.</p>
             <a class="faq-link" href="boats/song-of-songs.html"><span>See Song of Songs</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
@@ -1154,15 +1110,15 @@ svg { display: block; }
     <div class="wrap">
       <header class="section-heading">
         <h2 id="where-title">Half an hour to Maiton, or two days to the Similans.</h2>
-        <p>Eight destinations, each with the time from the nearest marina at 16 knots. Six fit a full day of 8 hours; the Similan and Surin Islands are overnight charters.</p>
+        <p>Eight destinations, each with the time from Phuket. Six fit a full day of 8 hours; the Similan and Surin Islands are overnight charters.</p>
       </header>
       <div class="dest-cards">
         <a class="dest-card" href="phi-phi-private-yacht.html">
           <div class="card-photo"><img src="assets/destinations/phi-phi-islands/maya-bay-1200.jpg" width="1200" height="900" alt="Maya Bay on Phi Phi Leh, turquoise water between sheer limestone cliffs" loading="lazy" decoding="async"><h3 class="card-name">Phi Phi Islands</h3></div>
           <div class="card-body">
             <p class="card-time">About 1 h 40 min</p>
-            <p class="card-from">from Chalong Pier at 16 knots</p>
-            <p class="card-verdict">Fits an 8-hour day on the faster yachts</p>
+            <p class="card-from">from Phuket</p>
+            <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See Phi Phi</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
         </a>
@@ -1170,7 +1126,7 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="card-name">Racha Yai and Racha Noi</h3></div>
           <div class="card-body">
             <p class="card-time">About 50 min</p>
-            <p class="card-from">from Chalong Pier at 16 knots</p>
+            <p class="card-from">from Phuket</p>
             <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See Racha</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
@@ -1179,7 +1135,7 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="The gap in the cliffs at the lagoon of Hong Island, Krabi" loading="lazy" decoding="async"><h3 class="card-name">Hong Island, Krabi</h3></div>
           <div class="card-body">
             <p class="card-time">About 50 min</p>
-            <p class="card-from">from Ao Po Grand Marina at 16 knots</p>
+            <p class="card-from">from Phuket</p>
             <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See Hong Island</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
@@ -1188,8 +1144,8 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>
           <div class="card-body">
             <p class="card-time">About 1 h 25 min</p>
-            <p class="card-from">from Ao Po Grand Marina at 16 knots</p>
-            <p class="card-verdict">Fits an 8-hour day on the faster yachts</p>
+            <p class="card-from">from Phuket</p>
+            <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See 4 Islands</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
         </a>
@@ -1197,8 +1153,8 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
           <div class="card-body">
             <p class="card-time">About 4 h 30 min</p>
-            <p class="card-from">from Chalong Pier at 16 knots</p>
-            <p class="card-verdict">Overnight charter, 2 to 4 days</p>
+            <p class="card-from">from Phuket</p>
+            <p class="card-verdict">Overnight charter, 2 to 4 days, quoted case by case</p>
             <span class="card-link"><span>See Similan</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
         </a>
@@ -1206,8 +1162,8 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/surin-islands/chong-khad-1200.jpg" width="1200" height="894" alt="Chong Khad Bay, with Ko Surin Tai across the water" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
           <div class="card-body">
             <p class="card-time">About 6 h 50 min</p>
-            <p class="card-from">from Chalong Pier at 16 knots</p>
-            <p class="card-verdict">Overnight charter, 2 to 4 days</p>
+            <p class="card-from">from Phuket</p>
+            <p class="card-verdict">Overnight charter, 2 to 4 days, quoted case by case</p>
             <span class="card-link"><span>See Surin</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
         </a>
@@ -1215,7 +1171,7 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/maiton-island/khai-nok-1200.jpg" width="1200" height="608" alt="Khai Nok from the water, white sand and turquoise shallows" loading="lazy" decoding="async"><h3 class="card-name">Maiton and the Khai Islands</h3></div>
           <div class="card-body">
             <p class="card-time">About 30 min</p>
-            <p class="card-from">from Chalong Pier at 16 knots</p>
+            <p class="card-from">from Phuket</p>
             <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See Maiton</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
@@ -1224,7 +1180,7 @@ svg { display: block; }
           <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/ko-tapu-1200.jpg" width="1200" height="789" alt="Ko Tapu in the green water off Khao Phing Kan, a longtail passing" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
           <div class="card-body">
             <p class="card-time">About 50 min</p>
-            <p class="card-from">from Ao Po Grand Marina at 16 knots</p>
+            <p class="card-from">from Phuket</p>
             <p class="card-verdict">Fits an 8-hour day</p>
             <span class="card-link"><span>See James Bond Island</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
           </div>
@@ -1232,8 +1188,8 @@ svg { display: block; }
       </div>
       <div class="where-block">
         <h3 class="where-sub">Compare them on the map</h3>
-        <div class="dest-map" data-dest-data="assets/destinations.json" data-dest-map="all" role="region" aria-label="Map of the eight destinations and the four marinas">
-          <p class="dest-map-fallback">The eight destinations and the four marinas on one map.</p>
+        <div class="dest-map" data-dest-data="assets/destinations.json" data-dest-map="all" role="region" aria-label="Map of the eight destinations">
+          <p class="dest-map-fallback">The eight destinations on one map.</p>
         </div>
       </div>
       <div class="where-block">

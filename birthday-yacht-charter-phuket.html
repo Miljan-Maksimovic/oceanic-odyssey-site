@@ -752,23 +752,6 @@
     .module-note a { color: var(--teal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
     
-    .dist-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-    .dist-table caption { text-align: left; margin-bottom: 12px; color: var(--muted); font-size: 15px; }
-    .dist-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-    .dist-table, .dist-table tbody { display: block; }
-    .dist-table tbody { overflow: hidden; border-radius: 14px; background: var(--ice); }
-    .dist-table tr { display: block; padding: 13px 16px 8px; }
-    .dist-table tr + tr { border-top: 1px solid rgba(16, 45, 59, .1); }
-    .dist-table th[scope="row"] { display: block; margin-bottom: 4px; text-align: left; font-size: 17px; font-weight: 700; color: var(--navy); }
-    
-    .dist-table td { display: flex; align-items: baseline; gap: 0; padding: 7px 0; font-size: 16px; line-height: 1.35; }
-    .dist-table td + td { border-top: 1px solid rgba(16, 45, 59, .07); }
-    .dist-table td::before { content: attr(data-label); flex: 0 0 auto; margin-right: auto; padding-right: 12px; color: var(--muted); font-size: 15px; font-weight: 500; }
-    .dist-table .km { margin-left: 6px; color: var(--muted); font-size: 14px; }
-    .near-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--teal); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; vertical-align: 2px; }
-    .dist-table tr.is-nearest { background: #DDF0EC; }
-
-    
     .dest-map { position: relative; height: 340px; margin-top: 26px; background: #C9E6E1; overflow: hidden; }
     .dest-map-canvas, .dest-map .dest-map-canvas.maplibregl-map { position: absolute; inset: 0; width: 100%; height: 100%; }
     .dest-map[data-dest-map="all"] { height: 460px; }
@@ -780,19 +763,14 @@
     .mk { position: relative; width: 0; height: 0; font-family: var(--sans); }
     .mk-dot { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3px #fff, 0 2px 8px rgba(6, 28, 40, .35); }
     .mk-label { position: absolute; left: 12px; top: -10px; white-space: nowrap; padding: 2px 7px; background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .04em; line-height: 1.6; }
-    .mk-marina .mk-dot { left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 1px; background: var(--teal); box-shadow: 0 0 0 2px #fff; }
-    .mk-marina .mk-label { background: rgba(255, 255, 255, .92); color: var(--teal); font-weight: 600; font-size: 10px; letter-spacing: .02em; }
-    .mk-marina.is-nearest .mk-label { background: var(--teal); color: #fff; font-weight: 700; }
     .mk-left .mk-label { left: auto; right: 10px; }
     .mk-top .mk-label { top: -27px; left: -6px; }
     .mk-dest.mk-top .mk-label { top: -34px; left: -10px; }
     .mk-dest.mk-left .mk-label { right: 12px; }
     .mk-bottom .mk-label { top: 8px; left: -6px; }
-    .mk-quiet .mk-dot { opacity: .85; }
     .mk-button { cursor: pointer; }
     .mk-button:focus-visible { outline: none; }
     .mk-button:focus-visible .mk-label { outline: 3px solid #299CA2; outline-offset: 2px; }
-    .mk-route { padding: 3px 9px; background: #fff; color: var(--navy); border: 1px solid var(--teal); font-family: var(--sans); font-size: 11px; font-weight: 700; white-space: nowrap; }
     .dest-map { border-radius: 18px; }
     .mk-dest.is-active .mk-dot { background: var(--teal); transform: scale(1.3); }
     .mk-dest.is-active .mk-label { background: var(--teal); }
@@ -844,7 +822,7 @@
     .wx-hl { margin-top: 2px !important; font-size: 17px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .92); word-spacing: .2em; }
     .wx-rows { list-style: none; margin: 18px 0 0; padding: 0; }
     .wx-row { border-top: 1px solid rgba(255, 255, 255, .16); }
-    .wx-cells { display: grid; grid-template-columns: 52px 30px 34px minmax(40px, 1fr) 34px 56px; align-items: center; column-gap: 7px; min-height: 54px; padding: 6px 0; }
+    .wx-cells { display: grid; grid-template-columns: 50px 28px 32px minmax(30px, 1fr) 34px 68px; align-items: center; column-gap: 6px; min-height: 54px; padding: 6px 0; }
     .wx-day { font-size: 17px; font-weight: 600; white-space: nowrap; }
     .wx-icon { display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .wx-glyph { width: 28px; height: 28px; }
@@ -854,7 +832,7 @@
     .wx-bar { position: relative; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .16); }
     .wx-fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; background-image: linear-gradient(90deg, #5FD3C4 0%, #A8E07A 34%, #FFD25A 64%, #FF9A3D 100%); background-repeat: no-repeat; }
     .wx-now-dot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #0E3D49; }
-    .wx-wind { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 15px; font-weight: 600; color: rgba(255, 255, 255, .85); white-space: nowrap; }
+    .wx-wind { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, .85); white-space: nowrap; }
     .wx-arrow { flex: 0 0 auto; width: 13px; height: 13px; color: #fff; }
     .wx-status { margin-top: 10px; font-size: 15px; }
     .wx-status:empty { display: none; }
@@ -884,6 +862,12 @@
     .dest-card .card-link .arrow { width: 18px; height: 18px; transition: transform .2s; }
     .dest-card:hover .card-link .arrow { transform: translateX(4px); }
 
+    @media (max-width: 359px) {
+      .wx-cells { grid-template-columns: 44px 26px 30px minmax(14px, 1fr) 30px 62px; column-gap: 4px; }
+      .wx-day { font-size: 15px; }
+      .wx-lo, .wx-hi { font-size: 16px; }
+      .wx-wind { font-size: 13px; }
+    }
     @media (min-width: 700px) {
       .place { left: 14px; right: auto; top: 14px; bottom: auto; width: 300px; max-width: none; margin: 0; }
       .place-photo { aspect-ratio: 3 / 2; }
@@ -893,25 +877,11 @@
       .dest-map[data-dest-map="all"] { height: 480px; }
       .dest-gallery { gap: 12px; }
       .wx-card { margin-inline: 0; padding: 26px 24px 10px; }
-      .wx-cells { grid-template-columns: 64px 34px 38px minmax(60px, 1fr) 38px 64px; column-gap: 12px; min-height: 56px; }
+      .wx-cells { grid-template-columns: 64px 34px 38px minmax(60px, 1fr) 38px 80px; column-gap: 12px; min-height: 56px; }
+      .wx-wind { font-size: 15px; }
       .dest-cards { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 30px 0 0; padding: 0; overflow: visible; scroll-snap-type: none; }
     }
     @media (min-width: 700px) {
-      .dist-table { display: table; border-collapse: separate; border-spacing: 0; }
-      .dist-table thead { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: table-header-group; }
-      .dist-table tbody { display: table-row-group; border-radius: 0; background: none; }
-      .dist-table tr { display: table-row; padding: 0; background: none; }
-      .dist-table th, .dist-table td { display: table-cell; padding: 15px 16px; vertical-align: middle; background: var(--ice); text-align: left; }
-      .dist-table tbody tr + tr th, .dist-table tbody tr + tr td { border-top: 1px solid rgba(16, 45, 59, .1); }
-      .dist-table tbody tr:first-child th { border-top-left-radius: 14px; }
-      .dist-table tbody tr:first-child td:last-child { border-top-right-radius: 14px; }
-      .dist-table tbody tr:last-child th { border-bottom-left-radius: 14px; }
-      .dist-table tbody tr:last-child td:last-child { border-bottom-right-radius: 14px; }
-      .dist-table thead th { padding: 0 16px 8px; background: none; color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-      .dist-table td::before { display: none; }
-      .dist-table td + td { border-top: 0; }
-      .dist-table tr.is-nearest th, .dist-table tr.is-nearest td { background: #DDF0EC; }
-      .dist-table .km { margin-left: 8px; font-size: 13px; }
       .dest-glance dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; }
       .dest-glance .is-rate { grid-column: auto; padding-top: 0; border-top: 0; }
     }
@@ -1013,7 +983,7 @@
             <li><strong>A long lunch on deck.</strong> Thai lunch is in the rate on most of the yachts below, with water and soft drinks, and Amy takes special requests, so the table can carry the birthday guest's favourite dishes.</li>
             <li><strong>The swims.</strong> On Meraki, a wakeboard, a kneeboard and two towable tubes. On Simon, an inflatable slide, a jet ski and kayaks. On Pearl, a jet ski. On Moonglider, an inflatable swimming pool. For a diver, a dive at Racha.</li>
             <li><strong>The afternoon.</strong> On Matia Sou, a butler, a private massage therapist and a jacuzzi, all in the rate, for the hours when the day slows down. On Pandora and Pearl, a flybridge for the run back.</li>
-            <li><strong>The night, if they want it.</strong> Some birthdays should not end at the pier. Pandora and Jackie sleep 6 guests each, Meraki 8, and Simon 10 in five cabins, so the birthday guest can wake up on the water the next morning.</li>
+            <li><strong>The night, if they want it.</strong> Some birthdays should not end when the day does. Pandora and Jackie sleep 6 guests each, Meraki 8, and Simon 10 in five cabins, so the birthday guest can wake up on the water the next morning.</li>
           </ul>
         </div>
       </section>
