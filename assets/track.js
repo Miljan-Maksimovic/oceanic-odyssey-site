@@ -3,7 +3,7 @@
 
   function channel(a) {
     var href = a.getAttribute('href') || '';
-    if (/^https?:\/\/t\.me\/\+\d/i.test(href)) return 'telegram';
+    if (/^https?:\/\/t\.me\/(\+\d|iamthequeenamy)/i.test(href)) return 'telegram';
     if (/^https?:\/\/(wa\.me\/\d|api\.whatsapp\.com\/send\?[^#]*phone=\d|web\.whatsapp\.com\/send\?[^#]*phone=\d)/i.test(href)) return 'whatsapp';
     return '';
   }
