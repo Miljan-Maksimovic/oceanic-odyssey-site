@@ -648,6 +648,45 @@
     .gallery.is-pair .gallery-detail { grid-row: 1 / 3; }
     .boat-photo-link { position: absolute; z-index: 2; inset: 0; }
     
+    .place-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 10px; max-width: 680px; margin-top: 18px; }
+    .place-tile { display: block; min-width: 0; color: #fff; }
+    .place-photo { display: block; overflow: hidden; aspect-ratio: 5 / 3; background: var(--ice); }
+    .place-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s; }
+    .place-tile:hover .place-photo img { transform: scale(1.035); }
+    .place-name {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      min-width: 76%;
+      max-width: 100%;
+      min-height: 32px;
+      padding: 6px 24px 6px 10px;
+      background: var(--navy);
+      color: #fff;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 0 100%);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 20px;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+    }
+    .place-tile:focus-visible { outline: 3px solid #299CA2; outline-offset: 4px; }
+    .place-more { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .place-more a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; transition: background-color .15s, color .15s; }
+    .place-more a:hover { background: var(--navy); color: #fff; }
+    @media (min-width: 600px) {
+      .place-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .place-name { min-height: 34px; padding-left: 12px; font-size: 14px; }
+    }
+    
+    @media (min-width: 600px) { .place-grid:has(> .place-tile:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1100px) {
+      .place-grid:has(> .place-tile:nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      .place-grid:has(> .place-tile:nth-child(4):last-child) .place-name { padding: 6px 18px 6px 8px; font-size: 12px; }
+    }
+    @media (max-width: 359.98px) { .place-grid { grid-template-columns: minmax(0, 1fr); } }
+    @media (prefers-reduced-motion: reduce) { .place-photo img { transition: none; } }
+    
     @media (min-width: 600px) and (max-width: 899.98px) { .other-boats > .boat-card:nth-child(n + 3) { display: none; } }
     
     .stat-strip.is-below { margin-top: 0; padding-bottom: 8px; }
@@ -989,14 +1028,31 @@
           <div class="section-heading">
             <h2 id="routes-heading">Routes</h2>
           </div>
-          <p class="route-names">Phang Nga Bay. Hong Island. Racha. Phi Phi.</p>
+          <div class="place-grid">
+            <a class="place-tile" href="../phang-nga-bay-private-yacht.html">
+              <span class="place-photo"><img src="../assets/destinations/phang-nga-bay-james-bond-island/ko-tapu-1200.jpg" width="1200" height="789" alt="" loading="lazy" decoding="async"></span>
+              <span class="place-name">Phang Nga Bay</span>
+            </a>
+            <a class="place-tile" href="../krabi-hong-island-private-yacht.html">
+              <span class="place-photo"><img src="../assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="" loading="lazy" decoding="async"></span>
+              <span class="place-name">Hong Island</span>
+            </a>
+            <a class="place-tile" href="../racha-island-private-yacht.html">
+              <span class="place-photo"><img src="../assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="" loading="lazy" decoding="async"></span>
+              <span class="place-name">Racha</span>
+            </a>
+            <a class="place-tile" href="../phi-phi-private-yacht.html">
+              <span class="place-photo"><img src="../assets/destinations/phi-phi-islands/maya-bay-1200.jpg" width="1200" height="899" alt="" loading="lazy" decoding="async"></span>
+              <span class="place-name">Phi Phi</span>
+            </a>
+          </div>
         </section>
 
         <section class="process" aria-labelledby="booking-heading">
           <h2 id="booking-heading">How booking works</h2>
           <ol class="steps">
             <li><span>Send your date and group size on WhatsApp or Telegram.</span></li>
-            <li><span>Amy sends your quote for Collus T 11, with a route.</span></li>
+            <li><span>We send your quote for Collus T 11, with a route.</span></li>
             <li><span>Lock the date.</span></li>
           </ol>
         </section>

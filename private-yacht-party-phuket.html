@@ -714,6 +714,7 @@
       .group-row:has(.group-yacht:only-child) .group-yachts { grid-column: 2; grid-row: 1 / 3; margin: 0; }
     }
     @media (max-width: 359.98px) { .group-yachts { grid-template-columns: minmax(0, 1fr); } }   
+    .group-place:hover .group-yacht-photo img { transform: none; }   
     @media (prefers-reduced-motion: reduce) { .group-yacht-photo img { transition: none; } }
     
     .article-body .subhead { margin: 36px 0 12px; color: var(--navy); font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; }
@@ -757,10 +758,92 @@
       .yacht-table td.is-empty { display: table-cell; }
       .article-body .subhead { margin-top: 44px; font-size: 25px; }
       .yacht-table .yacht-cell.name-only { width: 20%; }
-      .yacht-table.is-wide .yacht-cell { width: 30%; }
-      .yacht-table.is-wide .rate { width: 15%; }
-      .yacht-table .rate.rate-long { font-size: 17px; }
+      .yacht-table.is-wide .yacht-cell { width: 28%; }
+      .yacht-table.is-wide .rate { width: 20%; }
+      
+      .yacht-table .rate.rate-long { display: table-cell; font-size: 17px; }
     }
+    
+    @media (min-width: 900px) {
+      .yacht-table:not(.is-wide) .yacht-cell:not(.name-only) { width: 34%; }
+      .yacht-table:not(.is-wide) .length-cell { width: 22%; }
+      .yacht-table:not(.is-wide) .guest-cell { width: 16%; }
+      .yacht-table:not(.is-wide) .rate { width: 28%; }
+    }
+    .yacht-table .rate { text-wrap: balance; }
+    
+    @media (min-width: 900px) and (max-width: 1199.98px) {
+      .yacht-table.is-wide .yacht-identity { gap: 12px; }
+      .yacht-table.is-wide .yacht-identity img { width: 84px; height: 56px; }
+      .yacht-table.is-wide .yacht-link { gap: 6px; font-size: 16px; }
+    }
+    @media (max-width: 400px) { .yacht-table .yacht-link { gap: 6px; font-size: 15px; } }   
+    
+.yacht-table .yacht-link {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table .yacht-link > span {
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table a.yacht-link:hover { color: var(--teal); }
+    .yacht-table .rate.rate-long {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    @media (min-width: 900px) {
+      .yacht-table.is-spec {
+        display: table;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      .yacht-table.is-spec th,
+      .yacht-table.is-spec td {
+        padding-inline: 12px;
+      }
+      .yacht-table.is-spec th:nth-child(1),
+      .yacht-table.is-spec td:nth-child(1) { width: 34%; padding-left: 16px; }
+      .yacht-table.is-spec th:nth-child(2),
+      .yacht-table.is-spec td:nth-child(2) { width: 17%; }
+      .yacht-table.is-spec th:nth-child(3),
+      .yacht-table.is-spec td:nth-child(3) { width: 13%; }
+      .yacht-table.is-spec th:nth-child(4),
+      .yacht-table.is-spec td:nth-child(4) { width: 8%; padding-inline: 8px; }
+      .yacht-table.is-spec th:nth-child(5),
+      .yacht-table.is-spec td:nth-child(5) { width: 28%; padding-right: 20px; }
+      .yacht-table.is-wide tbody tr { background: var(--ice); }
+      .yacht-table.is-wide tbody td {
+        display: table-cell;
+        vertical-align: middle;
+        background: var(--ice);
+      }
+      .yacht-table.is-wide .rate.rate-long {
+        display: table-cell;
+        font-size: 17px;
+        line-height: 1.4;
+        text-align: right;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+      .yacht-table .yacht-identity { gap: 12px; }
+      .yacht-table .yacht-link { gap: 8px; }
+    }
+
     .guide-photo img { object-position: 50% 50%; }
     @media (min-width: 600px) { .guide-photo img { object-position: 50% 50%; } }
     @media (min-width: 900px) { .guide-photo img { object-position: 50% 50%; } }
@@ -997,11 +1080,11 @@
           <div class="cta-pair">
             <a class="button" id="hero-enquiry" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-              <span>Message Amy on WhatsApp</span>
+              <span>Message us on WhatsApp</span>
             </a>
             <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
               <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-              <span>Message Amy on Telegram</span>
+              <span>Message us on Telegram</span>
             </a>
           </div>
         </div>
@@ -1333,11 +1416,11 @@
         <div class="cta-pair">
           <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-            <span>Message Amy on WhatsApp</span>
+            <span>Message us on WhatsApp</span>
           </a>
           <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-            <span>Message Amy on Telegram</span>
+            <span>Message us on Telegram</span>
           </a>
         </div>
         <div class="article-body">
@@ -1358,7 +1441,7 @@
   <div class="sticky-contact" aria-hidden="true" inert>
     <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
       <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-      <span>Message Amy on WhatsApp</span>
+      <span>Message us on WhatsApp</span>
     </a>
     <a class="button button-alt button-icon" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener" aria-label="Message Amy on Telegram">
       <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>

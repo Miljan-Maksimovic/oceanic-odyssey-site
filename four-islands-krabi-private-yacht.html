@@ -718,6 +718,7 @@
       .group-row:has(.group-yacht:only-child) .group-yachts { grid-column: 2; grid-row: 1 / 3; margin: 0; }
     }
     @media (max-width: 359.98px) { .group-yachts { grid-template-columns: minmax(0, 1fr); } }   
+    .group-place:hover .group-yacht-photo img { transform: none; }   
     @media (prefers-reduced-motion: reduce) { .group-yacht-photo img { transition: none; } }
     
     .article-body .subhead { margin: 36px 0 12px; color: var(--navy); font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; }
@@ -761,10 +762,92 @@
       .yacht-table td.is-empty { display: table-cell; }
       .article-body .subhead { margin-top: 44px; font-size: 25px; }
       .yacht-table .yacht-cell.name-only { width: 20%; }
-      .yacht-table.is-wide .yacht-cell { width: 30%; }
-      .yacht-table.is-wide .rate { width: 15%; }
-      .yacht-table .rate.rate-long { font-size: 17px; }
+      .yacht-table.is-wide .yacht-cell { width: 28%; }
+      .yacht-table.is-wide .rate { width: 20%; }
+      
+      .yacht-table .rate.rate-long { display: table-cell; font-size: 17px; }
     }
+    
+    @media (min-width: 900px) {
+      .yacht-table:not(.is-wide) .yacht-cell:not(.name-only) { width: 34%; }
+      .yacht-table:not(.is-wide) .length-cell { width: 22%; }
+      .yacht-table:not(.is-wide) .guest-cell { width: 16%; }
+      .yacht-table:not(.is-wide) .rate { width: 28%; }
+    }
+    .yacht-table .rate { text-wrap: balance; }
+    
+    @media (min-width: 900px) and (max-width: 1199.98px) {
+      .yacht-table.is-wide .yacht-identity { gap: 12px; }
+      .yacht-table.is-wide .yacht-identity img { width: 84px; height: 56px; }
+      .yacht-table.is-wide .yacht-link { gap: 6px; font-size: 16px; }
+    }
+    @media (max-width: 400px) { .yacht-table .yacht-link { gap: 6px; font-size: 15px; } }   
+    
+.yacht-table .yacht-link {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table .yacht-link > span {
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table a.yacht-link:hover { color: var(--teal); }
+    .yacht-table .rate.rate-long {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    @media (min-width: 900px) {
+      .yacht-table.is-spec {
+        display: table;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      .yacht-table.is-spec th,
+      .yacht-table.is-spec td {
+        padding-inline: 12px;
+      }
+      .yacht-table.is-spec th:nth-child(1),
+      .yacht-table.is-spec td:nth-child(1) { width: 34%; padding-left: 16px; }
+      .yacht-table.is-spec th:nth-child(2),
+      .yacht-table.is-spec td:nth-child(2) { width: 17%; }
+      .yacht-table.is-spec th:nth-child(3),
+      .yacht-table.is-spec td:nth-child(3) { width: 13%; }
+      .yacht-table.is-spec th:nth-child(4),
+      .yacht-table.is-spec td:nth-child(4) { width: 8%; padding-inline: 8px; }
+      .yacht-table.is-spec th:nth-child(5),
+      .yacht-table.is-spec td:nth-child(5) { width: 28%; padding-right: 20px; }
+      .yacht-table.is-wide tbody tr { background: var(--ice); }
+      .yacht-table.is-wide tbody td {
+        display: table-cell;
+        vertical-align: middle;
+        background: var(--ice);
+      }
+      .yacht-table.is-wide .rate.rate-long {
+        display: table-cell;
+        font-size: 17px;
+        line-height: 1.4;
+        text-align: right;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+      .yacht-table .yacht-identity { gap: 12px; }
+      .yacht-table .yacht-link { gap: 8px; }
+    }
+
     .guide-photo img { object-position: 50% 50%; }
     @media (min-width: 600px) { .guide-photo img { object-position: 50% 50%; } }
     @media (min-width: 900px) { .guide-photo img { object-position: 50% 55%; } }
@@ -1005,11 +1088,11 @@
           <div class="cta-pair">
             <a class="button" id="hero-enquiry" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-              <span>Check your date with Amy on WhatsApp</span>
+              <span>Check your date on WhatsApp</span>
             </a>
             <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
               <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-              <span>Check your date with Amy on Telegram</span>
+              <span>Check your date on Telegram</span>
             </a>
           </div>
         </div>
@@ -1031,11 +1114,31 @@
         </div>
         <div class="article-body">
           <p>The islands lie 5 to 6 km off Railay and Ao Nang, inside Hat Noppharat Thara-Mu Ko Phi Phi National Park, the same park as Phi Phi. The stops are only 1 to 5 km apart, so most of the day is spent in the water or on the sand rather than under way.</p>
-          <ul class="island-list">
-            <li><strong>Phra Nang Cave Beach.</strong> A palm-fringed bay at the tip of the Railay headland, with the Princess Cave and its shrine at the south end. There is no road to it.</li>
-            <li><strong>Chicken Island (Koh Kai).</strong> Named for the rock that looks like a chicken's head, clearest from the water on its south-east side.</li>
-            <li><strong>Tup Island and Thale Waek.</strong> At low tide a sandbar links Koh Kai, Koh Tup and Koh Mor, and you can walk between them over shallow, turquoise water. The sandbar shows at the lowest tide of each day, so the order of the stops follows the tide.</li>
-            <li><strong>Koh Poda.</strong> A white beach, clear water and limestone cliffs, with shade, food stalls and restrooms. Yachts can take a government mooring off the north end.</li>
+          <ul class="group-guide">
+            <li class="group-row">
+              <p class="group-text"><strong>Phra Nang Cave Beach.</strong> A palm-fringed bay at the tip of the Railay headland, with the Princess Cave and its shrine at the south end. There is no road to it.</p>
+              <div class="group-yachts">
+                <span class="group-yacht group-place"><span class="group-yacht-photo"><img src="assets/destinations/four-islands-krabi/phra-nang-1200.jpg" width="1200" height="800" alt="Phra Nang beach under its limestone cliff" loading="lazy" decoding="async"></span></span>
+              </div>
+            </li>
+            <li class="group-row">
+              <p class="group-text"><strong>Chicken Island (Koh Kai).</strong> Named for the rock that looks like a chicken's head, clearest from the water on its south-east side.</p>
+              <div class="group-yachts">
+                <span class="group-yacht group-place"><span class="group-yacht-photo"><img src="assets/destinations/four-islands-krabi/chicken-island-1200.jpg" width="1200" height="747" alt="Chicken Island and its bird-head rock, from a boat" loading="lazy" decoding="async"></span></span>
+              </div>
+            </li>
+            <li class="group-row">
+              <p class="group-text"><strong>Tup Island and Thale Waek.</strong> At low tide a sandbar links Koh Kai, Koh Tup and Koh Mor, and you can walk between them over shallow, turquoise water. The sandbar shows at the lowest tide of each day, so the order of the stops follows the tide.</p>
+              <div class="group-yachts">
+                <span class="group-yacht group-place"><span class="group-yacht-photo"><img src="assets/destinations/four-islands-krabi/tup-island-1200.jpg" width="1200" height="800" alt="Tup Island&#x27;s beach and shallows, visitors wading out" loading="lazy" decoding="async"></span></span>
+              </div>
+            </li>
+            <li class="group-row">
+              <p class="group-text"><strong>Koh Poda.</strong> A white beach, clear water and limestone cliffs, with shade, food stalls and restrooms. Yachts can take a government mooring off the north end.</p>
+              <div class="group-yachts">
+                <span class="group-yacht group-place"><span class="group-yacht-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"></span></span>
+              </div>
+            </li>
           </ul>
         </div>
       </section>
@@ -1065,25 +1168,6 @@
             <li><strong>E-ticket.</strong> A face-scan e-ticket was introduced at Koh Poda, Maya Bay and Bamboo Island from 15 October 2025, bought in advance or before 08:00 on the day, with foreign guests identified by passport. Bring passports.</li>
             <li><strong>With Hong Island.</strong> Koh Hong is in a different national park, Than Bok Khorani, so a Hong Island and Koh Poda day pays both parks' fees.</li>
           </ul>
-        </div>
-      </section>
-
-      <section class="article-section dest-section" aria-labelledby="the-4-islands-in-photographs">
-        <div class="section-heading reading-column">
-          <h2 id="the-4-islands-in-photographs">The 4 Islands in photographs</h2>
-        </div>
-        <div class="dest-module module-gallery">
-        <div class="dest-gallery" style="--n: 3">
-          <figure>
-            <div class="shot"><img src="assets/destinations/four-islands-krabi/chicken-island-1200.jpg" width="1200" height="747" alt="Chicken Island and its bird-head rock, from a boat" loading="lazy" decoding="async"></div>
-          </figure>
-          <figure>
-            <div class="shot"><img src="assets/destinations/four-islands-krabi/tup-island-1200.jpg" width="1200" height="800" alt="Tup Island&#x27;s beach and shallows, visitors wading out" loading="lazy" decoding="async"></div>
-          </figure>
-          <figure>
-            <div class="shot"><img src="assets/destinations/four-islands-krabi/phra-nang-1200.jpg" width="1200" height="800" alt="Phra Nang beach under its limestone cliff" loading="lazy" decoding="async"></div>
-          </figure>
-        </div>
         </div>
       </section>
 
@@ -1209,11 +1293,11 @@
         <div class="cta-pair">
           <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-            <span>Message Amy on WhatsApp</span>
+            <span>Message us on WhatsApp</span>
           </a>
           <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-            <span>Message Amy on Telegram</span>
+            <span>Message us on Telegram</span>
           </a>
         </div>
         <div class="article-body">
@@ -1234,7 +1318,7 @@
   <div class="sticky-contact" aria-hidden="true" inert>
     <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
       <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-      <span>Message Amy on WhatsApp</span>
+      <span>Message us on WhatsApp</span>
     </a>
     <a class="button button-alt button-icon" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20to%20the%204%20Islands%2C%20Krabi.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener" aria-label="Message Amy on Telegram">
       <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>

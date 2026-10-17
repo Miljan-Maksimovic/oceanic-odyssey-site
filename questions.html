@@ -784,6 +784,7 @@
       .group-row:has(.group-yacht:only-child) .group-yachts { grid-column: 2; grid-row: 1 / 3; margin: 0; }
     }
     @media (max-width: 359.98px) { .group-yachts { grid-template-columns: minmax(0, 1fr); } }   
+    .group-place:hover .group-yacht-photo img { transform: none; }   
     @media (prefers-reduced-motion: reduce) { .group-yacht-photo img { transition: none; } }
     
     .article-body .subhead { margin: 36px 0 12px; color: var(--navy); font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; }
@@ -827,10 +828,92 @@
       .yacht-table td.is-empty { display: table-cell; }
       .article-body .subhead { margin-top: 44px; font-size: 25px; }
       .yacht-table .yacht-cell.name-only { width: 20%; }
-      .yacht-table.is-wide .yacht-cell { width: 30%; }
-      .yacht-table.is-wide .rate { width: 15%; }
-      .yacht-table .rate.rate-long { font-size: 17px; }
+      .yacht-table.is-wide .yacht-cell { width: 28%; }
+      .yacht-table.is-wide .rate { width: 20%; }
+      
+      .yacht-table .rate.rate-long { display: table-cell; font-size: 17px; }
     }
+    
+    @media (min-width: 900px) {
+      .yacht-table:not(.is-wide) .yacht-cell:not(.name-only) { width: 34%; }
+      .yacht-table:not(.is-wide) .length-cell { width: 22%; }
+      .yacht-table:not(.is-wide) .guest-cell { width: 16%; }
+      .yacht-table:not(.is-wide) .rate { width: 28%; }
+    }
+    .yacht-table .rate { text-wrap: balance; }
+    
+    @media (min-width: 900px) and (max-width: 1199.98px) {
+      .yacht-table.is-wide .yacht-identity { gap: 12px; }
+      .yacht-table.is-wide .yacht-identity img { width: 84px; height: 56px; }
+      .yacht-table.is-wide .yacht-link { gap: 6px; font-size: 16px; }
+    }
+    @media (max-width: 400px) { .yacht-table .yacht-link { gap: 6px; font-size: 15px; } }   
+    
+.yacht-table .yacht-link {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table .yacht-link > span {
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+    .yacht-table a.yacht-link:hover { color: var(--teal); }
+    .yacht-table .rate.rate-long {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    @media (min-width: 900px) {
+      .yacht-table.is-spec {
+        display: table;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      .yacht-table.is-spec th,
+      .yacht-table.is-spec td {
+        padding-inline: 12px;
+      }
+      .yacht-table.is-spec th:nth-child(1),
+      .yacht-table.is-spec td:nth-child(1) { width: 34%; padding-left: 16px; }
+      .yacht-table.is-spec th:nth-child(2),
+      .yacht-table.is-spec td:nth-child(2) { width: 17%; }
+      .yacht-table.is-spec th:nth-child(3),
+      .yacht-table.is-spec td:nth-child(3) { width: 13%; }
+      .yacht-table.is-spec th:nth-child(4),
+      .yacht-table.is-spec td:nth-child(4) { width: 8%; padding-inline: 8px; }
+      .yacht-table.is-spec th:nth-child(5),
+      .yacht-table.is-spec td:nth-child(5) { width: 28%; padding-right: 20px; }
+      .yacht-table.is-wide tbody tr { background: var(--ice); }
+      .yacht-table.is-wide tbody td {
+        display: table-cell;
+        vertical-align: middle;
+        background: var(--ice);
+      }
+      .yacht-table.is-wide .rate.rate-long {
+        display: table-cell;
+        font-size: 17px;
+        line-height: 1.4;
+        text-align: right;
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+      .yacht-table .yacht-identity { gap: 12px; }
+      .yacht-table .yacht-link { gap: 8px; }
+    }
+
     
     .questions-page .guide-photo { min-height: 230px; }
     .questions-page .guide-hero h1 { padding: 130px 0 28px; font-size: 42px; }
@@ -951,7 +1034,7 @@
             <div class="q-body">
               <p class="q-question">How do I book, and how do I pay?</p>
               <p class="q-answer">Send Amy your date, your group size and the kind of day on WhatsApp or Telegram. Sending a message books nothing. She replies with the yachts that fit, each with its rate. Payment is by bank transfer or cash.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="seasons-and-rates">
@@ -967,7 +1050,7 @@
             <div class="q-body">
               <p class="q-question">Is there a deposit, and what if we need to cancel?</p>
               <p class="q-answer">Amy sends the payment schedule and the cancellation terms with your quote. Payment is by bank transfer or cash.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="splitting-the-cost">
@@ -975,7 +1058,7 @@
             <div class="q-body">
               <p class="q-question">Can we split the cost between the group?</p>
               <p class="q-answer">The rate is for the whole yacht, so the cost per guest falls as the group grows. Amy confirms how the group pays when you book.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20can%20we%20split%20the%20cost%20between%20the%20group%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20can%20we%20split%20the%20cost%20between%20the%20group%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20can%20we%20split%20the%20cost%20between%20the%20group%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20can%20we%20split%20the%20cost%20between%20the%20group%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
         </div>
@@ -989,7 +1072,7 @@
             <div class="q-body">
               <p class="q-question">What time does the day start?</p>
               <p class="q-answer">A full day is 8 hours, usually 09:00 to 17:00 or 10:00 to 18:00, to suit you. Amy confirms the meeting point with your date.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20when%20would%20we%20leave%3F%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="national-park-fees">
@@ -1013,7 +1096,7 @@
             <div class="q-body">
               <p class="q-question">Can we bring our own drinks or a speaker?</p>
               <p class="q-answer">Amy confirms what you can bring on board, music included, for your yacht when she sends your quote. Water and soft drinks are in the rate on most yachts.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20can%20we%20bring%20our%20own%20drinks%20or%20a%20speaker%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20can%20we%20bring%20our%20own%20drinks%20or%20a%20speaker%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20can%20we%20bring%20our%20own%20drinks%20or%20a%20speaker%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20can%20we%20bring%20our%20own%20drinks%20or%20a%20speaker%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="choosing-the-route">
@@ -1035,7 +1118,7 @@
             <div class="q-body">
               <p class="q-question">What if the sea is rough on the day?</p>
               <p class="q-answer">The sea is calmest from November to April. If the sea is too rough, there is no trip that day. In light rain the captain picks a calmer route, or the day moves to another date, subject to availability.</p>
-              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message Amy on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message Amy on Telegram</span></a></div>
+              <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20what%20if%20the%20sea%20is%20rough%20on%20the%20day%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="islands-in-one-day">
@@ -1108,11 +1191,11 @@
         <div class="cta-pair">
           <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-            <span>Message Amy on WhatsApp</span>
+            <span>Message us on WhatsApp</span>
           </a>
           <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-            <span>Message Amy on Telegram</span>
+            <span>Message us on Telegram</span>
           </a>
         </div>
         <p class="cta-phone"><a href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">+66 64 451 8232</a></p>
@@ -1131,7 +1214,7 @@
   <div class="sticky-contact" aria-hidden="true" inert>
     <a class="button" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
       <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-      <span>Message Amy on WhatsApp</span>
+      <span>Message us on WhatsApp</span>
     </a>
     <a class="button button-alt button-icon" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener" aria-label="Message Amy on Telegram">
       <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
