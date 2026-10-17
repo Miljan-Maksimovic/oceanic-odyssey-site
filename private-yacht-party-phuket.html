@@ -674,6 +674,48 @@
   </style>
   <style>
     
+    .group-guide .group-row { min-width: 0; padding: 20px 16px 12px; background: var(--ice); }
+    .group-guide .group-row .group-label { display: block; margin: 0 0 8px; line-height: 1.5; }
+    .group-guide .group-text { margin: 0; line-height: 1.6; }
+    .group-guide .group-text strong { color: var(--navy); }
+    .group-yachts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px 8px; margin: 20px -8px 0; }
+    .article-body .group-guide a.group-yacht { display: block; min-width: 0; color: #fff; font-weight: 800; text-decoration: none; }
+    .group-yacht:only-child, .group-yacht:first-child:nth-last-child(3) { grid-column: 1 / -1; }
+    .group-yacht-photo { display: block; overflow: hidden; aspect-ratio: 5 / 3; background: #fff; }
+    .group-yacht-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s; }
+    .group-yacht-name {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      min-width: 76%;
+      max-width: 100%;
+      min-height: 32px;
+      padding: 6px 24px 6px 10px;
+      background: var(--navy);
+      color: #fff;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 0 100%);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 20px;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+    }
+    .group-yacht:hover .group-yacht-photo img { transform: scale(1.035); }
+    .article-body .group-guide a.group-yacht:focus-visible { outline: 3px solid #299CA2; outline-offset: 4px; }
+    @media (min-width: 600px) {
+      .group-guide .group-row { padding: 24px; }
+      .group-yachts { gap: 14px; margin: 20px 0 0; }
+      .group-yachts:has(> :nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .group-yacht:first-child:nth-last-child(3) { grid-column: auto; }
+      .group-yacht-name { min-height: 34px; padding-left: 12px; font-size: 14px; }
+      .group-row:has(.group-yacht:only-child) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); grid-template-rows: auto 1fr; column-gap: 24px; align-items: start; }
+      .group-row:has(.group-yacht:only-child) .group-label { grid-column: 1; grid-row: 1; }
+      .group-row:has(.group-yacht:only-child) .group-text { grid-column: 1; grid-row: 2; }
+      .group-row:has(.group-yacht:only-child) .group-yachts { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+    }
+    @media (max-width: 359.98px) { .group-yachts { grid-template-columns: minmax(0, 1fr); } }   
+    @media (prefers-reduced-motion: reduce) { .group-yacht-photo img { transition: none; } }
+    
     .article-body .subhead { margin: 36px 0 12px; color: var(--navy); font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; }
     .yacht-table .wide-cell { grid-column: 1 / -1; }
     .yacht-table .rate.rate-long { display: block; white-space: normal; font-size: 18px; letter-spacing: -.02em; }
@@ -1106,14 +1148,92 @@
         <div class="fleet-guidance article-body reading-column">
           <p>Above the guests a rate covers, each extra guest adds a set amount, up to the yacht's maximum: 2,500 THB on Meraki, 3,000 THB on Jackie and Pearl, 3,500 THB on Moonglider, 4,000 THB on Kefi, 8,500 THB on Matia Sou and 10,000 THB on Simon. The rates for Pandora and Song of Songs cover every guest they take. Most rates are higher in the peak, 10 Dec to 10 Jan.</p>
           <ul class="group-guide">
-            <li><strong class="group-label">Up to 10.</strong> Pandora keeps a small party close: the flybridge for the hours under way, indoor and outdoor spaces when the sun is high, and three cabins below.</li>
-            <li><strong class="group-label">Up to 15.</strong> Jackie, 60 ft, with a paddle board on board and fishing gear on request. Or Sira, 76 ft, built in 2025, with a towable donut, two paddle boards and a floating pool.</li>
-            <li><strong class="group-label">Up to 18.</strong> Moonglider is the Leopard 90, 90 ft, with an inflatable swimming pool. She is priced by the hours: 220,000 THB for 4, 270,000 THB for 6 and 375,000 THB for 8.</li>
-            <li><strong class="group-label">Up to 20.</strong> Pearl, 78 ft, with a flybridge, a jet ski and a paddle board. Or Bruna, 68 ft, refitted in 2025, with a slider and an inflatable pool.</li>
-            <li><strong class="group-label">Up to 25.</strong> Meraki and Matia Sou give two very different days. Meraki is about the water: a wakeboard, a kneeboard, a paddle board, two towable tubes, sunbeds on the flybridge, a BBQ and surround sound. Matia Sou is hosted: a butler and a private massage therapist, both in the rate, a jet ski, a sea scooter and a yacht slide, and the jacuzzi as the afternoon slows down.</li>
-            <li><strong class="group-label">Up to 44.</strong> Simon is a 130 ft superyacht for the whole guest list: an inflatable slide, a jet ski and open water on every side.</li>
-            <li><strong class="group-label">Up to 12, by the day or with a night.</strong> Song of Songs is a 42 m superyacht with six cabins: USD 37,500 for a full day of 8 hours, or USD 46,000 for two days with one night, both all inclusive.</li>
-            <li><strong class="group-label">50 to 100.</strong> Kefi, built in 2025, is for the guest list that outgrows every yacht above: larger private parties and events. A pool and a slider, a private jacuzzi, a buffet, and a resident DJ and photographer are in the rate. 230,000 THB covers up to 50 guests, in every season, and each guest above that adds 4,000 THB.</li>
+            <li class="group-row">
+              <strong class="group-label">Up to 10.</strong>
+              <p class="group-text">Pandora keeps a small party close: the flybridge for the hours under way, indoor and outdoor spaces when the sun is high, and three cabins below.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/pandora.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Pandora</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 15.</strong>
+              <p class="group-text">Jackie, 60 ft, with a paddle board on board and fishing gear on request. Or Sira, 76 ft, built in 2025, with a towable donut, two paddle boards and a floating pool.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/jackie.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Jackie</span>
+                </a>
+                <a class="group-yacht" href="boats/sira.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Sira</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 18.</strong>
+              <p class="group-text">Moonglider is the Leopard 90, 90 ft, with an inflatable swimming pool. She is priced by the hours: 220,000 THB for 4, 270,000 THB for 6 and 375,000 THB for 8.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/moonglider.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/moonglider.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Moonglider</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 20.</strong>
+              <p class="group-text">Pearl, 78 ft, with a flybridge, a jet ski and a paddle board. Or Bruna, 68 ft, refitted in 2025, with a slider and an inflatable pool.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/pearl.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Pearl</span>
+                </a>
+                <a class="group-yacht" href="boats/bruna.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Bruna</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 25.</strong>
+              <p class="group-text">Meraki and Matia Sou give two very different days. Meraki is about the water: a wakeboard, a kneeboard, a paddle board, two towable tubes, sunbeds on the flybridge, a BBQ and surround sound. Matia Sou is hosted: a butler and a private massage therapist, both in the rate, a jet ski, a sea scooter and a yacht slide, and the jacuzzi as the afternoon slows down.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/meraki.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Meraki</span>
+                </a>
+                <a class="group-yacht" href="boats/matia-sou.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Matia Sou</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 44.</strong>
+              <p class="group-text">Simon is a 130 ft superyacht for the whole guest list: an inflatable slide, a jet ski and open water on every side.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/simon.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Simon</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 12, by the day or with a night.</strong>
+              <p class="group-text">Song of Songs is a 42 m superyacht with six cabins: USD 37,500 for a full day of 8 hours, or USD 46,000 for two days with one night, both all inclusive.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/song-of-songs.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Song of Songs</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">50 to 100.</strong>
+              <p class="group-text">Kefi, built in 2025, is for the guest list that outgrows every yacht above: larger private parties and events. A pool and a slider, a private jacuzzi, a buffet, and a resident DJ and photographer are in the rate. 230,000 THB covers up to 50 guests, in every season, and each guest above that adds 4,000 THB.</p>
+            </li>
           </ul>
           <p>Every rate by season is in the <a href="yacht-charter-prices-phuket.html">price guide</a>, and every yacht is on <a href="fleet.html">the fleet page</a>.</p>
         </div>

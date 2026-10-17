@@ -678,6 +678,48 @@
   </style>
   <style>
     
+    .group-guide .group-row { min-width: 0; padding: 20px 16px 12px; background: var(--ice); }
+    .group-guide .group-row .group-label { display: block; margin: 0 0 8px; line-height: 1.5; }
+    .group-guide .group-text { margin: 0; line-height: 1.6; }
+    .group-guide .group-text strong { color: var(--navy); }
+    .group-yachts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px 8px; margin: 20px -8px 0; }
+    .article-body .group-guide a.group-yacht { display: block; min-width: 0; color: #fff; font-weight: 800; text-decoration: none; }
+    .group-yacht:only-child, .group-yacht:first-child:nth-last-child(3) { grid-column: 1 / -1; }
+    .group-yacht-photo { display: block; overflow: hidden; aspect-ratio: 5 / 3; background: #fff; }
+    .group-yacht-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s; }
+    .group-yacht-name {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      min-width: 76%;
+      max-width: 100%;
+      min-height: 32px;
+      padding: 6px 24px 6px 10px;
+      background: var(--navy);
+      color: #fff;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 0 100%);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 20px;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+    }
+    .group-yacht:hover .group-yacht-photo img { transform: scale(1.035); }
+    .article-body .group-guide a.group-yacht:focus-visible { outline: 3px solid #299CA2; outline-offset: 4px; }
+    @media (min-width: 600px) {
+      .group-guide .group-row { padding: 24px; }
+      .group-yachts { gap: 14px; margin: 20px 0 0; }
+      .group-yachts:has(> :nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .group-yacht:first-child:nth-last-child(3) { grid-column: auto; }
+      .group-yacht-name { min-height: 34px; padding-left: 12px; font-size: 14px; }
+      .group-row:has(.group-yacht:only-child) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); grid-template-rows: auto 1fr; column-gap: 24px; align-items: start; }
+      .group-row:has(.group-yacht:only-child) .group-label { grid-column: 1; grid-row: 1; }
+      .group-row:has(.group-yacht:only-child) .group-text { grid-column: 1; grid-row: 2; }
+      .group-row:has(.group-yacht:only-child) .group-yachts { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+    }
+    @media (max-width: 359.98px) { .group-yachts { grid-template-columns: minmax(0, 1fr); } }   
+    @media (prefers-reduced-motion: reduce) { .group-yacht-photo img { transition: none; } }
+    
     .article-body .subhead { margin: 36px 0 12px; color: var(--navy); font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.03em; }
     .yacht-table .wide-cell { grid-column: 1 / -1; }
     .yacht-table .rate.rate-long { display: block; white-space: normal; font-size: 18px; letter-spacing: -.02em; }
@@ -1069,11 +1111,72 @@
         <div class="article-body reading-column">
           <p class="deck-note">The bay is a day of looking out, so the decks matter as much as the length.</p>
           <ul class="group-guide">
-            <li><strong class="group-label">Up to 10.</strong> Pandora keeps a small group close: a spacious flybridge for the hours among the islands, indoor and outdoor spaces for when the sun is high, and three cabins. A paddle board and a kayak are in her rate.</li>
-            <li><strong class="group-label">Up to 15.</strong> Tiger 40, a catamaran built in 2023, with kayaks, a paddle board, an inflatable slider and an island seat. Jackie, 60 ft, with a paddle board and fishing gear on request. Sira, 76 ft, built in 2025, with a towable donut, two paddle boards and a floating pool.</li>
-            <li><strong class="group-label">Up to 20.</strong> Pearl, 78 ft, with a flybridge for the approach to the islands, a jet ski and a paddle board. Bruna, 68 ft, refitted in 2025, with a slider and an inflatable pool.</li>
-            <li><strong class="group-label">Up to 25.</strong> Meraki, for the water: wakeboard, kneeboard, towable tubes. Matia Sou, for a hosted day: butler, private massage therapist, jacuzzi.</li>
-            <li><strong class="group-label">Up to 44.</strong> Simon is a 130 ft yacht for the whole group: a jet ski, kayaks and an inflatable slide for the stops.</li>
+            <li class="group-row">
+              <strong class="group-label">Up to 10.</strong>
+              <p class="group-text">Pandora keeps a small group close: a spacious flybridge for the hours among the islands, indoor and outdoor spaces for when the sun is high, and three cabins. A paddle board and a kayak are in her rate.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/pandora.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Pandora</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 15.</strong>
+              <p class="group-text">Tiger 40, a catamaran built in 2023, with kayaks, a paddle board, an inflatable slider and an island seat. Jackie, 60 ft, with a paddle board and fishing gear on request. Sira, 76 ft, built in 2025, with a towable donut, two paddle boards and a floating pool.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/tiger-40.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/tiger-40.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Tiger 40</span>
+                </a>
+                <a class="group-yacht" href="boats/jackie.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Jackie</span>
+                </a>
+                <a class="group-yacht" href="boats/sira.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Sira</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 20.</strong>
+              <p class="group-text">Pearl, 78 ft, with a flybridge for the approach to the islands, a jet ski and a paddle board. Bruna, 68 ft, refitted in 2025, with a slider and an inflatable pool.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/pearl.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Pearl</span>
+                </a>
+                <a class="group-yacht" href="boats/bruna.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Bruna</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 25.</strong>
+              <p class="group-text">Meraki, for the water: wakeboard, kneeboard, towable tubes. Matia Sou, for a hosted day: butler, private massage therapist, jacuzzi.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/meraki.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Meraki</span>
+                </a>
+                <a class="group-yacht" href="boats/matia-sou.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Matia Sou</span>
+                </a>
+              </div>
+            </li>
+            <li class="group-row">
+              <strong class="group-label">Up to 44.</strong>
+              <p class="group-text">Simon is a 130 ft yacht for the whole group: a jet ski, kayaks and an inflatable slide for the stops.</p>
+              <div class="group-yachts">
+                <a class="group-yacht" href="boats/simon.html">
+                  <span class="group-yacht-photo"><img src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async"></span>
+                  <span class="group-yacht-name">Simon</span>
+                </a>
+              </div>
+            </li>
           </ul>
           <p>Every yacht with a Phang Nga Bay rate. Each rate is for the whole yacht and a full day of 8 hours. Open one to see it:</p>
         </div>
