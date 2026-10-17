@@ -766,6 +766,78 @@
       .includes { padding: 32px 30px 26px; }
       .includes .section-heading h2 { font-size: 30px; }
     }
+
+    
+    .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: #fff; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 5 / 3; background: var(--ice); }
+    .boat-card .boat-photo img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .55s; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card:hover .boat-photo img { transform: scale(1.035); }
+    .boat-card .boat-band {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 46px;
+      padding: 0 23px 0 16px;
+      background: #B1D3E1;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    }
+    .boat-card .boat-name {
+      position: static;
+      margin: 0;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    
+    .boat-card .boat-spec {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 0;
+      margin: 12px 0 0 -17px;
+      padding: 0;
+      clip-path: inset(0 0 0 17px);
+      list-style: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .boat-card .boat-spec li { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(16, 45, 59, .14); white-space: nowrap; }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 18px; }
+    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(19px, 6.1vw, 23px); font-weight: 800; line-height: 1.35; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-unit { margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
+    .boat-card .boat-enquire {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      transition: color .15s;
+    }
+    .boat-card .boat-enquire:hover { color: var(--navy); }
+    .boat-card .boat-enquire .icon { flex: 0 0 16px; width: 16px; height: 16px; }
+    .boat-card .boat-enquire:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
+    .boat-card .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .boat-card .boat-link:focus-visible { outline: none; }
+    .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
+    @media (min-width: 600px) {
+      .boat-card .boat-name { font-size: 20px; }
+      .boat-card .boat-price { font-size: 20px; }
+    }
+    @media (min-width: 1100px) { .boat-card .boat-price { font-size: 24px; } }
     .hero-photo img { object-position: 50% 50%; }
     .hero-intro h1 { --name-size: min(clamp(40px, 12vw, 56px), calc((100vw - 52px) / 10.44)); }
     @media (min-width: 600px) { .hero-intro h1 { --name-size: min(clamp(40px, 12vw, 56px), calc((100vw - 68px) / 10.44)); } }
@@ -971,41 +1043,65 @@
         <h2 id="other-boats-heading">Other yachts</h2>
       </div>
       <div class="fleet-grid other-boats" id="other-boats">
-        <article class="boat" aria-labelledby="laken-11-name">
+        <article class="boat boat-card" data-boat="Laken 11" data-max="8">
           <div class="boat-photo">
-            <img src="../assets/laken-11.jpg" width="2400" height="1600" alt="Laken 11 at speed across bright water, hills behind." loading="lazy">
-            <h3 class="boat-name" id="laken-11-name">Laken 11</h3>
-            <a class="boat-photo-link" href="laken-11.html" tabindex="-1" aria-hidden="true"></a>
+            <img src="../assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
           </div>
-          <a class="boat-info" href="laken-11.html" aria-label="Laken 11, From 90,000 THB, for up to 6">
-            <p class="boat-price">From 90,000 THB</p>
-            <p class="boat-unit">for up to 6</p>
-            <svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg>
-          </a>
+          <div class="boat-band">
+            <h3 class="boat-name" id="other-laken-11">Laken 11</h3>
+          </div>
+          <ul class="boat-spec"><li>36 ft</li><li>2019</li><li>8 guests</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 90,000 THB</p>
+              <p class="boat-unit">for 6 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Laken%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Laken 11 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="laken-11.html" aria-label="Laken 11, From 90,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" aria-labelledby="muse-46-name">
+        <article class="boat boat-card" data-boat="Muse 46" data-max="8">
           <div class="boat-photo">
-            <img src="../assets/muse-46.jpg" width="2400" height="1600" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy">
-            <h3 class="boat-name" id="muse-46-name">Muse 46</h3>
-            <a class="boat-photo-link" href="muse-46.html" tabindex="-1" aria-hidden="true"></a>
+            <img src="../assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
           </div>
-          <a class="boat-info" href="muse-46.html" aria-label="Muse 46, From 98,000 THB, for up to 8">
-            <p class="boat-price">From 98,000 THB</p>
-            <p class="boat-unit">for up to 8</p>
-            <svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg>
-          </a>
+          <div class="boat-band">
+            <h3 class="boat-name" id="other-muse-46">Muse 46</h3>
+          </div>
+          <ul class="boat-spec"><li>46 ft</li><li>2008</li><li>3 cabins</li><li>8 guests</li><li>Sleeps 4</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 98,000 THB</p>
+              <p class="boat-unit">for 8 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2046.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 46 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="muse-46.html" aria-label="Muse 46, From 98,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" aria-labelledby="lewis-4s-name">
+        <article class="boat boat-card" data-boat="Lewis 4.S" data-max="10">
           <div class="boat-photo">
-            <img src="../assets/lewis-4s.jpg" width="2160" height="1440" alt="Lewis 4.S under way, a small island behind." loading="lazy">
-            <h3 class="boat-name" id="lewis-4s-name">Lewis 4.S</h3>
-            <a class="boat-photo-link" href="lewis-4s.html" tabindex="-1" aria-hidden="true"></a>
+            <img src="../assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
           </div>
-          <a class="boat-info" href="lewis-4s.html" aria-label="Lewis 4.S, From 99,900 THB, for up to 10">
-            <p class="boat-price">From 99,900 THB</p>
-            <p class="boat-unit">for up to 10</p>
-            <svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg>
-          </a>
+          <div class="boat-band">
+            <h3 class="boat-name" id="other-lewis-4s">Lewis 4.S</h3>
+          </div>
+          <ul class="boat-spec"><li>36 ft</li><li>2024</li><li>3 cabins</li><li>10 guests</li><li>Sleeps 6</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 99,900 THB</p>
+              <p class="boat-unit">for 10 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Lewis%204.S.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Lewis 4.S on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="lewis-4s.html" aria-label="Lewis 4.S, From 99,900 THB, for 10 guests"></a>
         </article>
       </div>
       <a class="text-link" href="../fleet.html">

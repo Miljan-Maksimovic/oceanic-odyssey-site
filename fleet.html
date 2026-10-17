@@ -956,6 +956,78 @@
     .intro-note { margin-top: 16px; max-width: 660px; color: var(--on-dark); font-size: 15px; line-height: 1.6; }
 
     
+    .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: #fff; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 5 / 3; background: var(--ice); }
+    .boat-card .boat-photo img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .55s; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card:hover .boat-photo img { transform: scale(1.035); }
+    .boat-card .boat-band {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 46px;
+      padding: 0 23px 0 16px;
+      background: #B1D3E1;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    }
+    .boat-card .boat-name {
+      position: static;
+      margin: 0;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    
+    .boat-card .boat-spec {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 0;
+      margin: 12px 0 0 -17px;
+      padding: 0;
+      clip-path: inset(0 0 0 17px);
+      list-style: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .boat-card .boat-spec li { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(16, 45, 59, .14); white-space: nowrap; }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 18px; }
+    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(19px, 6.1vw, 23px); font-weight: 800; line-height: 1.35; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-unit { margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
+    .boat-card .boat-enquire {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      transition: color .15s;
+    }
+    .boat-card .boat-enquire:hover { color: var(--navy); }
+    .boat-card .boat-enquire .icon { flex: 0 0 16px; width: 16px; height: 16px; }
+    .boat-card .boat-enquire:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
+    .boat-card .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .boat-card .boat-link:focus-visible { outline: none; }
+    .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
+    @media (min-width: 600px) {
+      .boat-card .boat-name { font-size: 20px; }
+      .boat-card .boat-price { font-size: 20px; }
+    }
+    @media (min-width: 1100px) { .boat-card .boat-price { font-size: 24px; } }
+
+    
     body { padding-bottom: 0; }
     .intro .button { width: 100%; margin-top: 26px; }
     
@@ -1023,81 +1095,8 @@
     .chip:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
     .fleet-group { padding-top: 48px; }
     .fleet-group .section-heading { margin-bottom: 22px; }
-    .fleet-group[hidden], .fleet-page .boat[hidden], .fleet-empty[hidden] { display: none; }
-    
-    .fleet-page .boat { display: flex; flex-direction: column; background: #fff; }
-    .fleet-page .boat-photo { aspect-ratio: 5 / 3; background: var(--ice); }
-    .fleet-page .boat-photo::after { content: none; }
-    .fleet-page .boat-band {
-      display: flex;
-      align-items: center;
-      width: 80%;
-      height: 46px;
-      padding: 0 23px 0 16px;
-      background: #B1D3E1;
-      clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
-    }
-    .fleet-page .boat-name {
-      position: static;
-      margin: 0;
-      color: #fff;
-      font-family: var(--sans);
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: 0;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .fleet-page .boat-spec {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px 0;
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .fleet-page .boat-spec li { white-space: nowrap; }
-    .fleet-page .boat-spec li:not(:last-child) { margin-right: 8px; padding-right: 8px; border-right: 1px solid var(--line); }
-    .fleet-page .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 18px; }
-    .fleet-page .boat-price { margin: 0; color: var(--navy); font-size: 23px; font-weight: 800; line-height: 1.35; letter-spacing: -.035em; }
-    .fleet-page .boat-unit { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-    .boat-enquire {
-      position: relative;
-      z-index: 2;
-      display: inline-flex;
-      flex-shrink: 0;
-      align-items: center;
-      gap: 6px;
-      min-height: 44px;
-      color: var(--teal);
-      font-size: 13px;
-      font-weight: 800;
-      transition: color .15s;
-    }
-    .boat-enquire:hover { color: var(--navy); }
-    .boat-enquire svg { flex-shrink: 0; width: 16px; height: 16px; }
-    .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-    .boat-link:focus-visible { outline: none; }
-    .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
-    .chip:focus-visible, .boat-enquire:focus-visible, .fleet-empty button:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      padding: 0;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-      border: 0;
-    }
+    .fleet-group[hidden], .boat-card[hidden], .fleet-empty[hidden] { display: none; }
+    .chip:focus-visible, .fleet-empty button:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
     .fleet-empty {
       display: flex;
       flex-direction: column;
@@ -1140,8 +1139,6 @@
       .intro .cta-pair, .fleet-close .cta-pair { display: grid; width: fit-content; }
       .filter-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
       .filter-field:last-child { grid-column: auto; }
-      .fleet-page .boat-name { font-size: 20px; }
-      .fleet-page .boat-price { font-size: 20px; }
       .fleet-empty { flex-direction: row; align-items: center; justify-content: space-between; padding: 28px 32px; }
     }
     @media (min-width: 900px) {
@@ -1161,7 +1158,6 @@
       .fleet-close .cta-pair { margin-top: 0; grid-column: 2; grid-row: 1 / 3; align-self: end; }
       .fleet-close p { grid-column: 1; }
     }
-    @media (min-width: 1100px) { .fleet-page .boat-price { font-size: 24px; } }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1272,7 +1268,7 @@
         <h2 id="group-sport">Sport boats</h2>
       </div>
       <div class="fleet-grid">
-        <article class="boat" data-boat="Laken 11" data-type="sport" data-ft="36" data-max="8" data-price="90000">
+        <article class="boat boat-card" data-boat="Laken 11" data-type="sport" data-ft="36" data-max="8" data-price="90000">
           <div class="boat-photo">
             <img src="assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
           </div>
@@ -1285,14 +1281,14 @@
               <p class="boat-price">From 90,000 THB</p>
               <p class="boat-unit">for 6 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Laken%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Laken 11 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Laken%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Laken 11 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/laken-11.html" aria-label="Laken 11, From 90,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" data-boat="Emmy Cap 1.2" data-type="sport" data-ft="40" data-max="8" data-price="98000">
+        <article class="boat boat-card" data-boat="Emmy Cap 1.2" data-type="sport" data-ft="40" data-max="8" data-price="98000">
           <div class="boat-photo">
             <img src="assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
           </div>
@@ -1305,14 +1301,14 @@
               <p class="boat-price">From 98,000 THB</p>
               <p class="boat-unit">for 6 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Emmy%20Cap%201.2.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Emmy Cap 1.2 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Emmy%20Cap%201.2.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Emmy Cap 1.2 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/emmy-cap-1-2.html" aria-label="Emmy Cap 1.2, From 98,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" data-boat="Collus T 11" data-type="sport" data-ft="40" data-max="10" data-price="119000">
+        <article class="boat boat-card" data-boat="Collus T 11" data-type="sport" data-ft="40" data-max="10" data-price="119000">
           <div class="boat-photo">
             <img src="assets/cards/collus-t-11.jpg" width="1500" height="900" alt="Collus T 11 at anchor in a blue bay below green hills." loading="lazy" decoding="async">
           </div>
@@ -1325,14 +1321,14 @@
               <p class="boat-price">From 119,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Collus%20T%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Collus T 11 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Collus%20T%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Collus T 11 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/collus-t-11.html" aria-label="Collus T 11, From 119,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Stay Gain 15" data-type="sport" data-ft="52" data-max="12" data-price="135000">
+        <article class="boat boat-card" data-boat="Stay Gain 15" data-type="sport" data-ft="52" data-max="12" data-price="135000">
           <div class="boat-photo">
             <img src="assets/cards/stay-gain-15.jpg" width="1500" height="900" alt="Stay Gain 15 at speed on deep blue sea, a white wake behind her, mountains on the horizon." loading="lazy" decoding="async">
           </div>
@@ -1345,7 +1341,7 @@
               <p class="boat-price">From 135,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Stay%20Gain%2015.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Stay Gain 15 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Stay%20Gain%2015.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Stay Gain 15 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
@@ -1359,7 +1355,7 @@
         <h2 id="group-catamaran">Power catamarans</h2>
       </div>
       <div class="fleet-grid">
-        <article class="boat" data-boat="Lewis 4.S" data-type="catamaran" data-ft="36" data-max="10" data-price="99900">
+        <article class="boat boat-card" data-boat="Lewis 4.S" data-type="catamaran" data-ft="36" data-max="10" data-price="99900">
           <div class="boat-photo">
             <img src="assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
           </div>
@@ -1372,14 +1368,14 @@
               <p class="boat-price">From 99,900 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Lewis%204.S.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Lewis 4.S on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Lewis%204.S.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Lewis 4.S on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/lewis-4s.html" aria-label="Lewis 4.S, From 99,900 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Tiger 40" data-type="catamaran" data-ft="40" data-max="15" data-price="89000">
+        <article class="boat boat-card" data-boat="Tiger 40" data-type="catamaran" data-ft="40" data-max="15" data-price="89000">
           <div class="boat-photo">
             <img src="assets/cards/tiger-40.jpg" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
           </div>
@@ -1392,14 +1388,14 @@
               <p class="boat-price">From 89,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Tiger%2040.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Tiger 40 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Tiger%2040.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Tiger 40 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/tiger-40.html" aria-label="Tiger 40, From 89,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Apricity 53" data-type="catamaran" data-ft="53" data-max="35" data-price="110000">
+        <article class="boat boat-card" data-boat="Apricity 53" data-type="catamaran" data-ft="53" data-max="35" data-price="110000">
           <div class="boat-photo">
             <img src="assets/cards/apricity-53.jpg" width="1500" height="900" alt="Apricity 53 under way on deep blue water." loading="lazy" decoding="async">
           </div>
@@ -1412,14 +1408,14 @@
               <p class="boat-price">From 110,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Apricity%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Apricity 53 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Apricity%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Apricity 53 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/apricity-53.html" aria-label="Apricity 53, From 110,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Pear" data-type="catamaran" data-ft="85" data-max="85" data-price="250000">
+        <article class="boat boat-card" data-boat="Pear" data-type="catamaran" data-ft="85" data-max="85" data-price="250000">
           <div class="boat-photo">
             <img src="assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
           </div>
@@ -1432,7 +1428,7 @@
               <p class="boat-price">From 250,000 THB</p>
               <p class="boat-unit">for 30 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pear.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Pear on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pear.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pear on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
@@ -1446,7 +1442,7 @@
         <h2 id="group-motor">Motor yachts</h2>
       </div>
       <div class="fleet-grid">
-        <article class="boat" data-boat="Moonglade 42" data-type="motor" data-ft="42" data-max="10" data-price="130000">
+        <article class="boat boat-card" data-boat="Moonglade 42" data-type="motor" data-ft="42" data-max="10" data-price="130000">
           <div class="boat-photo">
             <img src="assets/cards/moonglade-42.jpg" width="1500" height="900" alt="Moonglade 42 at speed seen from the air, a white wake behind her, limestone islands on the horizon." loading="lazy" decoding="async">
           </div>
@@ -1459,14 +1455,14 @@
               <p class="boat-price">From 130,000 THB</p>
               <p class="boat-unit">for 6 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglade%2042.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Moonglade 42 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglade%2042.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Moonglade 42 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/moonglade-42.html" aria-label="Moonglade 42, From 130,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" data-boat="Muse 46" data-type="motor" data-ft="46" data-max="8" data-price="98000">
+        <article class="boat boat-card" data-boat="Muse 46" data-type="motor" data-ft="46" data-max="8" data-price="98000">
           <div class="boat-photo">
             <img src="assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
           </div>
@@ -1479,14 +1475,14 @@
               <p class="boat-price">From 98,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2046.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Muse 46 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2046.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 46 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/muse-46.html" aria-label="Muse 46, From 98,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Sissana 53" data-type="motor" data-ft="53" data-max="10" data-price="170000">
+        <article class="boat boat-card" data-boat="Sissana 53" data-type="motor" data-ft="53" data-max="10" data-price="170000">
           <div class="boat-photo">
             <img src="assets/cards/sissana-53.jpg" width="1500" height="900" alt="Sissana 53 at speed, spray rising along the hull." loading="lazy" decoding="async">
           </div>
@@ -1499,14 +1495,14 @@
               <p class="boat-price">From 170,000 THB</p>
               <p class="boat-unit">for 6 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sissana%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Sissana 53 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sissana%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sissana 53 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/sissana-53.html" aria-label="Sissana 53, From 170,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" data-boat="Sunset 54" data-type="motor" data-ft="54" data-max="15" data-price="139000">
+        <article class="boat boat-card" data-boat="Sunset 54" data-type="motor" data-ft="54" data-max="15" data-price="139000">
           <div class="boat-photo">
             <img src="assets/cards/sunset-54.jpg" width="1500" height="900" alt="Sunset 54 on calm water, a green headland behind." loading="lazy" decoding="async">
           </div>
@@ -1519,14 +1515,14 @@
               <p class="boat-price">From 139,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sunset%2054.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Sunset 54 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sunset%2054.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sunset 54 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/sunset-54.html" aria-label="Sunset 54, From 139,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Muse 55" data-type="motor" data-ft="55" data-max="15" data-price="110000">
+        <article class="boat boat-card" data-boat="Muse 55" data-type="motor" data-ft="55" data-max="15" data-price="110000">
           <div class="boat-photo">
             <img src="assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
           </div>
@@ -1539,14 +1535,14 @@
               <p class="boat-price">From 110,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Muse 55 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/muse-55.html" aria-label="Muse 55, From 110,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Black Pearl 55" data-type="motor" data-ft="55" data-max="20" data-price="140000">
+        <article class="boat boat-card" data-boat="Black Pearl 55" data-type="motor" data-ft="55" data-max="20" data-price="140000">
           <div class="boat-photo">
             <img src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
           </div>
@@ -1559,14 +1555,14 @@
               <p class="boat-price">From 140,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Pearl%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Black Pearl 55 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Pearl%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Black Pearl 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/black-pearl-55.html" aria-label="Black Pearl 55, From 140,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Irenic F55" data-type="motor" data-ft="55" data-max="8" data-price="180000">
+        <article class="boat boat-card" data-boat="Irenic F55" data-type="motor" data-ft="55" data-max="8" data-price="180000">
           <div class="boat-photo">
             <img src="assets/cards/irenic-f55.jpg" width="1500" height="900" alt="Irenic F55 on calm blue water, a wooded shore behind." loading="lazy" decoding="async">
           </div>
@@ -1579,14 +1575,14 @@
               <p class="boat-price">From 180,000 THB</p>
               <p class="boat-unit">for 6 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Irenic%20F55.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Irenic F55 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Irenic%20F55.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Irenic F55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/irenic-f55.html" aria-label="Irenic F55, From 180,000 THB, for 6 guests"></a>
         </article>
-        <article class="boat" data-boat="Caramel 58" data-type="motor" data-ft="58" data-max="18" data-price="135000">
+        <article class="boat boat-card" data-boat="Caramel 58" data-type="motor" data-ft="58" data-max="18" data-price="135000">
           <div class="boat-photo">
             <img src="assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
           </div>
@@ -1599,14 +1595,14 @@
               <p class="boat-price">From 135,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Caramel%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Caramel 58 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Caramel%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Caramel 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/caramel-58.html" aria-label="Caramel 58, From 135,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Calardior 58" data-type="motor" data-ft="58" data-max="12" data-price="182000">
+        <article class="boat boat-card" data-boat="Calardior 58" data-type="motor" data-ft="58" data-max="12" data-price="182000">
           <div class="boat-photo">
             <img src="assets/cards/calardior-58.jpg" width="1500" height="900" alt="Calardior 58 under way below a forested hillside." loading="lazy" decoding="async">
           </div>
@@ -1619,16 +1615,16 @@
               <p class="boat-price">From 182,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Calardior%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Calardior 58 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Calardior%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Calardior 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/calardior-58.html" aria-label="Calardior 58, From 182,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Jackie" data-type="motor" data-ft="60" data-max="15" data-price="190000">
+        <article class="boat boat-card" data-boat="Jackie" data-type="motor" data-ft="60" data-max="15" data-price="190000">
           <div class="boat-photo">
-            <img src="assets/cards/jackie.jpg" width="1107" height="664" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
+            <img src="assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
           </div>
           <div class="boat-band">
             <h3 class="boat-name" id="fleet-jackie">Jackie</h3>
@@ -1639,14 +1635,14 @@
               <p class="boat-price">From 190,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Jackie.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Jackie on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Jackie.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Jackie on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/jackie.html" aria-label="Jackie, From 190,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Maris 60" data-type="motor" data-ft="60" data-max="12" data-price="190000">
+        <article class="boat boat-card" data-boat="Maris 60" data-type="motor" data-ft="60" data-max="12" data-price="190000">
           <div class="boat-photo">
             <img src="assets/cards/maris-60.jpg" width="1500" height="900" alt="Maris 60, a navy hull under white decks, on calm water." loading="lazy" decoding="async">
           </div>
@@ -1659,16 +1655,16 @@
               <p class="boat-price">From 190,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Maris%2060.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Maris 60 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Maris%2060.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Maris 60 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/maris-60.html" aria-label="Maris 60, From 190,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Pandora" data-type="motor" data-ft="62" data-max="10" data-price="220000">
+        <article class="boat boat-card" data-boat="Pandora" data-type="motor" data-ft="62" data-max="10" data-price="220000">
           <div class="boat-photo">
-            <img src="assets/cards/pandora.jpg" width="1152" height="691" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
+            <img src="assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
           </div>
           <div class="boat-band">
             <h3 class="boat-name" id="fleet-pandora">Pandora</h3>
@@ -1679,14 +1675,14 @@
               <p class="boat-price">From 220,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pandora.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Pandora on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pandora.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pandora on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/pandora.html" aria-label="Pandora, From 220,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Rose 65" data-type="motor" data-ft="65" data-max="20" data-price="135000">
+        <article class="boat boat-card" data-boat="Rose 65" data-type="motor" data-ft="65" data-max="20" data-price="135000">
           <div class="boat-photo">
             <img src="assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
           </div>
@@ -1699,14 +1695,14 @@
               <p class="boat-price">From 135,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Rose%2065.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Rose 65 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Rose%2065.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Rose 65 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/rose-65.html" aria-label="Rose 65, From 135,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Katterine S65" data-type="motor" data-ft="66" data-max="12" data-price="310000">
+        <article class="boat boat-card" data-boat="Katterine S65" data-type="motor" data-ft="66" data-max="12" data-price="310000">
           <div class="boat-photo">
             <img src="assets/cards/katterine-s65.jpg" width="1500" height="900" alt="Katterine S65 at speed in bright sun, a headland behind." loading="lazy" decoding="async">
           </div>
@@ -1719,14 +1715,14 @@
               <p class="boat-price">From 310,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Katterine%20S65.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Katterine S65 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Katterine%20S65.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Katterine S65 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/katterine-s65.html" aria-label="Katterine S65, From 310,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Bruna" data-type="motor" data-ft="68" data-max="20" data-price="209000">
+        <article class="boat boat-card" data-boat="Bruna" data-type="motor" data-ft="68" data-max="20" data-price="209000">
           <div class="boat-photo">
             <img src="assets/cards/bruna.jpg" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
           </div>
@@ -1739,14 +1735,14 @@
               <p class="boat-price">From 209,000 THB</p>
               <p class="boat-unit">for 15 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Bruna.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Bruna on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Bruna.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Bruna on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/bruna.html" aria-label="Bruna, From 209,000 THB, for 15 guests"></a>
         </article>
-        <article class="boat" data-boat="Theo 70" data-type="motor" data-ft="70" data-max="15" data-price="178000">
+        <article class="boat boat-card" data-boat="Theo 70" data-type="motor" data-ft="70" data-max="15" data-price="178000">
           <div class="boat-photo">
             <img src="assets/cards/theo-70.jpg" width="1500" height="900" alt="Theo 70 at speed at dusk, a long white wake behind." loading="lazy" decoding="async">
           </div>
@@ -1759,14 +1755,14 @@
               <p class="boat-price">From 178,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Theo%2070.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Theo 70 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Theo%2070.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Theo 70 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/theo-70.html" aria-label="Theo 70, From 178,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Meraki" data-type="motor" data-ft="76" data-max="25" data-price="220000">
+        <article class="boat boat-card" data-boat="Meraki" data-type="motor" data-ft="76" data-max="25" data-price="220000">
           <div class="boat-photo">
             <img src="assets/cards/meraki.jpg" width="1500" height="900" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." loading="lazy" decoding="async">
           </div>
@@ -1779,14 +1775,14 @@
               <p class="boat-price">From 220,000 THB</p>
               <p class="boat-unit">for 12 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Meraki.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Meraki on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Meraki.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Meraki on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/meraki.html" aria-label="Meraki, From 220,000 THB, for 12 guests"></a>
         </article>
-        <article class="boat" data-boat="Sira" data-type="motor" data-ft="76" data-max="15" data-price="370000">
+        <article class="boat boat-card" data-boat="Sira" data-type="motor" data-ft="76" data-max="15" data-price="370000">
           <div class="boat-photo">
             <img src="assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
           </div>
@@ -1799,14 +1795,14 @@
               <p class="boat-price">From 370,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sira.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Sira on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sira.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sira on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/sira.html" aria-label="Sira, From 370,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Mermaid 78" data-type="motor" data-ft="78" data-max="20" data-price="280000">
+        <article class="boat boat-card" data-boat="Mermaid 78" data-type="motor" data-ft="78" data-max="20" data-price="280000">
           <div class="boat-photo">
             <img src="assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
           </div>
@@ -1819,14 +1815,14 @@
               <p class="boat-price">From 280,000 THB</p>
               <p class="boat-unit">for 12 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Mermaid%2078.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Mermaid 78 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Mermaid%2078.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Mermaid 78 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/mermaid-78.html" aria-label="Mermaid 78, From 280,000 THB, for 12 guests"></a>
         </article>
-        <article class="boat" data-boat="Pearl" data-type="motor" data-ft="78" data-max="20" data-price="320000">
+        <article class="boat boat-card" data-boat="Pearl" data-type="motor" data-ft="78" data-max="20" data-price="320000">
           <div class="boat-photo">
             <img src="assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
           </div>
@@ -1839,14 +1835,14 @@
               <p class="boat-price">From 320,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pearl.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Pearl on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pearl.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pearl on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/pearl.html" aria-label="Pearl, From 320,000 THB, for 8 guests"></a>
         </article>
-        <article class="boat" data-boat="Ravina 80" data-type="motor" data-ft="80" data-max="25" data-price="155000">
+        <article class="boat boat-card" data-boat="Ravina 80" data-type="motor" data-ft="80" data-max="25" data-price="155000">
           <div class="boat-photo">
             <img src="assets/cards/ravina-80.jpg" width="1500" height="900" alt="Ravina 80 on green water below limestone cliffs." loading="lazy" decoding="async">
           </div>
@@ -1859,14 +1855,14 @@
               <p class="boat-price">From 155,000 THB</p>
               <p class="boat-unit">for 15 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Ravina%2080.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Ravina 80 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Ravina%2080.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Ravina 80 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/ravina-80.html" aria-label="Ravina 80, From 155,000 THB, for 15 guests"></a>
         </article>
-        <article class="boat" data-boat="Blue Ocean 89" data-type="motor" data-ft="89" data-max="30" data-price="140000">
+        <article class="boat boat-card" data-boat="Blue Ocean 89" data-type="motor" data-ft="89" data-max="30" data-price="140000">
           <div class="boat-photo">
             <img src="assets/cards/blue-ocean-89.jpg" width="1500" height="900" alt="Blue Ocean 89 from above on blue water, a green headland behind." loading="lazy" decoding="async">
           </div>
@@ -1879,14 +1875,14 @@
               <p class="boat-price">From 140,000 THB</p>
               <p class="boat-unit">for 12 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Blue%20Ocean%2089.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Blue Ocean 89 on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Blue%20Ocean%2089.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Blue Ocean 89 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/blue-ocean-89.html" aria-label="Blue Ocean 89, From 140,000 THB, for 12 guests"></a>
         </article>
-        <article class="boat" data-boat="Moonglider" data-type="motor" data-ft="90" data-max="18" data-price="375000">
+        <article class="boat boat-card" data-boat="Moonglider" data-type="motor" data-ft="90" data-max="18" data-price="375000">
           <div class="boat-photo">
             <img src="assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
           </div>
@@ -1899,7 +1895,7 @@
               <p class="boat-price">From 375,000 THB</p>
               <p class="boat-unit">for 8 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglider.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Moonglider on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglider.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Moonglider on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
@@ -1913,7 +1909,7 @@
         <h2 id="group-superyacht">Superyachts</h2>
       </div>
       <div class="fleet-grid">
-        <article class="boat" data-boat="Matia Sou" data-type="superyacht" data-ft="102" data-max="25" data-price="450000">
+        <article class="boat boat-card" data-boat="Matia Sou" data-type="superyacht" data-ft="102" data-max="25" data-price="450000">
           <div class="boat-photo">
             <img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
           </div>
@@ -1926,14 +1922,14 @@
               <p class="boat-price">From 450,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Matia%20Sou.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Matia Sou on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Matia%20Sou.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Matia Sou on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/matia-sou.html" aria-label="Matia Sou, From 450,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Simon" data-type="superyacht" data-ft="130" data-max="44" data-price="720000">
+        <article class="boat boat-card" data-boat="Simon" data-type="superyacht" data-ft="130" data-max="44" data-price="720000">
           <div class="boat-photo">
             <img src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
           </div>
@@ -1946,14 +1942,14 @@
               <p class="boat-price">From 720,000 THB</p>
               <p class="boat-unit">for 10 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Simon.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Simon on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Simon.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Simon on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
           <a class="boat-link" href="boats/simon.html" aria-label="Simon, From 720,000 THB, for 10 guests"></a>
         </article>
-        <article class="boat" data-boat="Song of Songs" data-type="superyacht" data-ft="139" data-max="12" data-price="1350000">
+        <article class="boat boat-card" data-boat="Song of Songs" data-type="superyacht" data-ft="139" data-max="12" data-price="1350000">
           <div class="boat-photo">
             <img src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="Song of Songs at dusk beneath a pink sky, limestone islands behind." loading="lazy" decoding="async">
           </div>
@@ -1966,7 +1962,7 @@
               <p class="boat-price">USD 37,500</p>
               <p class="boat-unit">for 12 guests</p>
             </div>
-            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Song%20of%20Songs.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener" aria-label="Enquire about Song of Songs on WhatsApp">
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Song%20of%20Songs.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Song of Songs on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>

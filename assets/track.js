@@ -21,7 +21,7 @@
     if (tagged) return clean(tagged.getAttribute('data-boat'));
     try {
       var text = new URL(a.href).searchParams.get('text') || '';
-      var m = text.match(/interested in (.+?)\./i);
+      var m = text.match(/interested in (?:the )?(.+?)\.(?=\s|$)/i);
       if (m) return clean(m[1]);
     } catch (e) { /* malformed URL: fall through */ }
     var h1 = document.getElementById('yacht-name');

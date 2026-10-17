@@ -448,6 +448,80 @@ svg { display: block; }
   .steps li + li { border-top: 0; border-left: 1px solid rgba(16, 45, 59, .1); }
 }
 
+    
+    .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: #fff; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 5 / 3; background: var(--ice); }
+    .boat-card .boat-photo img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .55s; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card:hover .boat-photo img { transform: scale(1.035); }
+    .boat-card .boat-band {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 46px;
+      padding: 0 23px 0 16px;
+      background: #B1D3E1;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    }
+    .boat-card .boat-name {
+      position: static;
+      margin: 0;
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    
+    .boat-card .boat-spec {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 0;
+      margin: 12px 0 0 -17px;
+      padding: 0;
+      clip-path: inset(0 0 0 17px);
+      list-style: none;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .boat-card .boat-spec li { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(16, 45, 59, .14); white-space: nowrap; }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 18px; }
+    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(19px, 6.1vw, 23px); font-weight: 800; line-height: 1.35; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-unit { margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
+    .boat-card .boat-enquire {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      transition: color .15s;
+    }
+    .boat-card .boat-enquire:hover { color: var(--navy); }
+    .boat-card .boat-enquire .icon { flex: 0 0 16px; width: 16px; height: 16px; }
+    .boat-card .boat-enquire:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
+    .boat-card .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .boat-card .boat-link:focus-visible { outline: none; }
+    .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
+    @media (min-width: 600px) {
+      .boat-card .boat-name { font-size: 20px; }
+      .boat-card .boat-price { font-size: 20px; }
+    }
+    @media (min-width: 1100px) { .boat-card .boat-price { font-size: 24px; } }
+    @media (max-width: 699.98px) { .fleet .fleet-grid { width: min(100% - 48px, 1160px); margin-inline: auto; } }
+
+
 
 .faq { background: var(--ice); }
 .faq-layout { display: grid; gap: 26px; }
@@ -842,122 +916,187 @@ svg { display: block; }
     </div>
 
     <div class="fleet-grid">
-      <article class="yacht-card" data-max="20" data-yacht="Rose">
-        <a class="boat-cover" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Rose%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Rose">
-          <img src="assets/boats/rose/p13-hero.jpg" alt="Rose" width="1600" height="899" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Rose</h3><p class="boat-spec">65 ft. Up to 20 guests. Refitted 2021.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>135,000 <span class="currency">THB</span></span> <span class="basis">for up to 10 guests</span></p>
-          <p class="extra">1,500 THB for each guest after 10</p>
-          <p class="best">Wakeboard, knee board and a Thai lunch in the rate.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Rose%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Rose free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Rose%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Rose on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="25" data-yacht="Ravina">
-        <a class="boat-cover" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Ravina%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Ravina">
-          <img src="assets/boats/ravina/p21-hero.jpg" alt="Ravina" width="1008" height="657" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Ravina</h3><p class="boat-spec">80 ft. Up to 25 guests. Refitted 2025.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>155,000 <span class="currency">THB</span></span> <span class="basis">for up to 15 guests</span></p>
-          <p class="extra">2,000 THB for each guest after 15</p>
-          <p class="best">A Thai lunch and a paddle board in the rate.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Ravina%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Ravina free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Ravina%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Ravina on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="15" data-yacht="Jackie">
-        <a class="boat-cover" href="boats/jackie.html" aria-label="View Jackie">
-          <img src="assets/jackie.jpg" alt="Jackie under way beside an island" width="1600" height="1050" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Jackie</h3><p class="boat-spec">60 ft. Up to 15 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>190,000 <span class="currency">THB</span></span> <span class="basis">for up to 8 guests</span></p>
-          <p class="extra">3,000 THB for each guest after 8</p>
-          <p class="best">Three cabins, a paddle board and fishing on request.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Jackie%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Jackie free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Jackie%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Jackie on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="10" data-yacht="Pandora">
-        <a class="boat-cover" href="boats/pandora.html" aria-label="View Pandora">
-          <img src="assets/pandora.jpg" alt="Pandora cruising on open water" width="1080" height="675" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Pandora</h3><p class="boat-spec">62 ft. Up to 10 guests. Built 2021.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>220,000 <span class="currency">THB</span></span> <span class="basis">for up to 10 guests</span></p>
-          <p class="best">A flybridge, and room to entertain inside and out.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Pandora%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Pandora free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Pandora%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Pandora on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="25" data-yacht="Meraki">
-        <a class="boat-cover" href="boats/meraki.html" aria-label="View Meraki">
-          <img src="assets/meraki.jpg" alt="Meraki viewed from above" width="1080" height="756" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Meraki</h3><p class="boat-spec">76 ft. Up to 25 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>220,000 <span class="currency">THB</span></span> <span class="basis">for up to 12 guests</span></p>
-          <p class="extra">2,500 THB for each guest after 12</p>
-          <p class="best">Wakeboard, knee board and two towable tubes aboard.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Meraki%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Meraki free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Meraki%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Meraki on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="20" data-yacht="Pearl">
-        <a class="boat-cover" href="boats/pearl.html" aria-label="View Pearl">
-          <img src="assets/pearl.jpg" alt="Pearl with guests on the aft deck" width="1080" height="702" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Pearl</h3><p class="boat-spec">78 ft. Up to 20 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>320,000 <span class="currency">THB</span></span> <span class="basis">for up to 8 guests</span></p>
-          <p class="extra">3,000 THB for each guest after 8</p>
-          <p class="best">A flybridge, a jet ski and four cabins.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Pearl%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Pearl free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Pearl%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Pearl on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="18" data-yacht="Moonglider">
-        <a class="boat-cover" href="boats/moonglider.html" aria-label="View Moonglider">
-          <img src="assets/moonglider.jpg" alt="Moonglider under way" width="1080" height="716" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Moonglider</h3><p class="boat-spec">Leopard 90, 90 ft. Up to 18 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>375,000 <span class="currency">THB</span></span> <span class="basis">for up to 8 guests</span></p>
-          <p class="extra">3,500 THB for each guest after 8</p>
-          <p class="best">An inflatable pool at anchor, and a day of 4, 6 or 8 hours.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Moonglider%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Moonglider free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Moonglider%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Moonglider on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="25" data-yacht="Matia Sou">
-        <a class="boat-cover" href="boats/matia-sou.html" aria-label="View Matia Sou">
-          <img src="assets/matia-sou.jpg" alt="Matia Sou over turquoise shallows" width="1080" height="783" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Matia Sou</h3><p class="boat-spec">102 ft. Up to 25 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>450,000 <span class="currency">THB</span></span> <span class="basis">for up to 10 guests</span></p>
-          <p class="extra">8,500 THB for each guest after 10</p>
-          <p class="best">Butler, private massage therapist and jacuzzi in the rate.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Matia%20Sou%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Matia Sou free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Matia%20Sou%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Matia Sou on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="yacht-card" data-max="44" data-yacht="Simon">
-        <a class="boat-cover" href="boats/simon.html" aria-label="View Simon">
-          <img src="assets/simon.jpg" alt="Simon cruising with mountains on the horizon" width="1080" height="700" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Simon</h3><p class="boat-spec">130 ft. Up to 44 guests.</p></div>
-        </a>
-        <div class="card-body">
-          <p class="price"><span class="price-main"><span class="from">From </span>720,000 <span class="currency">THB</span></span> <span class="basis">for up to 10 guests</span></p>
-          <p class="extra">10,000 THB for each guest after 10</p>
-          <p class="best">A jet ski, an inflatable slide and five cabins.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Simon%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer"><span>Is Simon free on my date?</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%20Amy%2C%20I%20would%20like%20to%20ask%20about%20Simon%20for%20a%20private%20day." target="_blank" rel="noopener noreferrer" aria-label="Ask about Simon on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-    </div>
+      <article class="yacht-card boat-card" data-boat="Rose 65" data-yacht="Rose 65" data-max="20">
+          <div class="boat-photo">
+            <img src="assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-rose-65">Rose 65</h3>
+          </div>
+          <ul class="boat-spec"><li>65 ft</li><li>2003</li><li>3 cabins</li><li>20 guests</li><li>Sleeps 6</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 135,000 THB</p>
+              <p class="boat-unit">for 10 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Rose%2065.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Rose 65 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/rose-65.html" aria-label="Rose 65, From 135,000 THB, for 10 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Ravina 80" data-yacht="Ravina 80" data-max="25">
+          <div class="boat-photo">
+            <img src="assets/cards/ravina-80.jpg" width="1500" height="900" alt="Ravina 80 on green water below limestone cliffs." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-ravina-80">Ravina 80</h3>
+          </div>
+          <ul class="boat-spec"><li>80 ft</li><li>2005</li><li>4 cabins</li><li>25 guests</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 155,000 THB</p>
+              <p class="boat-unit">for 15 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Ravina%2080.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Ravina 80 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/ravina-80.html" aria-label="Ravina 80, From 155,000 THB, for 15 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Jackie" data-yacht="Jackie" data-max="15">
+          <div class="boat-photo">
+            <img src="assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-jackie">Jackie</h3>
+          </div>
+          <ul class="boat-spec"><li>60 ft</li><li>2012</li><li>3 cabins</li><li>15 guests</li><li>Sleeps 6</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 190,000 THB</p>
+              <p class="boat-unit">for 8 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Jackie.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Jackie on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/jackie.html" aria-label="Jackie, From 190,000 THB, for 8 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Pandora" data-yacht="Pandora" data-max="10">
+          <div class="boat-photo">
+            <img src="assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-pandora">Pandora</h3>
+          </div>
+          <ul class="boat-spec"><li>62 ft</li><li>2021</li><li>3 cabins</li><li>10 guests</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 220,000 THB</p>
+              <p class="boat-unit">for 10 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pandora.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pandora on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/pandora.html" aria-label="Pandora, From 220,000 THB, for 10 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Meraki" data-yacht="Meraki" data-max="25">
+          <div class="boat-photo">
+            <img src="assets/cards/meraki.jpg" width="1500" height="900" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-meraki">Meraki</h3>
+          </div>
+          <ul class="boat-spec"><li>76 ft</li><li>2005</li><li>4 cabins</li><li>25 guests</li><li>Sleeps 8</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 220,000 THB</p>
+              <p class="boat-unit">for 12 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Meraki.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Meraki on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/meraki.html" aria-label="Meraki, From 220,000 THB, for 12 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Pearl" data-yacht="Pearl" data-max="20">
+          <div class="boat-photo">
+            <img src="assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-pearl">Pearl</h3>
+          </div>
+          <ul class="boat-spec"><li>78 ft</li><li>2011</li><li>4 cabins</li><li>20 guests</li><li>Sleeps 8</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 320,000 THB</p>
+              <p class="boat-unit">for 8 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pearl.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pearl on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/pearl.html" aria-label="Pearl, From 320,000 THB, for 8 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Moonglider" data-yacht="Moonglider" data-max="18">
+          <div class="boat-photo">
+            <img src="assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-moonglider">Moonglider</h3>
+          </div>
+          <ul class="boat-spec"><li>90 ft</li><li>2010</li><li>3 cabins</li><li>18 guests</li><li>Sleeps 6</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 375,000 THB</p>
+              <p class="boat-unit">for 8 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglider.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Moonglider on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/moonglider.html" aria-label="Moonglider, From 375,000 THB, for 8 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Matia Sou" data-yacht="Matia Sou" data-max="25">
+          <div class="boat-photo">
+            <img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-matia-sou">Matia Sou</h3>
+          </div>
+          <ul class="boat-spec"><li>102 ft</li><li>2004</li><li>4 cabins</li><li>25 guests</li><li>Sleeps 8</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 450,000 THB</p>
+              <p class="boat-unit">for 10 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Matia%20Sou.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Matia Sou on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/matia-sou.html" aria-label="Matia Sou, From 450,000 THB, for 10 guests"></a>
+        </article>
+        <article class="yacht-card boat-card" data-boat="Simon" data-yacht="Simon" data-max="44">
+          <div class="boat-photo">
+            <img src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
+          </div>
+          <div class="boat-band">
+            <h3 class="boat-name" id="home-simon">Simon</h3>
+          </div>
+          <ul class="boat-spec"><li>130 ft</li><li>2005</li><li>5 cabins</li><li>44 guests</li><li>Sleeps 10</li></ul>
+          <div class="boat-foot">
+            <div>
+              <p class="boat-price">From 720,000 THB</p>
+              <p class="boat-unit">for 10 guests</p>
+            </div>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Simon.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Simon on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#wa"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/simon.html" aria-label="Simon, From 720,000 THB, for 10 guests"></a>
+        </article>
+      </div>
   </section>
 
   <section class="comparison section-pad" aria-labelledby="comparison-title">
@@ -1386,7 +1525,7 @@ svg { display: block; }
     cards.forEach(card => {
       const yacht = card.dataset.yacht;
       const maximum = Number(card.dataset.max);
-      let message = "Hi Amy, I would like to ask about " + yacht + " for a private day.";
+      let message = "Hi, I'm interested in the " + yacht + ". Could you please share more details?";
       if (date && band !== 100) {
         if (occasion === "couple") {
           message = "Hi Amy, is " + yacht + " free on " + date + " for the two of us?";
@@ -1395,8 +1534,7 @@ svg { display: block; }
           message = "Hi Amy, is " + yacht + " free on " + date + " for a group of " + group + "?";
         }
       }
-      card.querySelector(".yacht-ask").href = base + encodeURIComponent(message);
-      card.querySelector(".tg-ask").href = baseTg + encodeURIComponent(message);
+      card.querySelector(".boat-enquire").href = base + encodeURIComponent(message);
     });
 
     const comparisonMessage = date
