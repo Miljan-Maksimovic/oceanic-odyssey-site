@@ -17,6 +17,13 @@
       facts: "{time} from Phuket",
       pin: "{name}: {time} from Phuket",
       today: "Today",
+      now: "Now",
+      h12: true,
+      dayWind: "Wind up to {n} km/h",
+      srHour: "{time}: {sky}, {t}°{rain}.",
+      prev: "Earlier hours",
+      next: "Later hours",
+      days: "Day",
       hl: "H:{hi}° L:{lo}°",
       mm: "{n} mm",
       windCell: "{n} km/h",
@@ -44,6 +51,13 @@
       facts: "{time} от {from}",
       pin: "{name}: {time} от {from}",
       today: "Сегодня",
+      now: "Сейчас",
+      h12: false,
+      dayWind: "Ветер до {n} уз",
+      srHour: "{time}: {sky}, {t}°{rain}.",
+      prev: "Раньше",
+      next: "Позже",
+      days: "День",
       hl: "Макс.: {hi}°, мин.: {lo}°",
       mm: "{n} мм",
       windCell: "{n} уз",
@@ -187,7 +201,7 @@
     return new lib.Marker({element: node, anchor: "center"}).setLngLat(lngLat).addTo(map);
   }
 
-  var ALL_SIDE = {"racha-yai-racha-noi": "left", "maiton-island": "left", "hong-island-krabi": "top",
+  var ALL_SIDE = {"racha-yai-racha-noi": "left", "maiton-island": "left", "khai-islands": "right", "hong-island-krabi": "top",
                   "phang-nga-bay-james-bond-island": "left"};
 
   function boundsOf(lib, points) {
@@ -222,7 +236,6 @@
     card.appendChild(close);
     var body = el("div", "place-body");
     body.appendChild(el("p", "place-name", L(d, "name", d.name)));
-    body.appendChild(el("p", "place-facts", fmt(S.facts, {time: cap(L(d, "time", d.time)), from: L(d, "nearest", "")})));
     body.appendChild(el("p", "place-verdict", L(d, "verdict", d.verdict)));
     var a = el("a", "place-action", L(d, "link", "See " + d.short));
     a.href = ROOT + d.page;
@@ -290,7 +303,7 @@
       var pin = mk.getElement();
       pin.setAttribute("role", "button");
       pin.setAttribute("tabindex", "0");
-      pin.setAttribute("aria-label", fmt(S.pin, {name: L(d, "name", d.name), time: L(d, "time", d.time), from: L(d, "nearest", "")}));
+      pin.setAttribute("aria-label", L(d, "name", d.name));
       var show = function (ev, keyboard) {
         if (ev) ev.stopPropagation();
         closeCard();
@@ -365,8 +378,16 @@
     cloud: CLOUD,
     rain: CLOUD_UP + drops(3),
     heavy: CLOUD_UP + drops(4),
-    thunder: CLOUD_UP + '<path fill="#FFD60A" d="M17.6 20.5l-4.6 6.3h3.3l-1.5 5 5.4-7h-3.4l1.6-4.3z"/>'
+    thunder: CLOUD_UP + '<path fill="#FFD60A" d="M17.6 20.5l-4.6 6.3h3.3l-1.5 5 5.4-7h-3.4l1.6-4.3z"/>',
+    moon: '<path fill="#F2F2F7" transform="translate(2.5 2.5) scale(1.12)" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    moonPartly: '<path fill="#F2F2F7" transform="translate(1 1) scale(.78)" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>' +
+                '<path fill="#fff" d="M13 27h11a4.75 4.75 0 0 0 .78-9.44A6.25 6.25 0 0 0 13.1 17.1 4.96 4.96 0 0 0 13 27z"/>'
   };
+  function glyphKind(code) {
+    var k = kind(code);
+    if (/_night$/.test(code || "")) { if (k === "sun") return "moon"; if (k === "partly") return "moonPartly"; }
+    return k;
+  }
 
   function icon(k) {
     var s = document.createElementNS(SVGNS, "svg");
@@ -407,11 +428,11 @@
 
   function analyse(json) {
     var ts = json.properties.timeseries;
-    var days = {}, order = [];
+    var days = {}, order = [], hours = [];
     ts.forEach(function (t) {
       var lp = localParts(t.time);
       var d = days[lp.key];
-      if (!d) { d = days[lp.key] = {date: lp.date, temps: [], winds: [], allWinds: [], rain: 0, sky6: []}; order.push(lp.key); }
+      if (!d) { d = days[lp.key] = {date: lp.date, temps: [], winds: [], allWinds: [], rain: 0, sky6: [], hours: []}; order.push(lp.key); }
       var inst = t.data.instant.details;
       if (inst.air_temperature != null) d.temps.push(inst.air_temperature);
       if (inst.wind_speed != null) {
@@ -420,110 +441,179 @@
         if (lp.hour >= 7 && lp.hour <= 19) d.winds.push(pair);
       }
       var n1 = t.data.next_1_hours, n6 = t.data.next_6_hours;
-      if (n1 && n1.details && n1.details.precipitation_amount != null) d.rain += n1.details.precipitation_amount;
-      else if (n6 && n6.details && n6.details.precipitation_amount != null) d.rain += n6.details.precipitation_amount;
+      var rain = null;
+      if (n1 && n1.details && n1.details.precipitation_amount != null) rain = n1.details.precipitation_amount;
+      else if (n6 && n6.details && n6.details.precipitation_amount != null) rain = n6.details.precipitation_amount;
+      if (rain != null) d.rain += rain;
       if (n6 && n6.details) {
         if (n6.details.air_temperature_max != null) d.temps.push(n6.details.air_temperature_max);
         if (n6.details.air_temperature_min != null) d.temps.push(n6.details.air_temperature_min);
       }
       if (n6 && n6.summary) d.sky6.push([lp.hour, n6.summary.symbol_code]);
+      var code = (n1 && n1.summary && n1.summary.symbol_code) || (n6 && n6.summary && n6.summary.symbol_code);
+      if (code && inst.air_temperature != null) {
+        var h = {date: lp.date, hour: lp.hour, temp: Math.round(inst.air_temperature), code: code, rain: rain || 0};
+        d.hours.push(h);
+        hours.push(h);
+      }
     });
-    var list = order.slice(0, 7).map(function (k) {
+    var list = order.map(function (k) {
       var d = days[k];
       var skies = d.sky6.filter(function (s) { return s[0] >= 6 && s[0] <= 13; });
       if (!skies.length && d.sky6.length) {
         skies = [d.sky6.slice().sort(function (a, b) { return Math.abs(a[0] - 12) - Math.abs(b[0] - 12); })[0]];
       }
-      skies = skies.map(function (s) { return s[1]; });
-      var sky = "sun";
-      skies.forEach(function (c) { var kk = kind(c); if (SEVERITY[kk] > SEVERITY[sky]) sky = kk; });
+      var sky = "sun", code = skies.length ? skies[0][1] : null;
+      skies.forEach(function (s) { var kk = kind(s[1]); if (SEVERITY[kk] > SEVERITY[sky]) { sky = kk; code = s[1]; } });
       var w = d.winds.length ? d.winds : d.allWinds;
       return {
         date: d.date,
         lo: d.temps.length ? Math.round(Math.min.apply(null, d.temps)) : null,
         hi: d.temps.length ? Math.round(Math.max.apply(null, d.temps)) : null,
-        rain: d.rain, sky: sky,
+        rain: d.rain, sky: sky, code: code, hours: d.hours,
+        daylight: d.hours.some(function (h) { return h.hour >= 6 && h.hour <= 19; }),
         wind: w.length ? windSpeed(Math.max.apply(null, w.map(function (p) { return p[1]; }))) : null,
         dir: w.length ? meanDir(w) : null
       };
-    }).filter(function (d) { return d.lo != null; });
+    }).filter(function (d, i) { return d.lo != null && d.hours.length && (i === 0 || d.daylight); }).slice(0, 10);
     var first = ts[0] && ts[0].data;
     var nowCode = first && ((first.next_1_hours && first.next_1_hours.summary.symbol_code) ||
                             (first.next_6_hours && first.next_6_hours.summary.symbol_code));
-    var now = first ? {temp: Math.round(first.instant.details.air_temperature), sky: words(nowCode)} : null;
-    return {now: now, days: list};
+    var now = first ? {temp: Math.round(first.instant.details.air_temperature), sky: words(nowCode), code: nowCode} : null;
+    return {now: now, days: list, next24: hours.slice(0, 24)};
   }
 
-  function dayName(date, i) {
+  function longDay(date, i, short) {
     if (i === 0) return S.today;
-    return cap(new Intl.DateTimeFormat(S.locale, {timeZone: TZ, weekday: "short"}).format(date));
+    return cap(new Intl.DateTimeFormat(S.locale, {timeZone: TZ, weekday: short ? "short" : "long", day: "numeric", month: short ? "short" : "long"}).format(date).replace(/,/g, ""));
   }
-  function longDay(date, i) {
+  function chipDay(date, i) {
     if (i === 0) return S.today;
-    return cap(new Intl.DateTimeFormat(S.locale, {timeZone: TZ, weekday: "long"}).format(date));
+    var f = new Intl.DateTimeFormat(S.locale, {timeZone: TZ, weekday: "short"}).format(date).replace(/\.$/, "");
+    var n = new Intl.DateTimeFormat(S.locale, {timeZone: TZ, day: "numeric"}).format(date);
+    return cap(f) + " " + n;
+  }
+  function hourLabel(h, first) {
+    if (first) return S.now;
+    if (!S.h12) return (h.hour < 10 ? "0" : "") + h.hour + ":00";
+    return (h.hour % 12 || 12) + (h.hour < 12 ? "AM" : "PM");
   }
 
-  var SKY_TEXT = S.skyText;
+  function tone(code) {
+    var k = kind(code);
+    if (SEVERITY[k] >= SEVERITY.rain) return "is-rain";
+    if (k === "cloud") return "is-cloud";
+    if (/_night$/.test(code || "")) return "is-night";
+    return "is-sun";
+  }
 
-  function row(d, i, min, max, nowTemp) {
-    var li = el("li", "wx-row");
-    var span = Math.max(1, max - min);
-    var rainy = d.rain >= 0.5;
-    var mm = fmt(S.mm, {n: Math.max(1, Math.round(d.rain))});
-    var sr = fmt(S.srRow, {
-      day: longDay(d.date, i), sky: SKY_TEXT[d.sky], lo: d.lo, hi: d.hi,
-      rain: rainy ? fmt(S.srRain, {mm: mm}) : "",
-      wind: d.wind != null ? fmt(S.srWind, {n: d.wind, unit: plural(d.wind, S.windWord), point: POINTS[Math.round(d.dir / 45) % 8]}) : ""
-    });
-    li.appendChild(el("span", "sr-only", sr));
-    var vis = el("span", "wx-cells");
+  function hourItem(h, first) {
+    var li = el("li", "wx-hour");
+    var rainy = h.rain >= 0.5;
+    var mm = fmt(S.mm, {n: Math.max(1, Math.round(h.rain))});
+    li.appendChild(el("span", "sr-only", fmt(S.srHour, {time: hourLabel(h, first), sky: words(h.code).toLowerCase(), t: h.temp, rain: rainy ? fmt(S.srRain, {mm: mm}) : ""})));
+    var vis = el("span", "wx-hour-cells");
     vis.setAttribute("aria-hidden", "true");
-    vis.appendChild(el("span", "wx-day", dayName(d.date, i)));
+    vis.appendChild(el("span", "wx-time", hourLabel(h, first)));
     var ic = el("span", "wx-icon");
-    ic.appendChild(icon(d.sky));
+    ic.appendChild(icon(glyphKind(h.code)));
     if (rainy) ic.appendChild(el("span", "wx-mm", mm));
     vis.appendChild(ic);
-    vis.appendChild(el("span", "wx-lo", d.lo + "°"));
-    var bar = el("span", "wx-bar");
-    var fill = el("span", "wx-fill");
-    var l = (d.lo - min) / span, w = Math.max((d.hi - d.lo) / span, 0.06);
-    if (l + w > 1) l = 1 - w;
-    fill.style.left = (l * 100).toFixed(2) + "%";
-    fill.style.width = (w * 100).toFixed(2) + "%";
-    fill.style.backgroundSize = (100 / w).toFixed(2) + "% 100%";
-    fill.style.backgroundPosition = (w >= 1 ? 0 : (l / (1 - w)) * 100).toFixed(2) + "% 0";
-    bar.appendChild(fill);
-    if (i === 0 && nowTemp != null) {
-      var dot = el("span", "wx-now-dot");
-      dot.style.left = (Math.min(1, Math.max(0, (nowTemp - min) / span)) * 100).toFixed(2) + "%";
-      bar.appendChild(dot);
-    }
-    vis.appendChild(bar);
-    vis.appendChild(el("span", "wx-hi", d.hi + "°"));
-    var wind = el("span", "wx-wind");
-    if (d.wind != null) {
-      wind.appendChild(arrow(d.dir));
-      wind.appendChild(document.createTextNode(fmt(S.windCell, {n: d.wind})));
-    }
-    vis.appendChild(wind);
+    vis.appendChild(el("span", "wx-t", h.temp + "°"));
     li.appendChild(vis);
     return li;
   }
 
+  function scrollButtons(strip, prev, next) {
+    var sync = function () {
+      var max = strip.scrollWidth - strip.clientWidth;
+      prev.hidden = strip.scrollLeft <= 2;
+      next.hidden = strip.scrollLeft >= max - 2;
+    };
+    var step = function (dir) { strip.scrollBy({left: dir * Math.max(120, strip.clientWidth * 0.8), behavior: "smooth"}); };
+    prev.addEventListener("click", function () { step(-1); });
+    next.addEventListener("click", function () { step(1); });
+    strip.addEventListener("scroll", sync, {passive: true});
+    window.addEventListener("resize", sync);
+    return sync;
+  }
+
+  function arrowButton(cls, label, path) {
+    var b = el("button", "wx-scroll " + cls);
+    b.type = "button";
+    b.setAttribute("aria-label", label);
+    b.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="' + path + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    b.hidden = true;
+    return b;
+  }
+
   function render(box, d, an) {
-    var now = box.querySelector(".wx-now"), rows = box.querySelector(".wx-rows");
-    var today = an.days[0];
-    now.textContent = "";
-    now.appendChild(el("p", "wx-place", L(d, "wx_name", d.wx_name || d.short)));
-    if (an.now) {
-      now.appendChild(el("p", "wx-temp", an.now.temp + "°"));
-      now.appendChild(el("p", "wx-sky", an.now.sky));
+    var card = box.querySelector(".wx-card");
+    var i = Math.min(box._day || 0, an.days.length - 1);
+    var day = an.days[i];
+    var nowCase = i === 0 && an.now;
+    card.textContent = "";
+    card.classList.remove("is-sun", "is-cloud", "is-rain", "is-night");
+    card.classList.add(tone(nowCase ? an.now.code : day.code));
+
+    var top = el("div", "wx-now");
+    top.appendChild(el("p", "wx-place", L(d, "wx_name", d.wx_name || d.short)));
+    top.appendChild(el("p", "wx-temp", (nowCase ? an.now.temp : day.hi) + "°"));
+    top.appendChild(el("p", "wx-sky", nowCase ? an.now.sky : words(day.code)));
+    top.appendChild(el("p", "wx-hl", fmt(S.hl, {hi: day.hi, lo: day.lo})));
+    card.appendChild(top);
+
+    var chips = el("div", "wx-days");
+    chips.setAttribute("role", "group");
+    chips.setAttribute("aria-label", S.days);
+    an.days.forEach(function (x, j) {
+      var b = el("button", "wx-day", chipDay(x.date, j));
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(j === i));
+      if (j > 0) b.setAttribute("aria-label", longDay(x.date, j));
+      b.addEventListener("click", function () {
+        box._day = j;
+        render(box, d, an);
+        var again = box.querySelectorAll(".wx-day")[j];
+        if (again) again.focus({preventScroll: true});
+      });
+      chips.appendChild(b);
+    });
+    card.appendChild(chips);
+
+    var panel = el("div", "wx-panel");
+    var head = el("div", "wx-panel-head");
+    head.appendChild(el("p", "wx-label", longDay(day.date, i, true)));
+    if (day.wind != null) {
+      var wind = el("p", "wx-wind");
+      wind.appendChild(arrow(day.dir));
+      wind.appendChild(document.createTextNode(fmt(S.dayWind, {n: day.wind})));
+      head.appendChild(wind);
     }
-    now.appendChild(el("p", "wx-hl", fmt(S.hl, {hi: today.hi, lo: today.lo})));
-    var min = Math.min.apply(null, an.days.map(function (x) { return x.lo; }));
-    var max = Math.max.apply(null, an.days.map(function (x) { return x.hi; }));
-    rows.textContent = "";
-    an.days.forEach(function (x, i) { rows.appendChild(row(x, i, min, max, an.now && an.now.temp)); });
+    panel.appendChild(head);
+    var wrap = el("div", "wx-strip-wrap");
+    var strip = el("ol", "wx-strip");
+    strip.setAttribute("aria-label", longDay(day.date, i));
+    var list = i === 0 ? an.next24 : day.hours;
+    list.forEach(function (h, j) { strip.appendChild(hourItem(h, i === 0 && j === 0)); });
+    if (list.length <= 6) strip.classList.add("is-even");   // a later day's four steps spread across
+    var prev = arrowButton("wx-prev", S.prev, "M10 3.5 5.5 8l4.5 4.5");
+    var next = arrowButton("wx-next", S.next, "M6 3.5 10.5 8 6 12.5");
+    wrap.appendChild(strip);
+    wrap.appendChild(prev);
+    wrap.appendChild(next);
+    panel.appendChild(wrap);
+    card.appendChild(panel);
+
+    var sync = scrollButtons(strip, prev, next);
+    if (i > 0 && day.hours.length > 6) {
+      var items = strip.children, k = 0;
+      while (k < day.hours.length && day.hours[k].hour < 7) k++;
+      if (items[k]) strip.scrollLeft = items[k].offsetLeft - strip.offsetLeft;
+    }
+    var on = chips.children[i];
+    if (on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = on.offsetLeft - chips.offsetLeft - (chips.clientWidth - on.offsetWidth) / 2;
+    requestAnimationFrame(sync);
   }
 
   function yrLink(d) {

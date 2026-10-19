@@ -129,7 +129,7 @@
             "name": "Do we pay national park fees on top?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Park fees are paid by each guest, in cash, at the park. At Phi Phi it is 400 THB per guest. Your captain or hostess helps with the local formalities. Only Song of Songs lists them in its rate."
+              "text": "Yes. Each guest pays in cash at the park, and your captain or hostess helps with the local formalities. These are the published fees for foreign visitors, based on Thailand's Department of National Parks regulations."
             }
           },
           {
@@ -161,7 +161,7 @@
             "name": "Which islands can we reach in one day?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Phi Phi, the 4 Islands, Racha, Hong Island, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case."
+              "text": "Phi Phi, the 4 Islands, Racha, Hong Island, Khai, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case."
             }
           },
           {
@@ -170,14 +170,6 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. Song of Songs, a 42 m yacht for up to 12 guests, is USD 46,000 for two days and one night, all inclusive. Similan and Surin are overnight charters of 2 to 4 days, quoted case by case."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How long does the crossing take?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "In calm sea, from Phuket: Maiton about 30 minutes, Racha, Hong and Phang Nga Bay about 50, the 4 Islands 1 h 25, Phi Phi 1 h 40. The yacht and the sea can change this."
             }
           },
           {
@@ -910,6 +902,12 @@
     .jump a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1; white-space: nowrap; transition: background-color .15s, color .15s; }
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
+    
+    .intro-feature { display: grid; gap: 22px; width: 100%; max-width: 1160px; margin: 18px auto 0; }
+    .intro-feature .intro-copy p + p { margin-top: 14px; }
+    .intro-photo { margin: 0; overflow: hidden; border-radius: 3px; background: var(--ice); }
+    .intro-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    @media (min-width: 900px) { .intro-feature { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px; align-items: center; margin-top: 30px; } }
     @media (min-width: 600px) {
       .jump-row { width: 100%; max-width: 680px; margin: 22px auto 0; }
       .jump { margin: 0; padding: 2px 0 6px; }
@@ -1032,6 +1030,10 @@
     .q-body p { margin: 0; }
     .q-question { color: var(--navy); font-size: 17px; font-weight: 700; line-height: 1.4; }
     .q-answer { margin-top: 8px; line-height: 1.65; }
+    .q-table { width: 100%; margin: 14px 0 4px; border-collapse: collapse; font-size: 15px; line-height: 1.45; font-variant-numeric: tabular-nums; }
+    .q-table th, .q-table td { padding: 9px 10px; border-bottom: 1px solid rgba(16, 45, 59, .12); text-align: left; vertical-align: top; }
+    .q-table th { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .q-table td + td, .q-table th + th { text-align: right; white-space: nowrap; }
     .q-links { margin-top: 14px; }
     .q-links .text-link { color: var(--teal); font-size: 15px; }
     .q-chat { margin-top: 16px; }
@@ -1180,7 +1182,8 @@
             <summary><span class="q-label">National park fees</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
               <p class="q-question">Do we pay national park fees on top?</p>
-              <p class="q-answer">Park fees are paid by each guest, in cash, at the park. At Phi Phi it is 400 THB per guest. Your captain or hostess helps with the local formalities. Only Song of Songs lists them in its rate.</p>
+              <p class="q-answer">Yes. Each guest pays in cash at the park, and your captain or hostess helps with the local formalities. These are the published fees for foreign visitors, based on Thailand's Department of National Parks regulations.</p>
+              <table class="q-table"><thead><tr><th scope="col">Destination</th><th scope="col">Adult</th><th scope="col">Child</th></tr></thead><tbody><tr><td>Phi Phi Islands (special fee areas)</td><td>400 THB</td><td>200 THB</td></tr><tr><td>Phang Nga Bay</td><td>300 THB</td><td>150 THB</td></tr><tr><td>Similan Islands</td><td>500 THB</td><td>250 THB</td></tr><tr><td>Surin Islands</td><td>500 THB</td><td>250 THB</td></tr></tbody></table>
               <p class="q-links"><a class="text-link" href="phi-phi-private-yacht.html"><span>Phi Phi park fee</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
             </div>
           </details>
@@ -1205,7 +1208,7 @@
             <div class="q-body">
               <p class="q-question">Can we choose the route and the stops?</p>
               <p class="q-answer">Yes. Name the water you want, Phi Phi, Phang Nga Bay, Racha, Hong Island, Khai or Maiton, or a route of your own. The route moves the rate on many yachts, and we quote it with your date.</p>
-              <p class="q-links"><a class="text-link" href="phuket-island-hopping-private-yacht.html#a-route-of-your-own"><span>Plan a route of your own</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
+              <p class="q-links"><a class="text-link" href="phuket-island-hopping-private-yacht.html"><span>See every place</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
             </div>
           </details>
         </div>
@@ -1226,7 +1229,7 @@
             <summary><span class="q-label">Islands in one day</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
               <p class="q-question">Which islands can we reach in one day?</p>
-              <p class="q-answer">Phi Phi, the 4 Islands, Racha, Hong Island, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case.</p>
+              <p class="q-answer">Phi Phi, the 4 Islands, Racha, Hong Island, Khai, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case.</p>
               <p class="q-links"><a class="text-link" href="phuket-island-hopping-private-yacht.html"><span>See every place</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
             </div>
           </details>
@@ -1236,14 +1239,6 @@
               <p class="q-question">Can we charter for more than one day?</p>
               <p class="q-answer">Yes. Song of Songs, a 42 m yacht for up to 12 guests, is USD 46,000 for two days and one night, all inclusive. Similan and Surin are overnight charters of 2 to 4 days, quoted case by case.</p>
               <p class="q-links"><a class="text-link" href="boats/song-of-songs.html"><span>See Song of Songs</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
-            </div>
-          </details>
-          <details class="q-row" id="time-to-each-island">
-            <summary><span class="q-label">Time to each island</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
-            <div class="q-body">
-              <p class="q-question">How long does the crossing take?</p>
-              <p class="q-answer">In calm sea, from Phuket: Maiton about 30 minutes, Racha, Hong and Phang Nga Bay about 50, the 4 Islands 1 h 25, Phi Phi 1 h 40. The yacht and the sea can change this.</p>
-              <p class="q-links"><a class="text-link" href="phuket-island-hopping-private-yacht.html#eight-places-side-by-side"><span>See the time to each place</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
             </div>
           </details>
           <details class="q-row" id="when-to-go">

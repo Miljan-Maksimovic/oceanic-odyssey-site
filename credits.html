@@ -711,6 +711,12 @@
     .jump a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1; white-space: nowrap; transition: background-color .15s, color .15s; }
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
+    
+    .intro-feature { display: grid; gap: 22px; width: 100%; max-width: 1160px; margin: 18px auto 0; }
+    .intro-feature .intro-copy p + p { margin-top: 14px; }
+    .intro-photo { margin: 0; overflow: hidden; border-radius: 3px; background: var(--ice); }
+    .intro-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    @media (min-width: 900px) { .intro-feature { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px; align-items: center; margin-top: 30px; } }
     @media (min-width: 600px) {
       .jump-row { width: 100%; max-width: 680px; margin: 22px auto 0; }
       .jump { margin: 0; padding: 2px 0 6px; }
@@ -860,7 +866,7 @@
       </header>
 
       <div class="intro-copy article-body reading-column">
-        <p class="lead">The destination photographs are from Wikimedia Commons, each used under the licence named with it, resized and cropped to fit the page.</p>
+        <p class="lead">The destination photographs from Wikimedia Commons are listed here, each used under the licence named with it, resized and cropped to fit the page.</p>
       </div>
 
       <section class="article-section" aria-labelledby="credits-1">
@@ -927,10 +933,6 @@
               <p class="what">Racha Yai's west coast from the water</p>
               <p>Roma Neus, <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Racha_2015_december_-_panoramio_(1).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
             </li>
-            <li>
-              <p class="what">A longtail boat off the beach at Coral Island, Phuket</p>
-              <p>Endrjuch, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Koh_hae,_Thailand.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
-            </li>
           </ul>
         </div>
       </section>
@@ -960,6 +962,10 @@
             <li>
               <p class="what">Inside the lagoon of Hong Island, Krabi, cliffs on every side</p>
               <p>Vladimir Pankratov, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Lagoon_of_Hong_island.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+            </li>
+            <li>
+              <p class="what">Longtail boats on the beach at Ko Lao Lading, cliffs on either side</p>
+              <p>Maksym Kozlenko, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Long_tail_boats_at_Ko_Lao_Lading.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
             </li>
           </ul>
         </div>
@@ -1053,7 +1059,7 @@
 
       <section class="article-section" aria-labelledby="credits-7">
         <div class="section-heading reading-column">
-          <h2 id="credits-7">Maiton and the Khai Islands</h2>
+          <h2 id="credits-7">Khai Islands</h2>
         </div>
         <div class="article-body reading-column">
           <ul class="credits-list">
@@ -1073,9 +1079,9 @@
         </div>
       </section>
 
-      <section class="article-section" aria-labelledby="credits-8">
+      <section class="article-section" aria-labelledby="credits-9">
         <div class="section-heading reading-column">
-          <h2 id="credits-8">Phang Nga Bay and James Bond Island</h2>
+          <h2 id="credits-9">Phang Nga Bay and James Bond Island</h2>
         </div>
         <div class="article-body reading-column">
           <ul class="credits-list">
@@ -1092,8 +1098,8 @@
               <p>Kemal Kaya, <a href="https://creativecommons.org/licenses/by-sa/2.5" target="_blank" rel="noopener">CC BY-SA 2.5</a>, <a href="https://commons.wikimedia.org/wiki/File:Khao_Phing_Kan_and_Koh_Tapu_(James_Bond_Island).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
             </li>
             <li>
-              <p class="what">Ko Panyi, the village built on stilts in the bay</p>
-              <p>Deror Avi, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Ao_Phang_Nga_National_Park_P1120286.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+              <p class="what">Ko Panyi's houses on stilts under a green limestone hill</p>
+              <p>Deror Avi, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Ao_Phang_Nga_National_Park_P1120291.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></p>
             </li>
             <li>
               <p class="what">Phanak Island from the water, its limestone cliffs over the bay</p>

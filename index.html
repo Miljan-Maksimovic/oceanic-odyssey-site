@@ -465,6 +465,10 @@ svg { display: block; }
 @keyframes faq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .faq-row[open] .faq-answer { animation: none; } }
 .faq-answer > .faq-text { margin: 0; font-size: 17px; line-height: 1.6; }
+.faq-table { width: 100%; margin: 12px 0 4px; border-collapse: collapse; font-size: 15px; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.faq-table th, .faq-table td { padding: 8px 8px 8px 0; border-bottom: 1px solid rgba(16, 45, 59, .12); text-align: left; vertical-align: top; }
+.faq-table th { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.faq-table td + td, .faq-table th + th { padding-right: 0; text-align: right; white-space: nowrap; }
 .faq-link { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 2px; color: var(--teal); font-size: 15px; font-weight: 800; }
 .faq-link .arrow { width: 18px; height: 18px; transition: transform .2s; }
 .faq-link:hover .arrow { transform: translateX(4px); }
@@ -681,15 +685,22 @@ svg { display: block; }
     @media (min-width: 600px) and (max-width: 899px) { .nav-links { gap: 18px; } .nav-links a { letter-spacing: .08em; } }
 
 
-.hs-charter { background: #fff; }
-.hs-charter-grid { display: grid; gap: 30px; align-items: center; }
-.hs-charter-copy h2 { max-width: 560px; }
-.hs-charter-copy p { max-width: 560px; margin-top: 18px; color: var(--muted); }
-.hs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 26px; }
-.hs-btn .arrow { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.hs-charter { position: relative; overflow: hidden; background: #F3F1EC; }
+.hs-charter::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640' fill='none' stroke='%23C9C3B6' stroke-width='1'%3E%3Cpath d='M-40 520c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 560c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 600c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 640c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 480c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3C/svg%3E") right bottom / 640px 640px no-repeat; }
+.hs-charter-grid { position: relative; display: grid; gap: 30px; align-items: center; }
+.hs-charter-copy .section-label { color: #4F5E63; letter-spacing: .2em; }
+.hs-charter-copy h2 { max-width: 560px; color: #2B3A40; font-size: clamp(26px, 7.4vw, 38px); font-weight: 400; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
+.hs-charter-copy p { max-width: 520px; margin-top: 18px; color: #4F5E63; letter-spacing: .02em; line-height: 1.75; }
+.hs-outline { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 168px; min-height: 52px; margin-top: 28px; padding: 0 26px; border: 1.5px solid var(--navy); background: transparent; color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; transition: background-color .18s, color .18s; }
+.hs-outline::after { content: ""; position: absolute; inset: 4px -4px -4px 4px; border: 1px solid rgba(16, 45, 59, .4); pointer-events: none; }
+.hs-outline:hover { background: var(--navy); color: #fff; }
+.hs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 26px; border: 1.5px solid var(--navy); background: transparent; color: var(--navy); box-shadow: none; }
+.hs-btn:hover, .hs-btn:focus-visible { border-color: var(--navy); background: var(--navy); color: #fff; }
+.hs-btn .arrow { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .hs-btn:hover .arrow { transform: translateX(3px); }
-.hs-charter-photo { margin: 0; overflow: hidden; border-radius: 3px; background: var(--ice); }
+.hs-charter-photo { margin: 0; overflow: hidden; border-radius: 0; background: var(--ice); }
 .hs-charter-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+@media (max-width: 699px) { .hs-charter-photo { margin-inline: -24px; } }
 .hs-featured { background: var(--ice); }
 .hs-dests { background: #fff; }
 .hs-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 30px; }
@@ -707,7 +718,8 @@ svg { display: block; }
   .hs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 22px; }
 }
 @media (min-width: 900px) {
-  .hs-charter-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 56px; }
+  .hs-charter-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; }
+  .hs-charter-photo { margin-right: calc((100vw - min(100vw - 80px, 1160px)) / -2); }
   .hs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 38px; }
   .hs-dest-name { font-size: 26px; }
 }
@@ -715,11 +727,12 @@ svg { display: block; }
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1.26; border-radius: 3px; background: var(--navy); }
-    .boat-card .boat-photo img { position: absolute; top: 0; left: 0; z-index: -2; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; transform-origin: 50% 40%; transition: transform .55s; }
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 56%, rgba(10, 36, 51, .45) 67%, var(--navy) 79%); pointer-events: none; }
-    .boat-card:hover .boat-photo img { transform: scale(1.035); }
-    .boat-card .boat-cover { position: absolute; top: auto; left: 18px; right: 16px; bottom: 14px; overflow: visible; aspect-ratio: auto; background: none; }   
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
+    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) saturate(1.3) brightness(.78); transform: none; }
+    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(18, 70, 100, .12) 0%, rgba(14, 58, 84, .38) 60%, rgba(10, 42, 62, .55) 100%); pointer-events: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card:hover .boat-img { transform: scale(1.035); }
+    .boat-card .boat-cover { position: relative; inset: auto; margin-top: -22px; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
     .boat-card .boat-cover::after { content: none; }
     .boat-card .boat-name {
       position: static;
@@ -739,7 +752,6 @@ svg { display: block; }
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
     .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
     .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-    .boat-card .boat-unit { margin: 3px 0 0; color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.5; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -762,8 +774,6 @@ svg { display: block; }
     
     .boat-card { container-type: inline-size; }
     @container (max-width: 340px) {
-      .boat-card .boat-photo { aspect-ratio: 1.04; }
-      .boat-card .boat-photo::after { background: linear-gradient(180deg, transparent 46%, rgba(10, 36, 51, .45) 55%, var(--navy) 64%); }
       .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
     }
     @media (min-width: 600px) {
@@ -842,37 +852,37 @@ svg { display: block; }
     @media (min-width: 900px) { .yp-field input { font-size: 15px; } .yp-field input[type="date"] { padding-inline: 8px; font-size: 14px; } }
 
 
-.qualifier .qualifier-body { display: grid; gap: 30px; max-width: 760px; margin-top: 34px; }
-.qualifier .qualifier-body form { margin-top: 0; }
-.qualifier .qualifier-request { max-width: 520px; }
-.qualifier .send-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.qualifier .send-pair .button { width: 100%; }
-
-
-.hero-book { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: 22px; padding: 6px; border-radius: 14px; background: #fff; color: var(--ink); box-shadow: 0 18px 44px rgba(6, 28, 40, .28); }
-.hb-field { position: relative; min-width: 0; padding: 9px 12px 10px; border-bottom: 1px solid rgba(16, 45, 59, .1); }
-.hb-field:nth-child(odd) { border-right: 1px solid rgba(16, 45, 59, .1); }
-.hb-field label { display: block; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .02em; line-height: 1.4; }
-.hb-field select, .hb-field input { display: block; width: 100%; min-width: 0; height: 30px; margin: 2px 0 0; padding: 0 20px 0 0; border: 0; border-radius: 0; background: transparent; color: var(--navy); font: 700 15px/1.2 var(--sans); outline: none; appearance: none; -webkit-appearance: none; cursor: pointer; }
-.hb-field input[type="date"] { padding-right: 0; color-scheme: light; }
-.hb-field:has(select)::after { content: ""; position: absolute; right: 14px; bottom: 21px; width: 7px; height: 7px; border-right: 1.5px solid var(--teal); border-bottom: 1.5px solid var(--teal); transform: rotate(45deg); pointer-events: none; }
-.hb-field:focus-within { border-radius: 10px; box-shadow: inset 0 0 0 2px var(--sea); }
-.hb-go { grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; margin-top: 6px; border: 0; border-radius: 10px; background: var(--navy); color: #fff; font: 800 15px/1 var(--sans); cursor: pointer; transition: background-color .18s; }
-.hb-go:hover { background: var(--teal); }
-.hb-go:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
-.hb-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-@media (max-width: 359px) {
-  .hero-book { grid-template-columns: minmax(0, 1fr); }
-  .hb-field:nth-child(odd) { border-right: 0; }
+.find { position: relative; z-index: 3; padding: 24px 0 8px; background: #fff; }
+.find-panel { padding: 22px 18px 20px; border-radius: 14px; background: #fff; box-shadow: 0 16px 44px rgba(6, 28, 40, .14), 0 0 0 1px rgba(16, 45, 59, .06); }
+.find-head h2 { font-size: clamp(26px, 7vw, 34px); }
+.find-grid { display: grid; gap: 24px; margin-top: 20px; }
+.find-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; align-content: start; }
+.find-field { min-width: 0; }
+.find-wide { grid-column: 1 / -1; }
+@media (max-width: 359px) { .find-fields { grid-template-columns: minmax(0, 1fr); } }
+.find-field label { display: block; margin: 0 0 7px; color: var(--teal); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; }
+.find-field select, .find-field input { display: block; width: 100%; min-width: 0; height: 48px; padding: 0 12px; border: 1px solid #C9D8DC; border-radius: 3px; background: #fff; color: var(--ink); font: 600 15px/1.2 var(--sans); appearance: none; -webkit-appearance: none; }
+.find-field input[type="date"] { color-scheme: light; }
+.find-field input::placeholder { color: var(--muted); opacity: 1; }
+.find-field select:focus-visible, .find-field input:focus-visible { outline: 3px solid #299CA2; outline-offset: 2px; }
+.find-select { position: relative; }
+.find-select::after { content: ""; position: absolute; top: 19px; right: 15px; width: 7px; height: 7px; border-right: 1.5px solid var(--teal); border-bottom: 1.5px solid var(--teal); transform: rotate(45deg); pointer-events: none; }
+.find-select select { padding-right: 34px; cursor: pointer; }
+.find-day { min-width: 0; margin: 0; padding: 0; border: 0; }
+.find-day legend { margin: 0 0 10px; padding: 0; color: var(--teal); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; }
+.find-go { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-top: 22px; background: var(--navy); color: #fff; }
+.find-go:hover { background: var(--teal); }
+.find-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+@media (min-width: 700px) {
+  .find { margin-top: -96px; padding-top: 0; background: transparent; }
+  .find-panel { padding: 30px 32px 28px; border-radius: 18px; }
+  .hero-content { padding-bottom: 150px; }
 }
-@media (min-width: 900px) {
-  .hero-book { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: center; max-width: 1000px; margin-top: 30px; padding: 8px 8px 8px 10px; border-radius: 16px; }
-  .hb-field, .hb-field:nth-child(odd) { padding: 8px 16px; border: 0; border-right: 1px solid rgba(16, 45, 59, .12); }
-  .hb-field:nth-child(4) { border-right: 0; }
-  .hb-field:has(select)::after { bottom: 19px; right: 18px; }
-  .hb-go { grid-column: auto; width: 58px; height: 58px; min-height: 0; margin: 0 0 0 6px; border-radius: 50%; }
-  .hb-go span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .hb-search { width: 22px; height: 22px; }
+@media (min-width: 1000px) {
+  .find-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; }
+  .find-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .find-wide { grid-column: auto; }
+  .find-go { width: auto; min-width: 260px; margin-left: auto; }
 }
 
 </style>
@@ -894,7 +904,7 @@ svg { display: block; }
 </svg>
 
 <aside class="dock" aria-label="Contact">
-  <a class="button" href="#qualifier" data-open-qualifier><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
+  <a class="button" href="#qualifier"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
   <p>Private yachts by the day, from 89,000 THB</p>
 </aside>
 
@@ -919,62 +929,96 @@ svg { display: block; }
       <p class="eyebrow">Private yacht charter, Phuket</p>
       <h1 id="hero-title">Twenty-five of your people. A 102-foot yacht. A butler pouring the first glass.</h1>
       <p class="hero-copy">That is Matia Sou. Butler, private massage therapist and jacuzzi in the rate. From 450,000 THB for 8 hours and your first 10 guests.</p>
-      <a class="button" href="#qualifier" data-open-qualifier><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
-      <form class="hero-book" action="fleet.html" method="get" role="search" aria-label="Find a yacht">
-        <div class="hb-field">
-          <label for="hb-dest">Destination</label>
-          <select id="hb-dest" name="dest">
-              <option value="">All destinations</option>
-              <option value="Phi Phi Islands">Phi Phi Islands</option>
-              <option value="Racha Islands">Racha Islands</option>
-              <option value="Hong Island, Krabi">Hong Island, Krabi</option>
-              <option value="4 Islands, Krabi">4 Islands, Krabi</option>
-              <option value="Phang Nga Bay">Phang Nga Bay</option>
-              <option value="Khai and Maiton">Khai and Maiton</option>
-              <option value="Similan Islands">Similan Islands</option>
-              <option value="Surin Islands">Surin Islands</option>
-          </select>
+      <a class="button" href="#qualifier"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
+    </div>
+  </section>
+
+  <section class="find" id="qualifier" aria-labelledby="qualifier-title">
+    <div class="wrap">
+      <form class="find-panel" id="find-form" action="fleet.html" method="get" role="search">
+        <div class="find-head">
+          <div class="section-label">Find your yacht</div>
+          <h2 id="qualifier-title">Who is coming, and when? We match the yacht.</h2>
         </div>
-        <div class="hb-field">
-          <label for="hb-date">Date</label>
-          <input id="hb-date" name="date" type="date">
-        </div>
-        <div class="hb-field">
-          <label for="hb-type">Yacht type</label>
-          <select id="hb-type" name="type">
-              <option value="">All types</option>
+        <div class="find-grid">
+          <div class="find-fields">
+          <div class="find-field">
+            <label for="fy-type">Yacht type</label>
+            <div class="find-select">
+            <select id="fy-type" name="type">
+              <option value="all">All types</option>
               <option value="motor">Motor yacht</option>
               <option value="catamaran">Power catamaran</option>
               <option value="sport">Sport yacht</option>
               <option value="superyacht">Superyacht</option>
-          </select>
+            </select>
+            </div>
+          </div>
+          <div class="find-field">
+            <label for="fy-size">Yacht size</label>
+            <div class="find-select">
+            <select id="fy-size" name="size">
+              <option value="0">Any size</option>
+              <option value="40">40 ft and up</option>
+              <option value="60">60 ft and up</option>
+              <option value="80">80 ft and up</option>
+              <option value="100">100 ft and up</option>
+            </select>
+            </div>
+          </div>
+          <div class="find-field find-wide">
+            <label for="fy-dest">Destination</label>
+            <div class="find-select">
+            <select id="fy-dest" name="dest">
+              <option value="">All destinations</option>
+              <option value="Phi Phi Islands">Phi Phi Islands</option>
+              <option value="Racha Yai and Racha Noi">Racha Yai and Racha Noi</option>
+              <option value="Hong Island, Krabi">Hong Island, Krabi</option>
+              <option value="4 Islands, Krabi">4 Islands, Krabi</option>
+              <option value="Phang Nga Bay">Phang Nga Bay</option>
+              <option value="Khai Islands">Khai Islands</option>
+              <option value="Maiton Island">Maiton Island</option>
+              <option value="Similan Islands">Similan Islands</option>
+              <option value="Surin Islands">Surin Islands</option>
+            </select>
+            </div>
+          </div>
+          <div class="find-field">
+            <label for="fy-budget">Budget</label>
+            <input id="fy-budget" name="budget" type="text" inputmode="numeric" autocomplete="off" placeholder="In THB">
+          </div>
+          <div class="find-field">
+            <label for="fy-date">Date</label>
+            <input id="fy-date" name="date" type="date">
+          </div>
+          </div>
+          <fieldset class="find-day">
+            <legend>What is the day for?</legend>
+            <div class="chips">
+              <button class="chip" type="button" data-occasion="birthday" aria-pressed="false">A birthday</button>
+              <button class="chip" type="button" data-occasion="celebration" aria-pressed="false">A celebration</button>
+              <button class="chip" type="button" data-occasion="friends" aria-pressed="false">A day with friends</button>
+              <button class="chip" type="button" data-occasion="couple" aria-pressed="false">Just the two of us</button>
+              <button class="chip" type="button" data-occasion="newyear" aria-pressed="false">New Year's Eve</button>
+              <button class="chip" type="button" data-occasion="other" aria-pressed="false">Something else</button>
+            </div>
+            <input type="hidden" name="occasion" value="">
+          </fieldset>
         </div>
-        <div class="hb-field">
-          <label for="hb-price">Price range</label>
-          <select id="hb-price" name="budget">
-              <option value="">Any price</option>
-              <option value="100000">Up to 100,000 THB</option>
-              <option value="150000">Up to 150,000 THB</option>
-              <option value="250000">Up to 250,000 THB</option>
-              <option value="500000">Up to 500,000 THB</option>
-          </select>
-        </div>
-        <button class="hb-go" type="submit"><svg class="hb-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
+        <button class="button find-go" type="submit"><svg class="find-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
       </form>
-      </div>
+    </div>
   </section>
-
-
   <section class="hs-charter section-pad" id="yacht-charter" aria-labelledby="hs-charter-title">
     <div class="wrap hs-charter-grid">
       <div class="hs-charter-copy">
         <div class="section-label">Yacht charter</div>
-        <h2 id="hs-charter-title">The finest yachts in Phuket, for your group alone.</h2>
-        <p>34 private yachts, from a 36 ft catamaran to a 42 m superyacht, each with its own crew for a full day of 8 hours among the islands. Tell us the date and the group, and we match the yacht.</p>
-        <a class="button hs-btn" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+        <h2 id="hs-charter-title">Private yacht charters in Phuket</h2>
+        <p>Turquoise bays, limestone islands and a whole day at sea with no one aboard but your own people. Choose from 34 private yachts, each with its own crew, and we plan the day around you.</p>
+        <a class="hs-outline" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span></a>
       </div>
       <figure class="hs-charter-photo">
-        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.jpg 960w, assets/home/song-of-songs-brochure-1600.jpg 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="Song of Songs, a 42 m superyacht, under way" loading="lazy" decoding="async">
+        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.jpg 960w, assets/home/song-of-songs-brochure-1600.jpg 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -982,13 +1026,13 @@ svg { display: block; }
   <section class="hs-featured section-pad" id="yachts" aria-labelledby="hs-featured-title">
     <div class="wrap">
       <header class="section-heading">
-        <div class="section-label">Our recommendations</div>
-        <h2 id="hs-featured-title">Signature yachts</h2>
+        <h2 id="hs-featured-title">A selection of our most requested yachts</h2>
       </header>
       <div class="hs-grid">
         <article class="boat-card hs-yacht" data-boat="Black Pearl 55">
           <div class="boat-photo">
-            <img src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/black-pearl-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" style="--em: 11.48">Black Pearl 55</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2009</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -999,7 +1043,8 @@ svg { display: block; }
         </article>
         <article class="boat-card hs-yacht" data-boat="Pearl">
           <div class="boat-photo">
-            <img src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/pearl.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" style="--em: 4.10">Pearl</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1010,7 +1055,8 @@ svg { display: block; }
         </article>
         <article class="boat-card hs-yacht" data-boat="Matia Sou">
           <div class="boat-photo">
-            <img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/matia-sou.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" style="--em: 7.38">Matia Sou</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1040,77 +1086,13 @@ svg { display: block; }
           <a class="button hs-btn" href="four-islands-krabi-private-yacht.html" aria-label="Discover Railay Beach, Krabi"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
         <article class="hs-card hs-dest">
-          <a class="hs-photo" href="racha-island-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="hs-dest-name">Racha Islands</h3></a>
-          <a class="button hs-btn" href="racha-island-private-yacht.html" aria-label="Discover Racha Islands"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="hs-photo" href="racha-island-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="hs-dest-name">Racha Yai and Racha Noi</h3></a>
+          <a class="button hs-btn" href="racha-island-private-yacht.html" aria-label="Discover Racha Yai and Racha Noi"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
       </div>
       <a class="text-link hs-more" href="phuket-island-hopping-private-yacht.html">See every destination</a>
     </div>
   </section>
-
-  <div id="qualifier-home">
-    <section class="qualifier section-pad" id="qualifier" aria-labelledby="qualifier-title">
-      <div class="wrap">
-        <header class="section-heading">
-          <div class="section-label">Find your yacht</div>
-          <h2 id="qualifier-title">Who is coming, and when? We match the yacht.</h2>
-          <p>Tell us the day, and we reply with the yachts that fit.</p>
-        </header>
-        <div class="qualifier-body yp-light">
-          <fieldset class="question">
-            <legend>What is the day for?</legend>
-            <div class="chips" id="occasion-chips">
-              <button class="chip" type="button" data-occasion="birthday" aria-pressed="false">A birthday</button>
-              <button class="chip" type="button" data-occasion="celebration" aria-pressed="false">A celebration</button>
-              <button class="chip" type="button" data-occasion="friends" aria-pressed="false">A day with friends</button>
-              <button class="chip" type="button" data-occasion="couple" aria-pressed="false">Just the two of us</button>
-              <button class="chip" type="button" data-occasion="newyear" aria-pressed="false">New Year's Eve</button>
-              <button class="chip" type="button" data-occasion="other" aria-pressed="false">Something else</button>
-            </div>
-          </fieldset>
-          <div class="qualifier-request">
-            <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Home" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
-              <h3>Request by email</h3>
-              <input type="hidden" name="_subject" value="Charter request: Home">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="occasion" value="">
-              <input class="yp-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div class="yp-field">
-                <label for="request-full-name">Full name</label>
-                <input id="request-full-name" name="name" type="text" autocomplete="name" required>
-              </div>
-              <div class="yp-field">
-                <label for="request-email">Email address</label>
-                <input id="request-email" name="email" type="email" autocomplete="email" required>
-              </div>
-              <div class="yp-pair">
-                <div class="yp-field">
-                  <label for="request-date">Date</label>
-                  <input id="request-date" name="date" type="date" required>
-                </div>
-                <div class="yp-field">
-                  <label for="request-guests">Guests</label>
-                  <input id="request-guests" name="guests" type="number" min="1" inputmode="numeric" required>
-                </div>
-              </div>
-              <div class="yp-field">
-                <label for="request-notes">Any requests</label>
-                <textarea id="request-notes" name="requests" rows="3"></textarea>
-              </div>
-              <button class="yp-btn" type="submit">Send a request</button>
-              <p class="yp-status" role="status" aria-live="polite" hidden></p>
-            </form>
-            <p class="yp-or">Or message us</p>
-            <div class="send-pair">
-              <a class="button" id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a>
-              <a class="button button-outline" id="qualifier-tg" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a>
-            </div>
-          </div>
-        </div>
-        </div>
-    </section>
-  </div>
-
 
   <section class="comparison section-pad" aria-labelledby="comparison-title">
     <div class="wrap">
@@ -1220,7 +1202,7 @@ svg { display: block; }
         <details class="faq-row" name="faq" data-faq="T6">
           <summary><span>Islands in one day</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Phi Phi, the 4 Islands, Racha, Hong Island, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case.</p>
+            <p class="faq-text">Phi Phi, the 4 Islands, Racha, Hong Island, Khai, Maiton and Phang Nga Bay all fit a day of 8 hours. Similan and Surin are overnight charters of 2 to 4 days, planned with us case by case.</p>
             <a class="faq-link" href="phuket-island-hopping-private-yacht.html"><span>See every place</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
@@ -1234,7 +1216,8 @@ svg { display: block; }
         <details class="faq-row" name="faq" data-faq="T8">
           <summary><span>National park fees</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Park fees are paid by each guest, in cash, at the park. At Phi Phi it is 400 THB per guest. Your captain or hostess helps with the local formalities. Only Song of Songs lists them in its rate.</p>
+            <p class="faq-text">Yes. Each guest pays in cash at the park, and your captain or hostess helps with the local formalities. These are the published fees for foreign visitors, based on Thailand's Department of National Parks regulations.</p>
+            <table class="faq-table"><thead><tr><th scope="col">Destination</th><th scope="col">Adult</th><th scope="col">Child</th></tr></thead><tbody><tr><td>Phi Phi Islands (special fee areas)</td><td>400 THB</td><td>200 THB</td></tr><tr><td>Phang Nga Bay</td><td>300 THB</td><td>150 THB</td></tr><tr><td>Similan Islands</td><td>500 THB</td><td>250 THB</td></tr><tr><td>Surin Islands</td><td>500 THB</td><td>250 THB</td></tr></tbody></table>
             <a class="faq-link" href="phi-phi-private-yacht.html"><span>Phi Phi park fee</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
@@ -1344,7 +1327,7 @@ svg { display: block; }
       <div class="section-label">Contact</div>
       <h2 id="closing-title">There is one Matia Sou, one Simon, and one New Year's Eve.</h2>
       <p>Send us the date and how many are coming, and we will tell you which yachts are free.</p>
-      <a class="button" href="#qualifier" data-open-qualifier><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
+      <a class="button" href="#qualifier"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
       <div class="phones">
         <a class="phone" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">WhatsApp +66 64 451 8232</a>
         <a class="phone" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">Telegram +66 64 451 8232</a>
@@ -1366,107 +1349,42 @@ svg { display: block; }
   </div>
 </footer>
 
-<dialog class="question-sheet" id="question-sheet" aria-labelledby="qualifier-title">
-  <div class="sheet-toolbar">
-    <button class="sheet-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button>
-  </div>
-</dialog>
 
 <script>
 (function () {
+  const form = document.getElementById("find-form");
+  if (!form) return;
   const base = "https://wa.me/66644518232?text=";
   const baseTg = "https://t.me/iamthequeenamy?text=";
-  const occasions = {birthday: "a birthday", celebration: "a celebration", friends: "a day with friends", newyear: "New Year's Eve"};
-  const occasionButtons = Array.from(document.querySelectorAll("[data-occasion]"));
-  const form = document.getElementById("request-form");
-  const occasionField = form.querySelector('[name="occasion"]');
-  const wa = document.getElementById("qualifier-wa");
-  const tg = document.getElementById("qualifier-tg");
+  const occasion = form.querySelector('[name="occasion"]');
+  const chips = Array.from(form.querySelectorAll("[data-occasion]"));
+  chips.forEach(chip => chip.addEventListener("click", () => {
+    const on = chip.getAttribute("aria-pressed") !== "true";
+    chips.forEach(c => c.setAttribute("aria-pressed", String(on && c === chip)));
+    occasion.value = on ? chip.textContent.trim() : "";
+  }));
   const compare = document.getElementById("compare-message");
   const compareTg = document.getElementById("compare-telegram");
-  let occasion = null;
-
-  function dateText() {
-    const input = form.elements.date;
-    if (!input.value || !input.validity.valid) return "";
-    const values = input.value.split("-").map(Number);
-    const date = new Date(values[0], values[1] - 1, values[2]);
-    if (Number.isNaN(date.getTime())) return "";
-    const parts = new Intl.DateTimeFormat("en-GB", {weekday: "long", day: "numeric", month: "long"}).formatToParts(date);
-    const part = type => parts.find(item => item.type === type).value;
-    return part("weekday") + " " + part("day") + " " + part("month");
-  }
-
-  function updateLinks() {
-    const date = dateText();
-    const guests = Number(form.elements.guests.value) || 0;
-    let message;
-    if (occasion === "couple") {
-      message = "Hi, it is just the two of us" + (date ? ", on " + date : "") + ". Which yachts are free?";
-    } else {
-      const parts = [guests ? "we are " + guests + " guests" : "", occasions[occasion] ? "for " + occasions[occasion] : "",
-                     date ? "on " + date : ""].filter(Boolean);
-      message = parts.length ? "Hi, " + parts.join(", ") + ". Which yachts are free?" : "Hi, I would like to check a date for a private yacht.";
-    }
-    wa.href = base + encodeURIComponent(message);
-    tg.href = baseTg + encodeURIComponent(message);
-    if (compare && compareTg) {
-      const comparisonMessage = date
-        ? "Hi, we are up to 25. Could you check Meraki and Matia Sou for " + date + "?"
-        : "Hi, we are up to 25. I would like to ask about Meraki and Matia Sou.";
-      compare.href = base + encodeURIComponent(comparisonMessage);
-      compareTg.href = baseTg + encodeURIComponent(comparisonMessage);
-    }
-  }
-
-  occasionButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      occasion = button.dataset.occasion;
-      occasionButtons.forEach(b => b.setAttribute("aria-pressed", String(b === button)));
-      occasionField.value = button.textContent.trim();
-      if (occasion === "couple" && !form.elements.guests.value) form.elements.guests.value = 2;
-      updateLinks();
+  const dateInput = form.elements.date;
+  const dayText = () => {
+    const m = (dateInput.value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!m) return "";
+    return new Intl.DateTimeFormat("en-GB", {weekday: "long", day: "numeric", month: "long"}).format(new Date(+m[1], +m[2] - 1, +m[3]));
+  };
+  dateInput.addEventListener("change", () => {
+    if (!compare || !compareTg) return;
+    const day = dayText();
+    const msg = day ? "Hi, we are up to 25. Could you check Meraki and Matia Sou for " + day + "?"
+                    : "Hi, we are up to 25. I would like to ask about Meraki and Matia Sou.";
+    compare.href = base + encodeURIComponent(msg);
+    compareTg.href = baseTg + encodeURIComponent(msg);
+  });
+  form.addEventListener("submit", () => {
+    Array.from(form.elements).forEach(el => {
+      if (el.name && (!el.value || el.value === "all" || (el.name === "size" && el.value === "0"))) el.disabled = true;
     });
+    setTimeout(() => Array.from(form.elements).forEach(el => { el.disabled = false; }), 0);
   });
-  form.addEventListener("input", updateLinks);
-  form.addEventListener("change", updateLinks);
-
-  const sheet = document.getElementById("question-sheet");
-  const qualifier = document.getElementById("qualifier");
-  const home = document.getElementById("qualifier-home");
-  let opener = null;
-  let previousOverflow = "";
-
-  document.querySelectorAll("[data-open-qualifier]").forEach(link => {
-    link.addEventListener("click", event => {
-      if (typeof sheet.showModal !== "function") return;
-      event.preventDefault();
-      if (sheet.open) return;
-      opener = link;
-      home.style.minHeight = home.offsetHeight + "px";
-      sheet.appendChild(qualifier);
-      previousOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      sheet.showModal();
-      sheet.scrollTop = 0;
-    });
-  });
-
-  sheet.querySelector(".sheet-close").addEventListener("click", () => sheet.close());
-  sheet.addEventListener("click", event => {
-    if (event.target !== sheet) return;
-    const bounds = sheet.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right ||
-        event.clientY < bounds.top || event.clientY > bounds.bottom) sheet.close();
-  });
-  sheet.addEventListener("close", () => {
-    home.appendChild(qualifier);
-    home.style.minHeight = "";
-    document.body.style.overflow = previousOverflow;
-    if (opener) opener.focus({preventScroll: true});
-  });
-
-  updateLinks();
 })();
 </script>
 <script>

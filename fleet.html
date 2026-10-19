@@ -962,11 +962,12 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1.26; border-radius: 3px; background: var(--navy); }
-    .boat-card .boat-photo img { position: absolute; top: 0; left: 0; z-index: -2; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; transform-origin: 50% 40%; transition: transform .55s; }
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 56%, rgba(10, 36, 51, .45) 67%, var(--navy) 79%); pointer-events: none; }
-    .boat-card:hover .boat-photo img { transform: scale(1.035); }
-    .boat-card .boat-cover { position: absolute; top: auto; left: 18px; right: 16px; bottom: 14px; overflow: visible; aspect-ratio: auto; background: none; }   
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
+    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) saturate(1.3) brightness(.78); transform: none; }
+    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(18, 70, 100, .12) 0%, rgba(14, 58, 84, .38) 60%, rgba(10, 42, 62, .55) 100%); pointer-events: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card:hover .boat-img { transform: scale(1.035); }
+    .boat-card .boat-cover { position: relative; inset: auto; margin-top: -22px; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
     .boat-card .boat-cover::after { content: none; }
     .boat-card .boat-name {
       position: static;
@@ -986,7 +987,6 @@
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
     .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
     .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-    .boat-card .boat-unit { margin: 3px 0 0; color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.5; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -1009,8 +1009,6 @@
     
     .boat-card { container-type: inline-size; }
     @container (max-width: 340px) {
-      .boat-card .boat-photo { aspect-ratio: 1.04; }
-      .boat-card .boat-photo::after { background: linear-gradient(180deg, transparent 46%, rgba(10, 36, 51, .45) 55%, var(--navy) 64%); }
       .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
     }
     @media (min-width: 600px) {
@@ -1160,61 +1158,55 @@
     .wx-picker button { flex: 0 0 auto; min-height: 40px; padding: 0 15px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); font: 600 14px/1 var(--sans); white-space: nowrap; cursor: pointer; transition: background .15s, box-shadow .15s; }
     .wx-picker button[aria-selected="true"] { background: #fff; color: var(--navy); box-shadow: 0 1px 3px rgba(6, 28, 40, .16), 0 0 0 .5px rgba(6, 28, 40, .06); }
     .wx-picker button:focus-visible { outline: 3px solid #299CA2; outline-offset: -3px; }
-    .wx-card { margin-inline: -8px; padding: 22px 16px 8px; border-radius: 18px; background: linear-gradient(165deg, #0A2433 0%, #0E3D49 52%, #17696B 100%); color: #fff; font-variant-numeric: tabular-nums; }
-    .wx-card[aria-busy="true"]:not(:has(.wx-row)) { min-height: 560px; }
+    .wx-card { position: relative; max-width: 440px; padding: 20px 0 12px; overflow: hidden; border-radius: 22px; background: linear-gradient(180deg, #2F7FC9 0%, #4E9BDD 48%, #82BEEB 100%); color: #fff; font-variant-numeric: tabular-nums; text-shadow: 0 1px 2px rgba(0, 40, 90, .12); }
+    .wx-card.is-cloud { background: linear-gradient(180deg, #5B7184 0%, #7A8FA2 52%, #9DB0C0 100%); }
+    .wx-card.is-rain { background: linear-gradient(180deg, #3A4A5C 0%, #4F6174 52%, #6D8093 100%); }
+    .wx-card.is-night { background: linear-gradient(180deg, #0B1A33 0%, #172C4E 55%, #2A4470 100%); }
+    .wx-card[aria-busy="true"]:not(:has(.wx-hour)) { min-height: 360px; }
     .wx.is-failed .wx-card { display: none; }
-    .wx-now { text-align: center; }
+    .wx-now { padding: 0 16px; text-align: center; }
     .wx-now p { margin: 0; }
-    .wx-place { font-size: 21px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
-    .wx-temp { margin: 2px 0 0 10px !important; font-size: 76px; font-weight: 200; letter-spacing: -.04em; line-height: 1; }
-    .wx-sky { margin-top: 4px !important; font-size: 18px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .92); }
-    .wx-hl { margin-top: 2px !important; font-size: 17px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .92); word-spacing: .2em; }
-    .wx-rows { list-style: none; margin: 18px 0 0; padding: 0; }
-    .wx-row { border-top: 1px solid rgba(255, 255, 255, .16); }
-    .wx-cells { display: grid; grid-template-columns: 50px 28px 32px minmax(30px, 1fr) 34px 68px; align-items: center; column-gap: 6px; min-height: 54px; padding: 6px 0; }
-    .wx-day { font-size: 17px; font-weight: 600; white-space: nowrap; }
-    .wx-icon { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .wx-glyph { width: 28px; height: 28px; }
-    .wx-mm { margin-top: -1px; color: #64D2FF; font-size: 11px; font-weight: 700; line-height: 1.1; white-space: nowrap; }
-    .wx-lo, .wx-hi { font-size: 18px; font-weight: 600; text-align: right; white-space: nowrap; }
-    .wx-lo { color: rgba(255, 255, 255, .6); }
-    .wx-bar { position: relative; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .16); }
-    .wx-fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; background-image: linear-gradient(90deg, #5FD3C4 0%, #A8E07A 34%, #FFD25A 64%, #FF9A3D 100%); background-repeat: no-repeat; }
-    .wx-now-dot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #0E3D49; }
-    .wx-wind { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, .85); white-space: nowrap; }
-    .wx-arrow { flex: 0 0 auto; width: 13px; height: 13px; color: #fff; }
+    .wx-place { font-size: 20px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+    .wx-temp { margin: 0 0 0 10px !important; font-size: 60px; font-weight: 200; letter-spacing: -.03em; line-height: 1.05; }
+    .wx-sky { margin-top: 2px !important; font-size: 16px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .95); }
+    .wx-hl { margin-top: 1px !important; font-size: 15px; font-weight: 600; line-height: 1.35; color: rgba(255, 255, 255, .95); word-spacing: .2em; }
+    .wx-days { display: flex; gap: 6px; margin: 16px 0 0; padding: 0 12px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+    .wx-days::-webkit-scrollbar { display: none; }
+    .wx-day { flex: 0 0 auto; min-height: 34px; padding: 0 13px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .18); color: #fff; font: 600 13px/1 var(--sans); white-space: nowrap; cursor: pointer; transition: background .15s, color .15s; }
+    .wx-day:hover { background: rgba(255, 255, 255, .3); }
+    .wx-day[aria-pressed="true"] { background: #fff; color: #1F5F99; text-shadow: none; }
+    .wx-day:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .wx-panel { margin: 12px 12px 0; padding: 10px 0; border-radius: 16px; background: rgba(255, 255, 255, .16); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .22); }
+    .wx-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .22); }
+    .wx-panel-head p { margin: 0; }
+    .wx-label { min-width: 0; overflow: hidden; color: rgba(255, 255, 255, .82); font-size: 11px; font-weight: 700; letter-spacing: .1em; line-height: 1.4; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+    .wx-wind { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; color: rgba(255, 255, 255, .92); font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; }
+    .wx-arrow { flex: 0 0 auto; width: 12px; height: 12px; color: #fff; }
+    .wx-strip-wrap { position: relative; }
+    .wx-strip { display: flex; margin: 0; padding: 10px 6px 0; overflow-x: auto; list-style: none; scrollbar-width: none; overscroll-behavior-x: contain; }
+    .wx-strip::-webkit-scrollbar { display: none; }
+    .wx-hour { flex: 0 0 56px; }
+    .wx-strip.is-even .wx-hour { flex: 1 1 0; }
+    .wx-hour-cells { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .wx-time { font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+    .wx-icon { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 40px; }
+    .wx-glyph { width: 26px; height: 26px; }
+    .wx-mm { margin-top: -1px; color: #A8E6FF; font-size: 10px; font-weight: 700; line-height: 1.1; white-space: nowrap; }
+    .wx-t { font-size: 17px; font-weight: 600; line-height: 1.2; }
+    .wx-scroll { position: absolute; top: 50%; display: grid; place-items: center; width: 30px; height: 30px; margin-top: -10px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .94); color: #1F5F99; box-shadow: 0 2px 8px rgba(0, 30, 70, .22); cursor: pointer; }
+    .wx-scroll[hidden] { display: none; }
+    .wx-scroll svg { width: 14px; height: 14px; }
+    .wx-scroll:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .wx-prev { left: 4px; }
+    .wx-next { right: 4px; }
     .wx-status { margin-top: 10px; font-size: 15px; }
     .wx-status:empty { display: none; }
     .wx-status a { color: var(--teal); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 359px) {
-      .wx-cells { grid-template-columns: 44px 26px 30px minmax(14px, 1fr) 30px 62px; column-gap: 4px; }
-      .wx-day { font-size: 15px; }
-      .wx-lo, .wx-hi { font-size: 16px; }
-      .wx-wind { font-size: 13px; }
-    }
-    @media (min-width: 600px) {
-      .wx-card { margin-inline: 0; padding: 26px 24px 10px; }
-      .wx-cells { grid-template-columns: 64px 34px 38px minmax(60px, 1fr) 38px 80px; column-gap: 12px; min-height: 56px; }
-      .wx-wind { font-size: 15px; }
-    }
-    @media (min-width: 900px) {
-      .wx-card { display: grid; grid-template-columns: 260px minmax(0, 1fr); column-gap: 48px; align-items: start; padding: 30px 36px 14px 40px; }
-      .wx-now { padding-top: 6px; text-align: left; }
-      .wx-place { font-size: 24px; }
-      .wx-temp { margin: 6px 0 0 -4px !important; font-size: 104px; }
-      .wx-sky { margin-top: 10px !important; font-size: 20px; }
-      .wx-hl { font-size: 18px; }
-      .wx-rows { margin: 0; }
-      .wx-row:first-child { border-top: 0; }
-      .wx-day { font-size: 18px; }
-      .wx-lo, .wx-hi { font-size: 19px; }
-    }
     
     .intro .wx { margin: 0 0 28px; }
     .intro .wx-picker { position: relative; background: rgba(255, 255, 255, .1); }   
     .intro .wx-picker button { color: #fff; }
     .intro .wx-picker button[aria-selected="true"] { background: #fff; color: var(--navy); }
-    .intro .wx-card { margin-inline: 0; background: linear-gradient(165deg, #12404F 0%, #17606A 55%, #1F7F80 100%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
     .intro .wx-status { color: rgba(255, 255, 255, .8); }
     .intro .wx-status a { color: var(--sea); }
     @media (min-width: 600px) and (max-width: 899px) {
@@ -1225,8 +1217,6 @@
       .intro .cta-group { width: 380px; }
       .intro .cta-group .cta-pair { width: 100%; }
       .intro .cta-group .cta-pair .button { width: 100%; }
-      .intro .wx-card { display: block; padding: 22px 18px 8px; }
-      .intro .wx-cells { grid-template-columns: 50px 28px 32px minmax(30px, 1fr) 34px 68px; column-gap: 6px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1275,12 +1265,12 @@
               <button type="button" role="tab" aria-selected="false" data-wx-pick="four-islands-krabi">4 Islands</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="similan-islands">Similan</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="surin-islands">Surin</button>
+              <button type="button" role="tab" aria-selected="false" data-wx-pick="khai-islands">Khai</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="maiton-island">Maiton</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="phang-nga-bay-james-bond-island">James Bond Island</button>
             </div>
             <div class="wx-card" aria-busy="true">
               <div class="wx-now"></div>
-              <ol class="wx-rows" aria-label="7-day forecast"></ol>
             </div>
             <p class="wx-status" aria-live="polite"></p>
           </div>
@@ -1347,7 +1337,8 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Moonglade 42" data-type="motor" data-ft="42" data-max="10" data-price="130000">
           <div class="boat-photo">
-            <img src="assets/cards/moonglade-42.jpg" width="1500" height="900" alt="Moonglade 42 at speed seen from the air, a white wake behind her, limestone islands on the horizon." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/moonglade-42.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/moonglade-42.jpg" width="1500" height="900" alt="Moonglade 42 at speed seen from the air, a white wake behind her, limestone islands on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-moonglade-42" style="--em: 9.84">Moonglade 42</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>42 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
@@ -1356,18 +1347,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 130,000 THB</p>
-              <p class="boat-unit">for 6 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglade%2042.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Moonglade 42 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/moonglade-42.html" aria-label="Moonglade 42, From 130,000 THB, for 6 guests"></a>
+          <a class="boat-link" href="boats/moonglade-42.html" aria-label="Moonglade 42, From 130,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Muse 46" data-type="motor" data-ft="46" data-max="8" data-price="98000">
           <div class="boat-photo">
-            <img src="assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/muse-46.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-muse-46" style="--em: 5.74">Muse 46</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>46 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2008</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
@@ -1376,18 +1367,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 98,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2046.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 46 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/muse-46.html" aria-label="Muse 46, From 98,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/muse-46.html" aria-label="Muse 46, From 98,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Sissana 53" data-type="motor" data-ft="53" data-max="10" data-price="170000">
           <div class="boat-photo">
-            <img src="assets/cards/sissana-53.jpg" width="1500" height="900" alt="Sissana 53 at speed, spray rising along the hull." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/sissana-53.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/sissana-53.jpg" width="1500" height="900" alt="Sissana 53 at speed, spray rising along the hull." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sissana-53" style="--em: 8.20">Sissana 53</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>53 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1396,18 +1387,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 170,000 THB</p>
-              <p class="boat-unit">for 6 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sissana%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sissana 53 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/sissana-53.html" aria-label="Sissana 53, From 170,000 THB, for 6 guests"></a>
+          <a class="boat-link" href="boats/sissana-53.html" aria-label="Sissana 53, From 170,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Sunset 54" data-type="motor" data-ft="54" data-max="15" data-price="139000">
           <div class="boat-photo">
-            <img src="assets/cards/sunset-54.jpg" width="1500" height="900" alt="Sunset 54 on calm water, a green headland behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/sunset-54.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/sunset-54.jpg" width="1500" height="900" alt="Sunset 54 on calm water, a green headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sunset-54" style="--em: 7.38">Sunset 54</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>54 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1416,18 +1407,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 139,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sunset%2054.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sunset 54 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/sunset-54.html" aria-label="Sunset 54, From 139,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/sunset-54.html" aria-label="Sunset 54, From 139,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Muse 55" data-type="motor" data-ft="55" data-max="15" data-price="110000">
           <div class="boat-photo">
-            <img src="assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/muse-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-muse-55" style="--em: 5.74">Muse 55</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2007</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1436,18 +1427,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 110,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/muse-55.html" aria-label="Muse 55, From 110,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/muse-55.html" aria-label="Muse 55, From 110,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Black Pearl 55" data-type="motor" data-ft="55" data-max="20" data-price="140000">
           <div class="boat-photo">
-            <img src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/black-pearl-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-black-pearl-55" style="--em: 11.48">Black Pearl 55</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2009</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1456,18 +1447,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 140,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Pearl%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Black Pearl 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/black-pearl-55.html" aria-label="Black Pearl 55, From 140,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/black-pearl-55.html" aria-label="Black Pearl 55, From 140,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Irenic F55" data-type="motor" data-ft="55" data-max="8" data-price="180000">
           <div class="boat-photo">
-            <img src="assets/cards/irenic-f55.jpg" width="1500" height="900" alt="Irenic F55 on calm blue water, a wooded shore behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/irenic-f55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/irenic-f55.jpg" width="1500" height="900" alt="Irenic F55 on calm blue water, a wooded shore behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-irenic-f55" style="--em: 8.20">Irenic F55</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2019</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li></ul>
@@ -1476,18 +1467,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 180,000 THB</p>
-              <p class="boat-unit">for 6 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Irenic%20F55.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Irenic F55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/irenic-f55.html" aria-label="Irenic F55, From 180,000 THB, for 6 guests"></a>
+          <a class="boat-link" href="boats/irenic-f55.html" aria-label="Irenic F55, From 180,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Caramel 58" data-type="motor" data-ft="58" data-max="18" data-price="135000">
           <div class="boat-photo">
-            <img src="assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/caramel-58.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-caramel-58" style="--em: 8.20">Caramel 58</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2016</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>18 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1496,18 +1487,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 135,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Caramel%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Caramel 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/caramel-58.html" aria-label="Caramel 58, From 135,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/caramel-58.html" aria-label="Caramel 58, From 135,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Calardior 58" data-type="motor" data-ft="58" data-max="12" data-price="182000">
           <div class="boat-photo">
-            <img src="assets/cards/calardior-58.jpg" width="1500" height="900" alt="Calardior 58 under way below a forested hillside." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/calardior-58.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/calardior-58.jpg" width="1500" height="900" alt="Calardior 58 under way below a forested hillside." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-calardior-58" style="--em: 9.84">Calardior 58</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>58 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li></ul>
@@ -1516,18 +1507,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 182,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Calardior%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Calardior 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/calardior-58.html" aria-label="Calardior 58, From 182,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/calardior-58.html" aria-label="Calardior 58, From 182,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Jackie" data-type="motor" data-ft="60" data-max="15" data-price="190000">
           <div class="boat-photo">
-            <img src="assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/jackie.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-jackie" style="--em: 4.92">Jackie</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1536,18 +1527,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 190,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Jackie.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Jackie on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/jackie.html" aria-label="Jackie, From 190,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/jackie.html" aria-label="Jackie, From 190,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Maris 60" data-type="motor" data-ft="60" data-max="12" data-price="190000">
           <div class="boat-photo">
-            <img src="assets/cards/maris-60.jpg" width="1500" height="900" alt="Maris 60, a navy hull under white decks, on calm water." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/maris-60.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/maris-60.jpg" width="1500" height="900" alt="Maris 60, a navy hull under white decks, on calm water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-maris-60" style="--em: 6.56">Maris 60</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2020</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1556,18 +1547,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 190,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Maris%2060.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Maris 60 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/maris-60.html" aria-label="Maris 60, From 190,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/maris-60.html" aria-label="Maris 60, From 190,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Pandora" data-type="motor" data-ft="62" data-max="10" data-price="220000">
           <div class="boat-photo">
-            <img src="assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/pandora.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pandora" style="--em: 5.74">Pandora</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
@@ -1576,18 +1567,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 220,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pandora.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pandora on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/pandora.html" aria-label="Pandora, From 220,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/pandora.html" aria-label="Pandora, From 220,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Rose 65" data-type="motor" data-ft="65" data-max="20" data-price="135000">
           <div class="boat-photo">
-            <img src="assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/rose-65.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-rose-65" style="--em: 5.74">Rose 65</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>65 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1596,18 +1587,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 135,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Rose%2065.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Rose 65 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/rose-65.html" aria-label="Rose 65, From 135,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/rose-65.html" aria-label="Rose 65, From 135,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Katterine S65" data-type="motor" data-ft="66" data-max="12" data-price="310000">
           <div class="boat-photo">
-            <img src="assets/cards/katterine-s65.jpg" width="1500" height="900" alt="Katterine S65 at speed in bright sun, a headland behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/katterine-s65.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/katterine-s65.jpg" width="1500" height="900" alt="Katterine S65 at speed in bright sun, a headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-katterine-s65" style="--em: 10.66">Katterine S65</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>66 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2017</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1616,18 +1607,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 310,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Katterine%20S65.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Katterine S65 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/katterine-s65.html" aria-label="Katterine S65, From 310,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/katterine-s65.html" aria-label="Katterine S65, From 310,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Bruna" data-type="motor" data-ft="68" data-max="20" data-price="209000">
           <div class="boat-photo">
-            <img src="assets/cards/bruna.jpg" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/bruna.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-bruna" style="--em: 4.10">Bruna</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1636,18 +1627,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 209,000 THB</p>
-              <p class="boat-unit">for 15 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Bruna.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Bruna on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/bruna.html" aria-label="Bruna, From 209,000 THB, for 15 guests"></a>
+          <a class="boat-link" href="boats/bruna.html" aria-label="Bruna, From 209,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Theo 70" data-type="motor" data-ft="70" data-max="15" data-price="178000">
           <div class="boat-photo">
-            <img src="assets/cards/theo-70.jpg" width="1500" height="900" alt="Theo 70 at speed at dusk, a long white wake behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/theo-70.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/theo-70.jpg" width="1500" height="900" alt="Theo 70 at speed at dusk, a long white wake behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-theo-70" style="--em: 5.74">Theo 70</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>70 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1656,18 +1647,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 178,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Theo%2070.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Theo 70 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/theo-70.html" aria-label="Theo 70, From 178,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/theo-70.html" aria-label="Theo 70, From 178,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Meraki" data-type="motor" data-ft="76" data-max="25" data-price="220000">
           <div class="boat-photo">
-            <img src="assets/cards/meraki.jpg" width="1500" height="900" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/meraki.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-meraki" style="--em: 4.92">Meraki</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1676,18 +1667,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 220,000 THB</p>
-              <p class="boat-unit">for 12 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Meraki.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Meraki on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/meraki.html" aria-label="Meraki, From 220,000 THB, for 12 guests"></a>
+          <a class="boat-link" href="boats/meraki.html" aria-label="Meraki, From 220,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Sira" data-type="motor" data-ft="76" data-max="15" data-price="370000">
           <div class="boat-photo">
-            <img src="assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sira" style="--em: 3.28">Sira</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1696,18 +1687,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 370,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sira.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sira on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/sira.html" aria-label="Sira, From 370,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/sira.html" aria-label="Sira, From 370,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Mermaid 78" data-type="motor" data-ft="78" data-max="20" data-price="280000">
           <div class="boat-photo">
-            <img src="assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/mermaid-78.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-mermaid-78" style="--em: 8.20">Mermaid 78</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1716,18 +1707,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 280,000 THB</p>
-              <p class="boat-unit">for 12 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Mermaid%2078.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Mermaid 78 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/mermaid-78.html" aria-label="Mermaid 78, From 280,000 THB, for 12 guests"></a>
+          <a class="boat-link" href="boats/mermaid-78.html" aria-label="Mermaid 78, From 280,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Pearl" data-type="motor" data-ft="78" data-max="20" data-price="320000">
           <div class="boat-photo">
-            <img src="assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/pearl.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pearl" style="--em: 4.10">Pearl</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1736,18 +1727,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 320,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pearl.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pearl on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/pearl.html" aria-label="Pearl, From 320,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/pearl.html" aria-label="Pearl, From 320,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Ravina 80" data-type="motor" data-ft="80" data-max="25" data-price="155000">
           <div class="boat-photo">
-            <img src="assets/cards/ravina-80.jpg" width="1500" height="900" alt="Ravina 80 on green water below limestone cliffs." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/ravina-80.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/ravina-80.jpg" width="1500" height="900" alt="Ravina 80 on green water below limestone cliffs." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-ravina-80" style="--em: 7.38">Ravina 80</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>80 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li></ul>
@@ -1756,18 +1747,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 155,000 THB</p>
-              <p class="boat-unit">for 15 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Ravina%2080.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Ravina 80 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/ravina-80.html" aria-label="Ravina 80, From 155,000 THB, for 15 guests"></a>
+          <a class="boat-link" href="boats/ravina-80.html" aria-label="Ravina 80, From 155,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Blue Ocean 89" data-type="motor" data-ft="89" data-max="30" data-price="140000">
           <div class="boat-photo">
-            <img src="assets/cards/blue-ocean-89.jpg" width="1500" height="900" alt="Blue Ocean 89 from above on blue water, a green headland behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/blue-ocean-89.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/blue-ocean-89.jpg" width="1500" height="900" alt="Blue Ocean 89 from above on blue water, a green headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-blue-ocean-89" style="--em: 10.66">Blue Ocean 89</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>89 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>30 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1776,18 +1767,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 140,000 THB</p>
-              <p class="boat-unit">for 12 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Blue%20Ocean%2089.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Blue Ocean 89 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/blue-ocean-89.html" aria-label="Blue Ocean 89, From 140,000 THB, for 12 guests"></a>
+          <a class="boat-link" href="boats/blue-ocean-89.html" aria-label="Blue Ocean 89, From 140,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Moonglider" data-type="motor" data-ft="90" data-max="18" data-price="375000">
           <div class="boat-photo">
-            <img src="assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/moonglider.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-moonglider" style="--em: 8.20">Moonglider</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>90 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2010</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>18 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1796,14 +1787,13 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 375,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Moonglider.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Moonglider on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/moonglider.html" aria-label="Moonglider, From 375,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/moonglider.html" aria-label="Moonglider, From 375,000 THB"></a>
         </article>
       </div>
     </section>
@@ -1814,7 +1804,8 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Lewis 4.S" data-type="catamaran" data-ft="36" data-max="10" data-price="99900">
           <div class="boat-photo">
-            <img src="assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/lewis-4s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-lewis-4s" style="--em: 7.38">Lewis 4.S</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>36 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1823,18 +1814,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 99,900 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Lewis%204.S.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Lewis 4.S on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/lewis-4s.html" aria-label="Lewis 4.S, From 99,900 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/lewis-4s.html" aria-label="Lewis 4.S, From 99,900 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Tiger 40" data-type="catamaran" data-ft="40" data-max="15" data-price="89000">
           <div class="boat-photo">
-            <img src="assets/cards/tiger-40.jpg" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/tiger-40.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/tiger-40.jpg" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-tiger-40" style="--em: 6.56">Tiger 40</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2023</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1843,18 +1834,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 89,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Tiger%2040.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Tiger 40 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/tiger-40.html" aria-label="Tiger 40, From 89,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/tiger-40.html" aria-label="Tiger 40, From 89,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Apricity 53" data-type="catamaran" data-ft="53" data-max="35" data-price="110000">
           <div class="boat-photo">
-            <img src="assets/cards/apricity-53.jpg" width="1500" height="900" alt="Apricity 53 under way on deep blue water." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/apricity-53.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/apricity-53.jpg" width="1500" height="900" alt="Apricity 53 under way on deep blue water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-apricity-53" style="--em: 9.02">Apricity 53</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2018</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>35 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1863,18 +1854,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 110,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Apricity%2053.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Apricity 53 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/apricity-53.html" aria-label="Apricity 53, From 110,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/apricity-53.html" aria-label="Apricity 53, From 110,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Pear" data-type="catamaran" data-ft="85" data-max="85" data-price="250000">
           <div class="boat-photo">
-            <img src="assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/pear-85.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pear-85" style="--em: 3.28">Pear</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>85 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2026</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>85 max guests</span></li></ul>
@@ -1883,14 +1874,13 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 250,000 THB</p>
-              <p class="boat-unit">for 30 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pear.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pear on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/pear-85.html" aria-label="Pear, From 250,000 THB, for 30 guests"></a>
+          <a class="boat-link" href="boats/pear-85.html" aria-label="Pear, From 250,000 THB"></a>
         </article>
       </div>
     </section>
@@ -1901,7 +1891,8 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Laken 11" data-type="sport" data-ft="36" data-max="8" data-price="90000">
           <div class="boat-photo">
-            <img src="assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/laken-11.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-laken-11" style="--em: 6.56">Laken 11</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>36 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2019</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li></ul>
@@ -1910,18 +1901,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 90,000 THB</p>
-              <p class="boat-unit">for 6 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Laken%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Laken 11 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/laken-11.html" aria-label="Laken 11, From 90,000 THB, for 6 guests"></a>
+          <a class="boat-link" href="boats/laken-11.html" aria-label="Laken 11, From 90,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Emmy Cap 1.2" data-type="sport" data-ft="40" data-max="8" data-price="98000">
           <div class="boat-photo">
-            <img src="assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/emmy-cap-1-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-emmy-cap-1-2" style="--em: 9.84">Emmy Cap 1.2</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li></ul>
@@ -1930,18 +1921,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 98,000 THB</p>
-              <p class="boat-unit">for 6 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Emmy%20Cap%201.2.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Emmy Cap 1.2 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/emmy-cap-1-2.html" aria-label="Emmy Cap 1.2, From 98,000 THB, for 6 guests"></a>
+          <a class="boat-link" href="boats/emmy-cap-1-2.html" aria-label="Emmy Cap 1.2, From 98,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Collus T 11" data-type="sport" data-ft="40" data-max="10" data-price="119000">
           <div class="boat-photo">
-            <img src="assets/cards/collus-t-11.jpg" width="1500" height="900" alt="Collus T 11 at anchor in a blue bay below green hills." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/collus-t-11.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/collus-t-11.jpg" width="1500" height="900" alt="Collus T 11 at anchor in a blue bay below green hills." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-collus-t-11" style="--em: 9.02">Collus T 11</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2022</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
@@ -1950,18 +1941,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 119,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Collus%20T%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Collus T 11 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/collus-t-11.html" aria-label="Collus T 11, From 119,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/collus-t-11.html" aria-label="Collus T 11, From 119,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Stay Gain 15" data-type="sport" data-ft="52" data-max="12" data-price="135000">
           <div class="boat-photo">
-            <img src="assets/cards/stay-gain-15.jpg" width="1080" height="648" alt="Stay Gain 15 at speed on deep blue sea, a white wake behind her, mountains on the horizon." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/stay-gain-15.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/stay-gain-15.jpg" width="1080" height="648" alt="Stay Gain 15 at speed on deep blue sea, a white wake behind her, mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-stay-gain-15" style="--em: 9.84">Stay Gain 15</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>52 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2020</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
@@ -1970,14 +1961,13 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 135,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Stay%20Gain%2015.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Stay Gain 15 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/stay-gain-15.html" aria-label="Stay Gain 15, From 135,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="boats/stay-gain-15.html" aria-label="Stay Gain 15, From 135,000 THB"></a>
         </article>
       </div>
     </section>
@@ -1988,7 +1978,8 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Matia Sou" data-type="superyacht" data-ft="102" data-max="25" data-price="450000">
           <div class="boat-photo">
-            <img src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/matia-sou.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-matia-sou" style="--em: 7.38">Matia Sou</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1997,18 +1988,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 450,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Matia%20Sou.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Matia Sou on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/matia-sou.html" aria-label="Matia Sou, From 450,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/matia-sou.html" aria-label="Matia Sou, From 450,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Simon" data-type="superyacht" data-ft="130" data-max="44" data-price="720000">
           <div class="boat-photo">
-            <img src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/simon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-simon" style="--em: 4.10">Simon</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
@@ -2017,18 +2008,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 720,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Simon.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Simon on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/simon.html" aria-label="Simon, From 720,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="boats/simon.html" aria-label="Simon, From 720,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Song of Songs" data-type="superyacht" data-ft="139" data-max="12" data-price="1350000">
           <div class="boat-photo">
-            <img src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="Song of Songs at dusk beneath a pink sky, limestone islands behind." loading="lazy" decoding="async">
+            <img class="boat-bg" src="assets/cards/song-of-songs.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="Song of Songs at dusk beneath a pink sky, limestone islands behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-song-of-songs" style="--em: 10.66">Song of Songs</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>139 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2022</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>6 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>12 guests overnight</span></li></ul>
@@ -2037,14 +2028,13 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">USD 37,500</p>
-              <p class="boat-unit">for 12 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Song%20of%20Songs.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Song of Songs on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="boats/song-of-songs.html" aria-label="Song of Songs, USD 37,500, for 12 guests"></a>
+          <a class="boat-link" href="boats/song-of-songs.html" aria-label="Song of Songs, USD 37,500"></a>
         </article>
       </div>
     </section>
@@ -2119,18 +2109,21 @@
       });
 
       const q = new URLSearchParams(location.search);
-      const qt = q.get('type'), qb = Number(q.get('budget'));
+      const qt = q.get('type'), qs = q.get('size'), qbRaw = q.get('budget');
+      const qb = qbRaw ? readBudget(qbRaw) : null;
       if (qt && [...type.options].some(o => o.value === qt)) type.value = qt;
-      if (qb > 0) budget.value = qb.toLocaleString('en-US') + ' THB';
-      if (qt || qb) apply();
+      if (qs && [...size.options].some(o => o.value === qs)) size.value = qs;
+      if (qb && qb !== Infinity) budget.value = Math.round(qb).toLocaleString('en-US') + ' THB';
+      if (qt || qs || qb) apply();
       const dest = (q.get('dest') || '').slice(0, 60);
+      const occ = (q.get('occasion') || '').slice(0, 40);
       let day = '';
       const m = (q.get('date') || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
       if (m) {
         const dt = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
         if (!Number.isNaN(dt.getTime())) day = new Intl.DateTimeFormat('en-GB', {weekday: 'long', day: 'numeric', month: 'long'}).format(dt);
       }
-      if (dest || day) {
+      if (dest || day || occ) {
         const add = a => {
           try {
             const u = new URL(a.href);
@@ -2140,13 +2133,14 @@
             else if (day) t = t.replace(/\s+$/, '') + ' Date: ' + day + '.';
             if (dest && t.includes('Group size:')) t = t.replace('Group size:', 'Destination: ' + dest + '. Group size:');
             else if (dest) t = t.replace(/\s+$/, '') + ' Destination: ' + dest + '.';
+            if (occ) t = t.replace(/\s+$/, '') + ' Occasion: ' + occ + '.';
             u.searchParams.set('text', t);
             a.href = u.toString();
           } catch (e) {}
         };
         document.querySelectorAll('a.boat-enquire, .intro .cta-pair a, .fleet-close .cta-pair a').forEach(add);
         const note = $('fleet-trip');
-        note.textContent = 'Your day: ' + [dest, day].filter(Boolean).join(', ') + '. Enquire on any yacht and we check it for you.';
+        note.textContent = 'Your day: ' + [dest, day, occ && occ.toLowerCase()].filter(Boolean).join(', ') + '. Enquire on any yacht and we check it for you.';
         note.hidden = false;
       }
     })();

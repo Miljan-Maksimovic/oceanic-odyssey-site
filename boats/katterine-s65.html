@@ -734,11 +734,12 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1.26; border-radius: 3px; background: var(--navy); }
-    .boat-card .boat-photo img { position: absolute; top: 0; left: 0; z-index: -2; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; transform-origin: 50% 40%; transition: transform .55s; }
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 56%, rgba(10, 36, 51, .45) 67%, var(--navy) 79%); pointer-events: none; }
-    .boat-card:hover .boat-photo img { transform: scale(1.035); }
-    .boat-card .boat-cover { position: absolute; top: auto; left: 18px; right: 16px; bottom: 14px; overflow: visible; aspect-ratio: auto; background: none; }   
+    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
+    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) saturate(1.3) brightness(.78); transform: none; }
+    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(18, 70, 100, .12) 0%, rgba(14, 58, 84, .38) 60%, rgba(10, 42, 62, .55) 100%); pointer-events: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card:hover .boat-img { transform: scale(1.035); }
+    .boat-card .boat-cover { position: relative; inset: auto; margin-top: -22px; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
     .boat-card .boat-cover::after { content: none; }
     .boat-card .boat-name {
       position: static;
@@ -758,7 +759,6 @@
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
     .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
     .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-    .boat-card .boat-unit { margin: 3px 0 0; color: var(--muted); font-size: 13px; font-weight: 400; line-height: 1.5; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -781,8 +781,6 @@
     
     .boat-card { container-type: inline-size; }
     @container (max-width: 340px) {
-      .boat-card .boat-photo { aspect-ratio: 1.04; }
-      .boat-card .boat-photo::after { background: linear-gradient(180deg, transparent 46%, rgba(10, 36, 51, .45) 55%, var(--navy) 64%); }
       .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
     }
     @media (min-width: 600px) {
@@ -1187,7 +1185,8 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Pear" data-max="85">
           <div class="boat-photo">
-            <img src="../assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
+            <img class="boat-bg" src="../assets/cards/pear-85.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-pear-85" style="--em: 3.28">Pear</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>85 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2026</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>85 max guests</span></li></ul>
@@ -1196,18 +1195,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 250,000 THB</p>
-              <p class="boat-unit">for 30 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pear.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pear on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="pear-85.html" aria-label="Pear, From 250,000 THB, for 30 guests"></a>
+          <a class="boat-link" href="pear-85.html" aria-label="Pear, From 250,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Mermaid 78" data-max="20">
           <div class="boat-photo">
-            <img src="../assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
+            <img class="boat-bg" src="../assets/cards/mermaid-78.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-mermaid-78" style="--em: 8.20">Mermaid 78</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1216,18 +1215,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 280,000 THB</p>
-              <p class="boat-unit">for 12 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Mermaid%2078.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Mermaid 78 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="mermaid-78.html" aria-label="Mermaid 78, From 280,000 THB, for 12 guests"></a>
+          <a class="boat-link" href="mermaid-78.html" aria-label="Mermaid 78, From 280,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Pearl" data-max="20">
           <div class="boat-photo">
-            <img src="../assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
+            <img class="boat-bg" src="../assets/cards/pearl.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-pearl" style="--em: 4.10">Pearl</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1236,18 +1235,18 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 320,000 THB</p>
-              <p class="boat-unit">for 8 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Pearl.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Pearl on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="pearl.html" aria-label="Pearl, From 320,000 THB, for 8 guests"></a>
+          <a class="boat-link" href="pearl.html" aria-label="Pearl, From 320,000 THB"></a>
         </article>
         <article class="boat boat-card" data-boat="Sira" data-max="15">
           <div class="boat-photo">
-            <img src="../assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
+            <img class="boat-bg" src="../assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-sira" style="--em: 3.28">Sira</h3>
               <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1256,14 +1255,13 @@
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 370,000 THB</p>
-              <p class="boat-unit">for 10 guests</p>
             </div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Sira.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Sira on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
             </a>
           </div>
-          <a class="boat-link" href="sira.html" aria-label="Sira, From 370,000 THB, for 10 guests"></a>
+          <a class="boat-link" href="sira.html" aria-label="Sira, From 370,000 THB"></a>
         </article>
         </div>
         <a class="text-link" href="../fleet.html">
