@@ -848,6 +848,33 @@ svg { display: block; }
 .qualifier .send-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .qualifier .send-pair .button { width: 100%; }
 
+
+.hero-book { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: 22px; padding: 6px; border-radius: 14px; background: #fff; color: var(--ink); box-shadow: 0 18px 44px rgba(6, 28, 40, .28); }
+.hb-field { position: relative; min-width: 0; padding: 9px 12px 10px; border-bottom: 1px solid rgba(16, 45, 59, .1); }
+.hb-field:nth-child(odd) { border-right: 1px solid rgba(16, 45, 59, .1); }
+.hb-field label { display: block; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .02em; line-height: 1.4; }
+.hb-field select, .hb-field input { display: block; width: 100%; min-width: 0; height: 30px; margin: 2px 0 0; padding: 0 20px 0 0; border: 0; border-radius: 0; background: transparent; color: var(--navy); font: 700 15px/1.2 var(--sans); outline: none; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.hb-field input[type="date"] { padding-right: 0; color-scheme: light; }
+.hb-field:has(select)::after { content: ""; position: absolute; right: 14px; bottom: 21px; width: 7px; height: 7px; border-right: 1.5px solid var(--teal); border-bottom: 1.5px solid var(--teal); transform: rotate(45deg); pointer-events: none; }
+.hb-field:focus-within { border-radius: 10px; box-shadow: inset 0 0 0 2px var(--sea); }
+.hb-go { grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; margin-top: 6px; border: 0; border-radius: 10px; background: var(--navy); color: #fff; font: 800 15px/1 var(--sans); cursor: pointer; transition: background-color .18s; }
+.hb-go:hover { background: var(--teal); }
+.hb-go:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
+.hb-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+@media (max-width: 359px) {
+  .hero-book { grid-template-columns: minmax(0, 1fr); }
+  .hb-field:nth-child(odd) { border-right: 0; }
+}
+@media (min-width: 900px) {
+  .hero-book { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: center; max-width: 1000px; margin-top: 30px; padding: 8px 8px 8px 10px; border-radius: 16px; }
+  .hb-field, .hb-field:nth-child(odd) { padding: 8px 16px; border: 0; border-right: 1px solid rgba(16, 45, 59, .12); }
+  .hb-field:nth-child(4) { border-right: 0; }
+  .hb-field:has(select)::after { bottom: 19px; right: 18px; }
+  .hb-go { grid-column: auto; width: 58px; height: 58px; min-height: 0; margin: 0 0 0 6px; border-radius: 50%; }
+  .hb-go span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hb-search { width: 22px; height: 22px; }
+}
+
 </style>
 </head>
 <body>
@@ -893,7 +920,48 @@ svg { display: block; }
       <h1 id="hero-title">Twenty-five of your people. A 102-foot yacht. A butler pouring the first glass.</h1>
       <p class="hero-copy">That is Matia Sou. Butler, private massage therapist and jacuzzi in the rate. From 450,000 THB for 8 hours and your first 10 guests.</p>
       <a class="button" href="#qualifier" data-open-qualifier><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
-    </div>
+      <form class="hero-book" action="fleet.html" method="get" role="search" aria-label="Find a yacht">
+        <div class="hb-field">
+          <label for="hb-dest">Destination</label>
+          <select id="hb-dest" name="dest">
+              <option value="">All destinations</option>
+              <option value="Phi Phi Islands">Phi Phi Islands</option>
+              <option value="Racha Islands">Racha Islands</option>
+              <option value="Hong Island, Krabi">Hong Island, Krabi</option>
+              <option value="4 Islands, Krabi">4 Islands, Krabi</option>
+              <option value="Phang Nga Bay">Phang Nga Bay</option>
+              <option value="Khai and Maiton">Khai and Maiton</option>
+              <option value="Similan Islands">Similan Islands</option>
+              <option value="Surin Islands">Surin Islands</option>
+          </select>
+        </div>
+        <div class="hb-field">
+          <label for="hb-date">Date</label>
+          <input id="hb-date" name="date" type="date">
+        </div>
+        <div class="hb-field">
+          <label for="hb-type">Yacht type</label>
+          <select id="hb-type" name="type">
+              <option value="">All types</option>
+              <option value="motor">Motor yacht</option>
+              <option value="catamaran">Power catamaran</option>
+              <option value="sport">Sport yacht</option>
+              <option value="superyacht">Superyacht</option>
+          </select>
+        </div>
+        <div class="hb-field">
+          <label for="hb-price">Price range</label>
+          <select id="hb-price" name="budget">
+              <option value="">Any price</option>
+              <option value="100000">Up to 100,000 THB</option>
+              <option value="150000">Up to 150,000 THB</option>
+              <option value="250000">Up to 250,000 THB</option>
+              <option value="500000">Up to 500,000 THB</option>
+          </select>
+        </div>
+        <button class="hb-go" type="submit"><svg class="hb-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
+      </form>
+      </div>
   </section>
 
 

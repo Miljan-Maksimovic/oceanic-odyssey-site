@@ -1071,6 +1071,8 @@
     .filter-field select:focus-visible, .filter-field input:focus-visible { outline: 3px solid #299CA2; outline-offset: 2px; }
     .filter-hint { margin: 8px 0 0; color: #9A3B1C; font-size: 13px; font-weight: 600; line-height: 1.4; }
     .filter-hint[hidden] { display: none; }
+    .fleet-trip { margin: 18px 0 0; padding: 12px 16px; border-radius: 3px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1.5; }
+    .fleet-trip[hidden] { display: none; }
     .filter-groups { margin-top: 24px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip {
@@ -1330,6 +1332,7 @@
           <p class="filter-hint" id="f-budget-hint" hidden>Please enter the amount in THB.</p>
         </div>
       </div>
+      <p class="fleet-trip" id="fleet-trip" role="status" hidden></p>
     </form>
 
     <div class="fleet-empty wrap" id="fleet-empty" role="status" hidden>
@@ -2114,6 +2117,38 @@
         apply();
         type.focus();
       });
+
+      const q = new URLSearchParams(location.search);
+      const qt = q.get('type'), qb = Number(q.get('budget'));
+      if (qt && [...type.options].some(o => o.value === qt)) type.value = qt;
+      if (qb > 0) budget.value = qb.toLocaleString('en-US') + ' THB';
+      if (qt || qb) apply();
+      const dest = (q.get('dest') || '').slice(0, 60);
+      let day = '';
+      const m = (q.get('date') || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (m) {
+        const dt = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+        if (!Number.isNaN(dt.getTime())) day = new Intl.DateTimeFormat('en-GB', {weekday: 'long', day: 'numeric', month: 'long'}).format(dt);
+      }
+      if (dest || day) {
+        const add = a => {
+          try {
+            const u = new URL(a.href);
+            let t = u.searchParams.get('text');
+            if (t === null) return;
+            if (day && t.includes('Date: .')) t = t.replace('Date: .', 'Date: ' + day + '.');
+            else if (day) t = t.replace(/\s+$/, '') + ' Date: ' + day + '.';
+            if (dest && t.includes('Group size:')) t = t.replace('Group size:', 'Destination: ' + dest + '. Group size:');
+            else if (dest) t = t.replace(/\s+$/, '') + ' Destination: ' + dest + '.';
+            u.searchParams.set('text', t);
+            a.href = u.toString();
+          } catch (e) {}
+        };
+        document.querySelectorAll('a.boat-enquire, .intro .cta-pair a, .fleet-close .cta-pair a').forEach(add);
+        const note = $('fleet-trip');
+        note.textContent = 'Your day: ' + [dest, day].filter(Boolean).join(', ') + '. Enquire on any yacht and we check it for you.';
+        note.hidden = false;
+      }
     })();
   </script>
   <script src="assets/destinations.js" defer></script>
