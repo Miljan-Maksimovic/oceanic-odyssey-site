@@ -891,31 +891,7 @@
       text-transform: uppercase;
     }
     .yp-card .yp-price { margin-top: 16px; font-size: 24px; }
-    .yp-form { display: grid; gap: 13px; margin-top: 22px; }
-    .yp-form h3 { font-size: 16px; font-weight: 800; line-height: 1.5; letter-spacing: 0; }
-    .yp-field { display: grid; gap: 6px; min-width: 0; }
-    .yp-field label { color: #D8E6E9; font-size: 13px; font-weight: 600; line-height: 1.5; }
-    .yp-field input, .yp-field textarea {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      height: 48px;
-      padding: 10px 12px;
-      border: 1px solid rgba(214, 236, 237, .33);
-      border-radius: 3px;
-      outline: none;
-      background: var(--deep);
-      color: #fff;
-      font: 400 16px/1.5 var(--sans);
-      color-scheme: dark;
-      transition: border-color .18s, box-shadow .18s;
-    }
-    .yp-field textarea { height: auto; min-height: 92px; resize: vertical; }
-    .yp-field input:focus, .yp-field textarea:focus { border-color: var(--sea); box-shadow: 0 0 0 2px rgba(184, 232, 223, .16); }
-    .yp-pair { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 12px; }
-    .yp-form .yp-btn { margin-top: 3px; }
-    .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
-    .yp-or::before, .yp-or::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, .17); }
+    .yp-card .yp-form { margin-top: 22px; }
     .yp-card .yp-chat { grid-template-columns: minmax(0, 1fr); }
     .yp-process { min-width: 0; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line); }
     .yp-h2 { color: var(--navy); font-size: 28px; font-weight: 800; line-height: 1.3; letter-spacing: -.035em; }
@@ -948,7 +924,6 @@
     @media (max-width: 359px) {
       .yp-specs li { font-size: 12px; }
       .yp-card { padding-inline: 18px; }
-      .yp-pair { grid-template-columns: minmax(0, 1fr); }
       .yp-chat { grid-template-columns: minmax(0, 1fr); }
     }
     @media (min-width: 600px) {
@@ -1004,8 +979,6 @@
       }
       .yp-card-name { font-size: min(30px, calc((clamp(290px, 28vw, 350px) - 46px) / var(--em, 6))); }
       .yp-card .yp-price { font-size: clamp(21px, 1.9vw, 24px); }
-      .yp-field input { font-size: 15px; }
-      .yp-field input[type="date"] { padding-inline: 8px; font-size: 14px; }
       .yp-process { margin-top: 48px; padding-top: 30px; }
       .yp-steps li { grid-template-columns: 56px minmax(0, 1fr); gap: 22px; }
       .yp-steps li::before { font-size: 43px; }
@@ -1022,6 +995,63 @@
     @media (min-width: 1200px) {
       .yp-specs li { font-size: 13px; }
     }
+
+    
+    .yp-form { display: grid; gap: 13px; text-align: left; }
+    .yp-form h3 { margin: 0; color: #fff; font-size: 16px; font-weight: 800; line-height: 1.5; letter-spacing: 0; }
+    .yp-field { display: grid; gap: 6px; min-width: 0; }
+    .yp-field label { color: #D8E6E9; font-size: 13px; font-weight: 600; line-height: 1.5; }
+    .yp-field input, .yp-field textarea {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      height: 48px;
+      margin: 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(214, 236, 237, .33);
+      border-radius: 3px;
+      outline: none;
+      background: var(--deep, #061C28);
+      color: #fff;
+      font: 400 16px/1.5 var(--sans);
+      color-scheme: dark;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .yp-field textarea { height: auto; min-height: 92px; resize: vertical; }
+    .yp-field input:focus, .yp-field textarea:focus { border-color: var(--sea); box-shadow: 0 0 0 2px rgba(184, 232, 223, .16); }
+    .yp-pair { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 12px; }
+    .yp-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+    .yp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-width: 0;
+      min-height: 52px;
+      margin: 0;
+      padding: 0 12px;
+      border: 1px solid var(--sea);
+      border-radius: 3px;
+      background: var(--sea);
+      color: var(--navy);
+      font: 800 15px/1.2 var(--sans);
+      text-align: center;
+      cursor: pointer;
+      transition: background-color .18s, border-color .18s;
+    }
+    .yp-btn:hover { border-color: #D1F1EA; background: #D1F1EA; }
+    .yp-btn:disabled { cursor: progress; opacity: .75; }
+    .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+    .yp-form .yp-btn { margin-top: 3px; }
+    .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
+    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-failed { color: #FFD9C7; }
+    .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
+    .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
+    .yp-or::before, .yp-or::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, .17); }
+    @media (max-width: 359px) { .yp-pair { grid-template-columns: minmax(0, 1fr); } }
+    @media (min-width: 900px) { .yp-field input { font-size: 15px; } .yp-field input[type="date"] { padding-inline: 8px; font-size: 14px; } }
 
 
     @media (prefers-reduced-motion: reduce) {
@@ -1095,8 +1125,11 @@
           <h2 class="yp-card-name" id="request-name" style="--em: 4.10">Lewis 4.S</h2>
           <p class="yp-price">From 99,900 THB</p>
           <p class="yp-terms">Full day, 8 hours</p>
-          <form class="yp-form" id="request-form" action="mailto:oceanicodysseyyachtphuket@gmail.com" method="post" enctype="text/plain" data-to="oceanicodysseyyachtphuket@gmail.com" data-yacht="Lewis 4.S">
+          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Yacht" data-topic="Lewis 4.S" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
+            <input type="hidden" name="_subject" value="Charter request: Lewis 4.S">
+            <input type="hidden" name="_template" value="table">
+            <input class="yp-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="yp-field">
               <label for="request-full-name">Full name</label>
               <input id="request-full-name" name="name" type="text" autocomplete="name" required>
@@ -1120,6 +1153,7 @@
               <textarea id="request-notes" name="requests" rows="3"></textarea>
             </div>
             <button class="yp-btn" type="submit">Send a request</button>
+            <p class="yp-status" role="status" aria-live="polite" hidden></p>
           </form>
           <p class="yp-or">Or message us</p>
           <div class="yp-chat">
@@ -1283,22 +1317,53 @@
   </script>
   <script>
     (() => {
-      const form = document.getElementById('request-form');
-      if (!form) return;
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const f = new FormData(form);
-        const yacht = form.dataset.yacht;
-        const body = [
-          'Yacht: ' + yacht,
-          'Name: ' + (f.get('name') || ''),
-          'Email: ' + (f.get('email') || ''),
-          'Date: ' + (f.get('date') || ''),
-          'Guests: ' + (f.get('guests') || ''),
-          'Requests: ' + (f.get('requests') || '')
-        ].join('\n');
-        window.location.href = 'mailto:' + form.dataset.to + '?subject=' +
-          encodeURIComponent('Charter request: ' + yacht) + '&body=' + encodeURIComponent(body);
+      document.querySelectorAll('form.js-request').forEach(form => {
+        const button = form.querySelector('button[type="submit"]');
+        const status = form.querySelector('.yp-status');
+        const label = button.textContent;
+        const say = (text, cls) => {
+          status.textContent = text;
+          status.className = 'yp-status' + (cls ? ' ' + cls : '');
+          status.hidden = false;
+        };
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const f = new FormData(form);
+          if (f.get('_honey')) return;
+          const data = {
+            _subject: f.get('_subject'),
+            _template: 'table',
+            _captcha: 'false',
+            [form.dataset.topicLabel]: form.dataset.topic,
+            name: f.get('name'),
+            email: f.get('email'),
+            _replyto: f.get('email'),
+            date: f.get('date'),
+            guests: f.get('guests'),
+            requests: f.get('requests') || '',
+            page: location.href.split('#')[0]
+          };
+          button.disabled = true;
+          button.textContent = form.dataset.sending;
+          try {
+            const res = await fetch(form.dataset.endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            const out = await res.json();
+            if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
+            form.classList.add('is-sent');
+            say(form.dataset.sent, 'is-sent');
+            const params = { topic: form.dataset.topic, page_path: location.pathname };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          } catch (err) {
+            say(form.dataset.failed, 'is-failed');
+            button.disabled = false;
+            button.textContent = label;
+          }
+        });
       });
     })();
   </script>
