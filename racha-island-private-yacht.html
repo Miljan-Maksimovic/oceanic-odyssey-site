@@ -837,6 +837,8 @@
     
     .intro-feature { display: grid; gap: 22px; width: 100%; max-width: 1160px; margin: 18px auto 0; }
     .intro-feature .intro-copy p + p { margin-top: 14px; }
+    .intro-feature .intro-copy p:not(.lead) { font-size: 17px; line-height: 1.7; }
+    @media (min-width: 900px) { .intro-feature .intro-copy .lead { font-size: 20px; } .intro-feature .intro-copy p:not(.lead) { font-size: 18px; } }
     .intro-photo { margin: 0; overflow: hidden; border-radius: 3px; background: var(--ice); }
     .intro-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
     @media (min-width: 900px) { .intro-feature { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 48px; align-items: center; margin-top: 30px; } }
@@ -1362,7 +1364,7 @@
         <div class="dest-module module-others">
         <div class="dest-cards dest-others-cards">
           <a class="dest-card" href="krabi-hong-island-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="The gap in the cliffs at the lagoon of Hong Island, Krabi" loading="lazy" decoding="async"><h3 class="card-name">Hong Island, Krabi</h3></div>
+            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="The gap in the cliffs at the lagoon of Hong Island, Krabi" loading="lazy" decoding="async"><h3 class="card-name">Hong Lagoon, Krabi</h3></div>
             <div class="card-body">
               <p class="card-verdict">Fits an 8-hour day</p>
               <span class="card-link"><span>See Hong Island</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
