@@ -712,6 +712,16 @@
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
     .yp-or::before, .yp-or::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, .17); }
+    
+    .yp-light .yp-form h3 { color: var(--navy); }
+    .yp-light .yp-field label { color: var(--ink); }
+    .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
+    .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
+    .yp-light .yp-status { color: var(--ink); }
+    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-failed { color: #9A3B1C; }
+    .yp-light .yp-or { color: var(--muted); }
+    .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
     @media (max-width: 359px) { .yp-pair { grid-template-columns: minmax(0, 1fr); } }
     @media (min-width: 900px) { .yp-field input { font-size: 15px; } .yp-field input[type="date"] { padding-inline: 8px; font-size: 14px; } }
 
@@ -1444,6 +1454,9 @@
             requests: f.get('requests') || '',
             page: location.href.split('#')[0]
           };
+          for (const [k, v] of f.entries()) {
+            if (!(k in data) && !k.startsWith('_') && v) data[k] = v;
+          }
           button.disabled = true;
           button.textContent = form.dataset.sending;
           try {
