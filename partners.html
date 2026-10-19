@@ -599,6 +599,10 @@
       .hero-bottom .cta-pair { grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; }
     }
 
+    
+    @media (max-width: 599px) { .nav-links a[href$="questions.html"] { display: none; } }
+    @media (max-width: 359px) { .header-inner { gap: 8px; } .nav-links { gap: 12px; } .nav-links a { font-size: 10.5px; letter-spacing: .06em; } }
+    @media (min-width: 600px) and (max-width: 899px) { .nav-links { gap: 18px; } .nav-links a { letter-spacing: .08em; } }
 
     .intro {
       position: relative;
@@ -830,10 +834,10 @@
     <div class="header-inner wrap">
       <a class="wordmark" href="index.html"><svg class="logo-mark" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="22" stroke="currentColor" stroke-width="1.2"/><path d="M8 27c6-7 12-7 18 0s12 7 18 0M8 34c6-7 12-7 18 0s12 7 18 0" stroke="currentColor" stroke-width="1.2"/></svg><span class="sr-only">OCEANIC ODYSSEY</span></a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="fleet.html">Yachts</a>
-        <a href="phuket-island-hopping-private-yacht.html">Places</a>
+        <a class="nav-wide" href="index.html">Home</a>
+        <a href="fleet.html">Yacht charter</a>
+        <a href="phuket-island-hopping-private-yacht.html">Destinations</a>
         <a href="questions.html">Questions</a>
-        <a class="nav-wide" href="index.html#amy">About</a>
         <a class="nav-wide header-contact" href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20to%20charter%20a%20yacht.%20Date%3A%20.%20Group%20size%3A%20.%20Introduced%20by%3A%20" target="_blank" rel="noopener">Contact</a>
       </nav>
     </div>
@@ -1169,7 +1173,7 @@
         </tbody>
       </table>
       <div class="rate-notes">
-        <p>Each yacht's page lists every rate by route and season, each extra guest and what the charter includes.</p>
+        <p>Message us for any yacht's rate by route and season, each extra guest and what the charter includes.</p>
         <p>Routes include Phang Nga Bay, Phi Phi, Racha, Hong Island, Khai, Maiton and Naka.</p>
       </div>
     </section>

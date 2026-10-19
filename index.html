@@ -476,22 +476,9 @@ svg { display: block; }
       white-space: nowrap;
     }
     
-    .boat-card .boat-spec {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px 0;
-      margin: 12px 0 0 -17px;
-      padding: 0;
-      clip-path: inset(0 0 0 17px);
-      list-style: none;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      line-height: 1.4;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .boat-card .boat-spec li { margin-left: 8px; padding-left: 8px; border-left: 1px solid rgba(16, 45, 59, .14); white-space: nowrap; }
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; gap: 9px 12px; margin: 14px 0 0; padding: 0; clip-path: none; list-style: none; color: var(--navy); font-size: 12px; font-weight: 700; line-height: 1.25; letter-spacing: 0; text-transform: none; }
+    .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
+    .boat-card .boat-spec .spec-icon { flex: 0 0 24px; width: 24px; height: 24px; padding: 4px; border-radius: 50%; background: var(--ice); color: var(--teal); }
     .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 18px; }
     .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(19px, 6.1vw, 23px); font-weight: 800; line-height: 1.35; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
     .boat-card .boat-unit { margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.5; }
@@ -749,9 +736,14 @@ svg { display: block; }
     .footer .credits-link:hover { opacity: 1; }
     @media (min-width: 700px) { .where-sub { font-size: 26px; } .where-block { margin-top: 72px; } }
 
+    
+    @media (max-width: 599px) { .nav-links a[href$="questions.html"] { display: none; } }
+    @media (max-width: 359px) { .header-inner { gap: 8px; } .nav-links { gap: 12px; } .nav-links a { font-size: 10.5px; letter-spacing: .06em; } }
+    @media (min-width: 600px) and (max-width: 899px) { .nav-links { gap: 18px; } .nav-links a { letter-spacing: .08em; } }
 </style>
 </head>
 <body>
+  <svg class="spec-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="spec-length" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 12 12)"><rect x="2.5" y="8" width="19" height="8" rx="1.5"/><path d="M7 8v3m4-3v4m4-4v3m4-3v4"/></g></g></symbol><symbol id="spec-year" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-12 4h2m4 0h2m-8 3h2m4 0h2"/></g></symbol><symbol id="spec-cabins" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M3 21h18m-7-9h1"/></g></symbol><symbol id="spec-guests" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="3"/><path d="M2 21v-3a6 6 0 0 1 12 0v3m2-7a5 5 0 0 1 6 5v2"/><circle cx="17" cy="8" r="2.5"/></g></symbol><symbol id="spec-overnight" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z"/></g></symbol></svg>
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
   <symbol id="wa" viewBox="0 0 24 24">
     <path d="M20.5 11.7a8.7 8.7 0 0 1-12.8 7.7L3 20.7l1.3-4.6a8.7 8.7 0 1 1 16.2-4.4Z"/>
@@ -778,7 +770,7 @@ svg { display: block; }
         <path d="M8 27c6-7 12-7 18 0s12 7 18 0M8 34c6-7 12-7 18 0s12 7 18 0" stroke="currentColor" stroke-width="1.2"/>
       </svg>
     </a>
-    <div class="nav-links"><a href="fleet.html">Yachts</a><a href="phuket-island-hopping-private-yacht.html">Places</a><a href="questions.html">Questions</a><a class="nav-wide" href="#amy">About</a><a class="nav-wide" href="#contact">Contact</a></div>
+    <div class="nav-links"><a class="nav-wide" href="index.html" aria-current="page">Home</a><a href="fleet.html">Yacht charter</a><a href="phuket-island-hopping-private-yacht.html">Destinations</a><a href="questions.html">Questions</a><a class="nav-wide" href="#contact">Contact</a></div>
     </nav>
 
 <main>
@@ -923,7 +915,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-rose-65">Rose 65</h3>
           </div>
-          <ul class="boat-spec"><li>65 ft</li><li>2003</li><li>3 cabins</li><li>20 guests</li><li>Sleeps 6</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>65 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 135,000 THB</p>
@@ -943,7 +935,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-ravina-80">Ravina 80</h3>
           </div>
-          <ul class="boat-spec"><li>80 ft</li><li>2005</li><li>4 cabins</li><li>25 guests</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>80 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 155,000 THB</p>
@@ -963,7 +955,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-jackie">Jackie</h3>
           </div>
-          <ul class="boat-spec"><li>60 ft</li><li>2012</li><li>3 cabins</li><li>15 guests</li><li>Sleeps 6</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 190,000 THB</p>
@@ -983,7 +975,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-pandora">Pandora</h3>
           </div>
-          <ul class="boat-spec"><li>62 ft</li><li>2021</li><li>3 cabins</li><li>10 guests</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 220,000 THB</p>
@@ -1003,7 +995,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-meraki">Meraki</h3>
           </div>
-          <ul class="boat-spec"><li>76 ft</li><li>2005</li><li>4 cabins</li><li>25 guests</li><li>Sleeps 8</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 220,000 THB</p>
@@ -1023,7 +1015,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-pearl">Pearl</h3>
           </div>
-          <ul class="boat-spec"><li>78 ft</li><li>2011</li><li>4 cabins</li><li>20 guests</li><li>Sleeps 8</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 320,000 THB</p>
@@ -1043,7 +1035,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-moonglider">Moonglider</h3>
           </div>
-          <ul class="boat-spec"><li>90 ft</li><li>2010</li><li>3 cabins</li><li>18 guests</li><li>Sleeps 6</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>90 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2010</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>18 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 375,000 THB</p>
@@ -1063,7 +1055,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-matia-sou">Matia Sou</h3>
           </div>
-          <ul class="boat-spec"><li>102 ft</li><li>2004</li><li>4 cabins</li><li>25 guests</li><li>Sleeps 8</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 450,000 THB</p>
@@ -1083,7 +1075,7 @@ svg { display: block; }
           <div class="boat-band">
             <h3 class="boat-name" id="home-simon">Simon</h3>
           </div>
-          <ul class="boat-spec"><li>130 ft</li><li>2005</li><li>5 cabins</li><li>44 guests</li><li>Sleeps 10</li></ul>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 overnight</span></li></ul>
           <div class="boat-foot">
             <div>
               <p class="boat-price">From 720,000 THB</p>
@@ -1179,7 +1171,7 @@ svg { display: block; }
         <details class="faq-row" name="faq" data-faq="T2">
           <summary><span>What is included</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
           <div class="faq-answer">
-            <p class="faq-text">Every yacht page lists captain and crew, towels, fruit and snacks, snorkel gear, travel insurance and VAT at 7%. Most add Thai lunch, water, soft drinks, WiFi and transport for 10 guests. Each page shows its own list.</p>
+            <p class="faq-text">Every charter includes captain and crew, towels, fruit and snacks, snorkel gear, travel insurance and VAT at 7%. Most add Thai lunch, water, soft drinks, WiFi and transport for 10 guests. Your quote lists what your yacht includes.</p>
             <a class="faq-link" href="yacht-charter-prices-phuket.html#what-each-rate-includes"><span>What each rate includes</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
         </details>
