@@ -977,6 +977,28 @@
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
     
+    .guide-hero .hero-wx { position: relative; z-index: 1; min-width: 0; margin: 18px 0 0; }
+    .hero-wx .wx { margin: 0; }
+    .hero-wx .wx-card { max-width: none; }
+    @media (min-width: 900px) {
+      .guide-hero .hero-wx { grid-area: 1 / 1; justify-self: end; align-self: end; width: 310px; margin: 0 0 40px; }
+      .guide-hero .hero-head { justify-self: start; width: calc(100% - 340px); max-width: calc(100% - 340px); }
+      .guide-hero .hero-glance { column-gap: 26px; flex-wrap: nowrap; }
+      .guide-hero .hero-glance div { flex: 0 1 auto; }
+      .guide-hero .hero-glance dd { font-size: 14.5px; white-space: normal; }
+      .hero-wx .wx-card { padding: 14px 0 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .25); }
+      .hero-wx .wx-place { font-size: 17px; }
+      .hero-wx .wx-temp { font-size: 46px; }
+      .hero-wx .wx-sky { font-size: 14px; }
+      .hero-wx .wx-hl { font-size: 13px; }
+      .hero-wx .wx-days { margin-top: 10px; }
+      .hero-wx .wx-day { min-height: 30px; padding: 0 11px; font-size: 12px; }
+      .hero-wx .wx-panel { margin-top: 10px; padding: 8px 0; }
+      .hero-wx .wx-strip { padding-top: 8px; }
+      .hero-wx .wx-hour { flex-basis: 50px; }
+      .hero-wx .wx-t { font-size: 15px; }
+    }
+    
     .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
     .guide-hero .hero-head h1 { grid-area: auto; align-self: auto; max-width: none; padding: 0; }
     .hero-glance { display: flex; gap: 22px; margin: 16px -24px 0; padding: 0 24px 2px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }

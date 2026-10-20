@@ -928,6 +928,28 @@
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
     
+    .guide-hero .hero-wx { position: relative; z-index: 1; min-width: 0; margin: 18px 0 0; }
+    .hero-wx .wx { margin: 0; }
+    .hero-wx .wx-card { max-width: none; }
+    @media (min-width: 900px) {
+      .guide-hero .hero-wx { grid-area: 1 / 1; justify-self: end; align-self: end; width: 310px; margin: 0 0 40px; }
+      .guide-hero .hero-head { justify-self: start; width: calc(100% - 340px); max-width: calc(100% - 340px); }
+      .guide-hero .hero-glance { column-gap: 26px; flex-wrap: nowrap; }
+      .guide-hero .hero-glance div { flex: 0 1 auto; }
+      .guide-hero .hero-glance dd { font-size: 14.5px; white-space: normal; }
+      .hero-wx .wx-card { padding: 14px 0 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .25); }
+      .hero-wx .wx-place { font-size: 17px; }
+      .hero-wx .wx-temp { font-size: 46px; }
+      .hero-wx .wx-sky { font-size: 14px; }
+      .hero-wx .wx-hl { font-size: 13px; }
+      .hero-wx .wx-days { margin-top: 10px; }
+      .hero-wx .wx-day { min-height: 30px; padding: 0 11px; font-size: 12px; }
+      .hero-wx .wx-panel { margin-top: 10px; padding: 8px 0; }
+      .hero-wx .wx-strip { padding-top: 8px; }
+      .hero-wx .wx-hour { flex-basis: 50px; }
+      .hero-wx .wx-t { font-size: 15px; }
+    }
+    
     .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
     .guide-hero .hero-head h1 { grid-area: auto; align-self: auto; max-width: none; padding: 0; }
     .hero-glance { display: flex; gap: 22px; margin: 16px -24px 0; padding: 0 24px 2px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
@@ -1210,22 +1232,16 @@
 
     
     
-    .dest-cards { display: grid; grid-auto-flow: column; grid-auto-columns: 82%; gap: 12px; margin: 30px -24px 0; padding: 0 24px 6px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 24px; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
-    .dest-cards .dest-card { scroll-snap-align: start; }
+    
+    .dest-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 26px 0 0; padding: 0; }
     .dest-card[hidden] { display: none; }
-    .dest-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; isolation: isolate; border-radius: 18px; background: #fff; color: var(--ink); }
-    .dest-card .card-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--teal); }
-    .dest-card .card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-    .dest-card:hover .card-photo img { transform: scale(1.035); }
-    .dest-card .card-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(6, 28, 40, .78) 100%); }
-    .dest-card .card-name { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 15px; margin: 0; color: #fff; font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: .09em; line-height: 1.2; text-transform: uppercase; }
-    .dest-card .card-body { display: flex; flex-direction: column; flex: 1; padding: 16px 18px 18px; background: var(--ice); }
-    .dest-card .card-time { font-size: 17px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.35; }
-    .dest-card .card-from { color: var(--muted); font-size: 14px; line-height: 1.45; }
-    .dest-card .card-verdict { margin-top: 10px; color: var(--teal); font-size: 14px; font-weight: 700; }
-    .dest-card .card-link { display: inline-flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 12px; color: var(--teal); font-size: 14px; font-weight: 800; }
-    .dest-card .card-link .arrow { width: 18px; height: 18px; transition: transform .2s; }
-    .dest-card:hover .card-link .arrow { transform: translateX(4px); }
+    .dest-card { position: relative; display: block; min-width: 0; overflow: hidden; isolation: isolate; border-radius: 4px; background: var(--teal); color: #fff; }
+    .dest-card .card-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+    .dest-card .card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .dest-card:hover .card-photo img { transform: scale(1.04); }
+    .dest-card .card-photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(6, 28, 40, .5) 0%, rgba(6, 28, 40, .26) 75%); }
+    .dest-card .card-name { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 10px; color: #fff; font-family: var(--serif); font-size: clamp(17px, 4.6vw, 22px); font-weight: 400; letter-spacing: .01em; line-height: 1.2; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .5); text-wrap: balance; }
+    .dest-card:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
 
     @media (min-width: 700px) {
       .place { left: 14px; right: auto; top: 14px; bottom: auto; width: 300px; max-width: none; margin: 0; }
@@ -1235,7 +1251,7 @@
       .dest-map { height: 420px; }
       .dest-map[data-dest-map="all"] { height: 480px; }
       .dest-gallery { gap: 12px; }
-      .dest-cards { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 30px 0 0; padding: 0; overflow: visible; scroll-snap-type: none; }
+      .dest-cards { gap: 14px; margin-top: 30px; }
     }
     @media (min-width: 700px) {
       .dest-glance dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 32px; }
@@ -1253,7 +1269,8 @@
       .dest-gallery { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; }
       .dest-gallery figure:first-child { grid-column: auto; }
       .dest-gallery figure:first-child .shot { aspect-ratio: 4 / 3; }
-      .dest-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+      .dest-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .dest-card .card-name { font-size: 30px; }
       .dest-others-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
   </style>
@@ -1312,67 +1329,31 @@
         <div class="dest-module module-cards">
         <div class="dest-cards">
           <a class="dest-card" href="phi-phi-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/phi-phi-islands/maya-bay-1200.jpg" width="1200" height="900" alt="Maya Bay on Phi Phi Leh, turquoise water between sheer limestone cliffs" loading="lazy" decoding="async"><h3 class="card-name">Phi Phi Islands</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See Phi Phi</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
+            <div class="card-photo"><img src="assets/destinations/phi-phi-islands/phi-phi-leh-amy-1200.jpg" width="1200" height="675" alt="The limestone cliffs of Phi Phi Leh over blue water, yachts at anchor below" loading="lazy" decoding="async"><h3 class="card-name">Phi Phi Islands</h3></div>
           </a>
           <a class="dest-card" href="racha-island-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="card-name">Racha Yai and Racha Noi</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See Racha</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="krabi-hong-island-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="The gap in the cliffs at the lagoon of Hong Island, Krabi" loading="lazy" decoding="async"><h3 class="card-name">Hong Lagoon, Krabi</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See Hong Island</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="four-islands-krabi-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See 4 Islands</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="similan-islands-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Overnight charter, 2 to 4 days, quoted case by case</p>
-              <span class="card-link"><span>See Similan</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="surin-islands-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/surin-islands/chong-khad-1200.jpg" width="1200" height="894" alt="Chong Khad Bay, with Ko Surin Tai across the water" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Overnight charter, 2 to 4 days, quoted case by case</p>
-              <span class="card-link"><span>See Surin</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="khai-islands-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/khai-islands/khai-nok-1200.jpg" width="1200" height="608" alt="Khai Nok from the water, white sand and turquoise shallows" loading="lazy" decoding="async"><h3 class="card-name">Khai Islands</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See Khai</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="maiton-island-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/maiton-island/maiton-aerial-1200.jpg" width="1200" height="675" alt="Maiton Island from above: white sand, a jetty and the reef in clear water" loading="lazy" decoding="async"><h3 class="card-name">Maiton Island</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See Maiton</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
           <a class="dest-card" href="phang-nga-bay-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/ko-tapu-1200.jpg" width="1200" height="789" alt="Ko Tapu in the green water off Khao Phing Kan, a longtail passing" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
-            <div class="card-body">
-              <p class="card-verdict">Fits an 8-hour day</p>
-              <span class="card-link"><span>See James Bond Island</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></span>
-            </div>
           </a>
         </div>
         </div>
