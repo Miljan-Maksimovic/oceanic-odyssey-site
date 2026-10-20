@@ -789,6 +789,11 @@
     .jump-row + .intro-copy { margin-top: 18px; }
     
     .guide-hero .hero-wx { position: relative; z-index: 1; min-width: 0; margin: 18px 0 0; }
+    @media (max-width: 899.98px) {
+      .guide-hero .hero-wx { z-index: 2; grid-area: 1 / 1; justify-self: end; align-self: start; margin: 128px 0 0; }
+      .guide-hero .hero-wx > .wx { display: none; }
+      .hero-wx.has-mini .wx-mini { display: block; }
+    }
     .hero-wx .wx { margin: 0; }
     .hero-wx .wx-card { max-width: none; }
     @media (min-width: 900px) {

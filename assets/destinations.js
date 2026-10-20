@@ -43,6 +43,11 @@
       skyText: {sun: "sunny", partly: "partly cloudy", cloud: "cloudy", rain: "rain", heavy: "heavy rain", thunder: "thunderstorms"},
       failed: "The forecast is not available just now.",
       failedLink: "See the forecast for {short} on Yr",
+      precip: "Precipitation",
+      precipIn: "{n} mm in 1h",
+      windLabel: "Wind",
+      mini: "Weather at {place} now: {t}°, {sky}. Open the forecast",
+      sheet: "Forecast for {place}",
       mapLocale: null
     },
     ru: {
@@ -77,6 +82,11 @@
       skyText: {sun: "солнечно", partly: "переменная облачность", cloud: "облачно", rain: "дождь", heavy: "сильный дождь", thunder: "гроза"},
       failed: "Прогноз сейчас недоступен.",
       failedLink: "Открыть прогноз на Yr: {short}",
+      precip: "Осадки",
+      precipIn: "{n} мм за 1 ч",
+      windLabel: "Ветер",
+      mini: "Погода сейчас, {place}: {t}°, {sky}. Открыть прогноз",
+      sheet: "Прогноз: {place}",
       mapLocale: {
         "AttributionControl.ToggleAttribution": "Показать или скрыть источники",
         "NavigationControl.ZoomIn": "Приблизить",
@@ -479,7 +489,10 @@
     var first = ts[0] && ts[0].data;
     var nowCode = first && ((first.next_1_hours && first.next_1_hours.summary.symbol_code) ||
                             (first.next_6_hours && first.next_6_hours.summary.symbol_code));
-    var now = first ? {temp: Math.round(first.instant.details.air_temperature), sky: words(nowCode), code: nowCode} : null;
+    var n1now = first && first.next_1_hours && first.next_1_hours.details;
+    var now = first ? {temp: Math.round(first.instant.details.air_temperature), sky: words(nowCode), code: nowCode,
+                       rain: n1now && n1now.precipitation_amount != null ? n1now.precipitation_amount : null,
+                       wind: first.instant.details.wind_speed != null ? windSpeed(first.instant.details.wind_speed) : null} : null;
     return {now: now, days: list, next24: hours.slice(0, 24)};
   }
 
@@ -616,6 +629,87 @@
     requestAnimationFrame(sync);
   }
 
+  var WIDE = window.matchMedia ? window.matchMedia("(min-width: 900px)") : null;
+
+  function span(cls, text) { return el("span", cls, text); }
+
+  function miniWidget(box, d, an) {
+    var holder = box._home || box.parentNode;
+    if (!holder || !holder.classList || !holder.classList.contains("hero-wx") || !an.now || !window.HTMLDialogElement) return;
+    box._home = holder;
+    var place = L(d, "wx_name", d.wx_name || d.short);
+    var today = an.days[0];
+    var btn = holder.querySelector(".wx-mini");
+    if (!btn) {
+      btn = el("button", "wx-mini");
+      btn.type = "button";
+      btn.setAttribute("aria-haspopup", "dialog");
+      btn.addEventListener("click", function () { openSheet(box, btn); });
+      holder.insertBefore(btn, holder.firstChild);
+    }
+    btn.setAttribute("aria-label", fmt(S.mini, {place: place, t: an.now.temp, sky: an.now.sky.toLowerCase()}));
+    btn.textContent = "";
+    var face = span("wx-mini-face");
+    face.setAttribute("aria-hidden", "true");
+    var top = span("wx-mini-top");
+    top.appendChild(span("wx-mini-place", place));
+    top.appendChild(icon(glyphKind(an.now.code)));
+    face.appendChild(top);
+    var mid = span("wx-mini-mid");
+    mid.appendChild(span("wx-mini-temp", an.now.temp + "°"));
+    var hl = span("wx-mini-hl");
+    hl.appendChild(span("wx-mini-hi", "\u2191" + today.hi + "°"));
+    hl.appendChild(span("wx-mini-lo", "\u2193" + today.lo + "°"));
+    mid.appendChild(hl);
+    face.appendChild(mid);
+    if (an.now.rain != null) {
+      face.appendChild(span("wx-mini-k", S.precip));
+      var v = span("wx-mini-v");
+      if (an.now.rain >= 0.1) v.appendChild(icon("rain"));
+      var mm = String(Math.round(an.now.rain * 10) / 10);
+      v.appendChild(document.createTextNode(fmt(S.precipIn, {n: LANG === "ru" ? mm.replace(".", ",") : mm})));
+      face.appendChild(v);
+    }
+    if (an.now.wind != null) {
+      face.appendChild(span("wx-mini-k", S.windLabel));
+      face.appendChild(span("wx-mini-v", fmt(S.windCell, {n: an.now.wind})));
+    }
+    btn.appendChild(face);
+    holder.classList.add("has-mini");
+    box._sheetLabel = fmt(S.sheet, {place: place});
+  }
+
+  function openSheet(box, btn) {
+    var dlg = box._sheet;
+    if (!dlg) {
+      dlg = box._sheet = el("dialog", "wx-sheet");
+      var inner = el("div", "wx-sheet-inner");
+      var close = el("button", "wx-sheet-close");
+      close.type = "button";
+      close.setAttribute("aria-label", S.close);
+      close.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+      inner.appendChild(close);
+      dlg.appendChild(inner);
+      document.body.appendChild(dlg);
+      close.addEventListener("click", function () { dlg.close(); });
+      dlg.addEventListener("click", function (ev) { if (ev.target === dlg) dlg.close(); });
+      dlg.addEventListener("close", function () {
+        box._home.appendChild(box);
+        document.documentElement.classList.remove("wx-open");
+        btn.focus({preventScroll: true});
+      });
+      if (WIDE) {
+        var shut = function () { if (WIDE.matches && dlg.open) dlg.close(); };
+        if (WIDE.addEventListener) WIDE.addEventListener("change", shut); else if (WIDE.addListener) WIDE.addListener(shut);
+      }
+    }
+    dlg.setAttribute("aria-label", box._sheetLabel || S.close);
+    dlg.firstChild.appendChild(box);   // after the close button, which takes the focus when it opens
+    document.documentElement.classList.add("wx-open");
+    dlg.showModal();
+    window.dispatchEvent(new Event("resize"));
+  }
+
   function yrLink(d) {
     return "https://www.yr.no/en/forecast/daily-table/" + d.lat.toFixed(4) + "," + d.lon.toFixed(4);
   }
@@ -667,6 +761,7 @@
       render(box, d, an);
       box.classList.remove("is-failed");
       box.classList.add("is-ready");
+      miniWidget(box, d, an);
       if (status) status.textContent = "";
     }).catch(function () {
       if (box._wx !== ticket) return;
@@ -683,7 +778,8 @@
 
   function startWeather(boxes) {
     if (!boxes.length) return;
-    whenNear(boxes, function (box) {
+    var onCover = boxes.filter(function (b) { return b.closest && b.closest(".hero-wx"); });
+    var go = function (box) {
       thinFont();
       getData().then(function (data) {
         var tabs = Array.prototype.slice.call(box.querySelectorAll("[data-wx-pick]"));
@@ -717,7 +813,9 @@
         var status = box.querySelector(".wx-status");
         if (status) status.textContent = S.failed;
       });
-    });
+    };
+    onCover.forEach(go);
+    whenNear(boxes.filter(function (b) { return onCover.indexOf(b) < 0; }), go);
   }
 
   function start() {

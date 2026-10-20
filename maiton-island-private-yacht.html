@@ -912,6 +912,11 @@
     .jump-row + .intro-copy { margin-top: 18px; }
     
     .guide-hero .hero-wx { position: relative; z-index: 1; min-width: 0; margin: 18px 0 0; }
+    @media (max-width: 899.98px) {
+      .guide-hero .hero-wx { z-index: 2; grid-area: 1 / 1; justify-self: end; align-self: start; margin: 128px 0 0; }
+      .guide-hero .hero-wx > .wx { display: none; }
+      .hero-wx.has-mini .wx-mini { display: block; }
+    }
     .hero-wx .wx { margin: 0; }
     .hero-wx .wx-card { max-width: none; }
     @media (min-width: 900px) {
@@ -1209,6 +1214,31 @@
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
     
+    .wx-mini { display: none; width: 158px; aspect-ratio: 1; margin: 0; padding: 12px 13px 11px; border: 1px solid rgba(255, 255, 255, .34); border-radius: 22px; background: transparent; color: #fff; font: 600 12px/1.25 var(--sans); font-variant-numeric: tabular-nums; text-align: left; text-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 12px rgba(0, 0, 0, .35); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .wx-mini:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .wx-mini-face { display: flex; flex-direction: column; width: 100%; height: 100%; }
+    .wx-mini-top { display: flex; align-items: center; gap: 6px; }
+    .wx-mini-place { flex: 1 1 auto; min-width: 0; overflow: hidden; font-size: 14px; font-weight: 700; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+    .wx-mini .wx-glyph { flex: 0 0 auto; width: 22px; height: 22px; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .3)); }
+    .wx-mini-mid { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; margin: 1px 0 4px; }
+    .wx-mini-temp { font-size: 40px; font-weight: 300; letter-spacing: -.03em; line-height: 1.05; }
+    .wx-mini-hl { display: flex; flex-direction: column; align-items: flex-end; padding-top: 4px; font-size: 12.5px; font-weight: 700; line-height: 1.3; }
+    .wx-mini-lo { color: rgba(255, 255, 255, .8); }
+    .wx-mini-k { margin-top: 3px; font-size: 12px; font-weight: 700; }
+    .wx-mini-v { display: flex; align-items: center; gap: 3px; color: rgba(255, 255, 255, .84); font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .wx-mini-v .wx-glyph { width: 16px; height: 16px; margin: -2px 0 -2px -2px; }
+    .wx-sheet { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; padding: calc(16px + env(safe-area-inset-top, 0px)) 12px calc(16px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; overscroll-behavior: contain; border: 0; background: transparent; }
+    .wx-sheet[open] { display: flex; flex-direction: column; justify-content: center; }
+    .wx-sheet::backdrop { background: rgba(6, 28, 40, .6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .wx-sheet-inner { position: relative; width: 100%; max-width: 440px; margin: 0 auto; }
+    .wx-sheet .wx { margin: 0; }
+    .wx-sheet .wx-card { box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+    .wx-sheet-close { position: absolute; z-index: 2; top: 10px; right: 10px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .22); color: #fff; cursor: pointer; }
+    .wx-sheet-close svg { width: 14px; height: 14px; }
+    .wx-sheet-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    html.wx-open { overflow: hidden; }
+
+    
     .dest-others { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
     .dest-others a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; }
     .dest-others a:hover { background: #DDF0EC; }
@@ -1222,8 +1252,9 @@
     .dest-card .card-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
     .dest-card .card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
     .dest-card:hover .card-photo img { transform: scale(1.04); }
-    .dest-card .card-photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(6, 28, 40, .5) 0%, rgba(6, 28, 40, .26) 75%); }
-    .dest-card .card-name { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 10px; color: #fff; font-family: var(--serif); font-size: clamp(17px, 4.6vw, 22px); font-weight: 400; letter-spacing: .01em; line-height: 1.2; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .5); text-wrap: balance; }
+    
+    .dest-card .card-photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 45% at center, rgba(6, 28, 40, .3) 0%, rgba(6, 28, 40, 0) 100%); }
+    .dest-card .card-name { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 10px; color: #fff; font-family: var(--serif); font-size: clamp(17px, 4.6vw, 22px); font-weight: 400; letter-spacing: .01em; line-height: 1.2; text-align: center; text-shadow: 0 1px 3px rgba(0, 0, 0, .45), 0 2px 18px rgba(0, 0, 0, .4); text-wrap: balance; }
     .dest-card:focus-visible { outline: 3px solid #299CA2; outline-offset: 3px; }
 
     @media (min-width: 700px) {
@@ -1492,7 +1523,7 @@
         <div class="dest-module module-others">
         <div class="dest-cards dest-others-cards">
           <a class="dest-card" href="phang-nga-bay-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/ko-tapu-1200.jpg" width="1200" height="789" alt="Ko Tapu in the green water off Khao Phing Kan, a longtail passing" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
+            <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200.jpg" width="1200" height="675" alt="Ko Tapu, the limestone spire off James Bond Island, under a blue sky" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
           </a>
           <a class="dest-card" href="phi-phi-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/phi-phi-islands/phi-phi-leh-amy-1200.jpg" width="1200" height="675" alt="The limestone cliffs of Phi Phi Leh over blue water, yachts at anchor below" loading="lazy" decoding="async"><h3 class="card-name">Phi Phi Islands</h3></div>
@@ -1501,7 +1532,7 @@
             <div class="card-photo"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="card-name">Racha Yai and Racha Noi</h3></div>
           </a>
           <a class="dest-card" href="krabi-hong-island-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-1200.jpg" width="1200" height="800" alt="The gap in the cliffs at the lagoon of Hong Island, Krabi" loading="lazy" decoding="async"><h3 class="card-name">Hong Lagoon, Krabi</h3></div>
+            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"><h3 class="card-name">Hong Lagoon, Krabi</h3></div>
           </a>
           <a class="dest-card" href="four-islands-krabi-private-yacht.html" hidden>
             <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>
