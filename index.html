@@ -686,7 +686,7 @@ svg { display: block; }
 
 
 .hs-charter { position: relative; overflow: hidden; background: #F3F1EC; }
-.hs-charter::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640' fill='none' stroke='%23C9C3B6' stroke-width='1'%3E%3Cpath d='M-40 520c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 560c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 600c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 640c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3Cpath d='M-40 480c120-60 180 40 300-20s160-180 300-140 120 120 160 100'/%3E%3C/svg%3E") right bottom / 640px 640px no-repeat; }
+.hs-charter::before { content: none; }
 .hs-charter-grid { position: relative; display: grid; gap: 30px; align-items: center; }
 .hs-charter-copy .section-label { color: #4F5E63; letter-spacing: .2em; }
 .hs-charter-copy h2 { max-width: 560px; color: #2B3A40; font-size: clamp(26px, 7.4vw, 38px); font-weight: 400; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
@@ -727,12 +727,14 @@ svg { display: block; }
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) saturate(1.3) brightness(.78); transform: none; }
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(18, 70, 100, .12) 0%, rgba(14, 58, 84, .38) 60%, rgba(10, 42, 62, .55) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
+    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
+    
+    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: -22px; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
-    .boat-card .boat-cover { position: relative; inset: auto; margin-top: -22px; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
+    
+    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 92px; margin-top: auto; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
     .boat-card .boat-cover::after { content: none; }
     .boat-card .boat-name {
       position: static;
@@ -775,6 +777,7 @@ svg { display: block; }
     .boat-card { container-type: inline-size; }
     @container (max-width: 340px) {
       .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
+      .boat-card .boat-cover { min-height: 86px; }
     }
     @media (min-width: 600px) {
       .boat-card .boat-price { font-size: 21px; }
@@ -874,9 +877,13 @@ svg { display: block; }
 .find-go:hover { background: var(--teal); }
 .find-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .find-request { display: grid; gap: 16px; margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(16, 45, 59, .1); }
-.find-request .yp-or { margin: 0; }
+.find-or { margin: 0; color: var(--teal); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; }
 .find-request .send-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .find-request .send-pair .button { width: 100%; }
+.find-contact { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.5; }
+.find-contact li { display: flex; flex-wrap: wrap; gap: 0 10px; min-width: 0; }
+.find-contact span { min-width: 52px; color: var(--muted); }
+.find-contact a { min-width: 0; color: var(--navy); font-weight: 700; overflow-wrap: anywhere; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 @media (min-width: 700px) {
   .find { margin-top: -96px; padding-top: 0; background: transparent; }
   .find-panel { padding: 30px 32px 28px; border-radius: 18px; }
@@ -887,11 +894,10 @@ svg { display: block; }
   .find-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .find-wide { grid-column: auto; }
   .find-go { width: auto; min-width: 260px; margin-left: auto; }
-  .find-request { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); column-gap: 40px; align-items: end; }
-  .find-request .yp-form { grid-column: 1; grid-row: 1 / span 2; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; }
-  .find-request .yp-form > h3, .find-request .yp-form > .yp-btn, .find-request .yp-form > .yp-status { grid-column: 1 / -1; }
-  .find-request .yp-or { grid-column: 2; grid-row: 1; align-self: end; }
-  .find-request .send-pair { grid-column: 2; grid-row: 2; }
+  .find-request { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); column-gap: 40px; row-gap: 10px; align-items: center; }
+  .find-or { grid-column: 1 / -1; }
+  .find-request .send-pair { grid-column: 1; grid-row: 2; }
+  .find-contact { grid-column: 2; grid-row: 2; }
 }
 
 </style>
@@ -938,7 +944,6 @@ svg { display: block; }
       <p class="eyebrow">Private yacht charter, Phuket</p>
       <h1 id="hero-title">Twenty-five of your people. A 102-foot yacht. A butler pouring the first glass.</h1>
       <p class="hero-copy">That is Matia Sou. Butler, private massage therapist and jacuzzi in the rate. From 450,000 THB for 8 hours and your first 10 guests.</p>
-      <a class="button" href="#qualifier"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
     </div>
   </section>
 
@@ -1017,43 +1022,16 @@ svg { display: block; }
         </div>
         <button class="button find-go" type="submit"><svg class="find-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
       </form>
-      <div class="find-request yp-light">
-<form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Home" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
-          <h3>Request by email</h3>
-          <input type="hidden" name="_subject" value="Charter request: Home">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="occasion" value="">
-          <input class="yp-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="yp-field">
-            <label for="request-full-name">Full name</label>
-            <input id="request-full-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="yp-field">
-            <label for="request-email">Email address</label>
-            <input id="request-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="yp-pair">
-            <div class="yp-field">
-              <label for="request-date">Date</label>
-              <input id="request-date" name="date" type="date" required>
-            </div>
-            <div class="yp-field">
-              <label for="request-guests">Guests</label>
-              <input id="request-guests" name="guests" type="number" min="1" inputmode="numeric" required>
-            </div>
-          </div>
-          <div class="yp-field">
-            <label for="request-notes">Any requests</label>
-            <textarea id="request-notes" name="requests" rows="3"></textarea>
-          </div>
-          <button class="yp-btn" type="submit">Send a request</button>
-          <p class="yp-status" role="status" aria-live="polite" hidden></p>
-        </form>
-        <p class="yp-or">Or message us</p>
+      <div class="find-request">
+        <p class="find-or">Or book on WhatsApp or Telegram</p>
         <div class="send-pair">
           <a class="button" id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a>
           <a class="button button-outline" id="qualifier-tg" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a>
         </div>
+        <ul class="find-contact">
+          <li><span>Phone</span><a href="tel:+66644518232">+66 64 451 8232</a></li>
+          <li><span>Email</span><a href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket@gmail.com</a></li>
+        </ul>
       </div>
       </div>
     </div>
@@ -1064,7 +1042,7 @@ svg { display: block; }
         <div class="section-label">Yacht charter</div>
         <h2 id="hs-charter-title">Private yacht charters in Phuket</h2>
         <p>Turquoise bays, limestone islands and a whole day at sea with no one aboard but your own people. Choose from 34 private yachts, each with its own crew, and we plan the day around you.</p>
-        <a class="hs-outline" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span></a>
+        <a class="button hs-btn" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
       <figure class="hs-charter-photo">
         <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.jpg 960w, assets/home/song-of-songs-brochure-1600.jpg 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
