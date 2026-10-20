@@ -734,11 +734,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1193,7 +1192,6 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Sira" data-max="15">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-sira" style="--em: 3.28">Sira</h3>
@@ -1213,7 +1211,6 @@
         </article>
         <article class="boat boat-card" data-boat="Moonglider" data-max="18">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/moonglider.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-moonglider" style="--em: 8.20">Moonglider</h3>
@@ -1233,7 +1230,6 @@
         </article>
         <article class="boat boat-card" data-boat="Matia Sou" data-max="25">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/matia-sou.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-matia-sou" style="--em: 7.38">Matia Sou</h3>
@@ -1253,7 +1249,6 @@
         </article>
         <article class="boat boat-card" data-boat="Simon" data-max="44">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/simon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-simon" style="--em: 4.10">Simon</h3>

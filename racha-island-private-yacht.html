@@ -742,11 +742,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1417,7 +1416,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/pandora.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/pandora.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 5.74">Pandora</p>
@@ -1433,7 +1431,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/jackie.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/jackie.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 4.92">Jackie</p>
@@ -1443,7 +1440,6 @@
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/sira.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 3.28">Sira</p>
@@ -1459,7 +1455,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/pearl.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/pearl.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 4.10">Pearl</p>
@@ -1469,7 +1464,6 @@
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/bruna.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/bruna.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 4.10">Bruna</p>
@@ -1485,7 +1479,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/meraki.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/meraki.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 4.92">Meraki</p>
@@ -1495,7 +1488,6 @@
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/matia-sou.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/matia-sou.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 7.38">Matia Sou</p>
@@ -1511,7 +1503,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/simon.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/simon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 4.10">Simon</p>

@@ -962,11 +962,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1363,7 +1362,6 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Moonglade 42" data-type="motor" data-ft="42" data-max="10" data-price="130000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/moonglade-42.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/moonglade-42.jpg" width="1500" height="900" alt="Moonglade 42 at speed seen from the air, a white wake behind her, limestone islands on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-moonglade-42" style="--em: 9.84">Moonglade 42</h3>
@@ -1383,7 +1381,6 @@
         </article>
         <article class="boat boat-card" data-boat="Muse 46" data-type="motor" data-ft="46" data-max="8" data-price="98000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/muse-46.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-muse-46" style="--em: 5.74">Muse 46</h3>
@@ -1403,7 +1400,6 @@
         </article>
         <article class="boat boat-card" data-boat="Sissana 53" data-type="motor" data-ft="53" data-max="10" data-price="170000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/sissana-53.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/sissana-53.jpg" width="1500" height="900" alt="Sissana 53 at speed, spray rising along the hull." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sissana-53" style="--em: 8.20">Sissana 53</h3>
@@ -1423,7 +1419,6 @@
         </article>
         <article class="boat boat-card" data-boat="Sunset 54" data-type="motor" data-ft="54" data-max="15" data-price="139000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/sunset-54.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/sunset-54.jpg" width="1500" height="900" alt="Sunset 54 on calm water, a green headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sunset-54" style="--em: 7.38">Sunset 54</h3>
@@ -1443,7 +1438,6 @@
         </article>
         <article class="boat boat-card" data-boat="Muse 55" data-type="motor" data-ft="55" data-max="15" data-price="110000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/muse-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-muse-55" style="--em: 5.74">Muse 55</h3>
@@ -1463,7 +1457,6 @@
         </article>
         <article class="boat boat-card" data-boat="Black Pearl 55" data-type="motor" data-ft="55" data-max="20" data-price="140000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/black-pearl-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-black-pearl-55" style="--em: 11.48">Black Pearl 55</h3>
@@ -1483,7 +1476,6 @@
         </article>
         <article class="boat boat-card" data-boat="Irenic F55" data-type="motor" data-ft="55" data-max="8" data-price="180000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/irenic-f55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/irenic-f55.jpg" width="1500" height="900" alt="Irenic F55 on calm blue water, a wooded shore behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-irenic-f55" style="--em: 8.20">Irenic F55</h3>
@@ -1503,7 +1495,6 @@
         </article>
         <article class="boat boat-card" data-boat="Caramel 58" data-type="motor" data-ft="58" data-max="18" data-price="135000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/caramel-58.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-caramel-58" style="--em: 8.20">Caramel 58</h3>
@@ -1523,7 +1514,6 @@
         </article>
         <article class="boat boat-card" data-boat="Calardior 58" data-type="motor" data-ft="58" data-max="12" data-price="182000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/calardior-58.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/calardior-58.jpg" width="1500" height="900" alt="Calardior 58 under way below a forested hillside." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-calardior-58" style="--em: 9.84">Calardior 58</h3>
@@ -1543,7 +1533,6 @@
         </article>
         <article class="boat boat-card" data-boat="Jackie" data-type="motor" data-ft="60" data-max="15" data-price="190000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/jackie.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-jackie" style="--em: 4.92">Jackie</h3>
@@ -1563,7 +1552,6 @@
         </article>
         <article class="boat boat-card" data-boat="Maris 60" data-type="motor" data-ft="60" data-max="12" data-price="190000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/maris-60.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/maris-60.jpg" width="1500" height="900" alt="Maris 60, a navy hull under white decks, on calm water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-maris-60" style="--em: 6.56">Maris 60</h3>
@@ -1583,7 +1571,6 @@
         </article>
         <article class="boat boat-card" data-boat="Pandora" data-type="motor" data-ft="62" data-max="10" data-price="220000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/pandora.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pandora" style="--em: 5.74">Pandora</h3>
@@ -1603,7 +1590,6 @@
         </article>
         <article class="boat boat-card" data-boat="Rose 65" data-type="motor" data-ft="65" data-max="20" data-price="135000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/rose-65.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-rose-65" style="--em: 5.74">Rose 65</h3>
@@ -1623,7 +1609,6 @@
         </article>
         <article class="boat boat-card" data-boat="Katterine S65" data-type="motor" data-ft="66" data-max="12" data-price="310000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/katterine-s65.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/katterine-s65.jpg" width="1500" height="900" alt="Katterine S65 at speed in bright sun, a headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-katterine-s65" style="--em: 10.66">Katterine S65</h3>
@@ -1643,7 +1628,6 @@
         </article>
         <article class="boat boat-card" data-boat="Bruna" data-type="motor" data-ft="68" data-max="20" data-price="209000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/bruna.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-bruna" style="--em: 4.10">Bruna</h3>
@@ -1663,7 +1647,6 @@
         </article>
         <article class="boat boat-card" data-boat="Theo 70" data-type="motor" data-ft="70" data-max="15" data-price="178000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/theo-70.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/theo-70.jpg" width="1500" height="900" alt="Theo 70 at speed at dusk, a long white wake behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-theo-70" style="--em: 5.74">Theo 70</h3>
@@ -1683,7 +1666,6 @@
         </article>
         <article class="boat boat-card" data-boat="Meraki" data-type="motor" data-ft="76" data-max="25" data-price="220000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/meraki.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-meraki" style="--em: 4.92">Meraki</h3>
@@ -1703,7 +1685,6 @@
         </article>
         <article class="boat boat-card" data-boat="Sira" data-type="motor" data-ft="76" data-max="15" data-price="370000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="White yacht at speed on deep blue sea." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-sira" style="--em: 3.28">Sira</h3>
@@ -1723,7 +1704,6 @@
         </article>
         <article class="boat boat-card" data-boat="Mermaid 78" data-type="motor" data-ft="78" data-max="20" data-price="280000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/mermaid-78.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/mermaid-78.jpg" width="1500" height="900" alt="Mermaid 78, a navy hull, at anchor off a white beach." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-mermaid-78" style="--em: 8.20">Mermaid 78</h3>
@@ -1743,7 +1723,6 @@
         </article>
         <article class="boat boat-card" data-boat="Pearl" data-type="motor" data-ft="78" data-max="20" data-price="320000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/pearl.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="Pearl on open water, guests on the flybridge and the aft deck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pearl" style="--em: 4.10">Pearl</h3>
@@ -1763,7 +1742,6 @@
         </article>
         <article class="boat boat-card" data-boat="Ravina 80" data-type="motor" data-ft="80" data-max="25" data-price="155000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/ravina-80.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/ravina-80.jpg" width="1500" height="900" alt="Ravina 80 on green water below limestone cliffs." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-ravina-80" style="--em: 7.38">Ravina 80</h3>
@@ -1783,7 +1761,6 @@
         </article>
         <article class="boat boat-card" data-boat="Blue Ocean 89" data-type="motor" data-ft="89" data-max="30" data-price="140000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/blue-ocean-89.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/blue-ocean-89.jpg" width="1500" height="900" alt="Blue Ocean 89 from above on blue water, a green headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-blue-ocean-89" style="--em: 10.66">Blue Ocean 89</h3>
@@ -1803,7 +1780,6 @@
         </article>
         <article class="boat boat-card" data-boat="Moonglider" data-type="motor" data-ft="90" data-max="18" data-price="375000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/moonglider.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/moonglider.jpg" width="1500" height="900" alt="A white yacht at speed on deep blue water, a white wake behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-moonglider" style="--em: 8.20">Moonglider</h3>
@@ -1830,7 +1806,6 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Lewis 4.S" data-type="catamaran" data-ft="36" data-max="10" data-price="99900">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/lewis-4s.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-lewis-4s" style="--em: 7.38">Lewis 4.S</h3>
@@ -1850,7 +1825,6 @@
         </article>
         <article class="boat boat-card" data-boat="Tiger 40" data-type="catamaran" data-ft="40" data-max="15" data-price="89000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/tiger-40.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/tiger-40.jpg" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-tiger-40" style="--em: 6.56">Tiger 40</h3>
@@ -1870,7 +1844,6 @@
         </article>
         <article class="boat boat-card" data-boat="Apricity 53" data-type="catamaran" data-ft="53" data-max="35" data-price="110000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/apricity-53.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/apricity-53.jpg" width="1500" height="900" alt="Apricity 53 under way on deep blue water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-apricity-53" style="--em: 9.02">Apricity 53</h3>
@@ -1890,7 +1863,6 @@
         </article>
         <article class="boat boat-card" data-boat="Pear" data-type="catamaran" data-ft="85" data-max="85" data-price="250000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/pear-85.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-pear-85" style="--em: 3.28">Pear</h3>
@@ -1917,7 +1889,6 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Laken 11" data-type="sport" data-ft="36" data-max="8" data-price="90000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/laken-11.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-laken-11" style="--em: 6.56">Laken 11</h3>
@@ -1937,7 +1908,6 @@
         </article>
         <article class="boat boat-card" data-boat="Emmy Cap 1.2" data-type="sport" data-ft="40" data-max="8" data-price="98000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/emmy-cap-1-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-emmy-cap-1-2" style="--em: 9.84">Emmy Cap 1.2</h3>
@@ -1957,7 +1927,6 @@
         </article>
         <article class="boat boat-card" data-boat="Collus T 11" data-type="sport" data-ft="40" data-max="10" data-price="119000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/collus-t-11.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/collus-t-11.jpg" width="1500" height="900" alt="Collus T 11 at anchor in a blue bay below green hills." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-collus-t-11" style="--em: 9.02">Collus T 11</h3>
@@ -1977,7 +1946,6 @@
         </article>
         <article class="boat boat-card" data-boat="Stay Gain 15" data-type="sport" data-ft="52" data-max="12" data-price="135000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/stay-gain-15.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/stay-gain-15.jpg" width="1080" height="648" alt="Stay Gain 15 at speed on deep blue sea, a white wake behind her, mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-stay-gain-15" style="--em: 9.84">Stay Gain 15</h3>
@@ -2004,7 +1972,6 @@
       <div class="fleet-grid">
         <article class="boat boat-card" data-boat="Matia Sou" data-type="superyacht" data-ft="102" data-max="25" data-price="450000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/matia-sou.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="Matia Sou over bright turquoise shallows." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-matia-sou" style="--em: 7.38">Matia Sou</h3>
@@ -2024,7 +1991,6 @@
         </article>
         <article class="boat boat-card" data-boat="Simon" data-type="superyacht" data-ft="130" data-max="44" data-price="720000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/simon.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-simon" style="--em: 4.10">Simon</h3>
@@ -2044,7 +2010,6 @@
         </article>
         <article class="boat boat-card" data-boat="Song of Songs" data-type="superyacht" data-ft="139" data-max="12" data-price="1350000">
           <div class="boat-photo">
-            <img class="boat-bg" src="assets/cards/song-of-songs.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="Song of Songs at dusk beneath a pink sky, limestone islands behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="fleet-song-of-songs" style="--em: 10.66">Song of Songs</h3>

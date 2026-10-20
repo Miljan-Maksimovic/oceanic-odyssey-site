@@ -742,11 +742,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1426,7 +1425,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/black-pearl-55.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/black-pearl-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 11.48">Black Pearl 55</p>
@@ -1441,7 +1439,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/sissana-53.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/sissana-53.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/sissana-53.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 8.20">Sissana 53</p>
@@ -1456,7 +1453,6 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/katterine-s65.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/katterine-s65.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/katterine-s65.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 10.66">Katterine S65</p>
@@ -1466,7 +1462,6 @@
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/sira.html">
                   <div class="boat-photo">
-                    <img class="boat-bg" src="assets/cards/sira.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                     <div class="boat-cover">
                       <p class="boat-name" style="--em: 3.28">Sira</p>

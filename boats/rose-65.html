@@ -734,11 +734,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1189,7 +1188,6 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Caramel 58" data-max="18">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/caramel-58.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-caramel-58" style="--em: 8.20">Caramel 58</h3>
@@ -1209,7 +1207,6 @@
         </article>
         <article class="boat boat-card" data-boat="Stay Gain 15" data-max="12">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/stay-gain-15.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/stay-gain-15.jpg" width="1080" height="648" alt="Stay Gain 15 at speed on deep blue sea, a white wake behind her, mountains on the horizon." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-stay-gain-15" style="--em: 9.84">Stay Gain 15</h3>
@@ -1229,7 +1226,6 @@
         </article>
         <article class="boat boat-card" data-boat="Sunset 54" data-max="15">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/sunset-54.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/sunset-54.jpg" width="1500" height="900" alt="Sunset 54 on calm water, a green headland behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-sunset-54" style="--em: 7.38">Sunset 54</h3>
@@ -1249,7 +1245,6 @@
         </article>
         <article class="boat boat-card" data-boat="Black Pearl 55" data-max="20">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/black-pearl-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-black-pearl-55" style="--em: 11.48">Black Pearl 55</h3>

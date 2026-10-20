@@ -734,11 +734,10 @@
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
     
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #123B52; }
-    .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
-    
-    .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
+    .boat-card .boat-bg { display: none; }
+    .boat-card .boat-photo::after { content: none; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
     
@@ -1189,7 +1188,6 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Laken 11" data-max="8">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/laken-11.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/laken-11.jpg" width="1500" height="900" alt="Laken 11 at speed across bright water, hills behind." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-laken-11" style="--em: 6.56">Laken 11</h3>
@@ -1209,7 +1207,6 @@
         </article>
         <article class="boat boat-card" data-boat="Muse 46" data-max="8">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/muse-46.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-muse-46" style="--em: 5.74">Muse 46</h3>
@@ -1229,7 +1226,6 @@
         </article>
         <article class="boat boat-card" data-boat="Emmy Cap 1.2" data-max="8">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/emmy-cap-1-2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-emmy-cap-1-2" style="--em: 9.84">Emmy Cap 1.2</h3>
@@ -1249,7 +1245,6 @@
         </article>
         <article class="boat boat-card" data-boat="Muse 55" data-max="15">
           <div class="boat-photo">
-            <img class="boat-bg" src="../assets/cards/muse-55.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <img class="boat-img" src="../assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
             <div class="boat-cover">
               <h3 class="boat-name" id="other-muse-55" style="--em: 5.74">Muse 55</h3>
