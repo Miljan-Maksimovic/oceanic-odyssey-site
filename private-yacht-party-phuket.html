@@ -752,10 +752,11 @@
     .boat-card .boat-bg { position: absolute; inset: -40px; z-index: -2; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; object-position: center bottom; filter: blur(22px) brightness(.7) saturate(1.2); transform: none; }
     
     .boat-card .boat-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 38, 62, 0) 30%, rgba(10, 38, 62, .72) 58%, rgba(8, 31, 52, .9) 100%); pointer-events: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: -22px; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
+    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, #000 94%, transparent 100%); transition: transform .55s; transform-origin: 50% 45%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 92px; margin-top: auto; padding: 0 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
+    
+    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100px; margin-top: auto; padding: 12px 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
     .boat-card .boat-cover::after { content: none; }
     .boat-card .boat-name {
       position: static;
@@ -798,7 +799,7 @@
     .boat-card { container-type: inline-size; }
     @container (max-width: 340px) {
       .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
-      .boat-card .boat-cover { min-height: 86px; }
+      .boat-card .boat-cover { min-height: 94px; }
     }
     @media (min-width: 600px) {
       .boat-card .boat-price { font-size: 21px; }
@@ -822,7 +823,7 @@
       .group-yacht.gy-card:first-child:nth-last-child(3), .group-yacht.gy-card:only-child { grid-column: auto; }
       .article-body .group-guide .group-row:has(.gy-card:only-child) { grid-template-columns: minmax(0, 1fr) calc((100% - 14px) / 2); column-gap: 14px; }
       .article-body .group-guide .group-row:has(.gy-card:only-child) .group-yachts { grid-template-columns: minmax(0, 1fr); }
-      .gy-card .boat-cover { min-height: 106px; }   
+      .gy-card .boat-cover { min-height: 116px; }   
     }
     
     .mag-board { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 28px; }
@@ -913,6 +914,28 @@
     .jump a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--ice); color: var(--navy); font-size: 15px; font-weight: 700; line-height: 1; white-space: nowrap; transition: background-color .15s, color .15s; }
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
+    
+    .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
+    .guide-hero .hero-head h1 { grid-area: auto; align-self: auto; max-width: none; padding: 0; }
+    .hero-glance { display: flex; gap: 22px; margin: 16px -24px 0; padding: 0 24px 2px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+    .hero-glance::-webkit-scrollbar { display: none; }
+    .hero-glance div { position: relative; flex: 0 0 auto; min-width: 0; padding-left: 28px; }
+    .hero-glance .glance-icon { position: absolute; left: 0; top: 2px; width: 19px; height: 19px; fill: none; stroke: var(--sea); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-glance dt { color: rgba(255, 255, 255, .78); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+    .hero-glance dd { margin: 3px 0 0; color: #fff; font-size: 13px; font-weight: 600; line-height: 1.35; white-space: nowrap; text-shadow: 0 1px 8px rgba(6, 28, 40, .45); }
+    @media (min-width: 600px) {
+      .guide-hero .hero-head { padding: 170px 0 36px; }
+      .guide-hero .hero-head h1 { padding: 0; }
+      .hero-glance { gap: 34px; margin: 20px 0 0; padding: 0; overflow: visible; flex-wrap: wrap; }
+      .hero-glance dt { font-size: 10.5px; }
+      .hero-glance dd { font-size: 15px; }
+    }
+    @media (min-width: 900px) {
+      .guide-hero .hero-head { padding: 200px 0 46px; }
+      .guide-hero .hero-head h1 { padding: 0; }
+      .hero-glance { gap: 44px; margin-top: 24px; }
+      .hero-glance dd { font-size: 16px; }
+    }
     
     .intro-feature { display: grid; gap: 22px; width: 100%; max-width: 1160px; margin: 18px auto 0; }
     .intro-feature .intro-copy p + p { margin-top: 14px; }
