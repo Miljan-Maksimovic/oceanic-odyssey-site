@@ -840,6 +840,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }

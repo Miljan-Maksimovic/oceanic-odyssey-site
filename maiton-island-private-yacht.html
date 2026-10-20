@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1339,8 +1341,8 @@
       <section class="article-section mag-section" id="what-to-expect-at-maiton" aria-label="What to expect at Maiton">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/maiton-island/maiton-dolphins-1200.jpg" srcset="assets/destinations/maiton-island/maiton-dolphins-640.jpg 640w, assets/destinations/maiton-island/maiton-dolphins-1200.jpg 1200w, assets/destinations/maiton-island/maiton-dolphins.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Dolphins surfacing in the open sea" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/maiton-island/maiton-dolphins-1200.jpg" srcset="assets/destinations/maiton-island/maiton-dolphins-640.jpg 640w, assets/destinations/maiton-island/maiton-dolphins-1200.jpg 1200w, assets/destinations/maiton-island/maiton-dolphins.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Dolphins surfacing in the open sea" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Dolphins, sometimes</h3>
               <p>A sailing guide reports dolphins off the small bay on Maiton's west coast; they are a chance on the day, never a promise. Reefs fringe the main beach to the north and south-east, for swimming and snorkelling from the yacht.</p>
             </div>

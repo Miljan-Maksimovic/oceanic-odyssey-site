@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1336,29 +1338,29 @@
       <section class="article-section mag-section" id="what-to-expect-in-phang-nga" aria-label="What to expect in Phang Nga Bay">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="674" alt="Khao Phing Kan and Ko Tapu from the bay" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/khao-phing-kan.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="674" alt="Khao Phing Kan and Ko Tapu from the bay" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>James Bond Island</h3>
               <p>Khao Phing Kan, and Ko Tapu, the 20 m spire of limestone standing in the water off its shore, named for The Man with the Golden Gun in 1974. Visits last 20 to 30 minutes, and swimming is not allowed at the island.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/karst-islands-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/karst-islands-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/karst-islands-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/karst-islands.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Karst islands rising from Phang Nga Bay" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/phang-nga-bay-james-bond-island/karst-islands-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/karst-islands-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/karst-islands-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/karst-islands.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Karst islands rising from Phang Nga Bay" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 5">
               <h3>Hong Island and the karsts</h3>
               <p>A cave at sea level runs into a lagoon inside Hong Island, and the smaller forested karsts around it leave narrow channels to paddle between.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/panak-island-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/panak-island-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/panak-island-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/panak-island.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="642" alt="Phanak Island from the water, its limestone cliffs over the bay" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/phang-nga-bay-james-bond-island/panak-island-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/panak-island-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/panak-island-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/panak-island.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="642" alt="Phanak Island from the water, its limestone cliffs over the bay" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 3">
               <h3>Phanak Island</h3>
               <p>At least eleven caves, most of them at its northern tip, some at sea level and leading through to lagoons.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/ko-panyi.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Ko Panyi&#x27;s houses on stilts under a green limestone hill" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-640.jpg 640w, assets/destinations/phang-nga-bay-james-bond-island/ko-panyi-1200.jpg 1200w, assets/destinations/phang-nga-bay-james-bond-island/ko-panyi.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Ko Panyi&#x27;s houses on stilts under a green limestone hill" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 7">
               <h3>Koh Panyee</h3>
               <p>A village of houses built close together on pillars over the sea, inside the park's boundary.</p>
             </div>

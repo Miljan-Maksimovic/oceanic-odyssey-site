@@ -820,6 +820,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1326,22 +1328,22 @@
       <section class="article-section mag-section" id="what-to-expect-in-the-surin" aria-label="What to expect in the Surin Islands">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/surin-islands/surin-snorkel-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-snorkel-amy-640.jpg 640w, assets/destinations/surin-islands/surin-snorkel-amy-1200.jpg 1200w, assets/destinations/surin-islands/surin-snorkel-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="A shoal of striped fish just under the surface" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/surin-islands/surin-snorkel-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-snorkel-amy-640.jpg 640w, assets/destinations/surin-islands/surin-snorkel-amy-1200.jpg 1200w, assets/destinations/surin-islands/surin-snorkel-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="A shoal of striped fish just under the surface" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Ko Surin Nuea</h3>
               <p>The north island: the park's visitor centre at Ao Chong Khad, and Ao Mai Ngam on the west side, shallow and calm, the best bay for snorkelling straight off the beach.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/surin-islands/moken-village-amy-1200.jpg" srcset="assets/destinations/surin-islands/moken-village-amy-640.jpg 640w, assets/destinations/surin-islands/moken-village-amy-1200.jpg 1200w, assets/destinations/surin-islands/moken-village-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Thatched stilt houses on the sand under a forested hill" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/surin-islands/moken-village-amy-1200.jpg" srcset="assets/destinations/surin-islands/moken-village-amy-640.jpg 640w, assets/destinations/surin-islands/moken-village-amy-1200.jpg 1200w, assets/destinations/surin-islands/moken-village-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Thatched stilt houses on the sand under a forested hill" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 5">
               <h3>Ko Surin Tai</h3>
               <p>Home to a Moken sea nomad community of around 300 people; apart from the village area, the island is closed to visitors.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/surin-islands/surin-coral-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-coral-amy-640.jpg 640w, assets/destinations/surin-islands/surin-coral-amy-1200.jpg 1200w, assets/destinations/surin-islands/surin-coral-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Small fish around a branching coral" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/surin-islands/surin-coral-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-coral-amy-640.jpg 640w, assets/destinations/surin-islands/surin-coral-amy-1200.jpg 1200w, assets/destinations/surin-islands/surin-coral-amy.jpg 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Small fish around a branching coral" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 3">
               <h3>Ao Suthep and the reefs</h3>
               <p>Thailand's first marked underwater snorkel trail, over the shallow reefs the park authority counts among the largest in the country.</p>
             </div>

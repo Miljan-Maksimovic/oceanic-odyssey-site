@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1340,29 +1342,29 @@
       <section class="article-section mag-section" id="what-to-expect-at-the-4" aria-label="What to expect at the 4 Islands">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/four-islands-krabi/poda-stack-1200.jpg" srcset="assets/destinations/four-islands-krabi/poda-stack-640.jpg 640w, assets/destinations/four-islands-krabi/poda-stack-1200.jpg 1200w, assets/destinations/four-islands-krabi/poda-stack.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="The limestone stack off Koh Poda, two longtail boats in the shallows" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/four-islands-krabi/poda-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/poda-amy-640.jpg 640w, assets/destinations/four-islands-krabi/poda-amy-1200.jpg 1200w, assets/destinations/four-islands-krabi/poda-amy.jpg 1200w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1800" alt="A longtail boat in clear shallows, a limestone stack offshore" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Poda Island</h3>
               <p>A white beach, clear water and a limestone stack offshore, with shade, food stalls and restrooms on the sand.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/four-islands-krabi/chicken-island-1200.jpg" srcset="assets/destinations/four-islands-krabi/chicken-island-640.jpg 640w, assets/destinations/four-islands-krabi/chicken-island-1200.jpg 1200w, assets/destinations/four-islands-krabi/chicken-island.jpg 1536w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="747" alt="Chicken Island and its bird-head rock, from a boat" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/four-islands-krabi/chicken-island-1200.jpg" srcset="assets/destinations/four-islands-krabi/chicken-island-640.jpg 640w, assets/destinations/four-islands-krabi/chicken-island-1200.jpg 1200w, assets/destinations/four-islands-krabi/chicken-island.jpg 1536w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="747" alt="Chicken Island and its bird-head rock, from a boat" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 5">
               <h3>Chicken Island</h3>
               <p>Named for the rock that looks like a chicken's head, clearest from the water on its south-east side.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/four-islands-krabi/tup-island-1200.jpg" srcset="assets/destinations/four-islands-krabi/tup-island-640.jpg 640w, assets/destinations/four-islands-krabi/tup-island-1200.jpg 1200w, assets/destinations/four-islands-krabi/tup-island.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Tup Island&#x27;s beach and shallows, visitors wading out" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/four-islands-krabi/tup-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/tup-amy-640.jpg 640w, assets/destinations/four-islands-krabi/tup-amy-1200.jpg 1200w, assets/destinations/four-islands-krabi/tup-amy.jpg 1200w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1800" alt="Two wooded islets joined by a white sandbar, from above" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 3">
               <h3>Tup Island</h3>
               <p>At low tide a sandbar links Koh Kai, Koh Tup and Koh Mor, and you walk between them over shallow, turquoise water.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/four-islands-krabi/phra-nang-1200.jpg" srcset="assets/destinations/four-islands-krabi/phra-nang-640.jpg 640w, assets/destinations/four-islands-krabi/phra-nang-1200.jpg 1200w, assets/destinations/four-islands-krabi/phra-nang.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Phra Nang beach under its limestone cliff" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/four-islands-krabi/railay-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/railay-amy-640.jpg 640w, assets/destinations/four-islands-krabi/railay-amy-1200.jpg 1200w, assets/destinations/four-islands-krabi/railay-amy.jpg 1080w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1500" alt="Limestone cliffs above a curved beach and green water, from the air" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 7">
               <h3>Railay Beach</h3>
               <p>At the tip of the Railay headland, with no road to it, Phra Nang Cave Beach: a palm-fringed bay with the Princess Cave and its shrine at the south end.</p>
             </div>

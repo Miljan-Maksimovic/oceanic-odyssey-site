@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1341,15 +1343,15 @@
       <section class="article-section mag-section" id="what-to-expect-at-racha" aria-label="What to expect at Racha">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-640.jpg 640w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.jpg 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Racha Yai&#x27;s main bay from above: a curve of white sand, a jetty and turquoise water" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-640.jpg 640w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.jpg 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Racha Yai&#x27;s main bay from above: a curve of white sand, a jetty and turquoise water" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Racha Yai's beaches</h3>
               <p>Patok Bay, a crescent of soft white sand shelving gently into clear water, and Siam Bay on the north coast, longer and quieter.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-640.jpg 640w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.jpg 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Snorkellers in clear turquoise water, seen from above" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-640.jpg 640w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.jpg 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Snorkellers in clear turquoise water, seen from above" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy is-end" style="--o: 3">
               <h3>In the water off Racha Yai</h3>
               <p>The reef starts in the shallows a short swim from the beach, with 15 to 25 metres of visibility in season, and many of Phuket's new divers make their first dive here.</p>
             </div>

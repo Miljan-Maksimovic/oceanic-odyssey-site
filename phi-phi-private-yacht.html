@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1340,36 +1342,36 @@
       <section class="article-section mag-section" id="what-to-expect-at-phi-phi" aria-label="What to expect at Phi Phi">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/maya-bay-amy-640.jpg 640w, assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/maya-bay-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Maya Bay from above, its white beach inside the cliffs of Phi Phi Leh" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/maya-bay-amy-640.jpg 640w, assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/maya-bay-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Maya Bay from above, its white beach inside the cliffs of Phi Phi Leh" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Maya Bay</h3>
               <p>The white-sand cove from The Beach, ringed by limestone cliffs. The yacht stops in front of it for the view; swimming in the bay is not permitted.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/monkey-beach-amy-640.jpg 640w, assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/monkey-beach-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Macaques on the white sand at Monkey Beach" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/monkey-beach-amy-640.jpg 640w, assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/monkey-beach-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Macaques on the white sand at Monkey Beach" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 5">
               <h3>Monkey Beach</h3>
               <p>A small beach on Phi Phi Don where wild macaques come down to the sand and the rocks. Some days this is the swim stop.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phi-phi-islands/pileh-lagoon-1200.jpg" srcset="assets/destinations/phi-phi-islands/pileh-lagoon-640.jpg 640w, assets/destinations/phi-phi-islands/pileh-lagoon-1200.jpg 1200w, assets/destinations/phi-phi-islands/pileh-lagoon.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Pileh Lagoon, Phi Phi Leh, inside its ring of cliffs" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/phi-phi-islands/pileh-lagoon-1200.jpg" srcset="assets/destinations/phi-phi-islands/pileh-lagoon-640.jpg 640w, assets/destinations/phi-phi-islands/pileh-lagoon-1200.jpg 1200w, assets/destinations/phi-phi-islands/pileh-lagoon.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="900" alt="Pileh Lagoon, Phi Phi Leh, inside its ring of cliffs" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 3">
               <h3>Pileh Lagoon</h3>
               <p>A narrow gap in the cliffs of Phi Phi Leh, then calm, shallow water to swim in. Each yacht carries a small tender that goes in when the sea and the time allow.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/viking-cave-amy-640.jpg 640w, assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/viking-cave-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The Viking Cave in the cliffs of Phi Phi Leh, bamboo scaffolds over turquoise water" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/viking-cave-amy-640.jpg 640w, assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/viking-cave-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The Viking Cave in the cliffs of Phi Phi Leh, bamboo scaffolds over turquoise water" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 7">
               <h3>Viking Cave</h3>
               <p>A cave 170 metres long in the cliffs of Phi Phi Leh, with swiftlets nesting on its ledges and bamboo scaffolds up the rock.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/phi-phi-islands/ton-sai-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/ton-sai-amy-640.jpg 640w, assets/destinations/phi-phi-islands/ton-sai-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/ton-sai-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Phi Phi Don from the viewpoint, Ton Sai Bay and the village below the hills" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 8"><img src="assets/destinations/phi-phi-islands/ton-sai-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/ton-sai-amy-640.jpg 640w, assets/destinations/phi-phi-islands/ton-sai-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/ton-sai-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Phi Phi Don from the viewpoint, Ton Sai Bay and the village below the hills" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy is-end" style="--o: 9">
               <h3>Ton Sai Bay</h3>
               <p>The main bay of Phi Phi Don, the only inhabited island of the group, with its village along the shore and limestone hills behind.</p>
             </div>

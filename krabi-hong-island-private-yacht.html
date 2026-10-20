@@ -834,6 +834,8 @@
     }
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
+      .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14.5px; }
     }
@@ -1340,15 +1342,15 @@
       <section class="article-section mag-section" id="what-to-expect-at-hong-island" aria-label="What to expect at Hong Island">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" srcset="assets/destinations/hong-island-krabi/hong-lagoon-gap-640.jpg 640w, assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg 1200w, assets/destinations/hong-island-krabi/hong-lagoon-gap.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" srcset="assets/destinations/hong-island-krabi/hong-lagoon-gap-640.jpg 640w, assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg 1200w, assets/destinations/hong-island-krabi/hong-lagoon-gap.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 1">
               <h3>Hong Island</h3>
               <p>A lagoon about 200 metres across, closed in by sheer cliffs and entered by canoe through a gap in the rock; outside it, soft white sand among great rocks that throw shade all day, and more than 400 steps up to a view over the islands.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo"><img src="assets/destinations/hong-island-krabi/lao-lading-1200.jpg" srcset="assets/destinations/hong-island-krabi/lao-lading-640.jpg 640w, assets/destinations/hong-island-krabi/lao-lading-1200.jpg 1200w, assets/destinations/hong-island-krabi/lao-lading.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Longtail boats on the beach at Ko Lao Lading, cliffs on either side" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/hong-island-krabi/lao-lading-1200.jpg" srcset="assets/destinations/hong-island-krabi/lao-lading-640.jpg 640w, assets/destinations/hong-island-krabi/lao-lading-1200.jpg 1200w, assets/destinations/hong-island-krabi/lao-lading.jpg 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Longtail boats on the beach at Ko Lao Lading, cliffs on either side" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy is-end" style="--o: 3">
               <h3>Lao Lading Island</h3>
               <p>Close by, a curved beach held in by rocky cliffs, with clear water to swim in.</p>
             </div>
