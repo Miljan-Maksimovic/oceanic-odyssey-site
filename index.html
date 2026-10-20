@@ -873,6 +873,10 @@ svg { display: block; }
 .find-go { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-top: 22px; background: var(--navy); color: #fff; }
 .find-go:hover { background: var(--teal); }
 .find-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.find-request { display: grid; gap: 16px; margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(16, 45, 59, .1); }
+.find-request .yp-or { margin: 0; }
+.find-request .send-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.find-request .send-pair .button { width: 100%; }
 @media (min-width: 700px) {
   .find { margin-top: -96px; padding-top: 0; background: transparent; }
   .find-panel { padding: 30px 32px 28px; border-radius: 18px; }
@@ -883,6 +887,11 @@ svg { display: block; }
   .find-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .find-wide { grid-column: auto; }
   .find-go { width: auto; min-width: 260px; margin-left: auto; }
+  .find-request { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); column-gap: 40px; align-items: end; }
+  .find-request .yp-form { grid-column: 1; grid-row: 1 / span 2; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; }
+  .find-request .yp-form > h3, .find-request .yp-form > .yp-btn, .find-request .yp-form > .yp-status { grid-column: 1 / -1; }
+  .find-request .yp-or { grid-column: 2; grid-row: 1; align-self: end; }
+  .find-request .send-pair { grid-column: 2; grid-row: 2; }
 }
 
 </style>
@@ -935,7 +944,8 @@ svg { display: block; }
 
   <section class="find" id="qualifier" aria-labelledby="qualifier-title">
     <div class="wrap">
-      <form class="find-panel" id="find-form" action="fleet.html" method="get" role="search">
+      <div class="find-panel">
+      <form class="find-form" id="find-form" action="fleet.html" method="get" role="search">
         <div class="find-head">
           <div class="section-label">Find your yacht</div>
           <h2 id="qualifier-title">Who is coming, and when? We match the yacht.</h2>
@@ -1007,6 +1017,45 @@ svg { display: block; }
         </div>
         <button class="button find-go" type="submit"><svg class="find-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
       </form>
+      <div class="find-request yp-light">
+<form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Home" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <h3>Request by email</h3>
+          <input type="hidden" name="_subject" value="Charter request: Home">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="occasion" value="">
+          <input class="yp-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="yp-field">
+            <label for="request-full-name">Full name</label>
+            <input id="request-full-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="yp-field">
+            <label for="request-email">Email address</label>
+            <input id="request-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="yp-pair">
+            <div class="yp-field">
+              <label for="request-date">Date</label>
+              <input id="request-date" name="date" type="date" required>
+            </div>
+            <div class="yp-field">
+              <label for="request-guests">Guests</label>
+              <input id="request-guests" name="guests" type="number" min="1" inputmode="numeric" required>
+            </div>
+          </div>
+          <div class="yp-field">
+            <label for="request-notes">Any requests</label>
+            <textarea id="request-notes" name="requests" rows="3"></textarea>
+          </div>
+          <button class="yp-btn" type="submit">Send a request</button>
+          <p class="yp-status" role="status" aria-live="polite" hidden></p>
+        </form>
+        <p class="yp-or">Or message us</p>
+        <div class="send-pair">
+          <a class="button" id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a>
+          <a class="button button-outline" id="qualifier-tg" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a>
+        </div>
+      </div>
+      </div>
     </div>
   </section>
   <section class="hs-charter section-pad" id="yacht-charter" aria-labelledby="hs-charter-title">
