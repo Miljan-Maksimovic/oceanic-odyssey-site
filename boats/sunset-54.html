@@ -733,34 +733,19 @@
 
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
-    
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
-    .boat-card .boat-bg { display: none; }
-    .boat-card .boat-photo::after { content: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
+    .boat-card .boat-photo { position: relative; overflow: hidden; aspect-ratio: auto; border-radius: 4px; background: var(--ice); }
+    .boat-card .boat-photo::after, .boat-card .boat-cover::after { content: none; }
+    .boat-card .boat-bg, .boat-card .boat-cover { display: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: none; mask-image: none; transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    
-    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100px; margin-top: auto; padding: 12px 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
-    .boat-card .boat-cover::after { content: none; }
-    .boat-card .boat-name {
-      position: static;
-      margin: 0;
-      color: #fff;
-      font-family: var(--serif);
-      
-      font-size: min(28px, calc((100cqi - 36px) / var(--em, 9)));
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .boat-card .boat-spec { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 8px 0 0; padding: 0; list-style: none; color: #fff; font-size: 10.5px; font-weight: 700; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 1px 2px rgba(6, 28, 40, .45); }
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
-    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
-    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
-    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 6px 0 0; }
+    .boat-card .boat-title { flex: 1 1 auto; min-width: 0; margin: 0; line-height: 1.4; }
+    .boat-card .boat-name { position: static; display: inline; margin: 0 8px 0 0; color: var(--navy); font-family: var(--sans); font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
+    .boat-card .boat-price { display: inline-block; margin: 0; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.4; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -781,17 +766,10 @@
     .boat-card .boat-link:focus-visible { outline: none; }
     .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
     
-    .boat-card { container-type: inline-size; }
-    @container (max-width: 340px) {
-      .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
-      .boat-card .boat-cover { min-height: 94px; }
-    }
-    @media (min-width: 600px) {
-      .boat-card .boat-price { font-size: 21px; }
-    }
-    @media (min-width: 1100px) {
-      .boat-card .boat-spec { font-size: 11px; }
-      .boat-card .boat-price { font-size: 23px; }
+    @media (min-width: 900px) {
+      .boat-card .boat-name { margin-right: 6px; font-size: 15px; letter-spacing: .03em; }
+      .boat-card .boat-price { font-size: 14px; }
+      .boat-card .boat-enquire { font-size: 13px; }
     }
 
     
@@ -1189,15 +1167,10 @@
         <article class="boat boat-card" data-boat="Caramel 58" data-max="18">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/caramel-58.jpg" width="1500" height="900" alt="Caramel 58 from above on green water, guests on the foredeck." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-caramel-58" style="--em: 8.20">Caramel 58</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2016</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>18 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2016</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>18 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 135,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-caramel-58">Caramel 58</h3> <p class="boat-price">From 135,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Caramel%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Caramel 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1208,15 +1181,10 @@
         <article class="boat boat-card" data-boat="Rose 65" data-max="20">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/rose-65.jpg" width="1500" height="900" alt="Rose 65 on blue water, a jet ski alongside, islands behind." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-rose-65" style="--em: 5.74">Rose 65</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>65 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>65 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 135,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-rose-65">Rose 65</h3> <p class="boat-price">From 135,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Rose%2065.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Rose 65 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1227,15 +1195,10 @@
         <article class="boat boat-card" data-boat="Black Pearl 55" data-max="20">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="Black Pearl 55 under way over clear turquoise water." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-black-pearl-55" style="--em: 11.48">Black Pearl 55</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2009</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2009</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 140,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-black-pearl-55">Black Pearl 55</h3> <p class="boat-price">From 140,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Pearl%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Black Pearl 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1246,15 +1209,10 @@
         <article class="boat boat-card" data-boat="Blue Ocean 89" data-max="30">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/blue-ocean-89.jpg" width="1500" height="900" alt="Blue Ocean 89 from above on blue water, a green headland behind." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-blue-ocean-89" style="--em: 10.66">Blue Ocean 89</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>89 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>30 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>89 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>30 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 140,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-blue-ocean-89">Blue Ocean 89</h3> <p class="boat-price">From 140,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Blue%20Ocean%2089.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Blue Ocean 89 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>

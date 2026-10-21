@@ -741,34 +741,19 @@
 
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
-    
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
-    .boat-card .boat-bg { display: none; }
-    .boat-card .boat-photo::after { content: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
+    .boat-card .boat-photo { position: relative; overflow: hidden; aspect-ratio: auto; border-radius: 4px; background: var(--ice); }
+    .boat-card .boat-photo::after, .boat-card .boat-cover::after { content: none; }
+    .boat-card .boat-bg, .boat-card .boat-cover { display: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: none; mask-image: none; transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    
-    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100px; margin-top: auto; padding: 12px 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
-    .boat-card .boat-cover::after { content: none; }
-    .boat-card .boat-name {
-      position: static;
-      margin: 0;
-      color: #fff;
-      font-family: var(--serif);
-      
-      font-size: min(28px, calc((100cqi - 36px) / var(--em, 9)));
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .boat-card .boat-spec { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 8px 0 0; padding: 0; list-style: none; color: #fff; font-size: 10.5px; font-weight: 700; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 1px 2px rgba(6, 28, 40, .45); }
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
-    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
-    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
-    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 6px 0 0; }
+    .boat-card .boat-title { flex: 1 1 auto; min-width: 0; margin: 0; line-height: 1.4; }
+    .boat-card .boat-name { position: static; display: inline; margin: 0 8px 0 0; color: var(--navy); font-family: var(--sans); font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
+    .boat-card .boat-price { display: inline-block; margin: 0; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.4; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -789,25 +774,18 @@
     .boat-card .boat-link:focus-visible { outline: none; }
     .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
     
-    .boat-card { container-type: inline-size; }
-    @container (max-width: 340px) {
-      .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
-      .boat-card .boat-cover { min-height: 94px; }
-    }
-    @media (min-width: 600px) {
-      .boat-card .boat-price { font-size: 21px; }
-    }
-    @media (min-width: 1100px) {
-      .boat-card .boat-spec { font-size: 11px; }
-      .boat-card .boat-price { font-size: 23px; }
+    @media (min-width: 900px) {
+      .boat-card .boat-name { margin-right: 6px; font-size: 15px; letter-spacing: .03em; }
+      .boat-card .boat-price { font-size: 14px; }
+      .boat-card .boat-enquire { font-size: 13px; }
     }
 
     
-    .article-body .group-guide a.group-yacht.gy-card, a.gy-card { display: flex; flex-direction: column; color: #fff; font-weight: 400; text-decoration: none; }
+    .article-body .group-guide a.group-yacht.gy-card, a.gy-card { display: flex; flex-direction: column; color: var(--navy); font-weight: 400; text-decoration: none; }
     .group-yachts:has(.gy-card) { align-items: stretch; }
-    .gy-card .boat-name { display: block; }
-    .article-body .gy-card .boat-spec { margin: 8px 0 0; padding: 0; list-style: none; }
-    .article-body .gy-card .boat-spec li { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: #fff; font-size: inherit; line-height: inherit; }
+    .gy-card .boat-name { display: inline; }
+    .article-body .gy-card .boat-spec { margin: 12px 0 0; padding: 0; list-style: none; }
+    .article-body .gy-card .boat-spec li { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--muted); font-size: inherit; line-height: inherit; }
     .article-body .gy-card .boat-spec li::before, .article-body .gy-card .boat-spec li::after { content: none; display: none; }
     @media (max-width: 599.98px) { .group-yachts:has(.gy-card) { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-inline: 0; } }
     @media (min-width: 600px) {
@@ -816,7 +794,7 @@
       .group-yacht.gy-card:first-child:nth-last-child(3), .group-yacht.gy-card:only-child { grid-column: auto; }
       .article-body .group-guide .group-row:has(.gy-card:only-child) { grid-template-columns: minmax(0, 1fr) calc((100% - 14px) / 2); column-gap: 14px; }
       .article-body .group-guide .group-row:has(.gy-card:only-child) .group-yachts { grid-template-columns: minmax(0, 1fr); }
-      .gy-card .boat-cover { min-height: 116px; }   
+      .gy-card .boat-spec { min-height: calc(4.05em + 8px); }   
     }
     
     .mag-board { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 28px; }
@@ -910,31 +888,18 @@
     .jump a:hover, .jump a:focus-visible { background: var(--navy); color: #fff; }
     .jump-row + .intro-copy { margin-top: 18px; }
     
-    .guide-hero .hero-wx { position: relative; z-index: 1; min-width: 0; margin: 18px 0 0; }
+    .guide-hero .hero-wx { position: relative; z-index: 2; grid-area: 1 / 1; justify-self: end; align-self: start; min-width: 0; margin: 128px 0 0; }
+    .guide-hero .hero-wx > .wx { display: none; }
+    .hero-wx.has-mini .wx-mini { display: block; }
+    
     @media (max-width: 899.98px) {
-      .guide-hero .hero-wx { z-index: 2; grid-area: 1 / 1; justify-self: end; align-self: start; margin: 128px 0 0; }
-      .guide-hero .hero-wx > .wx { display: none; }
-      .hero-wx.has-mini .wx-mini { display: block; }
+      .guide-hero:has(.hero-wx) .hero-head { padding-top: 304px; }
     }
-    .hero-wx .wx { margin: 0; }
-    .hero-wx .wx-card { max-width: none; }
     @media (min-width: 900px) {
-      .guide-hero .hero-wx { grid-area: 1 / 1; justify-self: end; align-self: end; width: 310px; margin: 0 0 40px; }
-      .guide-hero .hero-head { justify-self: start; width: calc(100% - 340px); max-width: calc(100% - 340px); }
+      .guide-hero .hero-wx { margin-top: 150px; }
       .guide-hero .hero-glance { column-gap: 26px; flex-wrap: nowrap; }
       .guide-hero .hero-glance div { flex: 0 1 auto; }
       .guide-hero .hero-glance dd { font-size: 14.5px; white-space: normal; }
-      .hero-wx .wx-card { padding: 14px 0 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .25); }
-      .hero-wx .wx-place { font-size: 17px; }
-      .hero-wx .wx-temp { font-size: 46px; }
-      .hero-wx .wx-sky { font-size: 14px; }
-      .hero-wx .wx-hl { font-size: 13px; }
-      .hero-wx .wx-days { margin-top: 10px; }
-      .hero-wx .wx-day { min-height: 30px; padding: 0 11px; font-size: 12px; }
-      .hero-wx .wx-panel { margin-top: 10px; padding: 8px 0; }
-      .hero-wx .wx-strip { padding-top: 8px; }
-      .hero-wx .wx-hour { flex-basis: 50px; }
-      .hero-wx .wx-t { font-size: 15px; }
     }
     
     .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
@@ -945,6 +910,13 @@
     .hero-glance .glance-icon { position: absolute; left: 0; top: 2px; width: 19px; height: 19px; fill: none; stroke: var(--sea); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
     .hero-glance dt { color: rgba(255, 255, 255, .78); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
     .hero-glance dd { margin: 3px 0 0; color: #fff; font-size: 13px; font-weight: 600; line-height: 1.35; white-space: nowrap; text-shadow: 0 1px 8px rgba(6, 28, 40, .45); }
+    
+    @media (max-width: 599.98px) {
+      .hero-glance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0 0; padding: 0; overflow: visible; }
+      .hero-glance div { padding-left: 0; }
+      .hero-glance .glance-icon { position: static; display: block; width: 17px; height: 17px; margin: 0 0 5px; }
+      .hero-glance dd { white-space: normal; }
+    }
     @media (min-width: 600px) {
       .guide-hero .hero-head { padding: 170px 0 36px; }
       .guide-hero .hero-head h1 { padding: 0; }
@@ -1417,11 +1389,9 @@
                 <a class="group-yacht boat-card gy-card" href="boats/pandora.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 5.74">Pandora</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Pandora</span></p></div>
                 </a>
               </div>
             </li>
@@ -1432,20 +1402,16 @@
                 <a class="group-yacht boat-card gy-card" href="boats/jackie.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 4.92">Jackie</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Jackie</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/sira.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 3.28">Sira</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Sira</span></p></div>
                 </a>
               </div>
             </li>
@@ -1456,20 +1422,16 @@
                 <a class="group-yacht boat-card gy-card" href="boats/pearl.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 4.10">Pearl</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Pearl</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/bruna.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 4.10">Bruna</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Bruna</span></p></div>
                 </a>
               </div>
             </li>
@@ -1480,20 +1442,16 @@
                 <a class="group-yacht boat-card gy-card" href="boats/meraki.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 4.92">Meraki</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Meraki</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/matia-sou.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 7.38">Matia Sou</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Matia Sou</span></p></div>
                 </a>
               </div>
             </li>
@@ -1504,11 +1462,9 @@
                 <a class="group-yacht boat-card gy-card" href="boats/simon.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
-                    <div class="boat-cover">
-                      <p class="boat-name" style="--em: 4.10">Simon</p>
-                      <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
-                    </div>
                   </div>
+                  <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
+                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Simon</span></p></div>
                 </a>
               </div>
             </li>
@@ -1559,7 +1515,7 @@
         <div class="dest-module module-others">
         <div class="dest-cards dest-others-cards">
           <a class="dest-card" href="krabi-hong-island-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"><h3 class="card-name">Hong Lagoon, Krabi</h3></div>
+            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"><h3 class="card-name">Hong Krabi Island</h3></div>
           </a>
           <a class="dest-card" href="four-islands-krabi-private-yacht.html">
             <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>

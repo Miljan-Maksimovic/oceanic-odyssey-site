@@ -733,34 +733,19 @@
 
     
     .boat-card { position: relative; display: flex; flex-direction: column; min-width: 0; background: transparent; }
-    
-    .boat-card .boat-photo { position: relative; isolation: isolate; display: flex; flex: 1 0 auto; flex-direction: column; overflow: hidden; aspect-ratio: auto; border-radius: 3px; background: #0A2433; }
-    .boat-card .boat-bg { display: none; }
-    .boat-card .boat-photo::after { content: none; }
-    .boat-card .boat-img { position: relative; display: block; flex: none; width: 100%; height: auto; margin-bottom: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); mask-image: linear-gradient(180deg, #000 90%, rgba(0, 0, 0, .5) 96%, transparent 100%); transition: transform .55s; transform-origin: 50% 50%; }
+    .boat-card .boat-photo { position: relative; overflow: hidden; aspect-ratio: auto; border-radius: 4px; background: var(--ice); }
+    .boat-card .boat-photo::after, .boat-card .boat-cover::after { content: none; }
+    .boat-card .boat-bg, .boat-card .boat-cover { display: none; }
+    .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: none; mask-image: none; transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    
-    .boat-card .boat-cover { position: relative; inset: auto; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100px; margin-top: auto; padding: 12px 16px 16px 18px; overflow: visible; aspect-ratio: auto; background: none; }   
-    .boat-card .boat-cover::after { content: none; }
-    .boat-card .boat-name {
-      position: static;
-      margin: 0;
-      color: #fff;
-      font-family: var(--serif);
-      
-      font-size: min(28px, calc((100cqi - 36px) / var(--em, 9)));
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .boat-card .boat-spec { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 8px 0 0; padding: 0; list-style: none; color: #fff; font-size: 10.5px; font-weight: 700; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 1px 2px rgba(6, 28, 40, .45); }
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
-    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--sea); }
-    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
-    .boat-card .boat-price { margin: 0; color: var(--navy); font-size: clamp(20px, 6.1vw, 24px); font-weight: 800; line-height: 1.3; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 6px 0 0; }
+    .boat-card .boat-title { flex: 1 1 auto; min-width: 0; margin: 0; line-height: 1.4; }
+    .boat-card .boat-name { position: static; display: inline; margin: 0 8px 0 0; color: var(--navy); font-family: var(--sans); font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
+    .boat-card .boat-price { display: inline-block; margin: 0; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.4; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -781,17 +766,10 @@
     .boat-card .boat-link:focus-visible { outline: none; }
     .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
     
-    .boat-card { container-type: inline-size; }
-    @container (max-width: 340px) {
-      .boat-card .boat-name { font-size: min(24px, calc((100cqi - 36px) / var(--em, 9))); }
-      .boat-card .boat-cover { min-height: 94px; }
-    }
-    @media (min-width: 600px) {
-      .boat-card .boat-price { font-size: 21px; }
-    }
-    @media (min-width: 1100px) {
-      .boat-card .boat-spec { font-size: 11px; }
-      .boat-card .boat-price { font-size: 23px; }
+    @media (min-width: 900px) {
+      .boat-card .boat-name { margin-right: 6px; font-size: 15px; letter-spacing: .03em; }
+      .boat-card .boat-price { font-size: 14px; }
+      .boat-card .boat-enquire { font-size: 13px; }
     }
 
     
@@ -1189,15 +1167,10 @@
         <article class="boat boat-card" data-boat="Muse 46" data-max="8">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-muse-46" style="--em: 5.74">Muse 46</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>46 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2008</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>46 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2008</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 98,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-muse-46">Muse 46</h3> <p class="boat-price">From 98,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2046.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 46 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1208,15 +1181,10 @@
         <article class="boat boat-card" data-boat="Lewis 4.S" data-max="10">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-lewis-4s" style="--em: 7.38">Lewis 4.S</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>36 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>36 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 99,900 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-lewis-4s">Lewis 4.S</h3> <p class="boat-price">From 99,900 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Lewis%204.S.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Lewis 4.S on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1227,15 +1195,10 @@
         <article class="boat boat-card" data-boat="Muse 55" data-max="15">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/muse-55.jpg" width="1500" height="900" alt="Muse 55 on calm water, two guests at the bow rail." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-muse-55" style="--em: 5.74">Muse 55</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2007</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2007</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 110,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-muse-55">Muse 55</h3> <p class="boat-price">From 110,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Muse%2055.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Muse 55 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1246,15 +1209,10 @@
         <article class="boat boat-card" data-boat="Collus T 11" data-max="10">
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/collus-t-11.jpg" width="1500" height="900" alt="Collus T 11 at anchor in a blue bay below green hills." loading="lazy" decoding="async">
-            <div class="boat-cover">
-              <h3 class="boat-name" id="other-collus-t-11" style="--em: 9.02">Collus T 11</h3>
-              <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2022</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
-            </div>
           </div>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2022</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div>
-              <p class="boat-price">From 119,000 THB</p>
-            </div>
+            <div class="boat-title"><h3 class="boat-name" id="other-collus-t-11">Collus T 11</h3> <p class="boat-price">From 119,000 THB</p></div>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Collus%20T%2011.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Collus T 11 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>

@@ -629,8 +629,6 @@
     requestAnimationFrame(sync);
   }
 
-  var WIDE = window.matchMedia ? window.matchMedia("(min-width: 900px)") : null;
-
   function span(cls, text) { return el("span", cls, text); }
 
   function miniWidget(box, d, an) {
@@ -698,10 +696,6 @@
         document.documentElement.classList.remove("wx-open");
         btn.focus({preventScroll: true});
       });
-      if (WIDE) {
-        var shut = function () { if (WIDE.matches && dlg.open) dlg.close(); };
-        if (WIDE.addEventListener) WIDE.addEventListener("change", shut); else if (WIDE.addListener) WIDE.addListener(shut);
-      }
     }
     dlg.setAttribute("aria-label", box._sheetLabel || S.close);
     dlg.firstChild.appendChild(box);   // after the close button, which takes the focus when it opens
