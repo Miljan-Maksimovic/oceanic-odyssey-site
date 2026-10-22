@@ -284,14 +284,26 @@
           {
             "@type": "ListItem",
             "position": 34,
+            "name": "Octava 119",
+            "url": "https://www.oceanicoddysseyyachtphuket.com/boats/octava-119.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 35,
             "name": "Simon",
             "url": "https://www.oceanicoddysseyyachtphuket.com/boats/simon.html"
           },
           {
             "@type": "ListItem",
-            "position": 35,
+            "position": 36,
             "name": "Song of Songs",
             "url": "https://www.oceanicoddysseyyachtphuket.com/boats/song-of-songs.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 37,
+            "name": "Panakie 150",
+            "url": "https://www.oceanicoddysseyyachtphuket.com/boats/panakie-150.html"
           }
         ]
       },
@@ -979,7 +991,7 @@
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
     .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 4px 0 0; }
-    .boat-card .boat-price { margin: 0; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-price { margin: 0; min-width: 0; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -1206,6 +1218,9 @@
     .wx-sheet-close svg { width: 14px; height: 14px; }
     .wx-sheet-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
     
+    
+    .fleet-page .intro::before { content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; left: -100vmax; right: -100vmax; background: linear-gradient(90deg, rgba(10, 36, 51, .88) 0%, rgba(10, 36, 51, .6) 55%, rgba(10, 36, 51, .35) 100%), url(assets/fleet-cover.jpg) center 55% / cover no-repeat; pointer-events: none; }
+    .fleet-page .intro > * { position: relative; z-index: 1; }
     .fleet-wx { float: right; width: 150px; margin: 2px 0 12px 14px; }
     .fleet-wx > .wx { display: none; }
     .fleet-wx.has-mini .wx-mini { display: block; width: 150px; }
@@ -1265,9 +1280,10 @@
       <div class="intro-grid">
         <div class="intro-copy">
           <div class="hero-wx fleet-wx">
-          <div class="wx" data-dest-data="assets/destinations.json" data-weather="phi-phi-islands">
+          <div class="wx" data-dest-data="assets/destinations.json" data-weather="phuket">
             <div class="wx-picker" role="tablist" aria-label="Destination">
-              <button type="button" role="tab" aria-selected="true" data-wx-pick="phi-phi-islands">Phi Phi</button>
+              <button type="button" role="tab" aria-selected="true" data-wx-pick="phuket">Phuket</button>
+              <button type="button" role="tab" aria-selected="false" data-wx-pick="phi-phi-islands">Phi Phi</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="racha-yai-racha-noi">Racha</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="hong-island-krabi">Hong Island</button>
               <button type="button" role="tab" aria-selected="false" data-wx-pick="four-islands-krabi">4 Islands</button>
@@ -1283,9 +1299,9 @@
             <p class="wx-status" aria-live="polite"></p>
           </div>
           </div>
-          <p class="hero-kicker">Private yacht charter, Phuket</p>
-          <h1 id="page-title">The fleet</h1>
-          <p class="intro-lede">Private yachts by the day, from 89,000 THB for the whole yacht and a full day of 8 hours.</p>
+          <p class="hero-kicker">Luxury yacht collection</p>
+          <h1 id="page-title">Find Your Perfect Yacht</h1>
+          <p class="intro-lede">A curated collection of yachts for private escapes across Phuket and the Andaman Sea.</p>
           <p class="intro-note">Prices shown are for Nov to Apr. Rates change by season, so message us your date for the exact price.</p>
         </div>
         <div class="cta-group">
@@ -1866,6 +1882,21 @@
           </div>
           <a class="boat-link" href="boats/matia-sou.html" aria-label="Matia Sou, From 450,000 THB"></a>
         </article>
+        <article class="boat boat-card" data-boat="Octava 119" data-type="superyacht" data-ft="119" data-max="10" data-price="3384000">
+          <div class="boat-photo">
+            <img class="boat-img" src="assets/cards/octava-119.jpg" width="1280" height="768" alt="Octava 119 under way beside limestone islands, a green wake behind her." loading="lazy" decoding="async">
+          </div>
+          <h3 class="boat-name" id="fleet-octava-119">Octava 119</h3>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>119 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2010</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
+          <div class="boat-foot">
+            <p class="boat-price">USD 94,000</p>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Octava%20119.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Octava 119 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/octava-119.html" aria-label="Octava 119, USD 94,000"></a>
+        </article>
         <article class="boat boat-card" data-boat="Simon" data-type="superyacht" data-ft="130" data-max="44" data-price="720000">
           <div class="boat-photo">
             <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="Simon under way, with mountains on the horizon." loading="lazy" decoding="async">
@@ -1895,6 +1926,21 @@
             </a>
           </div>
           <a class="boat-link" href="boats/song-of-songs.html" aria-label="Song of Songs, USD 37,500"></a>
+        </article>
+        <article class="boat boat-card" data-boat="Panakie 150" data-type="superyacht" data-ft="150" data-max="10" data-price="1260000">
+          <div class="boat-photo">
+            <img class="boat-img" src="assets/cards/panakie-150.jpg" width="1500" height="900" alt="Panakie 150 under way off a wooded green coast." loading="lazy" decoding="async">
+          </div>
+          <h3 class="boat-name" id="fleet-panakie-150">Panakie 150</h3>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>150 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2010</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
+          <div class="boat-foot">
+            <p class="boat-price">USD 35,000</p>
+            <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Panakie%20150.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Panakie 150 on WhatsApp">
+              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
+              <span>Enquire</span>
+            </a>
+          </div>
+          <a class="boat-link" href="boats/panakie-150.html" aria-label="Panakie 150, USD 35,000"></a>
         </article>
       </div>
     </section>

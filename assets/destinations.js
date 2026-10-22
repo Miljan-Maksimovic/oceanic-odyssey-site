@@ -131,6 +131,8 @@
 
   function byId(data, slug) {
     for (var i = 0; i < data.destinations.length; i++) if (data.destinations[i].slug === slug) return data.destinations[i];
+    var extra = data.wx_places || [];
+    for (var j = 0; j < extra.length; j++) if (extra[j].slug === slug) return extra[j];
     return null;
   }
 
