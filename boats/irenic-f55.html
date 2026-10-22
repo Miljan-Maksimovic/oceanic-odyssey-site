@@ -739,13 +739,13 @@
     .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: none; mask-image: none; transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
+    .boat-card .boat-name { position: static; display: block; margin: 14px 0 0; color: var(--navy); font-family: var(--sans); font-size: 17px; font-weight: 800; line-height: 1.3; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
+    
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 7px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
-    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 6px 0 0; }
-    .boat-card .boat-title { flex: 1 1 auto; min-width: 0; margin: 0; line-height: 1.4; }
-    .boat-card .boat-name { position: static; display: inline; margin: 0 8px 0 0; color: var(--navy); font-family: var(--sans); font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
-    .boat-card .boat-price { display: inline-block; margin: 0; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.4; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 4px 0 0; }
+    .boat-card .boat-price { margin: 0; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -765,12 +765,6 @@
     .boat-card .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
     .boat-card .boat-link:focus-visible { outline: none; }
     .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
-    
-    @media (min-width: 900px) {
-      .boat-card .boat-name { margin-right: 6px; font-size: 15px; letter-spacing: .03em; }
-      .boat-card .boat-price { font-size: 14px; }
-      .boat-card .boat-enquire { font-size: 13px; }
-    }
 
     
     .yp-wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
@@ -1168,9 +1162,10 @@
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/theo-70.jpg" width="1500" height="900" alt="Theo 70 at speed at dusk, a long white wake behind." loading="lazy" decoding="async">
           </div>
+          <h3 class="boat-name" id="other-theo-70">Theo 70</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>70 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2003</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div class="boat-title"><h3 class="boat-name" id="other-theo-70">Theo 70</h3> <p class="boat-price">From 178,000 THB</p></div>
+            <p class="boat-price">From 178,000 THB</p>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Theo%2070.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Theo 70 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1182,9 +1177,10 @@
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/calardior-58.jpg" width="1500" height="900" alt="Calardior 58 under way below a forested hillside." loading="lazy" decoding="async">
           </div>
+          <h3 class="boat-name" id="other-calardior-58">Calardior 58</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>58 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li></ul>
           <div class="boat-foot">
-            <div class="boat-title"><h3 class="boat-name" id="other-calardior-58">Calardior 58</h3> <p class="boat-price">From 182,000 THB</p></div>
+            <p class="boat-price">From 182,000 THB</p>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Calardior%2058.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Calardior 58 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1196,9 +1192,10 @@
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
           </div>
+          <h3 class="boat-name" id="other-jackie">Jackie</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div class="boat-title"><h3 class="boat-name" id="other-jackie">Jackie</h3> <p class="boat-price">From 190,000 THB</p></div>
+            <p class="boat-price">From 190,000 THB</p>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Jackie.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Jackie on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>
@@ -1210,9 +1207,10 @@
           <div class="boat-photo">
             <img class="boat-img" src="../assets/cards/maris-60.jpg" width="1500" height="900" alt="Maris 60, a navy hull under white decks, on calm water." loading="lazy" decoding="async">
           </div>
+          <h3 class="boat-name" id="other-maris-60">Maris 60</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2020</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
           <div class="boat-foot">
-            <div class="boat-title"><h3 class="boat-name" id="other-maris-60">Maris 60</h3> <p class="boat-price">From 190,000 THB</p></div>
+            <p class="boat-price">From 190,000 THB</p>
             <a class="boat-enquire" href="https://wa.me/66644518232?text=Hi%2C%20I%27m%20interested%20in%20the%20Maris%2060.%20Could%20you%20please%20share%20more%20details%3F" target="_blank" rel="noopener noreferrer" aria-label="Enquire about Maris 60 on WhatsApp">
               <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
               <span>Enquire</span>

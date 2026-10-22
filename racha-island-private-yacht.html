@@ -747,13 +747,13 @@
     .boat-card .boat-img { position: relative; display: block; width: 100%; height: auto; margin: 0; aspect-ratio: 5 / 3; object-fit: cover; -webkit-mask-image: none; mask-image: none; transition: transform .55s; transform-origin: 50% 50%; }
     .boat-card:hover .boat-img { transform: scale(1.035); }
     
-    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
+    .boat-card .boat-name { position: static; display: block; margin: 14px 0 0; color: var(--navy); font-family: var(--sans); font-size: 17px; font-weight: 800; line-height: 1.3; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
+    
+    .boat-card .boat-spec { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 12px; min-height: calc(2.7em + 4px); margin: 7px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; text-shadow: none; }
     .boat-card .boat-spec li { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; margin: 0; padding: 0; border: 0; white-space: nowrap; }
     .boat-card .boat-spec .spec-icon { flex: 0 0 13px; width: 13px; height: 13px; padding: 0; border-radius: 0; background: none; color: var(--teal); }
-    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 6px 0 0; }
-    .boat-card .boat-title { flex: 1 1 auto; min-width: 0; margin: 0; line-height: 1.4; }
-    .boat-card .boat-name { position: static; display: inline; margin: 0 8px 0 0; color: var(--navy); font-family: var(--sans); font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: .04em; text-transform: uppercase; white-space: normal; }
-    .boat-card .boat-price { display: inline-block; margin: 0; color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.4; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .boat-card .boat-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 4px 0 0; }
+    .boat-card .boat-price { margin: 0; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .boat-card .boat-enquire {
       position: relative;
       z-index: 2;
@@ -773,17 +773,11 @@
     .boat-card .boat-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
     .boat-card .boat-link:focus-visible { outline: none; }
     .boat-card .boat-link:focus-visible::after { outline: 3px solid #299CA2; outline-offset: 5px; }
-    
-    @media (min-width: 900px) {
-      .boat-card .boat-name { margin-right: 6px; font-size: 15px; letter-spacing: .03em; }
-      .boat-card .boat-price { font-size: 14px; }
-      .boat-card .boat-enquire { font-size: 13px; }
-    }
 
     
     .article-body .group-guide a.group-yacht.gy-card, a.gy-card { display: flex; flex-direction: column; color: var(--navy); font-weight: 400; text-decoration: none; }
     .group-yachts:has(.gy-card) { align-items: stretch; }
-    .gy-card .boat-name { display: inline; }
+    .gy-card .boat-name { display: block; }
     .article-body .gy-card .boat-spec { margin: 12px 0 0; padding: 0; list-style: none; }
     .article-body .gy-card .boat-spec li { margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--muted); font-size: inherit; line-height: inherit; }
     .article-body .gy-card .boat-spec li::before, .article-body .gy-card .boat-spec li::after { content: none; display: none; }
@@ -1301,7 +1295,7 @@
       <dl class="hero-glance" aria-label="Racha Yai and Racha Noi at a glance">
           <div class="glance-item is-verdict"><dt><svg class="glance-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Full day of 8 hours</dt><dd>Fits an 8-hour day</dd></div>
           <div class="glance-item"><dt><svg class="glance-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>Open</dt><dd>Open all year</dd></div>
-          <div class="glance-item"><dt><svg class="glance-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4V18h16v-1.5a2 2 0 0 1 0-4 2 2 0 0 1 0-4V7H4z" transform="translate(0 -1)"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg>Island fee</dt><dd>100 THB to visit the island</dd></div>
+          <div class="glance-item"><dt><svg class="glance-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5a2 2 0 0 0 0 4v0a2 2 0 0 1 0 4V18h16v-1.5a2 2 0 0 1 0-4 2 2 0 0 1 0-4V7H4z" transform="translate(0 -1)"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg>Park fee</dt><dd>No fee</dd></div>
         </dl>
         </div>
         <figure class="guide-photo">
@@ -1328,17 +1322,7 @@
         </nav>
         <div class="intro-copy article-body reading-column">
           <p class="lead">South of Phuket, Racha Yai and Racha Noi sit in clear blue water: powdery white sand at Patok Bay, reef a short swim from the beach, and deeper sites off Racha Noi. A paradise for scuba divers, and just as good for free diving and snorkelling.</p>
-          <div class="cta-pair">
-            <a class="button" id="hero-enquiry" href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20to%20Racha.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
-              <svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg>
-              <span>Message us on WhatsApp</span>
-            </a>
-            <a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20to%20Racha.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">
-              <svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg>
-              <span>Message us on Telegram</span>
-            </a>
-          </div>
-          <p class="cta-phone"><a href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20to%20Racha.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">+66 64 451 8232</a></p>
+          <span id="hero-enquiry" hidden></span>
         </div>
       </header>
 
@@ -1390,8 +1374,8 @@
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Pandora</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Pandora</span></p></div>
                 </a>
               </div>
             </li>
@@ -1403,15 +1387,15 @@
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Jackie</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Jackie</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/sira.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Sira</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Sira</span></p></div>
                 </a>
               </div>
             </li>
@@ -1423,15 +1407,15 @@
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Pearl</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Pearl</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/bruna.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Bruna</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Bruna</span></p></div>
                 </a>
               </div>
             </li>
@@ -1443,15 +1427,15 @@
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Meraki</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Meraki</span></p></div>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/matia-sou.html">
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/matia-sou.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Matia Sou</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Matia Sou</span></p></div>
                 </a>
               </div>
             </li>
@@ -1463,8 +1447,8 @@
                   <div class="boat-photo">
                     <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
+                  <p class="boat-name">Simon</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
-                  <div class="boat-foot"><p class="boat-title"><span class="boat-name">Simon</span></p></div>
                 </a>
               </div>
             </li>
