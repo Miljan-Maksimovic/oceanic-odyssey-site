@@ -1039,6 +1039,34 @@
     @media (max-width: 359px) { .yp-pair { grid-template-columns: minmax(0, 1fr); } }
     @media (min-width: 900px) { .yp-field input { font-size: 15px; } .yp-field input[type="date"] { padding-inline: 8px; font-size: 14px; } }
 
+    
+    .yp-shot { display: block; position: relative; width: 100%; height: 100%; color: inherit; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+    .yp-shot:focus-visible { outline: 3px solid var(--sea); outline-offset: 2px; }
+    .yp-gallery .yp-shot img { transition: transform .5s ease; }
+    @media (hover: hover) { .yp-gallery .yp-shot:hover img { transform: scale(1.04); } }
+    .yp-shot-pill { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px 7px 10px; border-radius: 999px; background: rgba(6, 28, 40, .62); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .02em; line-height: 1; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); pointer-events: none; }
+    .yp-shot-pill svg { width: 15px; height: 15px; }
+    .yp-lightbox { position: fixed; inset: 0; width: 100vw; width: 100dvw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #061C28; color: #fff; overflow: hidden; }
+    .yp-lightbox::backdrop { background: #061C28; }
+    .yp-lightbox:not([open]) { display: none; }
+    .yp-lightbox img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; touch-action: pan-y; }
+    .yp-lightbox button { position: absolute; z-index: 2; display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .14); color: #fff; cursor: pointer; -webkit-tap-highlight-color: transparent; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background .15s; }
+    .yp-lightbox button:hover { background: rgba(255, 255, 255, .26); }
+    .yp-lightbox button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+    .yp-lightbox button svg { width: 22px; height: 22px; }
+    .yp-lightbox .lb-close { top: calc(14px + env(safe-area-inset-top, 0px)); right: calc(14px + env(safe-area-inset-right, 0px)); }
+    .yp-lightbox .lb-prev { left: calc(10px + env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
+    .yp-lightbox .lb-next { right: calc(10px + env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
+    .yp-lightbox.is-single .lb-prev, .yp-lightbox.is-single .lb-next, .yp-lightbox.is-single .lb-count { display: none; }
+    .yp-lightbox .lb-count { position: absolute; z-index: 2; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); margin: 0; padding: 6px 12px; border-radius: 999px; background: rgba(255, 255, 255, .14); font-size: 13px; font-weight: 700; letter-spacing: .04em; line-height: 1; font-variant-numeric: tabular-nums; }
+    html.lb-open, html.lb-open body { overflow: hidden; }
+    @media (min-width: 900px) {
+      .yp-lightbox .lb-prev { left: 24px; }
+      .yp-lightbox .lb-next { right: 24px; }
+      .yp-lightbox button { width: 52px; height: 52px; }
+      .yp-shot-pill { right: 14px; bottom: 14px; font-size: 13px; padding: 8px 14px 8px 12px; }
+    }
+
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1072,7 +1100,7 @@
     <section class="yp-hero" aria-labelledby="yacht-name">
       <div class="yp-hero-inner yp-wrap">
         <figure class="yp-hero-photo">
-          <img src="../assets/cards/meraki.jpg" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." width="1500" height="900" fetchpriority="high" decoding="async">
+          <a class="yp-shot" href="../assets/cards/meraki.jpg"><img src="../assets/cards/meraki.jpg" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." width="1500" height="900" fetchpriority="high" decoding="async"><span class="yp-shot-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.1-1.6c.2-.3.5-.4.8-.4h4.8c.3 0 .6.1.8.4L16.3 7h2.2A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>7 photos</span></span></a>
         </figure>
         <div class="yp-hero-copy">
           <p class="yp-kicker">Private yacht charter, Phuket</p>
@@ -1101,15 +1129,12 @@
         <p class="yp-description">Meraki is a spacious 76 ft yacht with room for 25, ideal for big groups who want the action. A wakeboard, a knee board, a paddle board and two towable tubes go over the side between islands, and four cabins sleep eight for an overnight escape.</p>
 
         <div class="yp-gallery">
-          <figure><img src="../assets/boats/meraki/a1-g-03.jpg" alt="Meraki, photo 1" width="2160" height="1294" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/a2-g-05a.jpg" alt="Meraki, photo 2" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/a3-g-02.jpg" alt="Meraki, photo 3" width="2000" height="1302" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-01.jpg" alt="Meraki, photo 4" width="2160" height="1294" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-02.jpg" alt="Meraki, photo 5" width="2000" height="1302" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-03.jpg" alt="Meraki, photo 6" width="2160" height="1294" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-04.jpg" alt="Meraki, photo 7" width="1716" height="1117" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-05a.jpg" alt="Meraki, photo 8" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <figure><img src="../assets/boats/meraki/g-05b.jpg" alt="Meraki, photo 9" width="1920" height="1712" loading="lazy" decoding="async"></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a1-g-03.jpg"><img src="../assets/boats/meraki/a1-g-03.jpg" alt="Meraki, photo 1" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a2-g-05a.jpg"><img src="../assets/boats/meraki/a2-g-05a.jpg" alt="Meraki, photo 2" width="1200" height="900" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a3-g-02.jpg"><img src="../assets/boats/meraki/a3-g-02.jpg" alt="Meraki, photo 3" width="2000" height="1302" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-01.jpg"><img src="../assets/boats/meraki/g-01.jpg" alt="Meraki, photo 4" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-04.jpg"><img src="../assets/boats/meraki/g-04.jpg" alt="Meraki, photo 5" width="1716" height="1117" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-05b.jpg"><img src="../assets/boats/meraki/g-05b.jpg" alt="Meraki, photo 6" width="1920" height="1712" loading="lazy" decoding="async"></a></figure>
         </div>
 
       <aside class="yp-request" aria-labelledby="request-name">
@@ -1330,6 +1355,75 @@
             button.textContent = label;
           }
         });
+      });
+    })();
+  </script>
+  <dialog class="yp-lightbox" aria-label="Photos of Meraki">
+    <img alt="" decoding="async">
+    <button type="button" class="lb-close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <button type="button" class="lb-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="lb-next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <p class="lb-count" aria-live="polite"></p>
+  </dialog>
+  <script>
+    (() => {
+      const shots = Array.from(document.querySelectorAll('a.yp-shot'));
+      const box = document.querySelector('dialog.yp-lightbox');
+      if (!shots.length || !box || typeof box.showModal !== 'function') return;
+      const img = box.querySelector('img');
+      const count = box.querySelector('.lb-count');
+      const loaded = new Set();
+      let at = 0, opener = null, downX = null, downY = null;
+      box.classList.toggle('is-single', shots.length < 2);
+
+      const src = i => shots[i].getAttribute('href');
+      const preload = i => {
+        const s = src((i + shots.length) % shots.length);
+        if (loaded.has(s)) return;
+        loaded.add(s);
+        const im = new Image();
+        im.src = s;
+      };
+      const show = i => {
+        at = (i + shots.length) % shots.length;
+        img.src = src(at);
+        img.alt = (shots[at].querySelector('img') || {}).alt || '';
+        count.textContent = (at + 1) + ' / ' + shots.length;
+        preload(at + 1);
+        preload(at - 1);
+      };
+      const open = (i, from) => {
+        opener = from;
+        show(i);
+        document.documentElement.classList.add('lb-open');
+        box.showModal();
+        box.querySelector('.lb-close').focus({ preventScroll: true });
+      };
+
+      shots.forEach((a, i) => a.addEventListener('click', e => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+        e.preventDefault();
+        open(i, a);
+      }));
+      box.querySelector('.lb-close').addEventListener('click', () => box.close());
+      box.querySelector('.lb-prev').addEventListener('click', () => show(at - 1));
+      box.querySelector('.lb-next').addEventListener('click', () => show(at + 1));
+      box.addEventListener('click', e => { if (e.target === box) box.close(); });
+      box.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') { show(at + 1); e.preventDefault(); }
+        if (e.key === 'ArrowLeft') { show(at - 1); e.preventDefault(); }
+      });
+      box.addEventListener('close', () => {
+        document.documentElement.classList.remove('lb-open');
+        img.removeAttribute('src');
+        if (opener) opener.focus({ preventScroll: true });
+      });
+      box.addEventListener('pointerdown', e => { downX = e.clientX; downY = e.clientY; });
+      box.addEventListener('pointerup', e => {
+        if (downX === null) return;
+        const dx = e.clientX - downX, dy = e.clientY - downY;
+        downX = downY = null;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? at + 1 : at - 1);
       });
     })();
   </script>
