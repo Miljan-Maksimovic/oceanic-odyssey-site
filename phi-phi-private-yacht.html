@@ -721,7 +721,7 @@
     .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .yp-form .yp-btn { margin-top: 3px; }
     .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
-    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-sent, .yp-status.is-mailed { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
     .yp-status.is-failed { color: #FFD9C7; }
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
@@ -732,7 +732,7 @@
     .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
     .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
     .yp-light .yp-status { color: var(--ink); }
-    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-sent, .yp-light .yp-status.is-mailed { background: var(--ice); color: var(--navy); }
     .yp-light .yp-status.is-failed { color: #9A3B1C; }
     .yp-light .yp-or { color: var(--muted); }
     .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
@@ -1303,8 +1303,8 @@
         </div>
         <figure class="guide-photo">
           <picture>
-            <source media="(min-width: 600px)" srcset="assets/destinations/phi-phi-islands/phi-phi-leh-amy-2880.jpg">
-            <img src="assets/destinations/phi-phi-islands/phi-phi-leh-amy-2000.jpg" width="1366" height="768" alt="The limestone cliffs of Phi Phi Leh over blue water, yachts at anchor below" loading="eager" fetchpriority="high">
+            <source media="(min-width: 600px)" srcset="assets/destinations/phi-phi-islands/phi-phi-leh-amy-2880-480.webp 480w, assets/destinations/phi-phi-islands/phi-phi-leh-amy-2880-800.webp 800w, assets/destinations/phi-phi-islands/phi-phi-leh-amy-2880-1200.webp 1200w" sizes="100vw">
+            <img src="assets/destinations/phi-phi-islands/phi-phi-leh-amy-2000.jpg" srcset="assets/destinations/phi-phi-islands/phi-phi-leh-amy-2000-480.webp 480w, assets/destinations/phi-phi-islands/phi-phi-leh-amy-2000-800.webp 800w, assets/destinations/phi-phi-islands/phi-phi-leh-amy-2000-1200.webp 1200w" sizes="100vw" width="1366" height="768" alt="The limestone cliffs of Phi Phi Leh over blue water, yachts at anchor below" loading="eager" fetchpriority="high">
           </picture>
         </figure>
         <div class="hero-wx">
@@ -1332,28 +1332,28 @@
       <section class="article-section mag-section" id="what-to-expect-at-phi-phi" aria-label="What to expect at Phi Phi">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/maya-bay-amy-640.jpg 640w, assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/maya-bay-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Maya Bay from above, its white beach inside the cliffs of Phi Phi Leh" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/phi-phi-islands/maya-bay-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/maya-bay-amy-640.webp 640w, assets/destinations/phi-phi-islands/maya-bay-amy-1200.webp 1200w, assets/destinations/phi-phi-islands/maya-bay-amy.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Maya Bay from above, its white beach inside the cliffs of Phi Phi Leh" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 1">
               <h3>Maya Bay</h3>
               <p>Famous as the filming location of The Beach, Maya Bay captivates visitors with its white sandy beach, turquoise waters, and towering limestone cliffs.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/phi-phi-islands/pileh-lagoon-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/pileh-lagoon-amy-640.jpg 640w, assets/destinations/phi-phi-islands/pileh-lagoon-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/pileh-lagoon-amy.jpg 1280w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Turquoise water between sheer limestone cliffs, a boat at anchor" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/phi-phi-islands/pileh-lagoon-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/pileh-lagoon-amy-640.webp 640w, assets/destinations/phi-phi-islands/pileh-lagoon-amy-1200.webp 1200w, assets/destinations/phi-phi-islands/pileh-lagoon-amy.webp 1280w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Turquoise water between sheer limestone cliffs, a boat at anchor" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 5">
               <h3>Pileh Lagoon</h3>
               <p>Emerald waters surrounded by dramatic limestone formations. Access to the lagoon may be by longtail boat or tender, depending on water levels and sea conditions.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/viking-cave-amy-640.jpg 640w, assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/viking-cave-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The Viking Cave in the cliffs of Phi Phi Leh, bamboo scaffolds over turquoise water" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/phi-phi-islands/viking-cave-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/viking-cave-amy-640.webp 640w, assets/destinations/phi-phi-islands/viking-cave-amy-1200.webp 1200w, assets/destinations/phi-phi-islands/viking-cave-amy.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="The Viking Cave in the cliffs of Phi Phi Leh, bamboo scaffolds over turquoise water" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 3">
               <h3>Viking Cave</h3>
               <p>A fascinating cave known for its swiftlet nests and distinctive rock formations.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/monkey-beach-amy-640.jpg 640w, assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg 1200w, assets/destinations/phi-phi-islands/monkey-beach-amy.jpg 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Macaques on the white sand at Monkey Beach" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/phi-phi-islands/monkey-beach-amy-1200.jpg" srcset="assets/destinations/phi-phi-islands/monkey-beach-amy-640.webp 640w, assets/destinations/phi-phi-islands/monkey-beach-amy-1200.webp 1200w, assets/destinations/phi-phi-islands/monkey-beach-amy.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Macaques on the white sand at Monkey Beach" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 7">
               <h3>Monkey Beach</h3>
               <p>A scenic beach known for its resident monkeys, where visitors can also enjoy swimming when conditions permit.</p>
@@ -1389,7 +1389,7 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/pandora.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/pandora.jpg" width="1150" height="690" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/pandora.jpg" srcset="assets/cards/pandora-480.webp 480w, assets/cards/pandora-800.webp 800w, assets/cards/pandora-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1150" height="690" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Pandora</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
@@ -1402,14 +1402,14 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/jackie.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/jackie.jpg" width="1105" height="663" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/jackie.jpg" srcset="assets/cards/jackie-480.webp 480w, assets/cards/jackie-800.webp 800w, assets/cards/jackie-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1105" height="663" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Jackie</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/sira.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/sira.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/sira.jpg" srcset="assets/cards/sira-480.webp 480w, assets/cards/sira-800.webp 800w, assets/cards/sira-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Sira</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2025</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1422,14 +1422,14 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/pearl.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/pearl.jpg" srcset="assets/cards/pearl-480.webp 480w, assets/cards/pearl-800.webp 800w, assets/cards/pearl-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1080" height="648" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Pearl</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/bruna.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/bruna.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/bruna.jpg" srcset="assets/cards/bruna-480.webp 480w, assets/cards/bruna-800.webp 800w, assets/cards/bruna-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Bruna</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1442,14 +1442,14 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/meraki.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/meraki.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/meraki.jpg" srcset="assets/cards/meraki-480.webp 480w, assets/cards/meraki-800.webp 800w, assets/cards/meraki-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Meraki</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>76 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
                 </a>
                 <a class="group-yacht boat-card gy-card" href="boats/matia-sou.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/matia-sou.jpg" width="645" height="387" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/matia-sou.jpg" srcset="assets/cards/matia-sou-480.webp 480w" sizes="(min-width: 900px) 33vw, 100vw" width="645" height="387" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Matia Sou</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1462,7 +1462,7 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/simon.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/simon.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/simon.jpg" srcset="assets/cards/simon-480.webp 480w, assets/cards/simon-800.webp 800w, assets/cards/simon-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Simon</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>130 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2005</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>5 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>44 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>10 guests overnight</span></li></ul>
@@ -1475,7 +1475,7 @@
               <div class="group-yachts">
                 <a class="group-yacht boat-card gy-card" href="boats/song-of-songs.html">
                   <div class="boat-photo">
-                    <img class="boat-img" src="assets/cards/song-of-songs.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+                    <img class="boat-img" src="assets/cards/song-of-songs.jpg" srcset="assets/cards/song-of-songs-480.webp 480w, assets/cards/song-of-songs-800.webp 800w, assets/cards/song-of-songs-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
                   </div>
                   <p class="boat-name">Song of Songs</p>
                   <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>139 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2022</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>6 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>12 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>12 guests overnight</span></li></ul>
@@ -1538,28 +1538,28 @@
         <div class="dest-module module-others">
         <div class="dest-cards dest-others-cards">
           <a class="dest-card" href="racha-island-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="card-name">Racha Yai and Racha Noi</h3></div>
+            <div class="card-photo"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/patok-bay-1200-480.webp 480w, assets/destinations/racha-yai-racha-noi/patok-bay-1200-800.webp 800w, assets/destinations/racha-yai-racha-noi/patok-bay-1200.webp 1200w" sizes="100vw" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="card-name">Racha Yai and Racha Noi</h3></div>
           </a>
           <a class="dest-card" href="krabi-hong-island-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"><h3 class="card-name">Hong Krabi Island</h3></div>
+            <div class="card-photo"><img src="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.jpg" srcset="assets/destinations/hong-island-krabi/hong-lagoon-gap-1200-480.webp 480w, assets/destinations/hong-island-krabi/hong-lagoon-gap-1200-800.webp 800w, assets/destinations/hong-island-krabi/hong-lagoon-gap-1200.webp 1200w" sizes="100vw" width="1200" height="675" alt="The gap between the cliffs at Hong Island, green water running through" loading="lazy" decoding="async"><h3 class="card-name">Hong Krabi Island</h3></div>
           </a>
           <a class="dest-card" href="four-islands-krabi-private-yacht.html">
-            <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>
+            <div class="card-photo"><img src="assets/destinations/four-islands-krabi/poda-beach-1200.jpg" srcset="assets/destinations/four-islands-krabi/poda-beach-1200-480.webp 480w, assets/destinations/four-islands-krabi/poda-beach-1200-800.webp 800w, assets/destinations/four-islands-krabi/poda-beach-1200.webp 1200w" sizes="100vw" width="1200" height="784" alt="Longtail boats on Koh Poda&#x27;s beach, a limestone stack offshore" loading="lazy" decoding="async"><h3 class="card-name">4 Islands, Krabi</h3></div>
           </a>
           <a class="dest-card" href="similan-islands-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
+            <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" srcset="assets/destinations/similan-islands/sail-rock-1200-480.webp 480w, assets/destinations/similan-islands/sail-rock-1200-800.webp 800w, assets/destinations/similan-islands/sail-rock-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
           </a>
           <a class="dest-card" href="surin-islands-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-channel-amy-1200.jpg" width="1200" height="800" alt="Clear turquoise shallows between two wooded islands" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
+            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-channel-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-channel-amy-1200-480.webp 480w, assets/destinations/surin-islands/surin-channel-amy-1200-800.webp 800w, assets/destinations/surin-islands/surin-channel-amy-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Clear turquoise shallows between two wooded islands" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
           </a>
           <a class="dest-card" href="khai-islands-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/khai-islands/khai-aerial-1200.jpg" width="1200" height="675" alt="Khai from above: a white sand spit, beach huts and rocks in turquoise water" loading="lazy" decoding="async"><h3 class="card-name">Khai Islands</h3></div>
+            <div class="card-photo"><img src="assets/destinations/khai-islands/khai-aerial-1200.jpg" srcset="assets/destinations/khai-islands/khai-aerial-1200-480.webp 480w, assets/destinations/khai-islands/khai-aerial-1200-800.webp 800w, assets/destinations/khai-islands/khai-aerial-1200.webp 1200w" sizes="100vw" width="1200" height="675" alt="Khai from above: a white sand spit, beach huts and rocks in turquoise water" loading="lazy" decoding="async"><h3 class="card-name">Khai Islands</h3></div>
           </a>
           <a class="dest-card" href="maiton-island-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/maiton-island/maiton-aerial-1200.jpg" width="1200" height="675" alt="Maiton Island from above: white sand, a jetty and the reef in clear water" loading="lazy" decoding="async"><h3 class="card-name">Maiton Island</h3></div>
+            <div class="card-photo"><img src="assets/destinations/maiton-island/maiton-aerial-1200.jpg" srcset="assets/destinations/maiton-island/maiton-aerial-1200-480.webp 480w, assets/destinations/maiton-island/maiton-aerial-1200-800.webp 800w, assets/destinations/maiton-island/maiton-aerial-1200.webp 1200w" sizes="100vw" width="1200" height="675" alt="Maiton Island from above: white sand, a jetty and the reef in clear water" loading="lazy" decoding="async"><h3 class="card-name">Maiton Island</h3></div>
           </a>
           <a class="dest-card" href="phang-nga-bay-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200.jpg" width="1200" height="675" alt="Ko Tapu, the limestone spire off James Bond Island, under a blue sky" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
+            <div class="card-photo"><img src="assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200.jpg" srcset="assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200-480.webp 480w, assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200-800.webp 800w, assets/destinations/phang-nga-bay-james-bond-island/james-bond-amy-1200.webp 1200w" sizes="100vw" width="1200" height="675" alt="Ko Tapu, the limestone spire off James Bond Island, under a blue sky" loading="lazy" decoding="async"><h3 class="card-name">Phang Nga Bay and James Bond Island</h3></div>
           </a>
         </div>
         <p class="module-link"><a class="text-link" href="phuket-island-hopping-private-yacht.html"><span>All destinations</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
@@ -1572,7 +1572,7 @@
           <p>Send us your date and the size of your group. We will come back with the yachts that fit, each with its rate and a route to Phi Phi.</p>
         </div>
         <div class="closing-form">
-          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Phi Phi Islands" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Phi Phi Islands" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
             <input type="hidden" name="_subject" value="Charter request: Phi Phi Islands">
             <input type="hidden" name="_template" value="table">
@@ -1699,23 +1699,37 @@
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
+          const sent = method => {
+            const params = { topic: form.dataset.topic, page_path: location.pathname, method };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          };
+          const abort = new AbortController();
+          const timer = setTimeout(() => abort.abort(), 12000);
           try {
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
+              signal: abort.signal
             });
             const out = await res.json();
             if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
             form.classList.add('is-sent');
             say(form.dataset.sent, 'is-sent');
-            const params = { topic: form.dataset.topic, page_path: location.pathname };
-            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            sent('form');
           } catch (err) {
-            say(form.dataset.failed, 'is-failed');
+            const rows = Object.entries(data)
+              .filter(([k, v]) => !k.startsWith('_') && v)
+              .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+              + '&body=' + encodeURIComponent(rows.join('\n'));
+            say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
             button.textContent = label;
+            sent('mailto');
+          } finally {
+            clearTimeout(timer);
           }
         });
       });

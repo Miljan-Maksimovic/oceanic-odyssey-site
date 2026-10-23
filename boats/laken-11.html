@@ -1021,7 +1021,7 @@
     .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .yp-form .yp-btn { margin-top: 3px; }
     .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
-    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-sent, .yp-status.is-mailed { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
     .yp-status.is-failed { color: #FFD9C7; }
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
@@ -1032,7 +1032,7 @@
     .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
     .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
     .yp-light .yp-status { color: var(--ink); }
-    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-sent, .yp-light .yp-status.is-mailed { background: var(--ice); color: var(--navy); }
     .yp-light .yp-status.is-failed { color: #9A3B1C; }
     .yp-light .yp-or { color: var(--muted); }
     .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
@@ -1100,7 +1100,7 @@
     <section class="yp-hero" aria-labelledby="yacht-name">
       <div class="yp-hero-inner yp-wrap">
         <figure class="yp-hero-photo">
-          <a class="yp-shot" href="../assets/cards/laken-11.jpg"><img src="../assets/cards/laken-11.jpg" alt="Laken 11 at speed across bright water, hills behind." width="1500" height="900" fetchpriority="high" decoding="async"><span class="yp-shot-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.1-1.6c.2-.3.5-.4.8-.4h4.8c.3 0 .6.1.8.4L16.3 7h2.2A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>4 photos</span></span></a>
+          <a class="yp-shot" href="../assets/cards/laken-11.webp"><img src="../assets/cards/laken-11.jpg" srcset="../assets/cards/laken-11-480.webp 480w, ../assets/cards/laken-11-800.webp 800w, ../assets/cards/laken-11-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" alt="Laken 11 at speed across bright water, hills behind." width="1500" height="900" fetchpriority="high" decoding="async"><span class="yp-shot-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.1-1.6c.2-.3.5-.4.8-.4h4.8c.3 0 .6.1.8.4L16.3 7h2.2A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>4 photos</span></span></a>
         </figure>
         <div class="yp-hero-copy">
           <p class="yp-kicker">Private speedboat charter, Phuket</p>
@@ -1129,9 +1129,9 @@
         <p class="yp-description">Laken 11 is a fast 36 ft speedboat, ideal for up to eight guests who want more islands in one day. Short crossings leave more of the 8 hours for the water, with snorkel gear and a paddle board at every stop.</p>
 
         <div class="yp-gallery">
-          <figure><a class="yp-shot" href="../assets/boats/laken-11/a1-thumb-8032.jpg"><img src="../assets/boats/laken-11/a1-thumb-8032.jpg" alt="Laken 11, photo 1" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/laken-11/a2-thumb-3874.jpg"><img src="../assets/boats/laken-11/a2-thumb-3874.jpg" alt="Laken 11, photo 2" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/laken-11/a3-thumb-8035.jpg"><img src="../assets/boats/laken-11/a3-thumb-8035.jpg" alt="Laken 11, photo 3" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/laken-11/a1-thumb-8032-1600.webp"><img src="../assets/boats/laken-11/a1-thumb-8032.jpg" srcset="../assets/boats/laken-11/a1-thumb-8032-480.webp 480w, ../assets/boats/laken-11/a1-thumb-8032-800.webp 800w, ../assets/boats/laken-11/a1-thumb-8032-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Laken 11, photo 1" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/laken-11/a2-thumb-3874-1600.webp"><img src="../assets/boats/laken-11/a2-thumb-3874.jpg" srcset="../assets/boats/laken-11/a2-thumb-3874-480.webp 480w, ../assets/boats/laken-11/a2-thumb-3874-800.webp 800w, ../assets/boats/laken-11/a2-thumb-3874-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Laken 11, photo 2" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/laken-11/a3-thumb-8035-1600.webp"><img src="../assets/boats/laken-11/a3-thumb-8035.jpg" srcset="../assets/boats/laken-11/a3-thumb-8035-480.webp 480w, ../assets/boats/laken-11/a3-thumb-8035-800.webp 800w, ../assets/boats/laken-11/a3-thumb-8035-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Laken 11, photo 3" width="2000" height="1336" loading="lazy" decoding="async"></a></figure>
         </div>
 
       <aside class="yp-request" aria-labelledby="request-name">
@@ -1139,7 +1139,7 @@
           <h2 class="yp-card-name" id="request-name" style="--em: 4.10">Laken 11</h2>
           <p class="yp-price">From 90,000 THB</p>
           <p class="yp-terms">Full day, 8 hours</p>
-          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Yacht" data-topic="Laken 11" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Yacht" data-topic="Laken 11" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
             <input type="hidden" name="_subject" value="Charter request: Laken 11">
             <input type="hidden" name="_template" value="table">
@@ -1188,7 +1188,7 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Tiger 40" data-max="15">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/tiger-40.jpg" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/tiger-40.jpg" srcset="../assets/cards/tiger-40-480.webp 480w, ../assets/cards/tiger-40-800.webp 800w, ../assets/cards/tiger-40-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Tiger 40 at speed, guests on the upper deck." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-tiger-40">Tiger 40</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2023</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1203,7 +1203,7 @@
         </article>
         <article class="boat boat-card" data-boat="Muse 46" data-max="8">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/muse-46.jpg" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/muse-46.jpg" srcset="../assets/cards/muse-46-480.webp 480w, ../assets/cards/muse-46-800.webp 800w, ../assets/cards/muse-46-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Muse 46 on turquoise water below a wooded hillside." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-muse-46">Muse 46</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>46 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2008</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>4 guests overnight</span></li></ul>
@@ -1218,7 +1218,7 @@
         </article>
         <article class="boat boat-card" data-boat="Emmy Cap 1.2" data-max="8">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/emmy-cap-1-2.jpg" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/emmy-cap-1-2.jpg" srcset="../assets/cards/emmy-cap-1-2-480.webp 480w, ../assets/cards/emmy-cap-1-2-800.webp 800w, ../assets/cards/emmy-cap-1-2-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Emmy Cap 1.2 at anchor over turquoise shallows, a guest climbing aboard." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-emmy-cap-1-2">Emmy Cap 1.2</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>40 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>8 max guests</span></li></ul>
@@ -1233,7 +1233,7 @@
         </article>
         <article class="boat boat-card" data-boat="Lewis 4.S" data-max="10">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/lewis-4s.jpg" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/lewis-4s.jpg" srcset="../assets/cards/lewis-4s-480.webp 480w, ../assets/cards/lewis-4s-800.webp 800w, ../assets/cards/lewis-4s-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Lewis 4.S under way, a small island behind." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-lewis-4s">Lewis 4.S</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>36 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2024</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1333,23 +1333,37 @@
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
+          const sent = method => {
+            const params = { topic: form.dataset.topic, page_path: location.pathname, method };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          };
+          const abort = new AbortController();
+          const timer = setTimeout(() => abort.abort(), 12000);
           try {
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
+              signal: abort.signal
             });
             const out = await res.json();
             if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
             form.classList.add('is-sent');
             say(form.dataset.sent, 'is-sent');
-            const params = { topic: form.dataset.topic, page_path: location.pathname };
-            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            sent('form');
           } catch (err) {
-            say(form.dataset.failed, 'is-failed');
+            const rows = Object.entries(data)
+              .filter(([k, v]) => !k.startsWith('_') && v)
+              .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+              + '&body=' + encodeURIComponent(rows.join('\n'));
+            say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
             button.textContent = label;
+            sent('mailto');
+          } finally {
+            clearTimeout(timer);
           }
         });
       });

@@ -808,7 +808,7 @@ svg { display: block; }
     .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .yp-form .yp-btn { margin-top: 3px; }
     .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
-    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-sent, .yp-status.is-mailed { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
     .yp-status.is-failed { color: #FFD9C7; }
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
@@ -819,7 +819,7 @@ svg { display: block; }
     .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
     .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
     .yp-light .yp-status { color: var(--ink); }
-    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-sent, .yp-light .yp-status.is-mailed { background: var(--ice); color: var(--navy); }
     .yp-light .yp-status.is-failed { color: #9A3B1C; }
     .yp-light .yp-or { color: var(--muted); }
     .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
@@ -908,8 +908,8 @@ svg { display: block; }
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <picture>
-      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/video/hero-phone-poster.jpg" width="1080" height="1920">
-      <img src="assets/video/hero-desktop-poster.jpg" alt="Matia Sou at anchor over a coral reef, seen from above" width="1920" height="1080" fetchpriority="high">
+      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/video/hero-phone-poster-480.webp 480w, assets/video/hero-phone-poster-800.webp 800w" width="1080" height="1920" sizes="100vw">
+      <img src="assets/video/hero-desktop-poster.jpg" srcset="assets/video/hero-desktop-poster-480.webp 480w, assets/video/hero-desktop-poster-800.webp 800w, assets/video/hero-desktop-poster-1200.webp 1200w, assets/video/hero-desktop-poster-1600.webp 1600w" sizes="100vw" alt="Matia Sou at anchor over a coral reef, seen from above" width="1920" height="1080" fetchpriority="high">
     </picture>
     <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="hero-content">
@@ -1017,7 +1017,7 @@ svg { display: block; }
         <a class="button hs-btn" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
       <figure class="hs-charter-photo">
-        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.jpg 960w, assets/home/song-of-songs-brochure-1600.jpg 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
+        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.webp 960w, assets/home/song-of-songs-brochure-1600.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -1030,7 +1030,7 @@ svg { display: block; }
       <div class="hs-grid">
         <article class="boat-card hs-yacht" data-boat="Black Pearl 55">
           <div class="boat-photo">
-            <img class="boat-img" src="assets/cards/black-pearl-55.jpg" width="1500" height="900" alt="" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/black-pearl-55.jpg" srcset="assets/cards/black-pearl-55-480.webp 480w, assets/cards/black-pearl-55-800.webp 800w, assets/cards/black-pearl-55-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name">Black Pearl 55</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>55 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2009</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1039,7 +1039,7 @@ svg { display: block; }
         </article>
         <article class="boat-card hs-yacht" data-boat="Pearl">
           <div class="boat-photo">
-            <img class="boat-img" src="assets/cards/pearl.jpg" width="1080" height="648" alt="" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/pearl.jpg" srcset="assets/cards/pearl-480.webp 480w, assets/cards/pearl-800.webp 800w, assets/cards/pearl-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1080" height="648" alt="" loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name">Pearl</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>78 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2011</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1048,7 +1048,7 @@ svg { display: block; }
         </article>
         <article class="boat-card hs-yacht" data-boat="Matia Sou">
           <div class="boat-photo">
-            <img class="boat-img" src="assets/cards/matia-sou.jpg" width="645" height="387" alt="" loading="lazy" decoding="async">
+            <img class="boat-img" src="assets/cards/matia-sou.jpg" srcset="assets/cards/matia-sou-480.webp 480w" sizes="(min-width: 900px) 33vw, 100vw" width="645" height="387" alt="" loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name">Matia Sou</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>102 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2004</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>25 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1068,15 +1068,15 @@ svg { display: block; }
       </header>
       <div class="hs-grid">
         <article class="hs-card hs-dest">
-          <a class="hs-photo" href="phi-phi-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/phi-phi-islands/maya-bay-1200.jpg" width="1200" height="899" alt="Maya Bay on Phi Phi Leh, turquoise water between sheer limestone cliffs" loading="lazy" decoding="async"><h3 class="hs-dest-name">Phi Phi Islands</h3></a>
+          <a class="hs-photo" href="phi-phi-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/phi-phi-islands/maya-bay-1200.jpg" srcset="assets/destinations/phi-phi-islands/maya-bay-1200-480.webp 480w, assets/destinations/phi-phi-islands/maya-bay-1200-800.webp 800w, assets/destinations/phi-phi-islands/maya-bay-1200.webp 1200w" sizes="100vw" width="1200" height="899" alt="Maya Bay on Phi Phi Leh, turquoise water between sheer limestone cliffs" loading="lazy" decoding="async"><h3 class="hs-dest-name">Phi Phi Islands</h3></a>
           <a class="button hs-btn" href="phi-phi-private-yacht.html" aria-label="Discover Phi Phi Islands"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
         <article class="hs-card hs-dest">
-          <a class="hs-photo" href="four-islands-krabi-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/four-islands-krabi/phra-nang-1200.jpg" width="1200" height="800" alt="Phra Nang beach on the Railay peninsula, under its limestone cliff" loading="lazy" decoding="async"><h3 class="hs-dest-name">Railay Beach, Krabi</h3></a>
+          <a class="hs-photo" href="four-islands-krabi-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/four-islands-krabi/phra-nang-1200.jpg" srcset="assets/destinations/four-islands-krabi/phra-nang-1200-480.webp 480w, assets/destinations/four-islands-krabi/phra-nang-1200-800.webp 800w, assets/destinations/four-islands-krabi/phra-nang-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Phra Nang beach on the Railay peninsula, under its limestone cliff" loading="lazy" decoding="async"><h3 class="hs-dest-name">Railay Beach, Krabi</h3></a>
           <a class="button hs-btn" href="four-islands-krabi-private-yacht.html" aria-label="Discover Railay Beach, Krabi"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
         <article class="hs-card hs-dest">
-          <a class="hs-photo" href="racha-island-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="hs-dest-name">Racha Yai and Racha Noi</h3></a>
+          <a class="hs-photo" href="racha-island-private-yacht.html" tabindex="-1" aria-hidden="true"><img src="assets/destinations/racha-yai-racha-noi/patok-bay-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/patok-bay-1200-480.webp 480w, assets/destinations/racha-yai-racha-noi/patok-bay-1200-800.webp 800w, assets/destinations/racha-yai-racha-noi/patok-bay-1200.webp 1200w" sizes="100vw" width="1200" height="900" alt="Patok Bay on Racha Yai from above, white sand and clear water" loading="lazy" decoding="async"><h3 class="hs-dest-name">Racha Yai and Racha Noi</h3></a>
           <a class="button hs-btn" href="racha-island-private-yacht.html" aria-label="Discover Racha Yai and Racha Noi"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
       </div>
@@ -1093,7 +1093,7 @@ svg { display: block; }
       <div class="compare-grid">
         <article class="compare-card">
           <a class="boat-cover" href="boats/meraki.html" aria-label="View Meraki">
-            <img src="assets/meraki.jpg" alt="Meraki's foredeck and flybridge" width="1080" height="756" loading="lazy">
+            <img src="assets/meraki.jpg" srcset="assets/meraki-480.webp 480w, assets/meraki-800.webp 800w, assets/meraki-1200.webp 1200w, assets/meraki-1600.webp 1600w" sizes="100vw" alt="Meraki's foredeck and flybridge" width="1080" height="756" loading="lazy">
             <div class="cover-copy"><h3 class="yacht-name">Meraki</h3></div>
           </a>
           <div class="compare-body">
@@ -1108,7 +1108,7 @@ svg { display: block; }
         </article>
         <article class="compare-card">
           <a class="boat-cover" href="boats/matia-sou.html" aria-label="View Matia Sou">
-            <img src="assets/boats/matia-sou/g-01.jpg" alt="Matia Sou at anchor beside a jungle island" width="1080" height="647" loading="lazy">
+            <img src="assets/boats/matia-sou/g-01.jpg" srcset="assets/boats/matia-sou/g-01-480.webp 480w, assets/boats/matia-sou/g-01-800.webp 800w, assets/boats/matia-sou/g-01-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Matia Sou at anchor beside a jungle island" width="1080" height="647" loading="lazy">
             <div class="cover-copy"><h3 class="yacht-name">Matia Sou</h3></div>
           </a>
           <div class="compare-body">
@@ -1212,21 +1212,21 @@ svg { display: block; }
     </div>
     <div class="day-grid">
       <figure class="scene scene-wide">
-        <div class="scene-photo"><img src="assets/boats/matia-sou/a2-g-04.jpg" alt="Limestone islands seen from Matia Sou's aft deck" width="1080" height="703" loading="lazy"></div>
+        <div class="scene-photo"><img src="assets/boats/matia-sou/a2-g-04.jpg" srcset="assets/boats/matia-sou/a2-g-04-480.webp 480w, assets/boats/matia-sou/a2-g-04-800.webp 800w, assets/boats/matia-sou/a2-g-04-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Limestone islands seen from Matia Sou's aft deck" width="1080" height="703" loading="lazy"></div>
         <figcaption>In Phang Nga Bay, limestone rises straight out of the sea around the yacht.</figcaption>
       </figure>
       <figure class="scene">
-        <div class="scene-photo"><img src="assets/simon.jpg" alt="Simon on the water" width="1080" height="700" loading="lazy"></div>
+        <div class="scene-photo"><img src="assets/simon.jpg" srcset="assets/simon-480.webp 480w, assets/simon-800.webp 800w, assets/simon-1200.webp 1200w, assets/simon-1600.webp 1600w" sizes="100vw" alt="Simon on the water" width="1080" height="700" loading="lazy"></div>
         <figcaption>On Simon, the inflatable slide goes over the side, and the first swim starts at the top of it.</figcaption>
       </figure>
       <figure class="scene">
-        <div class="scene-photo"><img src="assets/thai-food.jpg" alt="Thai food on a teak deck table" width="1440" height="1440" loading="lazy"></div>
+        <div class="scene-photo"><img src="assets/thai-food.jpg" srcset="assets/thai-food-480.webp 480w, assets/thai-food-800.webp 800w, assets/thai-food-1200.webp 1200w, assets/thai-food-1600.webp 1600w" sizes="100vw" alt="Thai food on a teak deck table" width="1440" height="1440" loading="lazy"></div>
       </figure>
       <figure class="scene scene-couple">
-        <div class="scene-photo"><img src="assets/bow-couple.jpg" alt="A couple on a yacht's bow overlooking a turquoise bay" width="1200" height="1600" loading="lazy"></div>
+        <div class="scene-photo"><img src="assets/bow-couple.jpg" srcset="assets/bow-couple-480.webp 480w, assets/bow-couple-800.webp 800w, assets/bow-couple-1200.webp 1200w, assets/bow-couple-1600.webp 1600w" sizes="100vw" alt="A couple on a yacht's bow overlooking a turquoise bay" width="1200" height="1600" loading="lazy"></div>
       </figure>
       <figure class="scene">
-        <div class="scene-photo"><img src="assets/boats/matia-sou/g-03.jpg" alt="The jacuzzi and sunpads on Matia Sou's upper deck" width="1080" height="647" loading="lazy"></div>
+        <div class="scene-photo"><img src="assets/boats/matia-sou/g-03.jpg" srcset="assets/boats/matia-sou/g-03-480.webp 480w, assets/boats/matia-sou/g-03-800.webp 800w, assets/boats/matia-sou/g-03-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="The jacuzzi and sunpads on Matia Sou's upper deck" width="1080" height="647" loading="lazy"></div>
         <figcaption>On Matia Sou, a massage between swims, the jacuzzi, and the butler bringing the next glass.</figcaption>
       </figure>
     </div>
@@ -1242,7 +1242,7 @@ svg { display: block; }
 
   <section class="amy" id="amy" aria-labelledby="amy-title">
     <div class="amy-layout">
-      <div class="amy-photo"><img src="assets/amy.jpg" alt="Amy on deck with Phi Phi cliffs behind her" width="874" height="1093" loading="lazy"></div>
+      <div class="amy-photo"><img src="assets/amy.jpg" srcset="assets/amy-480.webp 480w, assets/amy-800.webp 800w, assets/amy-1200.webp 1200w, assets/amy-1600.webp 1600w" sizes="100vw" alt="Amy on deck with Phi Phi cliffs behind her" width="874" height="1093" loading="lazy"></div>
       <div class="amy-copy">
         <h2 id="amy-title">I'm Amy.</h2>
         <p>I'm a yacht charter broker in Phuket, not an owner. Tell me your group and your day, and I will suggest the yacht that suits them.</p>
@@ -1256,7 +1256,7 @@ svg { display: block; }
     <div class="beyond-grid">
       <article class="beyond-card">
         <a class="boat-cover" href="boats/song-of-songs.html" aria-label="View Song of Songs">
-          <img src="assets/song-of-songs.jpg" alt="Song of Songs illuminated at dusk" width="1080" height="781" loading="lazy">
+          <img src="assets/song-of-songs.jpg" srcset="assets/song-of-songs-480.webp 480w, assets/song-of-songs-800.webp 800w, assets/song-of-songs-1200.webp 1200w, assets/song-of-songs-1600.webp 1600w" sizes="100vw" alt="Song of Songs illuminated at dusk" width="1080" height="781" loading="lazy">
           <div class="cover-copy"><h3 class="yacht-name">Song of Songs</h3></div>
         </a>
         <div class="beyond-copy">
@@ -1267,7 +1267,7 @@ svg { display: block; }
       </article>
       <article class="beyond-card">
         <a class="boat-cover" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Kefi%20for%20a%20group%20of%2050%20to%20100." target="_blank" rel="noopener noreferrer" aria-label="Ask about Kefi">
-          <img src="assets/kefi.jpg" alt="Kefi viewed from above" width="1080" height="715" loading="lazy">
+          <img src="assets/kefi.jpg" srcset="assets/kefi-480.webp 480w, assets/kefi-800.webp 800w, assets/kefi-1200.webp 1200w, assets/kefi-1600.webp 1600w" sizes="100vw" alt="Kefi viewed from above" width="1080" height="715" loading="lazy">
           <div class="cover-copy"><h3 class="yacht-name">Kefi</h3></div>
         </a>
         <div class="beyond-copy">
@@ -1282,8 +1282,8 @@ svg { display: block; }
 
   <section class="closing" id="contact" aria-labelledby="closing-title">
     <picture>
-      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/boats/matia-sou/aerial-tall.jpg" width="1080" height="1920">
-      <img src="assets/boats/matia-sou/aerial-wide.jpg" alt="Matia Sou above turquoise water and coral" width="2560" height="1440" loading="lazy">
+      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/boats/matia-sou/aerial-tall-480.webp 480w, assets/boats/matia-sou/aerial-tall-800.webp 800w" width="1080" height="1920" sizes="100vw">
+      <img src="assets/boats/matia-sou/aerial-wide.jpg" srcset="assets/boats/matia-sou/aerial-wide-480.webp 480w, assets/boats/matia-sou/aerial-wide-800.webp 800w, assets/boats/matia-sou/aerial-wide-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Matia Sou above turquoise water and coral" width="2560" height="1440" loading="lazy">
     </picture>
     <div class="wrap">
       <div class="section-label">Contact</div>
@@ -1426,23 +1426,37 @@ svg { display: block; }
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
+          const sent = method => {
+            const params = { topic: form.dataset.topic, page_path: location.pathname, method };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          };
+          const abort = new AbortController();
+          const timer = setTimeout(() => abort.abort(), 12000);
           try {
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
+              signal: abort.signal
             });
             const out = await res.json();
             if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
             form.classList.add('is-sent');
             say(form.dataset.sent, 'is-sent');
-            const params = { topic: form.dataset.topic, page_path: location.pathname };
-            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            sent('form');
           } catch (err) {
-            say(form.dataset.failed, 'is-failed');
+            const rows = Object.entries(data)
+              .filter(([k, v]) => !k.startsWith('_') && v)
+              .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+              + '&body=' + encodeURIComponent(rows.join('\n'));
+            say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
             button.textContent = label;
+            sent('mailto');
+          } finally {
+            clearTimeout(timer);
           }
         });
       });

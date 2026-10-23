@@ -1021,7 +1021,7 @@
     .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .yp-form .yp-btn { margin-top: 3px; }
     .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
-    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-sent, .yp-status.is-mailed { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
     .yp-status.is-failed { color: #FFD9C7; }
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
@@ -1032,7 +1032,7 @@
     .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
     .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
     .yp-light .yp-status { color: var(--ink); }
-    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-sent, .yp-light .yp-status.is-mailed { background: var(--ice); color: var(--navy); }
     .yp-light .yp-status.is-failed { color: #9A3B1C; }
     .yp-light .yp-or { color: var(--muted); }
     .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
@@ -1100,7 +1100,7 @@
     <section class="yp-hero" aria-labelledby="yacht-name">
       <div class="yp-hero-inner yp-wrap">
         <figure class="yp-hero-photo">
-          <a class="yp-shot" href="../assets/cards/meraki.jpg"><img src="../assets/cards/meraki.jpg" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." width="1500" height="900" fetchpriority="high" decoding="async"><span class="yp-shot-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.1-1.6c.2-.3.5-.4.8-.4h4.8c.3 0 .6.1.8.4L16.3 7h2.2A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>7 photos</span></span></a>
+          <a class="yp-shot" href="../assets/cards/meraki.webp"><img src="../assets/cards/meraki.jpg" srcset="../assets/cards/meraki-480.webp 480w, ../assets/cards/meraki-800.webp 800w, ../assets/cards/meraki-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" alt="Meraki from above on deep teal water, guests on the sunbed at the bow." width="1500" height="900" fetchpriority="high" decoding="async"><span class="yp-shot-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.1-1.6c.2-.3.5-.4.8-.4h4.8c.3 0 .6.1.8.4L16.3 7h2.2A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>7 photos</span></span></a>
         </figure>
         <div class="yp-hero-copy">
           <p class="yp-kicker">Private yacht charter, Phuket</p>
@@ -1129,12 +1129,12 @@
         <p class="yp-description">Meraki is a spacious 76 ft yacht with room for 25, ideal for big groups who want the action. A wakeboard, a knee board, a paddle board and two towable tubes go over the side between islands, and four cabins sleep eight for an overnight escape.</p>
 
         <div class="yp-gallery">
-          <figure><a class="yp-shot" href="../assets/boats/meraki/a1-g-03.jpg"><img src="../assets/boats/meraki/a1-g-03.jpg" alt="Meraki, photo 1" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/meraki/a2-g-05a.jpg"><img src="../assets/boats/meraki/a2-g-05a.jpg" alt="Meraki, photo 2" width="1200" height="900" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/meraki/a3-g-02.jpg"><img src="../assets/boats/meraki/a3-g-02.jpg" alt="Meraki, photo 3" width="2000" height="1302" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/meraki/g-01.jpg"><img src="../assets/boats/meraki/g-01.jpg" alt="Meraki, photo 4" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/meraki/g-04.jpg"><img src="../assets/boats/meraki/g-04.jpg" alt="Meraki, photo 5" width="1716" height="1117" loading="lazy" decoding="async"></a></figure>
-          <figure><a class="yp-shot" href="../assets/boats/meraki/g-05b.jpg"><img src="../assets/boats/meraki/g-05b.jpg" alt="Meraki, photo 6" width="1920" height="1712" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a1-g-03-1600.webp"><img src="../assets/boats/meraki/a1-g-03.jpg" srcset="../assets/boats/meraki/a1-g-03-480.webp 480w, ../assets/boats/meraki/a1-g-03-800.webp 800w, ../assets/boats/meraki/a1-g-03-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 1" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a2-g-05a.webp"><img src="../assets/boats/meraki/a2-g-05a.jpg" srcset="../assets/boats/meraki/a2-g-05a-480.webp 480w, ../assets/boats/meraki/a2-g-05a-800.webp 800w, ../assets/boats/meraki/a2-g-05a.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 2" width="1200" height="900" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/a3-g-02-1600.webp"><img src="../assets/boats/meraki/a3-g-02.jpg" srcset="../assets/boats/meraki/a3-g-02-480.webp 480w, ../assets/boats/meraki/a3-g-02-800.webp 800w, ../assets/boats/meraki/a3-g-02-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 3" width="2000" height="1302" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-01-1600.webp"><img src="../assets/boats/meraki/g-01.jpg" srcset="../assets/boats/meraki/g-01-480.webp 480w, ../assets/boats/meraki/g-01-800.webp 800w, ../assets/boats/meraki/g-01-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 4" width="2160" height="1294" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-04-1600.webp"><img src="../assets/boats/meraki/g-04.jpg" srcset="../assets/boats/meraki/g-04-480.webp 480w, ../assets/boats/meraki/g-04-800.webp 800w, ../assets/boats/meraki/g-04-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 5" width="1716" height="1117" loading="lazy" decoding="async"></a></figure>
+          <figure><a class="yp-shot" href="../assets/boats/meraki/g-05b-1600.webp"><img src="../assets/boats/meraki/g-05b.jpg" srcset="../assets/boats/meraki/g-05b-480.webp 480w, ../assets/boats/meraki/g-05b-800.webp 800w, ../assets/boats/meraki/g-05b-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Meraki, photo 6" width="1920" height="1712" loading="lazy" decoding="async"></a></figure>
         </div>
 
       <aside class="yp-request" aria-labelledby="request-name">
@@ -1142,7 +1142,7 @@
           <h2 class="yp-card-name" id="request-name" style="--em: 4.63">Meraki</h2>
           <p class="yp-price">From 220,000 THB</p>
           <p class="yp-terms">Full day, 8 hours</p>
-          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Yacht" data-topic="Meraki" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Yacht" data-topic="Meraki" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
             <input type="hidden" name="_subject" value="Charter request: Meraki">
             <input type="hidden" name="_template" value="table">
@@ -1191,7 +1191,7 @@
         <div class="yp-cards" id="other-boats">
         <article class="boat boat-card" data-boat="Jackie" data-max="15">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/jackie.jpg" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/jackie.jpg" srcset="../assets/cards/jackie-480.webp 480w, ../assets/cards/jackie-800.webp 800w, ../assets/cards/jackie-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1105" height="663" alt="Jackie under way on blue water, guests on the flybridge under the bimini." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-jackie">Jackie</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>60 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2012</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>15 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
@@ -1206,7 +1206,7 @@
         </article>
         <article class="boat boat-card" data-boat="Bruna" data-max="20">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/bruna.jpg" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/bruna.jpg" srcset="../assets/cards/bruna-480.webp 480w, ../assets/cards/bruna-800.webp 800w, ../assets/cards/bruna-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Bruna on turquoise water off a wooded island with a white beach." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-bruna">Bruna</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>68 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2006</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>4 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>20 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>8 guests overnight</span></li></ul>
@@ -1221,7 +1221,7 @@
         </article>
         <article class="boat boat-card" data-boat="Pandora" data-max="10">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/pandora.jpg" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/pandora.jpg" srcset="../assets/cards/pandora-480.webp 480w, ../assets/cards/pandora-800.webp 800w, ../assets/cards/pandora-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1150" height="690" alt="Pandora at speed on deep blue sea, spray rising from the hull." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-pandora">Pandora</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>62 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li></ul>
@@ -1236,7 +1236,7 @@
         </article>
         <article class="boat boat-card" data-boat="Pear" data-max="85">
           <div class="boat-photo">
-            <img class="boat-img" src="../assets/cards/pear-85.jpg" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
+            <img class="boat-img" src="../assets/cards/pear-85.jpg" srcset="../assets/cards/pear-85-480.webp 480w, ../assets/cards/pear-85-800.webp 800w, ../assets/cards/pear-85-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="Pear from above, her open aft deck and loungers over blue water." loading="lazy" decoding="async">
           </div>
           <h3 class="boat-name" id="other-pear-85">Pear</h3>
           <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>85 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2026</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>2 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>85 max guests</span></li></ul>
@@ -1336,23 +1336,37 @@
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
+          const sent = method => {
+            const params = { topic: form.dataset.topic, page_path: location.pathname, method };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          };
+          const abort = new AbortController();
+          const timer = setTimeout(() => abort.abort(), 12000);
           try {
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
+              signal: abort.signal
             });
             const out = await res.json();
             if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
             form.classList.add('is-sent');
             say(form.dataset.sent, 'is-sent');
-            const params = { topic: form.dataset.topic, page_path: location.pathname };
-            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            sent('form');
           } catch (err) {
-            say(form.dataset.failed, 'is-failed');
+            const rows = Object.entries(data)
+              .filter(([k, v]) => !k.startsWith('_') && v)
+              .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+              + '&body=' + encodeURIComponent(rows.join('\n'));
+            say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
             button.textContent = label;
+            sent('mailto');
+          } finally {
+            clearTimeout(timer);
           }
         });
       });

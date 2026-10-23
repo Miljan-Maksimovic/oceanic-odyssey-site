@@ -714,7 +714,7 @@
     .yp-btn:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .yp-form .yp-btn { margin-top: 3px; }
     .yp-status { margin: 2px 0 0; color: #D8E6E9; font-size: 15px; line-height: 1.6; }
-    .yp-status.is-sent { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
+    .yp-status.is-sent, .yp-status.is-mailed { padding: 14px 16px; border-radius: 3px; background: rgba(184, 232, 223, .14); color: #fff; font-weight: 700; }
     .yp-status.is-failed { color: #FFD9C7; }
     .yp-form.is-sent > :not(.yp-status):not(h3) { display: none; }
     .yp-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #B7CCD1; font-size: 12px; line-height: 1.5; }
@@ -725,7 +725,7 @@
     .yp-light .yp-field input, .yp-light .yp-field textarea { border-color: #C9D8DC; background: #fff; color: var(--ink); color-scheme: light; }
     .yp-light .yp-field input:focus, .yp-light .yp-field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(18, 99, 104, .14); }
     .yp-light .yp-status { color: var(--ink); }
-    .yp-light .yp-status.is-sent { background: var(--ice); color: var(--navy); }
+    .yp-light .yp-status.is-sent, .yp-light .yp-status.is-mailed { background: var(--ice); color: var(--navy); }
     .yp-light .yp-status.is-failed { color: #9A3B1C; }
     .yp-light .yp-or { color: var(--muted); }
     .yp-light .yp-or::before, .yp-light .yp-or::after { background: rgba(16, 45, 59, .14); }
@@ -1288,7 +1288,7 @@
       <header class="guide-hero">
         <h1>New Year's Eve 2026 on a private yacht in Phuket</h1>
         <figure class="guide-photo">
-          <img src="assets/flowers-deck.jpg" width="2400" height="2400" alt="Pink and white flowers on a deck table, a forested shore and beach beyond" loading="eager" fetchpriority="high">
+          <img src="assets/flowers-deck.jpg" srcset="assets/flowers-deck-480.webp 480w, assets/flowers-deck-800.webp 800w, assets/flowers-deck-1200.webp 1200w, assets/flowers-deck-1600.webp 1600w" sizes="100vw" width="2400" height="2400" alt="Pink and white flowers on a deck table, a forested shore and beach beyond" loading="eager" fetchpriority="high">
         </figure>
         <nav class="jump-row" aria-label="On this page">
           <div class="jump">
@@ -1326,7 +1326,7 @@
       </section>
 
       <figure class="article-photo">
-        <img src="assets/thai-food.jpg" width="2400" height="2400" alt="A table laid with Thai dishes on a yacht deck, limestone cliffs behind" style="object-position: 50% 75%" loading="lazy" decoding="async">
+        <img src="assets/thai-food.jpg" srcset="assets/thai-food-480.webp 480w, assets/thai-food-800.webp 800w, assets/thai-food-1200.webp 1200w, assets/thai-food-1600.webp 1600w" sizes="100vw" width="2400" height="2400" alt="A table laid with Thai dishes on a yacht deck, limestone cliffs behind" style="object-position: 50% 75%" loading="lazy" decoding="async">
       </figure>
 
       <section class="article-section yacht-section" aria-labelledby="yachts-for-31-december-2026">
@@ -1348,7 +1348,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/jackie.jpg" width="1600" height="1050" alt="Jackie under way on turquoise water" loading="lazy" decoding="async">
+                  <img src="assets/jackie.jpg" srcset="assets/jackie-480.webp 480w, assets/jackie-800.webp 800w, assets/jackie-1200.webp 1200w, assets/jackie-1600.webp 1600w" sizes="100vw" width="1600" height="1050" alt="Jackie under way on turquoise water" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/jackie.html"><span>Jackie</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1360,7 +1360,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/bruna.jpg" width="1080" height="783" alt="Bruna at anchor off a forested shore" loading="lazy" decoding="async">
+                  <img src="assets/bruna.jpg" srcset="assets/bruna-480.webp 480w, assets/bruna-800.webp 800w, assets/bruna-1200.webp 1200w" sizes="100vw" width="1080" height="783" alt="Bruna at anchor off a forested shore" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/bruna.html"><span>Bruna</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1372,7 +1372,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/pandora.jpg" width="1080" height="675" alt="Pandora at speed on blue water" loading="lazy" decoding="async">
+                  <img src="assets/pandora.jpg" srcset="assets/pandora-480.webp 480w, assets/pandora-800.webp 800w, assets/pandora-1200.webp 1200w, assets/pandora-1600.webp 1600w" sizes="100vw" width="1080" height="675" alt="Pandora at speed on blue water" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/pandora.html"><span>Pandora</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1384,7 +1384,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/meraki.jpg" width="1080" height="756" alt="Meraki viewed from above on green water" loading="lazy" decoding="async">
+                  <img src="assets/meraki.jpg" srcset="assets/meraki-480.webp 480w, assets/meraki-800.webp 800w, assets/meraki-1200.webp 1200w, assets/meraki-1600.webp 1600w" sizes="100vw" width="1080" height="756" alt="Meraki viewed from above on green water" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/meraki.html"><span>Meraki</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1396,7 +1396,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/sira.jpg" width="1080" height="716" alt="Sira at speed with a white wake" loading="lazy" decoding="async">
+                  <img src="assets/sira.jpg" srcset="assets/sira-480.webp 480w, assets/sira-800.webp 800w, assets/sira-1200.webp 1200w, assets/sira-1600.webp 1600w" sizes="100vw" width="1080" height="716" alt="Sira at speed with a white wake" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/sira.html"><span>Sira</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1408,7 +1408,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/matia-sou.jpg" width="1080" height="783" alt="Matia Sou on turquoise water" loading="lazy" decoding="async">
+                  <img src="assets/matia-sou.jpg" srcset="assets/matia-sou-480.webp 480w, assets/matia-sou-800.webp 800w, assets/matia-sou-1200.webp 1200w, assets/matia-sou-1600.webp 1600w" sizes="100vw" width="1080" height="783" alt="Matia Sou on turquoise water" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/matia-sou.html"><span>Matia Sou</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1420,7 +1420,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/simon.jpg" width="1080" height="700" alt="Simon under way with mountains on the horizon" loading="lazy" decoding="async">
+                  <img src="assets/simon.jpg" srcset="assets/simon-480.webp 480w, assets/simon-800.webp 800w, assets/simon-1200.webp 1200w, assets/simon-1600.webp 1600w" sizes="100vw" width="1080" height="700" alt="Simon under way with mountains on the horizon" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/simon.html"><span>Simon</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1432,7 +1432,7 @@
             <tr>
               <td class="yacht-cell">
                 <div class="yacht-identity">
-                  <img src="assets/song-of-songs.jpg" width="1080" height="781" alt="Song of Songs lit at dusk" loading="lazy" decoding="async">
+                  <img src="assets/song-of-songs.jpg" srcset="assets/song-of-songs-480.webp 480w, assets/song-of-songs-800.webp 800w, assets/song-of-songs-1200.webp 1200w, assets/song-of-songs-1600.webp 1600w" sizes="100vw" width="1080" height="781" alt="Song of Songs lit at dusk" loading="lazy" decoding="async">
                   <a class="text-link yacht-link" href="boats/song-of-songs.html"><span>Song of Songs</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a>
                 </div>
               </td>
@@ -1494,7 +1494,7 @@
           <p>Send us the date and the number of guests, and we will tell you which yachts are still free for 31 December.</p>
         </div>
         <div class="closing-form">
-          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="New Year&#x27;s Eve 2026 on a private yacht in Phuket" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="New Year&#x27;s Eve 2026 on a private yacht in Phuket" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
             <input type="hidden" name="_subject" value="Charter request: New Year&#x27;s Eve 2026 on a private yacht in Phuket">
             <input type="hidden" name="_template" value="table">
@@ -1621,23 +1621,37 @@
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
+          const sent = method => {
+            const params = { topic: form.dataset.topic, page_path: location.pathname, method };
+            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
+            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+          };
+          const abort = new AbortController();
+          const timer = setTimeout(() => abort.abort(), 12000);
           try {
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
+              signal: abort.signal
             });
             const out = await res.json();
             if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
             form.classList.add('is-sent');
             say(form.dataset.sent, 'is-sent');
-            const params = { topic: form.dataset.topic, page_path: location.pathname };
-            if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            sent('form');
           } catch (err) {
-            say(form.dataset.failed, 'is-failed');
+            const rows = Object.entries(data)
+              .filter(([k, v]) => !k.startsWith('_') && v)
+              .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+              + '&body=' + encodeURIComponent(rows.join('\n'));
+            say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
             button.textContent = label;
+            sent('mailto');
+          } finally {
+            clearTimeout(timer);
           }
         });
       });
