@@ -901,6 +901,9 @@
     
     .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
     .guide-hero .hero-head h1 { grid-area: auto; align-self: auto; max-width: none; padding: 0; }
+    
+    .guide-hero .hero-lede { max-width: 640px; margin: 14px 0 0; color: rgba(255, 255, 255, .95); font-size: 16.5px; font-weight: 500; line-height: 1.6; text-shadow: 0 1px 10px rgba(6, 28, 40, .6); }
+    @media (min-width: 900px) { .guide-hero .hero-lede { max-width: 720px; margin-top: 18px; font-size: 19px; } }
     .hero-glance { display: flex; gap: 22px; margin: 16px -24px 0; padding: 0 24px 2px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
     .hero-glance::-webkit-scrollbar { display: none; }
     .hero-glance div { position: relative; flex: 0 0 auto; min-width: 0; padding-left: 28px; }
@@ -1121,6 +1124,11 @@
     .dest-gallery figure { margin: 0; min-width: 0; }
     .dest-gallery .shot { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: var(--ice); }
     .dest-gallery img { width: 100%; height: 100%; object-fit: cover; }
+    
+    @media (max-width: 899.98px) {
+      .dest-gallery[style*="--n: 2"] { grid-template-columns: minmax(0, 1fr); }
+      .dest-gallery[style*="--n: 2"] figure .shot { aspect-ratio: 16 / 10; }
+    }
 
     
     .yacht-names { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1324,7 +1332,7 @@
           </div>
         </nav>
         <div class="intro-copy article-body reading-column">
-          <p class="lead">Off Railay the water turns clear and shallow over coral, and the islands stand close together: Koh Poda's white beach and its limestone stack, the bird-head rock of Chicken Island, and at low tide a strip of white sand that joins Tup Island to its neighbours.</p>
+          <p class="lead">Discover the beautiful islands of Krabi, known for their turquoise waters, dramatic limestone cliffs, white sandy beaches, and stunning tropical scenery. The 4 Islands route offers a memorable day of beach relaxation, swimming, and exploring the natural beauty of the Andaman Sea.</p>
           <span id="hero-enquiry" hidden></span>
         </div>
       </header>
@@ -1335,30 +1343,33 @@
             <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/four-islands-krabi/poda-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/poda-amy-640.webp 640w, assets/destinations/four-islands-krabi/poda-amy-1200.webp 1200w, assets/destinations/four-islands-krabi/poda-amy.webp 1200w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1800" alt="A longtail boat in clear shallows, a limestone stack offshore" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 1">
               <h3>Poda Island</h3>
-              <p>A white beach, clear water and a limestone stack offshore, with shade, food stalls and restrooms on the sand.</p>
+              <p>A beautiful island with soft white sand, crystal-clear waters, and striking limestone formations, perfect for swimming and beach relaxation.</p>
             </div>
           </article>
           <article class="mag-stop">
             <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/four-islands-krabi/chicken-island-1200.jpg" srcset="assets/destinations/four-islands-krabi/chicken-island-640.webp 640w, assets/destinations/four-islands-krabi/chicken-island-1200.webp 1200w, assets/destinations/four-islands-krabi/chicken-island.webp 1536w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="747" alt="Chicken Island and its bird-head rock, from a boat" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 5">
               <h3>Chicken Island</h3>
-              <p>Named for the rock that looks like a chicken's head, clearest from the water on its south-east side.</p>
+              <p>Famous for its distinctive chicken-shaped rock formation, this island offers scenic coastal views.</p>
             </div>
           </article>
           <article class="mag-stop">
             <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/four-islands-krabi/tup-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/tup-amy-640.webp 640w, assets/destinations/four-islands-krabi/tup-amy-1200.webp 1200w, assets/destinations/four-islands-krabi/tup-amy.webp 1200w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1800" alt="Two wooded islets joined by a white sandbar, from above" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 3">
               <h3>Tup Island</h3>
-              <p>At low tide a sandbar links Koh Kai, Koh Tup and Koh Mor, and you walk between them over shallow, turquoise water.</p>
+              <p>At low tide, a natural sandbar connects Tup Island with Chicken Island and Koh Mor, allowing you to walk between the islands across shallow turquoise waters.</p>
             </div>
           </article>
           <article class="mag-stop">
             <figure class="mag-photo" style="--o: 6"><img src="assets/destinations/four-islands-krabi/railay-amy-1200.jpg" srcset="assets/destinations/four-islands-krabi/railay-amy-640.webp 640w, assets/destinations/four-islands-krabi/railay-amy-1200.webp 1200w, assets/destinations/four-islands-krabi/railay-amy.webp 1080w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="1500" alt="Limestone cliffs above a curved beach and green water, from the air" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 7">
               <h3>Railay Beach</h3>
-              <p>At the tip of the Railay headland, with no road to it, Phra Nang Cave Beach: a palm-fringed bay with the Princess Cave and its shrine at the south end.</p>
+              <p>Surrounded by towering limestone cliffs, Railay Beach offers beautiful sandy shores, swimming spots and access to the iconic Phra Nang Cave Beach.</p>
             </div>
           </article>
+        </div>
+        <div class="article-body reading-column mag-after">
+          <p><strong>Best season:</strong> November to April generally offers calmer seas and better conditions for island hopping, although weather can vary throughout the year.</p>
         </div>
       </section>
 

@@ -901,6 +901,9 @@
     
     .guide-hero .hero-head { position: relative; z-index: 1; grid-area: 1 / 1; align-self: end; min-width: 0; max-width: 900px; padding: 150px 0 26px; color: #fff; }
     .guide-hero .hero-head h1 { grid-area: auto; align-self: auto; max-width: none; padding: 0; }
+    
+    .guide-hero .hero-lede { max-width: 640px; margin: 14px 0 0; color: rgba(255, 255, 255, .95); font-size: 16.5px; font-weight: 500; line-height: 1.6; text-shadow: 0 1px 10px rgba(6, 28, 40, .6); }
+    @media (min-width: 900px) { .guide-hero .hero-lede { max-width: 720px; margin-top: 18px; font-size: 19px; } }
     .hero-glance { display: flex; gap: 22px; margin: 16px -24px 0; padding: 0 24px 2px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
     .hero-glance::-webkit-scrollbar { display: none; }
     .hero-glance div { position: relative; flex: 0 0 auto; min-width: 0; padding-left: 28px; }
@@ -1121,6 +1124,11 @@
     .dest-gallery figure { margin: 0; min-width: 0; }
     .dest-gallery .shot { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: var(--ice); }
     .dest-gallery img { width: 100%; height: 100%; object-fit: cover; }
+    
+    @media (max-width: 899.98px) {
+      .dest-gallery[style*="--n: 2"] { grid-template-columns: minmax(0, 1fr); }
+      .dest-gallery[style*="--n: 2"] figure .shot { aspect-ratio: 16 / 10; }
+    }
 
     
     .yacht-names { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1324,7 +1332,7 @@
           </div>
         </nav>
         <div class="intro-copy article-body reading-column">
-          <p class="lead">South of Phuket, Racha Yai and Racha Noi sit in clear blue water: powdery white sand at Patok Bay, reef a short swim from the beach, and deeper sites off Racha Noi. A paradise for scuba divers, and just as good for free diving and snorkelling.</p>
+          <p class="lead">Escape to the beautiful Racha Islands, just south of Phuket, where crystal-clear turquoise waters, white sandy beaches, and vibrant marine life await.</p>
           <span id="hero-enquiry" hidden></span>
         </div>
       </header>
@@ -1334,20 +1342,33 @@
           <article class="mag-stop">
             <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-aerial-640.webp 640w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial-1200.webp 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-aerial.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Racha Yai&#x27;s main bay from above: a curve of white sand, a jetty and turquoise water" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 1">
-              <h3>Racha Yai's beaches</h3>
-              <p>Patok Bay, a crescent of soft white sand shelving gently into clear water, and Siam Bay on the north coast, longer and quieter.</p>
+              <h3>Racha Yai</h3>
+              <p>Racha Yai is known for its beautiful beaches, excellent snorkeling, and scuba diving spots.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-640.webp 640w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel-1200.webp 1200w, assets/destinations/racha-yai-racha-noi/racha-yai-snorkel.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Snorkellers in clear turquoise water, seen from above" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/racha-yai-racha-noi/racha-noi-amy-1200.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-noi-amy-640.webp 640w, assets/destinations/racha-yai-racha-noi/racha-noi-amy-1200.webp 1200w, assets/destinations/racha-yai-racha-noi/racha-noi-amy.webp 1024w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Racha Noi from above: a small rocky islet in turquoise water beside a wooded shore and a sand beach" loading="lazy" decoding="async"></figure>
             <div class="mag-copy is-end" style="--o: 3">
-              <h3>In the water off Racha Yai</h3>
-              <p>The reef starts in the shallows a short swim from the beach, with 15 to 25 metres of visibility in season, and many of Phuket's new divers make their first dive here.</p>
+              <h3>Racha Noi</h3>
+              <p>Located approximately 10-12 km (5-6.5 nautical miles) farther south, Racha Noi offers a more secluded setting, with rich marine life and deeper waters that attract experienced divers.</p>
             </div>
           </article>
         </div>
         <div class="article-body reading-column mag-after">
-          <p>Racha Noi, about 6 km further south, is uninhabited and rocky, with the deeper sites certified divers come for; manta rays pass between January and March. Scuba, free diving or snorkelling: tell us which, and we plan the day around it.</p>
+          <p>Though close to one another, each island offers a distinct experience, making them a wonderful combination for a private yacht escape.</p>
+        </div>
+        <div class="dest-module module-gallery">
+        <div class="dest-gallery" style="--n: 2">
+          <figure>
+            <div class="shot"><img src="assets/destinations/racha-yai-racha-noi/racha-fish-amy.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-fish-amy-480.webp 480w, assets/destinations/racha-yai-racha-noi/racha-fish-amy-800.webp 800w, assets/destinations/racha-yai-racha-noi/racha-fish-amy-1200.webp 1200w, assets/destinations/racha-yai-racha-noi/racha-fish-amy-1600.webp 1600w" sizes="100vw" width="2048" height="1460" alt="A freediver in a swirling school of fish above a pale sandy seabed" loading="lazy" decoding="async"></div>
+          </figure>
+          <figure>
+            <div class="shot"><img src="assets/destinations/racha-yai-racha-noi/racha-wreck-amy.jpg" srcset="assets/destinations/racha-yai-racha-noi/racha-wreck-amy-480.webp 480w, assets/destinations/racha-yai-racha-noi/racha-wreck-amy-800.webp 800w, assets/destinations/racha-yai-racha-noi/racha-wreck-amy-1200.webp 1200w" sizes="100vw" width="1366" height="768" alt="A school of yellow fish swimming through the opening of an underwater wreck" loading="lazy" decoding="async"></div>
+          </figure>
+        </div>
+        </div>
+        <div class="article-body reading-column mag-after">
+          <p><strong>Best season:</strong> Year-round destination, with calmer seas generally from November to April. Conditions vary depending on the weather.</p>
         </div>
       </section>
 
