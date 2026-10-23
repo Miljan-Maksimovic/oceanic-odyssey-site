@@ -795,6 +795,8 @@
     .mag-stop { display: contents; }
     .mag-photo { min-width: 0; margin: 0; overflow: hidden; aspect-ratio: 3 / 2; border-radius: 2px; background: var(--ice); }
     .mag-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    
+    .mag-photo.is-empty { display: none; background: none; }
     .mag-copy { min-width: 0; padding: 6px 2px 26px; }
     
     .mag-copy h3 { margin: 0 0 8px; color: #111; font-family: var(--sans); font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; }
@@ -807,6 +809,7 @@
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
       .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-photo.is-empty { display: block; }
       .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14px; }
@@ -1331,7 +1334,7 @@
           </div>
         </nav>
         <div class="intro-copy article-body reading-column">
-          <p class="lead">Khai Nok comes up low and bright off Phuket's east coast: a wooded knoll in a ring of white sand, with shallows that run clear all the way round.</p>
+          <p class="lead">The Khai Islands are a group of small tropical islands near Phuket, famous for their crystal-clear turquoise waters, white sandy beaches, and vibrant marine life. Khai Nok is ideal for swimming and relaxing on the beach, while Khai Nui is known for its snorkeling spots and colorful underwater life.</p>
           <span id="hero-enquiry" hidden></span>
         </div>
       </header>
@@ -1339,22 +1342,35 @@
       <section class="article-section mag-section" id="what-to-expect-at-khai" aria-label="What to expect at Khai">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/khai-islands/khai-nok-1200.jpg" srcset="assets/destinations/khai-islands/khai-nok-640.webp 640w, assets/destinations/khai-islands/khai-nok-1200.webp 1200w, assets/destinations/khai-islands/khai-nok-2000.webp 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="608" alt="Khai Nok from the water, white sand and turquoise shallows" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/khai-islands/khai-nok-amy-1200.jpg" srcset="assets/destinations/khai-islands/khai-nok-amy-640.webp 640w, assets/destinations/khai-islands/khai-nok-amy-1200.webp 1200w, assets/destinations/khai-islands/khai-nok-amy-2000.webp 2048w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="800" alt="Khai Nok from above: a white sand beach with huts, rocky islets and turquoise water" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 1">
-              <h3>Khai Nok</h3>
-              <p>Khai is Thai for egg, and from the air the island shows why: a wooded knoll set in a ring of white sand, with shallows that run clear all the way round.</p>
+              <h3>Khai Nok Island</h3>
+              <p>Known as “Cat Island” for its many resident cats.</p>
             </div>
           </article>
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/khai-islands/khai-nok-shallows-1200.jpg" srcset="assets/destinations/khai-islands/khai-nok-shallows-640.webp 640w, assets/destinations/khai-islands/khai-nok-shallows-1200.webp 1200w, assets/destinations/khai-islands/khai-nok-shallows-2000.webp 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="728" alt="Clear water over the rocks at Khai Nok" loading="lazy" decoding="async"></figure>
-            <div class="mag-copy is-end" style="--o: 3">
-              <h3>Into the water</h3>
-              <p>Shoals of striped sergeant major fish swim up to bathers at Khai Nok; Khai Nai, the largest of the three, has almost 500 metres of sand for a long swim; and at Khai Nui the yacht stays offshore over the best reef.</p>
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/khai-islands/khai-cat-amy-1200.jpg" srcset="assets/destinations/khai-islands/khai-cat-amy-640.webp 640w, assets/destinations/khai-islands/khai-cat-amy-1200.webp 1200w, assets/destinations/khai-islands/khai-cat-amy.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="An orange cat held up on a beach under a striped parasol" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 5">
+              <p>Khai Nok offers crystal-clear waters, white sandy beaches, and opportunities for swimming and water activities such as jet skiing.</p>
+            </div>
+          </article>
+          <article class="mag-stop">
+            <figure class="mag-photo" style="--o: 4"><img src="assets/destinations/khai-islands/khai-nok-shallows-1200.jpg" srcset="assets/destinations/khai-islands/khai-nok-shallows-640.webp 640w, assets/destinations/khai-islands/khai-nok-shallows-1200.webp 1200w, assets/destinations/khai-islands/khai-nok-shallows-2000.webp 2400w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="728" alt="Clear shallows over rocks below a wooded knoll" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy" style="--o: 3">
+              <h3>Khai Nai Island</h3>
+              <p>A small tropical island featuring a sandy beach and clear turquoise waters, ideal for swimming, relaxing by the sea, and enjoying the surrounding scenery.</p>
+            </div>
+          </article>
+          <article class="mag-stop is-text">
+            <div class="mag-photo is-empty" style="--o: 6" aria-hidden="true"></div>
+            <div class="mag-copy" style="--o: 7">
+              <h3>Khai Nui Island</h3>
+              <p>Known for its snorkeling spots, Khai Nui offers opportunities to explore colorful tropical fish and marine life. Boats typically anchor offshore, as the island has no sandy beach for landing.</p>
             </div>
           </article>
         </div>
         <div class="article-body reading-column mag-after">
-          <p>The order of the three changes with the tide, so it is set on the day. Khai also pairs with <a href="maiton-island-private-yacht.html">Maiton Island</a> in one day.</p>
+          <p><strong>Best season:</strong> November to April generally offers calmer seas and ideal conditions for swimming and snorkeling.</p>
         </div>
       </section>
 
@@ -1503,7 +1519,7 @@
             <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" srcset="assets/destinations/similan-islands/sail-rock-1200-480.webp 480w, assets/destinations/similan-islands/sail-rock-1200-800.webp 800w, assets/destinations/similan-islands/sail-rock-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
           </a>
           <a class="dest-card" href="surin-islands-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-channel-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-channel-amy-1200-480.webp 480w, assets/destinations/surin-islands/surin-channel-amy-1200-800.webp 800w, assets/destinations/surin-islands/surin-channel-amy-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Clear turquoise shallows between two wooded islands" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
+            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-cover-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-cover-amy-1200-480.webp 480w, assets/destinations/surin-islands/surin-cover-amy-1200-800.webp 800w, assets/destinations/surin-islands/surin-cover-amy-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Wooden stilt houses and longtail boats along a Surin shore, turquoise water in front" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
           </a>
         </div>
         <p class="module-link"><a class="text-link" href="phuket-island-hopping-private-yacht.html"><span>All destinations</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>

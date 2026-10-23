@@ -795,6 +795,8 @@
     .mag-stop { display: contents; }
     .mag-photo { min-width: 0; margin: 0; overflow: hidden; aspect-ratio: 3 / 2; border-radius: 2px; background: var(--ice); }
     .mag-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    
+    .mag-photo.is-empty { display: none; background: none; }
     .mag-copy { min-width: 0; padding: 6px 2px 26px; }
     
     .mag-copy h3 { margin: 0 0 8px; color: #111; font-family: var(--sans); font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; }
@@ -807,6 +809,7 @@
     @media (min-width: 900px) {
       .mag-board { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
       .mag-photo, .mag-copy { order: var(--o, 0); }
+      .mag-photo.is-empty { display: block; }
       .mag-copy.is-end { grid-column: 3; }
       .mag-copy { padding: 14px 22px 12px; }
       .mag-copy p { font-size: 14px; }
@@ -1331,7 +1334,7 @@
           </div>
         </nav>
         <div class="intro-copy article-body reading-column">
-          <p class="lead">Maiton is a small private island off Phuket's south-east coast, with a large, quiet beach under a green hill and a resort on its east coast, ringed by clear water.</p>
+          <p class="lead">Located off Phuket’s southeast coast, Maiton Island is a secluded tropical island surrounded by crystal-clear waters. With a peaceful sandy beach beneath lush green hills.</p>
           <span id="hero-enquiry" hidden></span>
         </div>
       </header>
@@ -1339,15 +1342,21 @@
       <section class="article-section mag-section" id="what-to-expect-at-maiton" aria-label="What to expect at Maiton">
         <div class="mag-board">
           <article class="mag-stop">
-            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/maiton-island/maiton-dolphins-1200.jpg" srcset="assets/destinations/maiton-island/maiton-dolphins-640.webp 640w, assets/destinations/maiton-island/maiton-dolphins-1200.webp 1200w, assets/destinations/maiton-island/maiton-dolphins.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Dolphins surfacing in the open sea" loading="lazy" decoding="async"></figure>
+            <figure class="mag-photo" style="--o: 0"><img src="assets/destinations/maiton-island/maiton-beach-amy-1200.jpg" srcset="assets/destinations/maiton-island/maiton-beach-amy-640.webp 640w, assets/destinations/maiton-island/maiton-beach-amy-1200.webp 1200w, assets/destinations/maiton-island/maiton-beach-amy.webp 2000w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="801" alt="A catamaran at anchor in clear turquoise water below a rocky green shore" loading="lazy" decoding="async"></figure>
             <div class="mag-copy" style="--o: 1">
-              <h3>Dolphins, sometimes</h3>
-              <p>A sailing guide reports dolphins off the small bay on Maiton's west coast; they are a chance on the day, never a promise. Reefs fringe the main beach to the north and south-east, for swimming and snorkelling from the yacht.</p>
+              <p>The island is a popular spot for snorkeling, where you can explore colorful coral reefs and tropical marine life.</p>
+            </div>
+          </article>
+          <article class="mag-stop">
+            <figure class="mag-photo" style="--o: 2"><img src="assets/destinations/maiton-island/maiton-dolphins-1200.jpg" srcset="assets/destinations/maiton-island/maiton-dolphins-640.webp 640w, assets/destinations/maiton-island/maiton-dolphins-1200.webp 1200w, assets/destinations/maiton-island/maiton-dolphins.webp 1366w" sizes="(min-width: 900px) 380px, (min-width: 600px) 50vw, 100vw" width="1200" height="675" alt="Dolphins surfacing in the open sea" loading="lazy" decoding="async"></figure>
+            <div class="mag-copy is-end" style="--o: 3">
+              <h3>A Chance to Meet Dolphins</h3>
+              <p>As you cruise around Maiton Island, dolphins are occasionally spotted near the island’s western bay, making each encounter a special surprise.</p>
             </div>
           </article>
         </div>
         <div class="article-body reading-column mag-after">
-          <p>Maiton also pairs with the <a href="khai-islands-private-yacht.html">Khai Islands</a> in one day.</p>
+          <p><strong>Best season:</strong> November to April generally offers calmer seas and better conditions for snorkeling, although weather can vary throughout the year.</p>
         </div>
       </section>
 
@@ -1493,7 +1502,7 @@
             <div class="card-photo"><img src="assets/destinations/similan-islands/sail-rock-1200.jpg" srcset="assets/destinations/similan-islands/sail-rock-1200-480.webp 480w, assets/destinations/similan-islands/sail-rock-1200-800.webp 800w, assets/destinations/similan-islands/sail-rock-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Sail Rock above Donald Duck Bay, Similan Island 8" loading="lazy" decoding="async"><h3 class="card-name">Similan Islands</h3></div>
           </a>
           <a class="dest-card" href="surin-islands-private-yacht.html" hidden>
-            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-channel-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-channel-amy-1200-480.webp 480w, assets/destinations/surin-islands/surin-channel-amy-1200-800.webp 800w, assets/destinations/surin-islands/surin-channel-amy-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Clear turquoise shallows between two wooded islands" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
+            <div class="card-photo"><img src="assets/destinations/surin-islands/surin-cover-amy-1200.jpg" srcset="assets/destinations/surin-islands/surin-cover-amy-1200-480.webp 480w, assets/destinations/surin-islands/surin-cover-amy-1200-800.webp 800w, assets/destinations/surin-islands/surin-cover-amy-1200.webp 1200w" sizes="100vw" width="1200" height="800" alt="Wooden stilt houses and longtail boats along a Surin shore, turquoise water in front" loading="lazy" decoding="async"><h3 class="card-name">Surin Islands</h3></div>
           </a>
           <a class="dest-card" href="khai-islands-private-yacht.html" hidden>
             <div class="card-photo"><img src="assets/destinations/khai-islands/khai-aerial-1200.jpg" srcset="assets/destinations/khai-islands/khai-aerial-1200-480.webp 480w, assets/destinations/khai-islands/khai-aerial-1200-800.webp 800w, assets/destinations/khai-islands/khai-aerial-1200.webp 1200w" sizes="100vw" width="1200" height="675" alt="Khai from above: a white sand spit, beach huts and rocks in turquoise water" loading="lazy" decoding="async"><h3 class="card-name">Khai Islands</h3></div>
