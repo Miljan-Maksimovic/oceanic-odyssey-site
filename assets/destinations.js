@@ -722,13 +722,22 @@
     try { sessionStorage.setItem(key, JSON.stringify({json: json, expires: expires})); } catch (e) {}
   }
 
+  function askMet(url, tries) {
+    return fetch(url, {credentials: "omit"}).then(function (r) {
+      if (!r.ok) throw new Error("met " + r.status);
+      return r;
+    }).catch(function (err) {
+      if (tries < 1) throw err;
+      return new Promise(function (done) { setTimeout(done, 5000); }).then(function () { return askMet(url, tries - 1); });
+    });
+  }
+
   function forecast(d) {
     var lat = d.lat.toFixed(4), lon = d.lon.toFixed(4);
     var key = "oo-wx-" + lat + "," + lon;
     var hit = cacheGet(key);
     if (hit) return Promise.resolve(hit);
-    return fetch(MET + "?lat=" + lat + "&lon=" + lon, {credentials: "omit"}).then(function (r) {
-      if (!r.ok) throw new Error("met " + r.status);
+    return askMet(MET + "?lat=" + lat + "&lon=" + lon, 3).then(function (r) {
       var exp = Date.parse(r.headers.get("Expires") || "") || (Date.now() + 30 * 60000);
       return r.json().then(function (j) { cacheSet(key, j, Math.max(exp, Date.now() + 10 * 60000)); return j; });
     });
