@@ -685,7 +685,8 @@ svg { display: block; }
     @media (min-width: 600px) and (max-width: 899px) { .nav-links { gap: 18px; } .nav-links a { letter-spacing: .08em; } }
 
 
-.hs-charter { position: relative; overflow: hidden; background: #F3F1EC; }
+
+.hs-charter { position: relative; overflow: hidden; background: #fff; }
 .hs-charter::before { content: none; }
 .hs-charter-grid { position: relative; display: grid; gap: 30px; align-items: center; }
 .hs-charter-copy .section-label { color: #4F5E63; letter-spacing: .2em; }
@@ -699,7 +700,7 @@ svg { display: block; }
 .hs-btn .arrow { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .hs-btn:hover .arrow { transform: translateX(3px); }
 .hs-charter-photo { margin: 0; overflow: hidden; border-radius: 0; background: var(--ice); }
-.hs-charter-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.hs-charter-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 @media (max-width: 699px) { .hs-charter-photo { margin-inline: -24px; } }
 .hs-featured { background: var(--ice); }
 .hs-dests { background: #fff; }
@@ -718,7 +719,8 @@ svg { display: block; }
   .hs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 22px; }
 }
 @media (min-width: 900px) {
-  .hs-charter-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; }
+  .hs-charter-grid { grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr); gap: 44px; }
+  .hs-charter-copy h2 { font-size: clamp(26px, 2.6vw, 34px); }
   .hs-charter-photo { margin-right: calc((100vw - min(100vw - 80px, 1160px)) / -2); }
   .hs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 38px; }
   .hs-dest-name { font-size: 26px; }
@@ -1012,12 +1014,12 @@ svg { display: block; }
     <div class="wrap hs-charter-grid">
       <div class="hs-charter-copy">
         <div class="section-label">Yacht charter</div>
-        <h2 id="hs-charter-title">Private yacht charters in Phuket</h2>
-        <p>Turquoise bays, limestone islands and a whole day at sea with no one aboard but your own people. Choose from 39 private yachts, each with its own crew, and we plan the day around you.</p>
+        <h2 id="hs-charter-title">Explore Our Yacht Collection</h2>
+        <p>A selection of private yachts for meaningful moments at sea, quality time with your favourite people, and days spent exploring Phuket and the Andaman Sea.</p>
         <a class="button hs-btn" href="fleet.html" aria-label="Discover the yachts"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
       <figure class="hs-charter-photo">
-        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.webp 960w, assets/home/song-of-songs-brochure-1600.webp 1600w" sizes="(min-width: 900px) 640px, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
+        <img src="assets/home/song-of-songs-brochure-1600.jpg" srcset="assets/home/song-of-songs-brochure-960.webp 960w, assets/home/song-of-songs-brochure-1600.webp 1600w" sizes="(min-width: 900px) 64vw, 100vw" width="1600" height="900" alt="A private superyacht under way" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
