@@ -145,6 +145,7 @@ svg { display: block; }
 .site-nav { position: absolute; z-index: 20; top: 0; left: 0; right: 0; color: white; height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-inline: 24px; }
 .home-mark { display: block; color: white; padding: 5px; margin-left: -5px; }
 .home-mark img { display: block; width: auto; height: 62px; }
+@media (max-width: 699.98px) { .home-mark img { height: 46px; } }   
 .nav-links { display: flex; gap: 23px; align-items: center; }
 .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
 .nav-links a:hover { color: var(--sea); }
@@ -670,6 +671,16 @@ svg { display: block; }
 .hs-featured .section-heading h2, .hs-featured .boat-card .boat-name { color: #fff; }
 .hs-featured .boat-card .boat-spec, .hs-featured .boat-card .boat-spec .spec-icon { color: #c2d9dd; }
 .hs-featured .hs-more { color: var(--sea); }
+.hs-slider { margin-top: 30px; }
+.hs-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.hs-track::-webkit-scrollbar { display: none; }
+.hs-track .boat-card { scroll-snap-align: start; scroll-snap-stop: always; }
+.hs-dots { display: flex; justify-content: center; margin-top: 14px; }
+.hs-dot { display: grid; place-items: center; width: 24px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+.hs-dot::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .3); transition: background-color .2s; }
+.hs-dot[aria-current="true"]::before { background: var(--sea); }
+.hs-dot[hidden] { display: none; }
+.hs-dot:focus-visible { outline: 2px solid var(--sea); outline-offset: -2px; }
 .hs-dests { background: #fff; }
 .hs-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 30px; }
 .hs-card { display: flex; flex-direction: column; min-width: 0; }
@@ -684,12 +695,15 @@ svg { display: block; }
 .hs-more { display: inline-block; margin-top: 30px; color: var(--teal); font-size: 15px; font-weight: 700; }
 @media (min-width: 600px) {
   .hs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 22px; }
+  .hs-track { grid-auto-columns: calc((100% - 22px) / 2); }
 }
 @media (min-width: 900px) {
   .hs-charter-grid { grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr); gap: 44px; }
   .hs-charter-copy h2 { font-size: clamp(26px, 2.6vw, 34px); }
   .hs-charter-photo { margin-right: calc((100vw - min(100vw - 80px, 1160px)) / -2); }
   .hs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 38px; }
+  .hs-slider { margin-top: 38px; }
+  .hs-track { grid-auto-columns: calc((100% - 56px) / 3); gap: 28px; }
   .hs-dest-name { font-size: 26px; }
 }
 
@@ -878,7 +892,6 @@ svg { display: block; }
     </picture>
     <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="hero-content">
-      <p class="eyebrow">Private yacht charter, Phuket</p>
       <h1 id="hero-title">A World Away, Just Offshore.</h1>
       <p class="hero-copy">Escape the familiar and discover a quieter side of Phuket aboard your own private yacht, where the journey is just as unforgettable as the destination.</p>
     </div>
@@ -992,7 +1005,8 @@ svg { display: block; }
       <header class="section-heading">
         <h2 id="hs-featured-title">A selection of our most requested yachts</h2>
       </header>
-      <div class="hs-grid">
+      <div class="hs-slider" role="group" aria-roledescription="carousel" aria-labelledby="hs-featured-title">
+        <div class="hs-track">
         <article class="boat-card hs-yacht" data-boat="Black Pearl 55">
           <div class="boat-photo">
             <img class="boat-img" src="assets/cards/black-pearl-55.jpg" srcset="assets/cards/black-pearl-55-480.webp 480w, assets/cards/black-pearl-55-800.webp 800w, assets/cards/black-pearl-55-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
@@ -1020,6 +1034,22 @@ svg { display: block; }
           <a class="button hs-btn" href="boats/matia-sou.html" aria-label="Discover Matia Sou"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
           <a class="boat-link" href="boats/matia-sou.html" tabindex="-1" aria-hidden="true"></a>
         </article>
+        <article class="boat-card hs-yacht" data-boat="Sissana 53">
+          <div class="boat-photo">
+            <img class="boat-img" src="assets/cards/sissana-53.jpg" srcset="assets/cards/sissana-53-480.webp 480w, assets/cards/sissana-53-800.webp 800w, assets/cards/sissana-53-1000.webp 1000w" sizes="(min-width: 900px) 33vw, 100vw" width="1500" height="900" alt="" loading="lazy" decoding="async">
+          </div>
+          <h3 class="boat-name">Sissana 53</h3>
+          <ul class="boat-spec"><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-length"/></svg><span>53 ft</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-year"/></svg><span>2021</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-cabins"/></svg><span>3 cabins</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-guests"/></svg><span>10 max guests</span></li><li><svg class="spec-icon" aria-hidden="true"><use href="#spec-overnight"/></svg><span>6 guests overnight</span></li></ul>
+          <a class="button hs-btn" href="boats/sissana-53.html" aria-label="Discover Sissana 53"><span>Discover</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="boat-link" href="boats/sissana-53.html" tabindex="-1" aria-hidden="true"></a>
+        </article>
+        </div>
+        <div class="hs-dots">
+          <button class="hs-dot" type="button" aria-label="Show Black Pearl 55" aria-current="true"></button>
+          <button class="hs-dot" type="button" aria-label="Show Pearl 78" aria-current="false"></button>
+          <button class="hs-dot" type="button" aria-label="Show Matia Sou 102" aria-current="false"></button>
+          <button class="hs-dot" type="button" aria-label="Show Sissana 53" aria-current="false"></button>
+        </div>
       </div>
       <a class="text-link hs-more" href="fleet.html">See every yacht</a>
     </div>
@@ -1048,6 +1078,34 @@ svg { display: block; }
       <a class="text-link hs-more" href="phuket-island-hopping-private-yacht.html">See every destination</a>
     </div>
   </section>
+
+<script>
+(function () {
+  const track = document.querySelector(".hs-track");
+  const dots = Array.from(document.querySelectorAll(".hs-dot"));
+  if (!track || !dots.length) return;
+  const cards = Array.from(track.children);
+  const motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+  function paint() {
+    const stops = Math.round((track.scrollWidth - track.clientWidth) / step()) + 1;
+    const at = Math.min(Math.round(track.scrollLeft / step()), stops - 1);
+    dots.forEach((dot, i) => {
+      dot.hidden = i >= stops;
+      dot.setAttribute("aria-current", i === at ? "true" : "false");
+    });
+  }
+  dots.forEach((dot, i) => dot.addEventListener("click", () => track.scrollTo({left: i * step(), behavior: motion})));
+  track.addEventListener("scroll", paint, {passive: true});
+  window.addEventListener("resize", paint);
+  paint();
+  new IntersectionObserver((seen, watcher) => {
+    if (!seen[0].isIntersecting) return;
+    track.querySelectorAll("img").forEach(img => { img.loading = "eager"; });
+    watcher.disconnect();
+  }, {rootMargin: "500px 0px"}).observe(track);
+})();
+</script>
 
   <section class="closing" id="contact" aria-labelledby="closing-title">
     <picture>
