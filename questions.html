@@ -130,7 +130,7 @@
       --deep: #061C28;
       --teal: #126368;
       --sea: #B8E8DF;
-      --ice: #EDF6F5;
+      --ice: #FFFFFF;
       --ink: #102D3B;
       --muted: #5E7078;
       --line: rgba(16, 45, 59, .14);
@@ -218,7 +218,7 @@
     .site-header { position: absolute; z-index: 5; top: 0; left: 0; right: 0; color: #fff; }
     .header-inner { display: flex; align-items: center; gap: 14px; height: 82px; }
     .wordmark { flex: 0 0 auto; display: block; padding: 5px; margin-left: -5px; color: #fff; }
-    .logo-mark { display: block; width: 43px; height: 43px; }
+    .logo-mark { display: block; width: auto; height: 62px; }
     
     .nav-links { display: flex; align-items: center; gap: clamp(10px, calc((100vw - 300px) * .25), 20px); margin-left: auto; }
     .nav-wide { display: none; }
@@ -549,7 +549,7 @@
       body { padding-bottom: 0; }
       .wrap { width: min(100% - 80px, 1160px); }
       .header-inner { height: 100px; }
-      .logo-mark { width: 50px; height: 50px; }
+      .logo-mark { width: auto; height: 78px; }
       .nav-links { gap: 37px; }
       .nav-links a { font-size: 12px; }
       .breadcrumbs { top: 100px; }
@@ -866,6 +866,7 @@
     
     @media (max-width: 599px) { .lead { font-size: 17px; } }
     .footer-inner .credits-link { font-size: 13px; opacity: .8; }
+    .footer-inner { flex-wrap: wrap; }
     
     .jump-row { margin-top: 16px; }
     .jump { display: flex; gap: 8px; margin: 0 -24px; padding: 2px 24px 6px; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
@@ -1039,18 +1040,17 @@
     .questions-page .guide-hero h1 { padding: 130px 0 28px; font-size: 42px; }
     .q-group { margin-top: 38px; }
     .q-heading { margin: 0 0 10px 6px; color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; }
-    .q-list { overflow: hidden; border-radius: 14px; background: var(--ice); }
+    .q-list { overflow: hidden; border: 1px solid rgba(16, 45, 59, .14); border-radius: 14px; background: #fff; }
     .q-row + .q-row { border-top: 1px solid rgba(16, 45, 59, .1); }
     .q-row summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 56px; padding: 12px 16px; color: var(--navy); font-size: 17px; font-weight: 600; line-height: 1.35; letter-spacing: -.01em; cursor: pointer; list-style: none; -webkit-user-select: none; user-select: none; }
     .q-row summary::-webkit-details-marker { display: none; }
-    .q-row summary:hover { background: #E3F0EE; }
+    .q-row summary:hover { background: rgba(16, 45, 59, .04); }
     .q-row summary:focus-visible { outline: 3px solid #299CA2; outline-offset: -3px; }
     .q-chev { flex: 0 0 auto; width: 20px; height: 20px; fill: none; stroke: var(--teal); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
     .q-row[open] .q-chev { transform: rotate(90deg); }
     .q-body { padding: 2px 16px 20px; }
     .q-body p { margin: 0; }
-    .q-question { color: var(--navy); font-size: 17px; font-weight: 700; line-height: 1.4; }
-    .q-answer { margin-top: 8px; line-height: 1.65; }
+    .q-answer { line-height: 1.65; }
     .q-table { width: 100%; margin: 14px 0 4px; border-collapse: collapse; font-size: 15px; line-height: 1.45; font-variant-numeric: tabular-nums; }
     .q-table th, .q-table td { padding: 9px 10px; border-bottom: 1px solid rgba(16, 45, 59, .12); text-align: left; vertical-align: top; }
     .q-table th { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -1092,7 +1092,7 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="index.html"><svg class="logo-mark" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="22" stroke="currentColor" stroke-width="1.2"/><path d="M8 27c6-7 12-7 18 0s12 7 18 0M8 34c6-7 12-7 18 0s12 7 18 0" stroke="currentColor" stroke-width="1.2"/></svg><span class="sr-only">OCEANIC ODYSSEY</span></a>
+      <a class="wordmark" href="index.html"><img class="logo-mark" src="assets/logo-nav.png" srcset="assets/logo-nav-480.webp 480w" sizes="100vw" width="540" height="369" alt="" decoding="async"><span class="sr-only">OCEANIC ODYSSEY</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a class="nav-wide" href="index.html">Home</a>
         <a href="fleet.html">Yacht charter</a>
@@ -1128,17 +1128,15 @@
         <h2 class="q-heading" id="price-and-booking">Price and booking</h2>
         <div class="q-list">
           <details class="q-row" id="how-to-book-and-pay">
-            <summary><span class="q-label">How to book and pay</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
+            <summary><span class="q-label">How do I book, and how do I pay?</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
-              <p class="q-question">How do I book, and how do I pay?</p>
               <p class="q-answer">Send us your date, your group size and the kind of day on WhatsApp or Telegram. Sending a message books nothing. We reply with the yachts that fit, each with its rate. Payment is by bank transfer or cash.</p>
               <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
           </details>
           <details class="q-row" id="deposit-and-cancelling">
-            <summary><span class="q-label">Deposit and cancelling</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
+            <summary><span class="q-label">Is there a deposit, and what if we need to cancel?</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
-              <p class="q-question">Is there a deposit, and what if we need to cancel?</p>
               <p class="q-answer">A 50% deposit confirms the booking, and the rest is paid no later than 3 working days before departure. Bookings made less than 14 days before departure are paid in full in advance. Guest cancellations are non-refundable. Payment is by bank transfer or cash.</p>
               <div class="cta-pair q-chat"><a class="button" href="https://wa.me/66644518232?text=Hi%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#whatsapp-icon"/></svg><span>Message us on WhatsApp</span></a><a class="button button-alt" href="https://t.me/iamthequeenamy?text=Hi%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#telegram-icon"/></svg><span>Message us on Telegram</span></a></div>
             </div>
@@ -1150,25 +1148,22 @@
         <h2 class="q-heading" id="on-the-day">On the day</h2>
         <div class="q-list">
           <details class="q-row" id="departure-time">
-            <summary><span class="q-label">Departure time</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
+            <summary><span class="q-label">What time does the day start?</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
-              <p class="q-question">What time does the day start?</p>
               <p class="q-answer">A full-day charter lasts 8 hours, usually from 09:00 to 17:00 or 10:00 to 18:00.</p>
             </div>
           </details>
           <details class="q-row" id="national-park-fees">
-            <summary><span class="q-label">National park fees</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
+            <summary><span class="q-label">Do we pay national park fees on top?</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
-              <p class="q-question">Do we pay national park fees on top?</p>
               <p class="q-answer">Yes. Each guest pays in cash at the park, and your captain or hostess helps with the local formalities. These are the published fees for foreign visitors, based on Thailand's Department of National Parks regulations.</p>
               <table class="q-table"><thead><tr><th scope="col">Destination</th><th scope="col">Adult</th><th scope="col">Child</th></tr></thead><tbody><tr><td>Phi Phi Islands (special fee areas)</td><td>400 THB</td><td>200 THB</td></tr><tr><td>Phang Nga Bay</td><td>300 THB</td><td>150 THB</td></tr><tr><td>Similan Islands</td><td>500 THB</td><td>250 THB</td></tr><tr><td>Surin Islands</td><td>500 THB</td><td>250 THB</td></tr></tbody></table>
               <p class="q-links"><a class="text-link" href="phi-phi-private-yacht.html"><span>Phi Phi park fee</span><svg class="arrow" aria-hidden="true"><use href="#arrow-icon"/></svg></a></p>
             </div>
           </details>
           <details class="q-row" id="food-beverage">
-            <summary><span class="q-label">Food &amp; beverage</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
+            <summary><span class="q-label">Can we bring our own food and drinks?</span><svg class="q-chev" aria-hidden="true"><use href="#chevron-icon"/></svg></summary>
             <div class="q-body">
-              <p class="q-question">Can we bring our own food and drinks?</p>
               <p class="q-answer">You're welcome to bring your own food and drinks on board at no extra charge.</p>
             </div>
           </details>
@@ -1194,15 +1189,15 @@
             <span>Message us on Telegram</span>
           </a>
         </div>
-        <p class="cta-phone"><a href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20" target="_blank" rel="noopener">+66 64 451 8232</a></p>
       </section>
     </article>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
+      <a href="tel:+66644518232">+66 64 451 8232</a>
       <a href="mailto:oceanicodysseyyachtphuket@gmail.com" target="_blank" rel="noopener">oceanicodysseyyachtphuket@gmail.com</a>
-      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener">Instagram @oceanic_oddysseyyachtphuket</a>
       <a class="credits-link" href="terms.html">Terms &amp; Conditions</a>
       <a class="credits-link" href="credits.html">Photo and map credits</a>
     </div>

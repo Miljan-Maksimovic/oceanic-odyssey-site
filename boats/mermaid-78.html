@@ -106,7 +106,7 @@
       --deep: #061C28;
       --teal: #126368;
       --sea: #B8E8DF;
-      --ice: #EDF6F5;
+      --ice: #FFFFFF;
       --ink: #102D3B;
       --muted: #5E7078;
       --line: rgba(16, 45, 59, .14);
@@ -190,7 +190,7 @@
     .site-header { position: absolute; z-index: 5; top: 0; left: 0; right: 0; color: #fff; }
     .header-inner { display: flex; align-items: center; gap: 14px; height: 82px; }
     .wordmark { flex: 0 0 auto; display: block; padding: 5px; margin-left: -5px; color: #fff; }
-    .logo-mark { display: block; width: 43px; height: 43px; }
+    .logo-mark { display: block; width: auto; height: 62px; }
     .nav-links { display: flex; align-items: center; gap: 20px; margin-left: auto; }
     .nav-links a {
       padding-block: 12px;
@@ -553,7 +553,7 @@
       body { padding-bottom: 0; }
       .wrap { width: min(100% - 80px, 1160px); }
       .header-inner { height: 100px; }
-      .logo-mark { width: 50px; height: 50px; }
+      .logo-mark { width: auto; height: 78px; }
       .nav-links { gap: 37px; }
       .nav-links a { font-size: 12px; }
 
@@ -1072,7 +1072,7 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; }
     }
-      .footer-inner .credits-link { font-size: 13px; opacity: .8; }
+      .footer-inner .credits-link { font-size: 13px; opacity: .8; } .footer-inner { flex-wrap: wrap; }
   </style>
 </head>
 <body>
@@ -1085,7 +1085,7 @@
 
   <header class="site-header">
     <div class="header-inner wrap">
-      <a class="wordmark" href="../index.html"><svg class="logo-mark" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="22" stroke="currentColor" stroke-width="1.2"/><path d="M8 27c6-7 12-7 18 0s12 7 18 0M8 34c6-7 12-7 18 0s12 7 18 0" stroke="currentColor" stroke-width="1.2"/></svg><span class="sr-only">OCEANIC ODYSSEY</span></a>
+      <a class="wordmark" href="../index.html"><img class="logo-mark" src="../assets/logo-nav.png" srcset="../assets/logo-nav-480.webp 480w" sizes="100vw" width="540" height="369" alt="" decoding="async"><span class="sr-only">OCEANIC ODYSSEY</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a class="nav-wide" href="../index.html">Home</a>
         <a href="../fleet.html">Yacht charter</a>
@@ -1269,8 +1269,9 @@
 
   <footer class="site-footer">
     <div class="footer-inner wrap">
+      <a href="tel:+66644518232">+66 64 451 8232</a>
       <a href="mailto:oceanicodysseyyachtphuket@gmail.com" target="_blank" rel="noopener">oceanicodysseyyachtphuket@gmail.com</a>
-      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener">Instagram @oceanic_oddysseyyachtphuket</a>
       <a class="credits-link" href="../terms.html">Terms &amp; Conditions</a>
       <a class="credits-link" href="../credits.html">Photo and map credits</a>
     </div>

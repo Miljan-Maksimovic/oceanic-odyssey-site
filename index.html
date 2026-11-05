@@ -73,7 +73,7 @@
   --deep: #061c28;
   --teal: #126368;
   --sea: #b8e8df;
-  --ice: #edf6f5;
+  --ice: #fff;
   --ink: #102d3b;
   --muted: #5e7078;
   --white: #fff;
@@ -144,7 +144,7 @@ svg { display: block; }
 }
 .site-nav { position: absolute; z-index: 20; top: 0; left: 0; right: 0; color: white; height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-inline: 24px; }
 .home-mark { display: block; color: white; padding: 5px; margin-left: -5px; }
-.home-mark svg { width: 43px; height: 43px; }
+.home-mark img { display: block; width: auto; height: 62px; }
 .nav-links { display: flex; gap: 23px; align-items: center; }
 .nav-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
 .nav-links a:hover { color: var(--sea); }
@@ -290,11 +290,17 @@ svg { display: block; }
 .closing::after { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(110deg, #062431e6, #0624319c 70%, #06243180); }
 .closing h2 { max-width: 760px; font-size: clamp(36px, 4.7vw, 58px); font-weight: 500; }
 .closing p { max-width: 570px; margin-top: 24px; }
+.closing p + p { margin-top: 10px; }
 .closing .button { width: 100%; margin-top: 30px; }
 .phones { display: flex; flex-wrap: wrap; gap: 0 26px; margin-top: 12px; }
 .phone { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; color: #e2efef; }
 .phone:hover { color: #fff; }
-.footer { background: var(--deep); color: #b7cbd1; padding-block: 52px 135px; }
+.site-footer { background: var(--deep); color: #b7cbd1; }
+.footer-inner { display: flex; flex-direction: column; flex-wrap: wrap; gap: 12px; padding-block: 44px 52px; }
+.footer-inner a { align-self: flex-start; font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; transition: color .18s; }
+.footer-inner a:hover { color: #fff; }
+.footer-inner .credits-link { font-size: 13px; opacity: .8; }
+@media (min-width: 900px) { .footer-inner { flex-direction: row; justify-content: space-between; gap: 25px; padding-block: 48px 52px; } }
 .footer-name { max-width: 370px; font-size: 24px; font-weight: 600; line-height: 1.35; color: white; letter-spacing: -.025em; }
 .footer-contact { margin-top: 24px; display: grid; gap: 12px; }
 .footer-contact a { font-size: 15px; overflow-wrap: anywhere; width: fit-content; }
@@ -382,7 +388,7 @@ svg { display: block; }
 @media (min-width: 1050px) {
   .hero { min-height: min(850px, 100svh); }
   .site-nav { padding-inline: max(40px, calc((100vw - 1160px) / 2)); }
-  .home-mark svg { width: 50px; height: 50px; }
+  .home-mark img { width: auto; height: 78px; }
   .questions { grid-template-columns: 1fr .8fr 1.4fr; gap: 36px; }
   .question:last-child { grid-column: auto; }
   .question legend { font-size: 16px; }
@@ -447,49 +453,6 @@ svg { display: block; }
   .steps li { flex-direction: column; align-items: flex-start; gap: 18px; padding: 26px 26px 28px; }
   .steps li + li { border-top: 0; border-left: 1px solid rgba(16, 45, 59, .1); }
 }
-
-
-.faq { background: var(--ice); }
-.faq-layout { display: grid; gap: 26px; }
-.faq-group { overflow: hidden; border-radius: 16px; background: #fff; }
-.faq-row { position: relative; }
-.faq-row + .faq-row::before { content: ""; position: absolute; top: 0; left: 18px; right: 0; height: 1px; background: rgba(16, 45, 59, .12); }
-.faq-row summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 56px; padding: 10px 18px; color: var(--navy); font-size: 17px; font-weight: 600; line-height: 1.35; list-style: none; cursor: pointer; -webkit-user-select: none; user-select: none; }
-.faq-row summary::-webkit-details-marker { display: none; }
-.faq-row summary:focus-visible { outline: 3px solid #299ca2; outline-offset: -3px; }
-@media (hover: hover) { .faq-row summary:hover { background: #f3f9f8; } }
-.faq-chev { flex: 0 0 18px; width: 18px; height: 18px; fill: none; stroke: #9db0b6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
-.faq-row[open] .faq-chev { transform: rotate(90deg); }
-.faq-answer { padding: 0 18px 10px; }
-.faq-row[open] .faq-answer { animation: faq-in .24s ease-out; }
-@keyframes faq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .faq-row[open] .faq-answer { animation: none; } }
-.faq-answer > .faq-text { margin: 0; font-size: 17px; line-height: 1.6; }
-.faq-table { width: 100%; margin: 12px 0 4px; border-collapse: collapse; font-size: 15px; line-height: 1.45; font-variant-numeric: tabular-nums; }
-.faq-table th, .faq-table td { padding: 8px 8px 8px 0; border-bottom: 1px solid rgba(16, 45, 59, .12); text-align: left; vertical-align: top; }
-.faq-table th { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.faq-table td + td, .faq-table th + th { padding-right: 0; text-align: right; white-space: nowrap; }
-.faq-link { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 2px; color: var(--teal); font-size: 15px; font-weight: 800; }
-.faq-link .arrow { width: 18px; height: 18px; transition: transform .2s; }
-.faq-link:hover .arrow { transform: translateX(4px); }
-.faq-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 4px 0 6px; }
-.faq-lead { flex: 1 0 100%; color: var(--muted); font-size: 14px; font-weight: 600; }
-.faq-chat { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 14px; border: 1px solid #c9d8dc; border-radius: 999px; color: var(--teal); font-size: 15px; font-weight: 800; transition: background .15s, border-color .15s; }
-.faq-chat:hover { background: var(--ice); border-color: var(--teal); }
-.faq-chat .icon { width: 18px; height: 18px; flex-basis: 18px; }
-.faq-or { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.faq-all { display: flex; align-items: center; gap: 10px; min-height: 52px; margin-top: 6px; padding-inline: 18px; color: var(--teal); font-size: 15px; font-weight: 800; }
-.faq-all .arrow { width: 18px; height: 18px; transition: transform .2s; }
-.faq-all:hover .arrow { transform: translateX(4px); }
-@media (min-width: 900px) {
-  .faq-layout { grid-template-columns: minmax(240px, .7fr) minmax(0, 1.5fr); gap: 72px; align-items: start; }
-  .faq-layout .section-heading { position: sticky; top: 96px; }
-  .faq-row summary { min-height: 60px; padding-inline: 24px; font-size: 18px; }
-  .faq-row + .faq-row::before { left: 24px; }
-  .faq-answer { padding-inline: 24px; }
-  .faq-all { padding-inline: 24px; }
-}
-
 
     
     
@@ -695,14 +658,18 @@ svg { display: block; }
 .hs-outline { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 168px; min-height: 52px; margin-top: 28px; padding: 0 26px; border: 1.5px solid var(--navy); background: transparent; color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; transition: background-color .18s, color .18s; }
 .hs-outline::after { content: ""; position: absolute; inset: 4px -4px -4px 4px; border: 1px solid rgba(16, 45, 59, .4); pointer-events: none; }
 .hs-outline:hover { background: var(--navy); color: #fff; }
-.hs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 26px; border: 1.5px solid var(--navy); background: transparent; color: var(--navy); box-shadow: none; }
-.hs-btn:hover, .hs-btn:focus-visible { border-color: var(--navy); background: var(--navy); color: #fff; }
+.hs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 26px; border: 1.5px solid var(--sea); background: var(--sea); color: var(--navy); box-shadow: none; }
+.hs-btn:hover, .hs-btn:focus-visible { border-color: #D1F1EA; background: #D1F1EA; color: var(--navy); }
 .hs-btn .arrow { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .hs-btn:hover .arrow { transform: translateX(3px); }
 .hs-charter-photo { margin: 0; overflow: hidden; border-radius: 0; background: var(--ice); }
 .hs-charter-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 @media (max-width: 699px) { .hs-charter-photo { margin-inline: -24px; } }
-.hs-featured { background: var(--ice); }
+
+.hs-featured { background: var(--navy); color: #fff; }
+.hs-featured .section-heading h2, .hs-featured .boat-card .boat-name { color: #fff; }
+.hs-featured .boat-card .boat-spec, .hs-featured .boat-card .boat-spec .spec-icon { color: #c2d9dd; }
+.hs-featured .hs-more { color: var(--sea); }
 .hs-dests { background: #fff; }
 .hs-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 30px; }
 .hs-card { display: flex; flex-direction: column; min-width: 0; }
@@ -832,6 +799,7 @@ svg { display: block; }
 .find { position: relative; z-index: 3; padding: 24px 0 8px; background: #fff; }
 .find-panel { padding: 22px 18px 20px; border-radius: 14px; background: #fff; box-shadow: 0 16px 44px rgba(6, 28, 40, .14), 0 0 0 1px rgba(16, 45, 59, .06); }
 .find-head h2 { font-size: clamp(26px, 7vw, 34px); }
+.find-sub { margin: 4px 0 0; color: #4F5E63; font-size: 17px; line-height: 1.5; }
 .find-grid { display: grid; gap: 24px; margin-top: 20px; }
 .find-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; align-content: start; }
 .find-field { min-width: 0; }
@@ -898,20 +866,15 @@ svg { display: block; }
 </aside>
 
   <nav class="site-nav" aria-label="Main navigation">
-    <a class="home-mark" href="#" aria-label="Home">
-      <svg viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <circle cx="26" cy="26" r="22" stroke="currentColor" stroke-width="1.2"/>
-        <path d="M8 27c6-7 12-7 18 0s12 7 18 0M8 34c6-7 12-7 18 0s12 7 18 0" stroke="currentColor" stroke-width="1.2"/>
-      </svg>
-    </a>
+    <a class="home-mark" href="#" aria-label="Home"><img src="assets/logo-nav.png" srcset="assets/logo-nav-480.webp 480w" sizes="100vw" width="540" height="369" alt="" decoding="async"></a>
     <div class="nav-links"><a class="nav-wide" href="index.html" aria-current="page">Home</a><a href="fleet.html">Yacht charter</a><a href="phuket-island-hopping-private-yacht.html">Destinations</a><a href="questions.html">Questions</a><a class="nav-wide" href="#contact">Contact</a></div>
     </nav>
 
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <picture>
-      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/video/hero-phone-poster-480.webp 480w, assets/video/hero-phone-poster-800.webp 800w" width="1080" height="1920" sizes="100vw">
-      <img src="assets/video/hero-desktop-poster.jpg" srcset="assets/video/hero-desktop-poster-480.webp 480w, assets/video/hero-desktop-poster-800.webp 800w, assets/video/hero-desktop-poster-1200.webp 1200w, assets/video/hero-desktop-poster-1600.webp 1600w" sizes="100vw" alt="Matia Sou at anchor over a coral reef, seen from above" width="1920" height="1080" fetchpriority="high">
+      <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/video/hero-phone-poster-480.webp 480w" width="540" height="960" sizes="100vw">
+      <img src="assets/video/hero-desktop-poster.jpg" srcset="assets/video/hero-desktop-poster-480.webp 480w, assets/video/hero-desktop-poster-800.webp 800w, assets/video/hero-desktop-poster-1200.webp 1200w" sizes="100vw" alt="A private yacht on turquoise water between limestone cliffs" width="1280" height="720" fetchpriority="high">
     </picture>
     <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="hero-content">
@@ -926,8 +889,8 @@ svg { display: block; }
       <div class="find-panel">
       <form class="find-form" id="find-form" action="fleet.html" method="get" role="search">
         <div class="find-head">
-          <div class="section-label">Find your yacht</div>
-          <h2 id="qualifier-title">Who is coming, and when? We match the yacht.</h2>
+          <h2 id="qualifier-title">Find Your Yacht</h2>
+          <p class="find-sub">Who's coming, and when?</p>
         </div>
         <div class="find-grid">
           <div class="find-fields">
@@ -1086,202 +1049,6 @@ svg { display: block; }
     </div>
   </section>
 
-  <section class="comparison section-pad" aria-labelledby="comparison-title">
-    <div class="wrap">
-      <header class="section-heading">
-        <h2 id="comparison-title">Twenty-five guests. Two ways to host them.</h2>
-        <p>Same 25 guests. Same 8 hours.</p>
-      </header>
-      <div class="compare-grid">
-        <article class="compare-card">
-          <a class="boat-cover" href="boats/meraki.html" aria-label="View Meraki">
-            <img src="assets/meraki.jpg" srcset="assets/meraki-480.webp 480w, assets/meraki-800.webp 800w, assets/meraki-1200.webp 1200w, assets/meraki-1600.webp 1600w" sizes="100vw" alt="Meraki's foredeck and flybridge" width="1080" height="756" loading="lazy">
-            <div class="cover-copy"><h3 class="yacht-name">Meraki</h3></div>
-          </a>
-          <div class="compare-body">
-            <p class="compare-spec">76 ft</p>
-            <p class="compare-price">From 252,500 THB <span class="basis">for all 25</span></p>
-            <ul class="includes">
-              <li>A wakeboard and a knee board</li>
-              <li>Two towable tubes</li>
-              <li>A paddle board</li>
-            </ul>
-          </div>
-        </article>
-        <article class="compare-card">
-          <a class="boat-cover" href="boats/matia-sou.html" aria-label="View Matia Sou">
-            <img src="assets/boats/matia-sou/g-01.jpg" srcset="assets/boats/matia-sou/g-01-480.webp 480w, assets/boats/matia-sou/g-01-800.webp 800w, assets/boats/matia-sou/g-01-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Matia Sou at anchor beside a jungle island" width="1080" height="647" loading="lazy">
-            <div class="cover-copy"><h3 class="yacht-name">Matia Sou</h3></div>
-          </a>
-          <div class="compare-body">
-            <p class="compare-spec">102 ft, twenty-six feet more</p>
-            <p class="compare-price">From 577,500 THB <span class="basis">for all 25</span></p>
-            <ul class="includes">
-              <li>A butler</li>
-              <li>A private massage therapist</li>
-              <li>A jacuzzi and a yacht slide</li>
-              <li>A jet ski and a sea scooter</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-      <div class="compare-foot">
-        <p>Both rates include a Thai lunch, and everything listed is in the rate.</p>
-        <div class="compare-actions">
-          <a class="button" id="compare-message" href="https://wa.me/66644518232?text=Hi%2C%20we%20are%20up%20to%2025.%20I%20would%20like%20to%20ask%20about%20Meraki%20and%20Matia%20Sou." target="_blank" rel="noopener noreferrer"><span>Check both for my date</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-          <a class="button button-outline" id="compare-telegram" href="https://t.me/iamthequeenamy?text=Hi%2C%20we%20are%20up%20to%2025.%20I%20would%20like%20to%20ask%20about%20Meraki%20and%20Matia%20Sou." target="_blank" rel="noopener noreferrer"><span>Check both on Telegram</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="howto section-pad" aria-labelledby="howto-title">
-    <div class="wrap">
-      <header class="section-heading is-compact">
-        <h2 id="howto-title">How to book</h2>
-      </header>
-      <ol class="steps" role="list">
-        <li>Send your date and group size on WhatsApp or Telegram.</li>
-        <li>We reply with the yachts that fit, each with its rate.</li>
-        <li>You choose. Payment is by bank transfer or cash.</li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="faq section-pad" id="questions" aria-labelledby="faq-title">
-    <div class="wrap faq-layout">
-      <header class="section-heading is-compact">
-        <h2 id="faq-title">Questions</h2>
-        <p>Six answers, one tap each.</p>
-      </header>
-      <div class="faq-main">
-        <div class="faq-group">
-        <details class="faq-row" name="faq" data-faq="T4">
-          <summary><span>How to book and pay</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">Send us your date, your group size and the kind of day on WhatsApp or Telegram. Sending a message books nothing. We reply with the yachts that fit, each with its rate. Payment is by bank transfer or cash.</p>
-            <p class="faq-contact"><span class="faq-lead">Message us on</span> <a class="faq-chat" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a> <span class="faq-or">or</span> <a class="faq-chat" href="https://t.me/iamthequeenamy?text=Hi%2C%20I%20would%20like%20to%20check%20a%20date.%20Date%3A%20.%20Group%20size%3A%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a></p>
-          </div>
-        </details>
-        <details class="faq-row" name="faq" data-faq="T7">
-          <summary><span>Departure time</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">A full-day charter lasts 8 hours, usually from 09:00 to 17:00 or 10:00 to 18:00.</p>
-            
-          </div>
-        </details>
-        <details class="faq-row" name="faq" data-faq="T8">
-          <summary><span>National park fees</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">Yes. Each guest pays in cash at the park, and your captain or hostess helps with the local formalities. These are the published fees for foreign visitors, based on Thailand's Department of National Parks regulations.</p>
-            <table class="faq-table"><thead><tr><th scope="col">Destination</th><th scope="col">Adult</th><th scope="col">Child</th></tr></thead><tbody><tr><td>Phi Phi Islands (special fee areas)</td><td>400 THB</td><td>200 THB</td></tr><tr><td>Phang Nga Bay</td><td>300 THB</td><td>150 THB</td></tr><tr><td>Similan Islands</td><td>500 THB</td><td>250 THB</td></tr><tr><td>Surin Islands</td><td>500 THB</td><td>250 THB</td></tr></tbody></table>
-            <a class="faq-link" href="phi-phi-private-yacht.html"><span>Phi Phi park fee</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-          </div>
-        </details>
-        <details class="faq-row" name="faq" data-faq="E2">
-          <summary><span>Deposit and cancelling</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">A 50% deposit confirms the booking, and the rest is paid no later than 3 working days before departure. Bookings made less than 14 days before departure are paid in full in advance. Guest cancellations are non-refundable. Payment is by bank transfer or cash.</p>
-            <p class="faq-contact"><span class="faq-lead">Message us on</span> <a class="faq-chat" href="https://wa.me/66644518232?text=Hi%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a> <span class="faq-or">or</span> <a class="faq-chat" href="https://t.me/iamthequeenamy?text=Hi%2C%20is%20there%20a%20deposit%2C%20and%20what%20if%20we%20need%20to%20cancel%3F" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a></p>
-          </div>
-        </details>
-        <details class="faq-row" name="faq" data-faq="E5">
-          <summary><span>Food &amp; beverage</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">You're welcome to bring your own food and drinks on board at no extra charge.</p>
-            
-          </div>
-        </details>
-        <details class="faq-row" name="faq" data-faq="E6">
-          <summary><span>Can we choose the route and the stops?</span><svg class="faq-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
-          <div class="faq-answer">
-            <p class="faq-text">Our yacht charter itinerary is flexible, allowing you to spend more time at the spots you enjoy. However, please respect the captain’s decisions, as stops are always subject to sea and weather conditions. Please note that spending extra time at certain locations may affect the overall schedule, and we may not be able to visit every destination on the original itinerary.</p>
-            <a class="faq-link" href="phuket-island-hopping-private-yacht.html"><span>See every place</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-          </div>
-        </details>
-        </div>
-        <a class="faq-all" href="questions.html"><span>All questions</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-  <section class="day section-pad" aria-labelledby="day-title">
-    <div class="wrap">
-      <header class="section-heading">
-        <div class="section-label">A day aboard</div>
-        <h2 id="day-title">Eight hours, and no guests but yours.</h2>
-        <p>Name the water: Phi Phi, Phang Nga Bay, Racha, Hong, Khai, Maiton, or a route of your own.</p>
-      </header>
-    </div>
-    <div class="day-grid">
-      <figure class="scene scene-wide">
-        <div class="scene-photo"><img src="assets/boats/matia-sou/a2-g-04.jpg" srcset="assets/boats/matia-sou/a2-g-04-480.webp 480w, assets/boats/matia-sou/a2-g-04-800.webp 800w, assets/boats/matia-sou/a2-g-04-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="Limestone islands seen from Matia Sou's aft deck" width="1080" height="703" loading="lazy"></div>
-        <figcaption>In Phang Nga Bay, limestone rises straight out of the sea around the yacht.</figcaption>
-      </figure>
-      <figure class="scene">
-        <div class="scene-photo"><img src="assets/simon.jpg" srcset="assets/simon-480.webp 480w, assets/simon-800.webp 800w, assets/simon-1200.webp 1200w, assets/simon-1600.webp 1600w" sizes="100vw" alt="Simon on the water" width="1080" height="700" loading="lazy"></div>
-        <figcaption>On Simon, the inflatable slide goes over the side, and the first swim starts at the top of it.</figcaption>
-      </figure>
-      <figure class="scene">
-        <div class="scene-photo"><img src="assets/thai-food.jpg" srcset="assets/thai-food-480.webp 480w, assets/thai-food-800.webp 800w, assets/thai-food-1200.webp 1200w, assets/thai-food-1600.webp 1600w" sizes="100vw" alt="Thai food on a teak deck table" width="1440" height="1440" loading="lazy"></div>
-      </figure>
-      <figure class="scene scene-couple">
-        <div class="scene-photo"><img src="assets/bow-couple.jpg" srcset="assets/bow-couple-480.webp 480w, assets/bow-couple-800.webp 800w, assets/bow-couple-1200.webp 1200w, assets/bow-couple-1600.webp 1600w" sizes="100vw" alt="A couple on a yacht's bow overlooking a turquoise bay" width="1200" height="1600" loading="lazy"></div>
-      </figure>
-      <figure class="scene">
-        <div class="scene-photo"><img src="assets/boats/matia-sou/g-03.jpg" srcset="assets/boats/matia-sou/g-03-480.webp 480w, assets/boats/matia-sou/g-03-800.webp 800w, assets/boats/matia-sou/g-03-1200.webp 1200w" sizes="(min-width: 600px) 50vw, 86vw" alt="The jacuzzi and sunpads on Matia Sou's upper deck" width="1080" height="647" loading="lazy"></div>
-        <figcaption>On Matia Sou, a massage between swims, the jacuzzi, and the butler bringing the next glass.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="proof" aria-labelledby="proof-title">
-    <div class="proof-inner">
-      <h2 class="eyebrow" id="proof-title">Passed on by a friend</h2>
-      <blockquote>"A friend did a boat trip with you this week... They were very impressed and gave me your number."</blockquote>
-      <p class="attribution">Nicky, in a message to us.</p>
-    </div>
-  </section>
-
-  <section class="amy" id="amy" aria-labelledby="amy-title">
-    <div class="amy-layout">
-      <div class="amy-photo"><img src="assets/amy.jpg" srcset="assets/amy-480.webp 480w, assets/amy-800.webp 800w, assets/amy-1200.webp 1200w, assets/amy-1600.webp 1600w" sizes="100vw" alt="Amy on deck with Phi Phi cliffs behind her" width="874" height="1093" loading="lazy"></div>
-      <div class="amy-copy">
-        <h2 id="amy-title">I'm Amy.</h2>
-        <p>I'm a yacht charter broker in Phuket, not an owner. Tell me your group and your day, and I will suggest the yacht that suits them.</p>
-        <p class="direct"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Your message on WhatsApp or Telegram comes to me.</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="beyond section-pad" aria-labelledby="beyond-title">
-    <div class="wrap"><div class="section-label">Overnights and large parties</div><h2 id="beyond-title">Beyond the day</h2></div>
-    <div class="beyond-grid">
-      <article class="beyond-card">
-        <a class="boat-cover" href="boats/song-of-songs.html" aria-label="View Song of Songs">
-          <img src="assets/song-of-songs.jpg" srcset="assets/song-of-songs-480.webp 480w, assets/song-of-songs-800.webp 800w, assets/song-of-songs-1200.webp 1200w, assets/song-of-songs-1600.webp 1600w" sizes="100vw" alt="Song of Songs illuminated at dusk" width="1080" height="781" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Song of Songs</h3></div>
-        </a>
-        <div class="beyond-copy">
-          <p>139 ft, built 2022. Up to 12 guests, for a day or longer.</p>
-          <p class="beyond-rate">USD 29,000 for 8 hours, APA + VAT, or USD 46,000 for two days and one night, all inclusive.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Song%20of%20Songs." target="_blank" rel="noopener noreferrer"><span>Ask about Song of Songs</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Song%20of%20Songs." target="_blank" rel="noopener noreferrer" aria-label="Ask about Song of Songs on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-      <article class="beyond-card">
-        <a class="boat-cover" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Kefi%20for%20a%20group%20of%2050%20to%20100." target="_blank" rel="noopener noreferrer" aria-label="Ask about Kefi">
-          <img src="assets/kefi.jpg" srcset="assets/kefi-480.webp 480w, assets/kefi-800.webp 800w, assets/kefi-1200.webp 1200w, assets/kefi-1600.webp 1600w" sizes="100vw" alt="Kefi viewed from above" width="1080" height="715" loading="lazy">
-          <div class="cover-copy"><h3 class="yacht-name">Kefi</h3></div>
-        </a>
-        <div class="beyond-copy">
-          <p>80 ft, built 2025, for private parties of 50 to 100 guests. A resident DJ, a photographer and a buffet are in the rate.</p>
-          <p class="beyond-rate">From 230,000 THB for up to 50 guests, and 4,000 THB for each guest after 50.</p>
-          <div class="ask-row"><a class="yacht-ask" href="https://wa.me/66644518232?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Kefi%20for%20a%20group%20of%2050%20to%20100." target="_blank" rel="noopener noreferrer"><span>Ask about Kefi</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="tg-ask" href="https://t.me/iamthequeenamy?text=Hi%2C%20I%20would%20like%20to%20ask%20about%20Kefi%20for%20a%20group%20of%2050%20to%20100." target="_blank" rel="noopener noreferrer" aria-label="Ask about Kefi on Telegram"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg></a></div>
-        </div>
-      </article>
-    </div>
-    <div class="wrap"><p class="overnights">Overnights aboard Jackie, Pandora, Meraki and Simon, on request.</p></div>
-  </section>
-
   <section class="closing" id="contact" aria-labelledby="closing-title">
     <picture>
       <source media="(max-width: 699.98px), (orientation: portrait)" srcset="assets/boats/matia-sou/aerial-tall-480.webp 480w, assets/boats/matia-sou/aerial-tall-800.webp 800w" width="1080" height="1920" sizes="100vw">
@@ -1289,9 +1056,10 @@ svg { display: block; }
     </picture>
     <div class="wrap">
       <div class="section-label">Contact</div>
-      <h2 id="closing-title">There is one Matia Sou, one Simon, and one New Year's Eve.</h2>
-      <p>Send us the date and how many are coming, and we will tell you which yachts are free.</p>
-      <a class="button" href="#qualifier"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>Check my date</span></a>
+      <h2 id="closing-title">Your Day at Sea Starts Here.</h2>
+      <p>A little planning goes a long way.</p>
+      <p>Let us help you find the right yacht and plan a day around the places you want to explore, the people you want to share it with, and the time you want to spend at sea.</p>
+      <a class="button" href="#qualifier"><span>Plan Your Charter</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
       <div class="phones">
         <a class="phone" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">WhatsApp +66 64 451 8232</a>
         <a class="phone" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">Telegram +66 64 451 8232</a>
@@ -1300,15 +1068,12 @@ svg { display: block; }
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <p class="footer-name">Oceanic Odyssey Yacht Charter Phuket</p>
-    <div class="footer-contact">
-      <a href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket@gmail.com</a>
-      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener noreferrer">Instagram @oceanic_oddysseyyachtphuket</a>
-    </div>
-    <p class="payment">Payment by bank transfer or in cash.</p>
-    <a class="partner-link" href="partners.html"><span>Hotel concierges and villa managers: the partner page</span><svg class="icon arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+<footer class="site-footer">
+  <div class="footer-inner wrap">
+    <a href="tel:+66644518232">+66 64 451 8232</a>
+    <a href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket@gmail.com</a>
+    <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener noreferrer">Instagram @oceanic_oddysseyyachtphuket</a>
+    <a class="credits-link" href="partners.html">Partners</a>
     <a class="credits-link" href="terms.html">Terms &amp; Conditions</a>
     <a class="credits-link" href="credits.html">Photo and map credits</a>
   </div>
