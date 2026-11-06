@@ -1241,22 +1241,19 @@ svg { display: block; }
         form.addEventListener('submit', async event => {
           event.preventDefault();
           const f = new FormData(form);
-          if (f.get('_honey')) return;
+          if (f.get('botcheck')) return;
+          const service = { access_key: f.get('access_key'), subject: f.get('subject'), from_name: f.get('from_name') };
           const data = {
-            _subject: f.get('_subject'),
-            _template: 'table',
-            _captcha: 'false',
             [form.dataset.topicLabel]: form.dataset.topic,
             name: f.get('name'),
             email: f.get('email'),
-            _replyto: f.get('email'),
             date: f.get('date'),
             guests: f.get('guests'),
             requests: f.get('requests') || '',
             page: location.href.split('#')[0]
           };
           for (const [k, v] of f.entries()) {
-            if (!(k in data) && !k.startsWith('_') && v) data[k] = v;
+            if (!(k in data) && !(k in service) && k !== 'botcheck' && v) data[k] = v;
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
@@ -1268,10 +1265,11 @@ svg { display: block; }
           const abort = new AbortController();
           const timer = setTimeout(() => abort.abort(), 12000);
           try {
+            if (!form.dataset.endpoint) throw new Error('no form service');
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data),
+              body: JSON.stringify({ ...service, ...data }),
               signal: abort.signal
             });
             const out = await res.json();
@@ -1281,9 +1279,9 @@ svg { display: block; }
             sent('form');
           } catch (err) {
             const rows = Object.entries(data)
-              .filter(([k, v]) => !k.startsWith('_') && v)
+              .filter(([k, v]) => v)
               .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
-            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(service.subject)
               + '&body=' + encodeURIComponent(rows.join('\n'));
             say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;

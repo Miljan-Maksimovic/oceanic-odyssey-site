@@ -1600,11 +1600,11 @@
           <p>Send us your date and the size of your group. We will come back with the yachts that suit your group, their rates and a route through the bay.</p>
         </div>
         <div class="closing-form">
-          <form class="yp-form js-request" id="request-form" action="https://formsubmit.co/oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="https://formsubmit.co/ajax/oceanicodysseyyachtphuket@gmail.com" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Phang Nga Bay and James Bond Island" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
+          <form class="yp-form js-request" id="request-form" action="mailto:oceanicodysseyyachtphuket@gmail.com" method="post" data-endpoint="" data-email="oceanicodysseyyachtphuket@gmail.com" data-topic-label="Page" data-topic="Phang Nga Bay and James Bond Island" data-sending="Sending your request" data-sent="Thank you. Your request is sent, and we will reply by email." data-failed="Your request did not go through. Please email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below." data-mailed="Your email app has opened with your request written out. Press send, and we will reply by email. If it did not open, email us at oceanicodysseyyachtphuket@gmail.com, or message us on WhatsApp or Telegram below.">
             <h3>Request by email</h3>
-            <input type="hidden" name="_subject" value="Charter request: Phang Nga Bay and James Bond Island">
-            <input type="hidden" name="_template" value="table">
-            <input class="yp-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="subject" value="Charter request: Phang Nga Bay and James Bond Island">
+            <input type="hidden" name="from_name" value="Oceanic Odyssey website">
+            <input class="yp-hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="yp-field">
               <label for="request-full-name">Full name</label>
               <input id="request-full-name" name="name" type="text" autocomplete="name" required>
@@ -1708,22 +1708,19 @@
         form.addEventListener('submit', async event => {
           event.preventDefault();
           const f = new FormData(form);
-          if (f.get('_honey')) return;
+          if (f.get('botcheck')) return;
+          const service = { access_key: f.get('access_key'), subject: f.get('subject'), from_name: f.get('from_name') };
           const data = {
-            _subject: f.get('_subject'),
-            _template: 'table',
-            _captcha: 'false',
             [form.dataset.topicLabel]: form.dataset.topic,
             name: f.get('name'),
             email: f.get('email'),
-            _replyto: f.get('email'),
             date: f.get('date'),
             guests: f.get('guests'),
             requests: f.get('requests') || '',
             page: location.href.split('#')[0]
           };
           for (const [k, v] of f.entries()) {
-            if (!(k in data) && !k.startsWith('_') && v) data[k] = v;
+            if (!(k in data) && !(k in service) && k !== 'botcheck' && v) data[k] = v;
           }
           button.disabled = true;
           button.textContent = form.dataset.sending;
@@ -1735,10 +1732,11 @@
           const abort = new AbortController();
           const timer = setTimeout(() => abort.abort(), 12000);
           try {
+            if (!form.dataset.endpoint) throw new Error('no form service');
             const res = await fetch(form.dataset.endpoint, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(data),
+              body: JSON.stringify({ ...service, ...data }),
               signal: abort.signal
             });
             const out = await res.json();
@@ -1748,9 +1746,9 @@
             sent('form');
           } catch (err) {
             const rows = Object.entries(data)
-              .filter(([k, v]) => !k.startsWith('_') && v)
+              .filter(([k, v]) => v)
               .map(([k, v]) => k.charAt(0).toUpperCase() + k.slice(1) + ': ' + v);
-            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(data._subject)
+            location.href = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(service.subject)
               + '&body=' + encodeURIComponent(rows.join('\n'));
             say(form.dataset.mailed, 'is-mailed');
             button.disabled = false;
