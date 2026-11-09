@@ -1086,7 +1086,10 @@
 .of-brand p { max-width: 300px; margin: 14px 0 0; }
 .of-h { margin: 0 0 6px; color: #b8e8df; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .of-col { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
-.of-col a, .of-col span { padding-block: 9px; overflow-wrap: anywhere; }
+.of-col > a, .of-col > span { padding-block: 9px; overflow-wrap: anywhere; }
+.of-col > a:has(.of-ico), .of-item { display: inline-flex; align-items: center; gap: 11px; }
+.of-ico { flex: none; width: 18px; height: 18px; color: #fff; }
+.of-col > a span, .of-item span { min-width: 0; }
 .of-follow { grid-column: 1 / -1; }
 .of-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 0 22px; padding-block: 14px 30px;
   border-top: 1px solid rgba(184, 232, 223, .16); color: #8ea8af; font-size: 13px; }
@@ -1313,22 +1316,21 @@
       <p class="of-h">Explore</p>
       <a href="../fleet.html">Yacht charter</a>
       <a href="../phuket-island-hopping-private-yacht.html">Destinations</a>
-      <a href="../new-years-eve-yacht-phuket.html">New Year's Eve</a>
       <a href="../questions.html">Questions</a>
     </nav>
     <div class="of-col">
       <p class="of-h">Contact</p>
-      <a href="tel:+66644518232">+66 64 451 8232</a>
-      <a href="https://wa.me/66644518232" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://t.me/iamthequeenamy" target="_blank" rel="noopener">Telegram</a>
-      <a class="of-email" href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket<wbr>@gmail.com</a>
-      <span>Phuket, Thailand</span>
+      <a href="tel:+66644518232"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.6 4.4-2.1 1.4a10.8 10.8 0 0 0 5.7 5.7l1.4-2.1 4.4 1.6v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/></svg><span>+66 64 451 8232</span></a>
+      <a href="https://wa.me/66644518232" target="_blank" rel="noopener"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4 4.9 16A8.6 8.6 0 1 1 8 19.1z"/><path d="M9.2 8.3c-.3 2.9 2.6 6.4 6.3 6.6l.9-1.5-1.9-.9-.9.7a4.6 4.6 0 0 1-2.5-2.5l.7-.9-.9-1.9z"/></svg><span>WhatsApp</span></a>
+      <a href="https://t.me/iamthequeenamy" target="_blank" rel="noopener"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3.5 3 10.6l6.1 2.7 2.6 7.2z"/><path d="M21 3.5 9.1 13.3"/></svg><span>Telegram</span></a>
+      <a class="of-email" href="mailto:oceanicodysseyyachtphuket@gmail.com"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.6 6.6 8.4 6.9 8.4-6.9"/></svg><span>oceanicodysseyyachtphuket<wbr>@gmail.com</span></a>
+      <span class="of-item"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>Phuket, Thailand</span></span>
     </div>
     <div class="of-col of-follow">
       <p class="of-h">Follow</p>
-      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener noreferrer">Instagram @oceanic_oddysseyyachtphuket</a>
-      <a href="https://www.facebook.com/people/Oceanic-Odyssey-Yacht-Charter-Phuket/100090828666601/" target="_blank" rel="noopener noreferrer">Facebook</a>
-      <a href="https://share.google/Q4GZVX6ea2oGVD5vI" target="_blank" rel="noopener noreferrer">Google reviews</a>
+      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener noreferrer"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg><span>Instagram @oceanic_oddysseyyachtphuket</span></a>
+      <a href="https://www.facebook.com/people/Oceanic-Odyssey-Yacht-Charter-Phuket/100090828666601/" target="_blank" rel="noopener noreferrer"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 8.2h2.3V4.6h-2.6a4 4 0 0 0-4 4v2.2H8v3.4h2.2v6.3h3.5v-6.3h2.5l.5-3.4h-3V9a.8.8 0 0 1 .8-.8z"/></svg><span>Facebook</span></a>
+      <a href="https://share.google/Q4GZVX6ea2oGVD5vI" target="_blank" rel="noopener noreferrer"><svg class="of-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg><span>Google reviews</span></a>
     </div>
   </div>
   <div class="wrap of-bottom">
@@ -1525,6 +1527,7 @@
     .contact-fab .fab-tg svg { width: 26px; height: 26px; margin-left: -2px; }
     .contact-fab { transition: opacity .2s ease, transform .2s ease; }
     .contact-fab.is-covering { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .contact-fab.is-waiting { opacity: 0; transform: translateY(12px); pointer-events: none; }
     .dock, .sticky-contact { display: none !important; }
     body { padding-bottom: 0 !important; }   
     @media (min-width: 900px) { .contact-fab { right: 24px; bottom: 24px; } }
@@ -1551,13 +1554,15 @@
   <script>(function () {
     var fab = document.querySelector(".contact-fab");
     if (!fab) return;
+    var first = document.querySelector("main section, body > section, section");
     var chats = Array.prototype.filter.call(document.querySelectorAll('a[href*="wa.me"], a[href*="t.me"]'), function (a) {
       return !fab.contains(a) && !a.closest(".dock");
     });
-    if (!chats.length) return;
     var queued = false;
     function check() {
       queued = false;
+      var waiting = !!first && first.getBoundingClientRect().bottom > window.innerHeight * 0.25;
+      fab.classList.toggle("is-waiting", waiting);
       var f = fab.getBoundingClientRect(), hit = false;
       for (var i = 0; i < chats.length && !hit; i++) {
         var r = chats[i].getBoundingClientRect();
