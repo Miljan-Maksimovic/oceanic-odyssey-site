@@ -664,6 +664,8 @@ svg { display: block; }
 .hs-btn:hover, .hs-btn:focus-visible { border-color: #D1F1EA; background: #D1F1EA; color: var(--navy); }
 .hs-btn .arrow { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .hs-btn:hover .arrow { transform: translateX(3px); }
+.hero-btn { display: none; }
+@media (max-width: 699.98px) { .hero .hero-content .hero-btn { display: inline-flex; width: auto; margin-top: 22px; padding-inline: 26px; } }
 .hs-charter-photo { margin: 0; overflow: hidden; border-radius: 0; background: var(--ice); }
 .hs-charter-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 @media (max-width: 699px) { .hs-charter-photo { margin-inline: -24px; } }
@@ -843,6 +845,9 @@ svg { display: block; }
 .find-day legend { margin: 0 0 10px; padding: 0; color: var(--teal); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; }
 .find-go { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-top: 22px; background: var(--navy); color: #fff; }
 .find-go:hover { background: var(--teal); }
+.find-help { margin: 12px 0 0; text-align: center; font-size: 15px; line-height: 1.5; }
+.find-help a { display: inline-block; padding-block: 10px; color: var(--teal); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.find-help a:hover { color: var(--navy); }
 .find-search { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .find-request { display: grid; gap: 16px; margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(16, 45, 59, .1); }
 .find-or { margin: 0; color: var(--teal); font-size: 11px; font-weight: 700; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; }
@@ -858,10 +863,10 @@ svg { display: block; }
   .hero-content { padding-bottom: 150px; }
 }
 @media (min-width: 1000px) {
-  .find-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; }
-  .find-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .find-fields { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .find-wide { grid-column: auto; }
   .find-go { width: auto; min-width: 260px; margin-left: auto; }
+  .find-help { text-align: right; }
   .find-request { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); column-gap: 40px; row-gap: 10px; align-items: center; }
   .find-or { grid-column: 1 / -1; }
   .find-request .send-pair { grid-column: 1; grid-row: 2; }
@@ -935,6 +940,7 @@ svg { display: block; }
     <div class="hero-content">
       <h1 id="hero-title">A World Away, Just Offshore.</h1>
       <p class="hero-copy">Escape the familiar and discover a quieter side of Phuket aboard your own private yacht, where the journey is just as unforgettable as the destination.</p>
+      <a class="button hs-btn hero-btn" href="fleet.html"><span>Explore our yachts</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
     </div>
   </section>
 
@@ -972,23 +978,6 @@ svg { display: block; }
             </select>
             </div>
           </div>
-          <div class="find-field find-wide">
-            <label for="fy-dest">Destination</label>
-            <div class="find-select">
-            <select id="fy-dest" name="dest">
-              <option value="">All destinations</option>
-              <option value="Phi Phi Islands">Phi Phi Islands</option>
-              <option value="Racha Yai and Racha Noi">Racha Yai and Racha Noi</option>
-              <option value="Hong Krabi Islands">Hong Krabi Islands</option>
-              <option value="4 Islands, Krabi">4 Islands, Krabi</option>
-              <option value="Phang Nga Bay">Phang Nga Bay</option>
-              <option value="Khai Islands">Khai Islands</option>
-              <option value="Maiton Island">Maiton Island</option>
-              <option value="Similan Islands">Similan Islands</option>
-              <option value="Surin Islands">Surin Islands</option>
-            </select>
-            </div>
-          </div>
           <div class="find-field">
             <label for="fy-budget">Budget</label>
             <input id="fy-budget" name="budget" type="text" inputmode="numeric" autocomplete="off" placeholder="In THB">
@@ -998,32 +987,10 @@ svg { display: block; }
             <input id="fy-date" name="date" type="date">
           </div>
           </div>
-          <fieldset class="find-day">
-            <legend>What is the day for?</legend>
-            <div class="chips">
-              <button class="chip" type="button" data-occasion="birthday" aria-pressed="false">A birthday</button>
-              <button class="chip" type="button" data-occasion="celebration" aria-pressed="false">A celebration</button>
-              <button class="chip" type="button" data-occasion="friends" aria-pressed="false">A day with friends</button>
-              <button class="chip" type="button" data-occasion="couple" aria-pressed="false">Just the two of us</button>
-              <button class="chip" type="button" data-occasion="newyear" aria-pressed="false">New Year's Eve</button>
-              <button class="chip" type="button" data-occasion="other" aria-pressed="false">Something else</button>
-            </div>
-            <input type="hidden" name="occasion" value="">
-          </fieldset>
         </div>
         <button class="button find-go" type="submit"><svg class="find-search" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>Find yachts</span></button>
       </form>
-      <div class="find-request">
-        <p class="find-or">Or book on WhatsApp or Telegram</p>
-        <div class="send-pair">
-          <a class="button" id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#wa"/></svg><span>WhatsApp</span></a>
-          <a class="button button-outline" id="qualifier-tg" href="https://t.me/iamthequeenamy?text=Hi%2C%20" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#tg"/></svg><span>Telegram</span></a>
-        </div>
-        <ul class="find-contact">
-          <li><span>Phone</span><a href="tel:+66644518232">+66 64 451 8232</a></li>
-          <li><span>Email</span><a href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket@gmail.com</a></li>
-        </ul>
-      </div>
+      <p class="find-help"><a id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">Need help? Message us on WhatsApp</a></p>
       </div>
     </div>
   </section>
@@ -1226,7 +1193,24 @@ svg { display: block; }
     const on = chip.getAttribute("aria-pressed") !== "true";
     chips.forEach(c => c.setAttribute("aria-pressed", String(on && c === chip)));
     occasion.value = on ? chip.textContent.trim() : "";
+    prefill();
   }));
+  const wa = document.getElementById("qualifier-wa"), tg = document.getElementById("qualifier-tg");
+  function prefill() {
+    const f = form.elements, bits = [];
+    const pick = el => el && el.value && el.value !== "all" && !(el.name === "size" && el.value === "0") ? el.options ? el.options[el.selectedIndex].text : el.value : "";
+    if (pick(f.dest)) bits.push("Destination: " + pick(f.dest) + ".");
+    if (dayText()) bits.push("Date: " + dayText() + ".");
+    if (occasion && occasion.value) bits.push("Occasion: " + occasion.value + ".");
+    if (pick(f.type)) bits.push("Yacht type: " + pick(f.type) + ".");
+    if (pick(f.size)) bits.push("Yacht size: " + pick(f.size) + ".");
+    if (pick(f.budget)) bits.push("Budget: " + pick(f.budget) + ".");
+    const msg = "Hi, I'd like a private yacht in Phuket." + (bits.length ? " " + bits.join(" ") : "");
+    if (wa) wa.href = base + encodeURIComponent(msg);
+    if (tg) tg.href = baseTg + encodeURIComponent(msg);
+  }
+  form.addEventListener("change", prefill);
+  form.addEventListener("input", prefill);
   const compare = document.getElementById("compare-message");
   const compareTg = document.getElementById("compare-telegram");
   const dateInput = form.elements.date;
@@ -1366,24 +1350,26 @@ svg { display: block; }
     })();
   </script>
 <style>
-    .contact-fab { display: none; }
+    
+    .contact-fab { position: fixed; z-index: 60; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; }
+    .contact-fab a { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; box-shadow: 0 6px 18px rgba(6, 28, 40, .28); -webkit-tap-highlight-color: transparent; transition: transform .15s; }
+    .contact-fab a:hover { transform: scale(1.06); }
+    .contact-fab a:active { transform: scale(.94); }
+    .contact-fab a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px #0A2433; }
+    .contact-fab .fab-wa { background: #25D366; }
+    .contact-fab .fab-tg { background: #2AABEE; }
+    .contact-fab svg { width: 28px; height: 28px; }
+    .contact-fab .fab-tg svg { width: 26px; height: 26px; margin-left: -2px; }
+    .contact-fab { transition: opacity .2s ease, transform .2s ease; }
+    .contact-fab.is-covering { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .dock, .sticky-contact { display: none !important; }
+    body { padding-bottom: 0 !important; }   
+    @media (min-width: 900px) { .contact-fab { right: 24px; bottom: 24px; } }
     @media (max-width: 899.98px) {
-      .contact-fab { position: fixed; z-index: 60; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; }
-      .contact-fab a { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; box-shadow: 0 6px 18px rgba(6, 28, 40, .28); -webkit-tap-highlight-color: transparent; transition: transform .15s; }
-      .contact-fab a:active { transform: scale(.94); }
-      .contact-fab a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px #0A2433; }
-      .contact-fab .fab-wa { background: #25D366; }
-      .contact-fab .fab-tg { background: #2AABEE; }
-      .contact-fab svg { width: 28px; height: 28px; }
-      .contact-fab .fab-tg svg { width: 26px; height: 26px; margin-left: -2px; }
       
-      .sticky-contact, .cta-pair, .intro .cta-group, .partner .cta-group, .yp-check, .yp-chat, .yp-or { display: none !important; }
+      .cta-pair, .intro .cta-group, .partner .cta-group, .yp-check, .yp-chat, .yp-or { display: none !important; }
       
       body::after { content: ""; display: block; height: 96px; }
-      
-      .contact-fab { transition: bottom .35s ease, opacity .2s ease, transform .2s ease; }
-      body:has(.dock.is-on) .contact-fab { bottom: calc(108px + env(safe-area-inset-bottom, 0px)); }
-      .contact-fab.is-covering { opacity: 0; transform: translateY(10px); pointer-events: none; }
       
       .site-header .nav-links a { padding-block: 15.5px; }   
       .breadcrumbs a { padding-block: 13px; margin-block: -13px; }   
@@ -1401,7 +1387,7 @@ svg { display: block; }
   </div>
   <script>(function () {
     var fab = document.querySelector(".contact-fab");
-    if (!fab || !window.matchMedia("(max-width: 899.98px)").matches) return;
+    if (!fab) return;
     var chats = Array.prototype.filter.call(document.querySelectorAll('a[href*="wa.me"], a[href*="t.me"]'), function (a) {
       return !fab.contains(a) && !a.closest(".dock");
     });

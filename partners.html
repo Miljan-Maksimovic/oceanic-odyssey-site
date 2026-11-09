@@ -1338,24 +1338,26 @@
     })();
   </script>
 <style>
-    .contact-fab { display: none; }
+    
+    .contact-fab { position: fixed; z-index: 60; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; }
+    .contact-fab a { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; box-shadow: 0 6px 18px rgba(6, 28, 40, .28); -webkit-tap-highlight-color: transparent; transition: transform .15s; }
+    .contact-fab a:hover { transform: scale(1.06); }
+    .contact-fab a:active { transform: scale(.94); }
+    .contact-fab a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px #0A2433; }
+    .contact-fab .fab-wa { background: #25D366; }
+    .contact-fab .fab-tg { background: #2AABEE; }
+    .contact-fab svg { width: 28px; height: 28px; }
+    .contact-fab .fab-tg svg { width: 26px; height: 26px; margin-left: -2px; }
+    .contact-fab { transition: opacity .2s ease, transform .2s ease; }
+    .contact-fab.is-covering { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .dock, .sticky-contact { display: none !important; }
+    body { padding-bottom: 0 !important; }   
+    @media (min-width: 900px) { .contact-fab { right: 24px; bottom: 24px; } }
     @media (max-width: 899.98px) {
-      .contact-fab { position: fixed; z-index: 60; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; }
-      .contact-fab a { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; color: #fff; box-shadow: 0 6px 18px rgba(6, 28, 40, .28); -webkit-tap-highlight-color: transparent; transition: transform .15s; }
-      .contact-fab a:active { transform: scale(.94); }
-      .contact-fab a:focus-visible { outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 6px #0A2433; }
-      .contact-fab .fab-wa { background: #25D366; }
-      .contact-fab .fab-tg { background: #2AABEE; }
-      .contact-fab svg { width: 28px; height: 28px; }
-      .contact-fab .fab-tg svg { width: 26px; height: 26px; margin-left: -2px; }
       
-      .sticky-contact, .cta-pair, .intro .cta-group, .partner .cta-group, .yp-check, .yp-chat, .yp-or { display: none !important; }
+      .cta-pair, .intro .cta-group, .partner .cta-group, .yp-check, .yp-chat, .yp-or { display: none !important; }
       
       body::after { content: ""; display: block; height: 96px; }
-      
-      .contact-fab { transition: bottom .35s ease, opacity .2s ease, transform .2s ease; }
-      body:has(.dock.is-on) .contact-fab { bottom: calc(108px + env(safe-area-inset-bottom, 0px)); }
-      .contact-fab.is-covering { opacity: 0; transform: translateY(10px); pointer-events: none; }
       
       .site-header .nav-links a { padding-block: 15.5px; }   
       .breadcrumbs a { padding-block: 13px; margin-block: -13px; }   
@@ -1373,7 +1375,7 @@
   </div>
   <script>(function () {
     var fab = document.querySelector(".contact-fab");
-    if (!fab || !window.matchMedia("(max-width: 899.98px)").matches) return;
+    if (!fab) return;
     var chats = Array.prototype.filter.call(document.querySelectorAll('a[href*="wa.me"], a[href*="t.me"]'), function (a) {
       return !fab.contains(a) && !a.closest(".dock");
     });
