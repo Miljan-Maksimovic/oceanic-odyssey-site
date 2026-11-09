@@ -10,7 +10,11 @@
     ".nav-smart.is-fixed.is-armed{transition:transform .3s ease}" +
     ".nav-smart.is-fixed.is-shown{transform:none}" +
     ".site-nav.nav-smart.is-fixed,.nav-smart.is-fixed .header-inner{height:64px}" +
-    "@media (min-width:700px){.site-nav.nav-smart.is-fixed,.nav-smart.is-fixed .header-inner{height:72px}}" +
+    "@media (min-width:700px){.site-nav.nav-smart.is-fixed,.nav-smart.is-fixed .header-inner{height:84px}" +
+    ".nav-smart.is-fixed .logo-mark,.nav-smart.is-fixed .home-mark img{height:54px}}" +
+    "@media (min-width:900px){.nav-smart.is-fixed .header-inner{height:100px}.nav-smart.is-fixed .logo-mark{height:70px}}" +
+    "@media (min-width:1050px){.site-nav.nav-smart.is-fixed{height:100px}.nav-smart.is-fixed .home-mark img{height:70px}}" +
+    ".nav-smart.is-fixed:not(.is-shown){box-shadow:none}" +
     "@media (prefers-reduced-motion:reduce){.nav-smart.is-fixed.is-armed{transition:none}}";
   var style = document.createElement("style");
   style.textContent = css;

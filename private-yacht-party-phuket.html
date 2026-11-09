@@ -1276,6 +1276,35 @@
       .dest-others-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
   </style>
+<style id="of-footer-css">
+
+.of-footer { background: #061c28; color: #b7cbd1; font-size: 15px; line-height: 1.5; box-shadow: 0 160px 0 #061c28; }
+.of-footer a { color: inherit; text-decoration: none; transition: color .18s; }
+.of-footer a:hover, .of-footer a:focus-visible { color: #fff; }
+.of-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 24px; padding-block: 52px 34px; }
+.of-brand { grid-column: 1 / -1; }
+.of-logo { display: inline-block; }
+.of-logo img { display: block; width: auto; height: 64px; }
+.of-brand p { max-width: 300px; margin: 14px 0 0; }
+.of-h { margin: 0 0 6px; color: #b8e8df; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.of-col { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.of-col a, .of-col span { padding-block: 9px; overflow-wrap: anywhere; }
+.of-follow { grid-column: 1 / -1; }
+.of-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 0 22px; padding-block: 14px 30px;
+  border-top: 1px solid rgba(184, 232, 223, .16); color: #8ea8af; font-size: 13px; }
+.of-bottom a, .of-bottom span { padding-block: 9px; }
+
+@media (max-width: 699.98px) { .of-bottom { padding-right: 70px; padding-bottom: 48px; } }
+@media (min-width: 700px) {
+  .of-grid { grid-template-columns: 1fr 1.4fr 1.2fr; gap: 40px; padding-block: 60px 40px; }
+  .of-follow { grid-column: auto; }
+  .of-email { overflow-wrap: normal; }
+}
+@media (min-width: 1200px) {
+  .of-grid { grid-template-columns: 1.3fr .9fr 1.5fr 1.3fr; padding-block: 64px 44px; }
+  .of-brand { grid-column: auto; }
+}
+</style>
 </head>
 <body>
   <svg class="spec-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="spec-length" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-35 12 12)"><rect x="2.5" y="8" width="19" height="8" rx="1.5"/><path d="M7 8v3m4-3v4m4-4v3m4-3v4"/></g></g></symbol><symbol id="spec-year" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-12 4h2m4 0h2m-8 3h2m4 0h2"/></g></symbol><symbol id="spec-cabins" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M3 21h18m-7-9h1"/></g></symbol><symbol id="spec-guests" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="3"/><path d="M2 21v-3a6 6 0 0 1 12 0v3m2-7a5 5 0 0 1 6 5v2"/><circle cx="17" cy="8" r="2.5"/></g></symbol><symbol id="spec-overnight" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.2A8.8 8.8 0 0 1 10.8 3.4a8.8 8.8 0 1 0 9.8 9.8Z"/></g></symbol><symbol id="spec-season" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></g></symbol></svg>
@@ -1744,16 +1773,40 @@
     </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <a href="tel:+66644518232">+66 64 451 8232</a>
-      <a href="mailto:oceanicodysseyyachtphuket@gmail.com" target="_blank" rel="noopener">oceanicodysseyyachtphuket@gmail.com</a>
-      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener">Instagram @oceanic_oddysseyyachtphuket</a>
-      <a href="https://www.facebook.com/people/Oceanic-Odyssey-Yacht-Charter-Phuket/100090828666601/" target="_blank" rel="noopener">Facebook</a>
-      <a class="credits-link" href="terms.html">Terms &amp; Conditions</a>
-      <a class="credits-link" href="credits.html">Photo and map credits</a>
+  <footer class="of-footer">
+  <div class="wrap of-grid">
+    <div class="of-brand">
+      <a class="of-logo" href="index.html" aria-label="Oceanic Odyssey, home"><img src="assets/logo-nav.png" srcset="assets/logo-nav-480.webp 480w" sizes="94px" width="540" height="369" alt="" loading="lazy" decoding="async"></a>
+      <p>Private yacht charter in Phuket, for your group only.</p>
     </div>
-  </footer>
+    <nav class="of-col" aria-label="Footer">
+      <p class="of-h">Explore</p>
+      <a href="fleet.html">Yacht charter</a>
+      <a href="phuket-island-hopping-private-yacht.html">Destinations</a>
+      <a href="new-years-eve-yacht-phuket.html">New Year's Eve</a>
+      <a href="questions.html">Questions</a>
+    </nav>
+    <div class="of-col">
+      <p class="of-h">Contact</p>
+      <a href="tel:+66644518232">+66 64 451 8232</a>
+      <a href="https://wa.me/66644518232" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://t.me/iamthequeenamy" target="_blank" rel="noopener">Telegram</a>
+      <a class="of-email" href="mailto:oceanicodysseyyachtphuket@gmail.com">oceanicodysseyyachtphuket<wbr>@gmail.com</a>
+      <span>Phuket, Thailand</span>
+    </div>
+    <div class="of-col of-follow">
+      <p class="of-h">Follow</p>
+      <a href="https://www.instagram.com/oceanic_oddysseyyachtphuket/" target="_blank" rel="noopener noreferrer">Instagram @oceanic_oddysseyyachtphuket</a>
+      <a href="https://www.facebook.com/people/Oceanic-Odyssey-Yacht-Charter-Phuket/100090828666601/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+  <div class="wrap of-bottom">
+    <span>&copy; 2026 Oceanic Odyssey</span>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="credits.html">Photo and map credits</a>
+    <a href="partners.html">For hotels &amp; villas</a>
+  </div>
+</footer>
 
   <div class="sticky-contact" aria-hidden="true" inert>
     <a class="button" href="https://wa.me/66644518232?text=Hi%2C%20a%20private%20yacht%20party%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Occasion%3A%20" target="_blank" rel="noopener">
