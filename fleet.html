@@ -343,6 +343,8 @@
   <script src="assets/track.js" defer></script>
   <script src="assets/smart-nav.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/fleet-cover-1600.webp" media="(min-width: 700px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/fleet-cover-phone.webp" media="(max-width: 699.98px)" fetchpriority="high">
   <style>
     :root {
       --navy: #0A2433;
@@ -1235,6 +1237,8 @@
     
     .fleet-page .intro::before { content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: linear-gradient(90deg, rgba(10, 36, 51, .78) 0%, rgba(10, 36, 51, .42) 55%, rgba(10, 36, 51, .22) 100%), url(assets/fleet-cover-1600.webp) center 52% / cover no-repeat; pointer-events: none; }
     .fleet-page .intro > * { position: relative; z-index: 1; }
+    
+    @media (max-width: 699.98px) { .fleet-page .intro::before { background-image: linear-gradient(90deg, rgba(10, 36, 51, .78) 0%, rgba(10, 36, 51, .42) 55%, rgba(10, 36, 51, .22) 100%), url(assets/fleet-cover-phone.webp); } }
     
     .fleet-page main { overflow-x: clip; }
     .fleet-wx { float: right; width: 150px; margin: 2px 0 12px 14px; }

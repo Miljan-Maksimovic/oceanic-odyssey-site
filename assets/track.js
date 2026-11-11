@@ -42,7 +42,13 @@
       if (typeof window.gtag === 'function') window.gtag('event', name, params);
     } catch (e) { /* never block the click */ }
     try {
-      if (typeof window.fbq === 'function') window.fbq('trackCustom', name, params);
+      if (typeof window.fbq === 'function') {
+        window.fbq('trackCustom', name, params);
+        window.fbq('track', 'Contact', {content_name: params.boat_name, channel: app});
+      }
+    } catch (e) { /* never block the click */ }
+    try {
+      if (window.OO_ADS_CHAT && typeof window.gtag === 'function') window.gtag('event', 'conversion', {send_to: window.OO_ADS_CHAT});
     } catch (e) { /* never block the click */ }
   }
 

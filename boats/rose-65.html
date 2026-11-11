@@ -1422,7 +1422,7 @@
           const sent = method => {
             const params = { topic: form.dataset.topic, page_path: location.pathname, method };
             if (typeof window.gtag === 'function') window.gtag('event', 'email_request', params);
-            if (typeof window.fbq === 'function') window.fbq('trackCustom', 'email_request', params);
+            if (typeof window.fbq === 'function') { window.fbq('trackCustom', 'email_request', params); window.fbq('track', 'Lead'); }
           };
           const abort = new AbortController();
           const timer = setTimeout(() => abort.abort(), 12000);
