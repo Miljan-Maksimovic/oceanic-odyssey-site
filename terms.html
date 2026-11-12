@@ -969,7 +969,12 @@
   .of-brand { grid-column: auto; }
 }
 </style>
-</head>
+<style id="site-logo">
+.home-mark img, .logo-mark { width: auto !important; height: 40px !important; filter: drop-shadow(0 1px 6px rgba(6, 28, 40, .45)); }
+.of-logo img { width: auto !important; height: 76px !important; }
+@media (min-width: 700px) { .home-mark img, .logo-mark { height: 50px !important; } }
+@media (min-width: 1050px) { .home-mark img, .logo-mark { height: 56px !important; } }
+</style></head>
 <body>
   <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="whatsapp-icon" viewBox="0 0 24 24">
@@ -983,7 +988,7 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="index.html"><img class="logo-mark" src="assets/logo-nav.png" srcset="assets/logo-nav-480.webp 480w" sizes="100vw" width="540" height="369" alt="" decoding="async"><span class="sr-only">OCEANIC ODYSSEY</span></a>
+      <a class="wordmark" href="index.html"><img class="logo-mark" src="assets/logo-k7-header.png" width="523" height="223" alt="Oceanic Odyssey" decoding="async"><span class="sr-only">OCEANIC ODYSSEY</span></a>
       <nav class="nav-links" aria-label="Main navigation">
         <a class="nav-wide" href="index.html">Home</a>
         <a href="fleet.html">Yacht charter</a>
@@ -1102,7 +1107,7 @@
   <footer class="of-footer">
   <div class="wrap of-grid">
     <div class="of-brand">
-      <a class="of-logo" href="index.html" aria-label="Oceanic Odyssey, home"><img src="assets/logo-nav.png" srcset="assets/logo-nav-480.webp 480w" sizes="94px" width="540" height="369" alt="" loading="lazy" decoding="async"></a>
+      <a class="of-logo" href="index.html" aria-label="Oceanic Odyssey, home"><img src="assets/logo-k7.png" width="527" height="261" alt="Oceanic Odyssey" loading="lazy" decoding="async"></a>
       <p>Private yacht charter in Phuket, for your group only.</p>
     </div>
     <nav class="of-col" aria-label="Footer">
