@@ -778,16 +778,39 @@ svg { display: block; }
 .hs-about .hs-btn { margin-top: 30px; }
 .ab-block { margin-top: 56px; }
 .ab-h { margin: 0 0 18px; color: var(--sea); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.ab-inc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
-.ab-inc-item { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px; border: 1px solid rgba(184, 232, 223, .16); border-radius: 6px; background: rgba(255, 255, 255, .035); color: #fff; font-size: 15px; line-height: 1.4; }
-.ab-ic { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(184, 232, 223, .12); }
+.ab-ic { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(184, 232, 223, .12); }
 .ab-icon { width: 22px; height: 22px; fill: none; stroke: var(--sea); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+.ab-why { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.ab-why-item { display: flex; gap: 16px; align-items: flex-start; padding-top: 20px; border-top: 1px solid rgba(184, 232, 223, .22); }
+.ab-why-text { display: grid; gap: 6px; }
+.ab-why-text strong { color: #fff; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.ab-why-text span { color: #b7cbd1; font-size: 15px; line-height: 1.6; }
+
+.ab-panels { display: grid; gap: 14px; }
+.ab-panel { padding: 24px 20px; border-radius: 8px; }
+.ab-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.ab-panel-head h3 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
+.ab-pill { flex: none; padding: 6px 11px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .12em; line-height: 1; text-transform: uppercase; }
+.ab-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.ab-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 1.45; }
+.ab-mark { flex: none; width: 24px; height: 24px; padding: 4px; border-radius: 50%; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.ab-panel-inc { background: var(--sea); color: var(--navy); }
+.ab-panel-inc h3 { color: var(--navy); }
+.ab-panel-inc .ab-pill { background: var(--navy); color: #fff; }
+.ab-panel-inc .ab-mark { background: var(--navy); stroke: var(--sea); }
+.ab-panel-ext { border: 1.5px dashed rgba(229, 169, 19, .7); color: #fff; }
+.ab-panel-ext h3 { color: #fff; }
+.ab-panel-ext .ab-pill { background: rgba(229, 169, 19, .16); color: #F2C14E; }
+.ab-panel-ext .ab-mark { background: rgba(229, 169, 19, .18); stroke: #F2C14E; }
+.ab-panel-ext .ab-note { color: #b7cbd1; }
 .ab-note { margin: 16px 0 0; color: #b7cbd1; font-size: 15px; line-height: 1.6; }
 .ab-pay { display: flex; align-items: center; gap: 12px; margin: 48px 0 0; padding-top: 24px; border-top: 1px solid rgba(184, 232, 223, .18); color: #dbe9ec; font-size: 15px; line-height: 1.6; }
 .ab-pay .ab-icon { flex: none; }
 @media (min-width: 700px) {
   .rv-row { scroll-padding-inline: 40px; }
-  .ab-inc-item { flex-direction: row; align-items: center; gap: 14px; padding: 18px; font-size: 16px; }
+  .ab-why { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 32px; }
+  .ab-panel { padding: 30px 30px 28px; }
 }
 
 .hero-about { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; margin-left: 10px; color: #fff; font-size: 15px; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
@@ -800,7 +823,9 @@ svg { display: block; }
   .ab-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 64px; }
   .ab-stats li { padding: 0 26px; } .ab-num { font-size: 56px; } .ab-lab { font-size: 14px; }
   .ab-block { margin-top: 72px; }
-  .ab-inc { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .ab-why { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ab-why-item { flex-direction: column; gap: 14px; }
+  .ab-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
   .ty-text { padding-top: 16px; }
   .ty-name { font-size: 17px; }
 }
@@ -849,14 +874,20 @@ svg { display: block; }
 .rv-shot.yp-shot { overflow: hidden; height: auto; aspect-ratio: 1 / 1; border-radius: 8px; background: #EEF3F4; }
 .rv-shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 @media (hover: hover) { .rv-shot:hover img { transform: scale(1.05); } }
-.hs-reviews .hs-more { margin-top: 26px; }
+.rv-row { align-items: flex-start; }
+.rv-dots { display: flex; justify-content: center; margin-top: 14px; }
+.rv-dot { display: grid; place-items: center; width: 24px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+.rv-dot::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(10, 36, 51, .2); transition: background-color .2s; }
+.rv-dot[aria-current="true"]::before { background: var(--navy); }
+.rv-dot[hidden] { display: none; }
+.rv-dot:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
+.hs-reviews .hs-more { margin-top: 18px; }
 @media (min-width: 700px) {
   .og { --h: 280px; --gap: 14px; margin-top: 40px; }
 }
 @media (min-width: 900px) {
-  .rv-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 40px 0 0; padding: 0; overflow: visible; }
-  .rv-row { align-items: start; }
-  .rv-card { width: auto; padding: 24px 24px 26px; }
+  .rv-row { gap: 22px; margin: 40px 0 0; padding: 0 0 8px; scroll-padding-inline: 0; }
+  .rv-card { width: calc((100% - 66px) / 3.3); padding: 24px 24px 26px; }   
 }
 @media (min-width: 1100px) { .og { --h: 340px; } }
 
@@ -1417,15 +1448,48 @@ svg { display: block; }
           <blockquote><p>A special moment on a yacht cruise in Phuket</p></blockquote>
           <div class="rv-photos"><a class="yp-shot rv-shot" href="assets/home/reviews/piiya-1.jpg"><img src="assets/home/reviews/piiya-1.jpg" srcset="assets/home/reviews/piiya-1-480.webp 480w, assets/home/reviews/piiya-1-800.webp 800w" width="952" height="952" sizes="(min-width: 900px) 170px, 40vw" alt="A family group on the catamaran&#x27;s front net at sunset" loading="lazy" decoding="async"></a></div>
         </figure>
+        <figure class="rv-card">
+          <figcaption class="rv-head"><span class="rv-av" aria-hidden="true">P</span><span class="rv-who"><span class="rv-name">Ppsaow</span><span class="rv-src">Local Guide · 40 reviews</span></span><svg class="rv-g" viewBox="0 0 48 48" role="img" aria-label="Google"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg></figcaption>
+          <span class="rv-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg></span>
+          <blockquote><p>Had an amazing time with Oceanic Yacht! The crew was friendly, the yacht was beautiful, and the whole experience was so relaxing</p></blockquote>
+        </figure>
       </div>
+      <div class="rv-dots"><button class="rv-dot" type="button" aria-label="Show review 1" aria-current="true"></button><button class="rv-dot" type="button" aria-label="Show review 2" aria-current="false"></button><button class="rv-dot" type="button" aria-label="Show review 3" aria-current="false"></button><button class="rv-dot" type="button" aria-label="Show review 4" aria-current="false"></button></div>
       <a class="text-link hs-more" href="https://share.google/Q4GZVX6ea2oGVD5vI" target="_blank" rel="noopener noreferrer">Read every review on Google</a>
     </div>
   </section>
+<script>
+(function () {
+  const track = document.querySelector(".rv-row");
+  const dots = Array.from(document.querySelectorAll(".rv-dot"));
+  if (!track || dots.length < 2) return;
+  const cards = Array.from(track.children);
+  const motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+  function paint() {
+    const stops = Math.round((track.scrollWidth - track.clientWidth) / step()) + 1;
+    const at = Math.min(Math.round(track.scrollLeft / step()), stops - 1);
+    dots.forEach((dot, i) => {
+      dot.hidden = i >= stops || stops < 2;
+      dot.setAttribute("aria-current", i === at ? "true" : "false");
+    });
+  }
+  dots.forEach((dot, i) => dot.addEventListener("click", () => track.scrollTo({left: i * step(), behavior: motion})));
+  track.addEventListener("scroll", paint, {passive: true});
+  window.addEventListener("resize", paint);
+  paint();
+  new IntersectionObserver((seen, watcher) => {
+    if (!seen[0].isIntersecting) return;
+    track.querySelectorAll("img").forEach(img => { img.loading = "eager"; });
+    watcher.disconnect();
+  }, {rootMargin: "500px 0px"}).observe(track);
+})();
+</script>
 
   <section class="hs-about section-pad" id="about" aria-labelledby="hs-about-title">
     <div class="wrap">
       <div class="ab-top">
-        <div class="ab-photo"><img src="assets/cards/octava-119.jpg" srcset="assets/cards/octava-119-480.webp 480w, assets/cards/octava-119-800.webp 800w, assets/cards/octava-119-1000.webp 1000w" width="1280" height="768" sizes="(min-width: 900px) 540px, 100vw" alt="A superyacht under way below limestone cliffs" loading="lazy" decoding="async"></div>
+        <div class="ab-photo"><img src="assets/cards/jackie.jpg" srcset="assets/cards/jackie-480.webp 480w, assets/cards/jackie-800.webp 800w, assets/cards/jackie-1000.webp 1000w" width="1105" height="663" sizes="(min-width: 900px) 540px, 100vw" alt="A motor yacht under way off a green island, turquoise water" loading="lazy" decoding="async"></div>
         <div class="ab-copy">
           <div class="section-label">About us</div>
           <h2 id="hs-about-title">Private yachts in Phuket, handled end to end.</h2>
@@ -1435,26 +1499,37 @@ svg { display: block; }
         </div>
       </div>
       <div class="ab-block">
-        <h3 class="ab-h">Included on most yachts</h3>
-        <ul class="ab-inc">
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v7.5M12 14.5V22M2 12h7.5M14.5 12H22M4.9 4.9l5.3 5.3M13.8 13.8l5.3 5.3M19.1 4.9l-5.3 5.3M10.2 13.8l-5.3 5.3"/></svg></span><span>Captain and crew</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3Zm0 0v7"/></svg></span><span>Thai lunch, fresh fruit and snacks</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v2M10 2v2M14 2v2M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/></svg></span><span>Water, soft drinks, coffee and tea</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v6M15 6v6M2 12h19.6M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2s-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3M9 18h5"/><circle cx="7" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></span><span>Hotel transfer for up to 10 guests</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.9 4.9 4.3 4.3M14.8 9.2l4.3-4.3M14.8 14.8l4.3 4.3M9.2 14.8l-4.3 4.3"/></svg></span><span>Towels, life jackets and WiFi</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Travel insurance and VAT</span></li>
+        <h3 class="ab-h">Why book with us</h3>
+        <ul class="ab-why">
+          <li class="ab-why-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span><span class="ab-why-text"><strong>The price comes first.</strong><span>Message us your date and we reply with the yachts that fit, each with its rate. A message books nothing.</span></span></li>
+          <li class="ab-why-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><span class="ab-why-text"><strong>The yacht is yours alone.</strong><span>One group, one yacht, one crew for all 8 hours. No strangers on board.</span></span></li>
+          <li class="ab-why-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.1 5.1a2 2 0 0 0 1.8 0l3.7-1.9A1 1 0 0 1 21 4.1v12.8a1 1 0 0 1-.6.9l-4.5 2.2a2 2 0 0 1-1.8 0l-4.2-2.1a2 2 0 0 0-1.8 0l-3.7 1.9A1 1 0 0 1 3 19.9V7.1a1 1 0 0 1 .6-.9l4.5-2.2a2 2 0 0 1 1.8 0zM15 5.8v15M9 3.2v15"/></svg></span><span class="ab-why-text"><strong>Your route, your pace.</strong><span>Stay longer at the places you love. The captain plans each stop around the sea and the weather.</span></span></li>
+          <li class="ab-why-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span><span class="ab-why-text"><strong>Bring your own.</strong><span>Your own food and drinks come on board at no extra charge.</span></span></li>
         </ul>
       </div>
-      <div class="ab-block">
-        <h3 class="ab-h">Add to your day</h3>
-        <ul class="ab-inc">
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span><span>DJ on board</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.46.32-.84.73-1.04a4 4 0 0 0-2.14-7.59 5 5 0 0 0-9.18 0 4 4 0 0 0-2.14 7.59c.41.2.73.58.73 1.04V20a1 1 0 0 0 1 1ZM6 17h12"/></svg></span><span>Catering and a chef</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1M2 21h20M7 8v3M12 8v3M17 8v3M7 4h.01M12 4h.01M17 4h.01"/></svg></span><span>Decoration for birthdays and celebrations</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg></span><span>Photographer</span></li>
-          <li class="ab-inc-item"><span class="ab-ic"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span><span>Jet ski</span></li>
-        </ul>
-        <p class="ab-note">Ask for any of these with your date, and they are priced into your quote.</p>
+      <div class="ab-block ab-panels">
+        <div class="ab-panel ab-panel-inc">
+          <div class="ab-panel-head"><h3>Included on most yachts</h3><span class="ab-pill">Included</span></div>
+          <ul class="ab-list">
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Captain and crew</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Thai lunch, fresh fruit and snacks</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Water, soft drinks, coffee and tea</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Hotel transfer for up to 10 guests</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Towels, life jackets and WiFi</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Travel insurance and VAT</span></li>
+          </ul>
+        </div>
+        <div class="ab-panel ab-panel-ext">
+          <div class="ab-panel-head"><h3>Add to your day</h3><span class="ab-pill">Extra cost</span></div>
+          <ul class="ab-list">
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>DJ on board</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Catering and a chef</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Decoration for birthdays and celebrations</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Photographer</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Jet ski</span></li>
+          </ul>
+          <p class="ab-note">Ask for any of these with your date, and they are priced into your quote.</p>
+        </div>
       </div>
       <p class="ab-pay"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>A 50% deposit confirms the yacht, the rest is paid three working days before. Bank transfer or cash.</span></p>
     </div>
