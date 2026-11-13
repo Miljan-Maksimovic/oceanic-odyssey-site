@@ -770,6 +770,7 @@ svg { display: block; }
 .ab-photo { overflow: hidden; aspect-ratio: 4 / 3; border-radius: 6px; background: #0d2c3d; }
 .ab-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .ab-lede { max-width: 600px; margin-top: 16px; color: #dbe9ec; line-height: 1.7; }
+.ab-lede + .ab-lede { margin-top: 12px; }
 .ab-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 30px 0 0; padding: 0; list-style: none; }
 .ab-stats li { display: grid; align-content: start; gap: 8px; padding: 0 14px; border-left: 1px solid rgba(184, 232, 223, .25); }
 .ab-stats li:first-child { padding-left: 0; border-left: 0; }
@@ -1492,8 +1493,8 @@ svg { display: block; }
         <div class="ab-photo"><img src="assets/cards/jackie.jpg" srcset="assets/cards/jackie-480.webp 480w, assets/cards/jackie-800.webp 800w, assets/cards/jackie-1000.webp 1000w" width="1105" height="663" sizes="(min-width: 900px) 540px, 100vw" alt="A motor yacht under way off a green island, turquoise water" loading="lazy" decoding="async"></div>
         <div class="ab-copy">
           <div class="section-label">About us</div>
-          <h2 id="hs-about-title">Private yachts in Phuket, handled end to end.</h2>
-          <p class="ab-lede">Oceanic Odyssey charters private yachts out of Phuket: one group, one yacht, one crew, for 8 hours. You tell us the date, the group and the budget. We match the yacht, plan the route and arrange everything on board, so all that is left for you is to step on.</p>
+          <h2 id="hs-about-title">Oceanic Odyssey Yacht Charter Phuket</h2>
+          <p class="ab-lede">Oceanic Odyssey is a Phuket-based yacht charter company specialising in private yacht experiences across the Andaman Sea.</p><p class="ab-lede">We offer a curated collection of yachts for day charters, overnight journeys and private occasions.</p><p class="ab-lede">With local knowledge and personalised service, we help you discover Phuket and its surrounding islands by sea.</p>
           <ul class="ab-stats"><li><span class="ab-num">39</span><span class="ab-lab">private yachts</span></li><li><span class="ab-num">5.0</span><span class="ab-lab">on Google</span></li><li><span class="ab-num">1</span><span class="ab-lab">group per yacht, never shared</span></li></ul>
           <a class="button hs-btn" href="https://wa.me/66644518232?text=Hi%2C%20I%20have%20a%20question%20about%20a%20private%20yacht%20in%20Phuket." target="_blank" rel="noopener noreferrer"><span>Ask us anything on WhatsApp</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </div>
@@ -1520,18 +1521,16 @@ svg { display: block; }
           </ul>
         </div>
         <div class="ab-panel ab-panel-ext">
-          <div class="ab-panel-head"><h3>Add to your day</h3><span class="ab-pill">Extra cost</span></div>
+          <div class="ab-panel-head"><h3>Additional services</h3><span class="ab-pill">Extra cost</span></div>
           <ul class="ab-list">
-            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>DJ on board</span></li>
-            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Catering and a chef</span></li>
-            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Decoration for birthdays and celebrations</span></li>
-            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Photographer</span></li>
-            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg><span>Jet ski</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>DJ on board</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Catering and a chef</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Decoration for birthdays and celebrations</span></li>
+            <li><svg class="ab-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4L18 8"/></svg><span>Photographer</span></li>
           </ul>
           <p class="ab-note">Ask for any of these with your date, and they are priced into your quote.</p>
         </div>
       </div>
-      <p class="ab-pay"><svg class="ab-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span>Payment by bank transfer or cash.</span></p>
     </div>
   </section>
 
@@ -1734,7 +1733,6 @@ svg { display: block; }
     <span>&copy; 2026 Oceanic Odyssey</span>
     <a href="terms.html">Terms &amp; Conditions</a>
     <a href="credits.html">Photo and map credits</a>
-    <a href="partners.html">For hotels &amp; villas</a>
   </div>
 </footer>
 
