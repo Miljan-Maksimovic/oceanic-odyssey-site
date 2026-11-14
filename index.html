@@ -1125,20 +1125,23 @@ svg { display: block; }
 .find-contact span { min-width: 52px; color: var(--muted); }
 .find-contact a { min-width: 0; color: var(--navy); font-weight: 700; overflow-wrap: anywhere; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
-.perks-h { margin: 36px 0 0; padding: 0 2px; color: var(--teal); font-size: 12px; font-weight: 700; line-height: 1.6; letter-spacing: .17em; text-transform: uppercase; }
-.find-perks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 18px; margin: 18px 0 0; padding: 0 2px; list-style: none; }
-.find-perks li { display: grid; gap: 12px; align-content: start; min-width: 0; }
-.perk-ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #E3F4F0; }
-.perk-icon { width: 22px; height: 22px; fill: none; stroke: var(--teal); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.perk-t { display: grid; gap: 4px; min-width: 0; }
-.perk-t strong { color: var(--navy); font-size: 16px; font-weight: 700; line-height: 1.3; }
-.perk-t > span { color: #4F5E63; font-size: 14px; line-height: 1.5; }
+.perks-h { margin: 44px 0 0; padding: 0; color: var(--navy); font-size: clamp(26px, 7vw, 34px); line-height: 1.2; text-wrap: balance; }
+.find-perks { display: grid; margin: 18px 0 0; padding: 0; border: 1px solid #DCE6E9; border-radius: 14px; background: #fff; list-style: none; overflow: hidden; }
+.find-perks li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: center; min-width: 0; padding: 18px 16px; }
+.find-perks li + li { border-top: 1px solid #E4ECEE; }
+.perk-ic { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 12px; background: var(--navy); box-shadow: 0 6px 16px rgba(10, 36, 51, .18); }
+.perk-icon { width: 27px; height: 27px; fill: none; stroke: var(--sea); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.perk-t { display: grid; gap: 3px; min-width: 0; }
+.perk-t strong { color: var(--navy); font-size: 17px; font-weight: 800; line-height: 1.3; }
+.perk-t > span { color: #4F5E63; font-size: 15px; line-height: 1.45; }
+.perk-t .perk-stars { display: flex; margin: 2px 0 3px; }
+.perk-t .perk-stars svg { width: 17px; height: 17px; }
 .perk-t a { color: var(--teal); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 @media (min-width: 1000px) {
-  .perks-h { margin-top: 44px; padding: 0 8px; }
-  .find-perks { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-top: 20px; padding: 0 8px; }
-  .find-perks li { grid-template-columns: 46px minmax(0, 1fr); gap: 14px; align-items: start; }
-  .perk-t { padding-top: 2px; }
+  .perks-h { margin-top: 56px; }
+  .find-perks { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 22px; }
+  .find-perks li { grid-template-columns: 1fr; align-content: start; align-items: start; gap: 16px; padding: 26px 24px; }
+  .find-perks li + li { border-top: 0; border-left: 1px solid #E4ECEE; }
 }
 @media (min-width: 700px) {
   .find { margin-top: -96px; padding-top: 0; background: transparent; }
@@ -1293,12 +1296,12 @@ svg { display: block; }
         <p class="find-help"><a id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">Need help? Message us on WhatsApp</a></p>
       </form>
       </div>
-      <h2 class="perks-h" id="perks-title">Why choose Oceanic Odyssey</h2>
+      <h2 class="perks-h" id="perks-title">Why choose Oceanic Odyssey?</h2>
       <ul class="find-perks" aria-labelledby="perks-title">
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v7.5M12 14.5V22M2 12h7.5M14.5 12H22M4.9 4.9l5.3 5.3M13.8 13.8l5.3 5.3M19.1 4.9l-5.3 5.3M10.2 13.8l-5.3 5.3"/></svg></span><span class="perk-t"><strong>37 yachts, one message</strong><span>Tell us your day and we match the yachts that fit.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span><span class="perk-t"><strong>Every price up front</strong><span>Each yacht comes with its rate. A message books nothing.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span><span class="perk-t"><strong>Bring your own</strong><span>Your own food and drinks come on board at no extra charge.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.2l-5.62 2.95 1.07-6.25L2.9 9.4l6.3-.9z"/></svg></span><span class="perk-t"><strong>Rated 5.0 on Google</strong><span><a href="#reviews">Read what our guests say.</a></span></span></li>
+        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span><span class="perk-t"><strong>Every price up front</strong><span>Each yacht comes with its rate, the captain and insurance included.</span></span></li>
+        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v7.5M12 14.5V22M2 12h7.5M14.5 12H22M4.9 4.9l5.3 5.3M13.8 13.8l5.3 5.3M19.1 4.9l-5.3 5.3M10.2 13.8l-5.3 5.3"/></svg></span><span class="perk-t"><strong>37 yachts, one message</strong><span>Send your date and we reply with the ones that fit. A message books nothing.</span></span></li>
+        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span><span class="perk-t"><strong>Bring your own food and drinks</strong><span>They come on board at no extra charge.</span></span></li>
+        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.2l-5.62 2.95 1.07-6.25L2.9 9.4l6.3-.9z"/></svg></span><span class="perk-t"><strong>Rated 5.0 on Google</strong><span><span class="rv-stars perk-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg></span><a href="#reviews">Read what our guests say</a></span></span></li>
       </ul>
     </div>
   </section>
