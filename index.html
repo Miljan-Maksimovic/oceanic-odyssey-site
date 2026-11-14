@@ -819,16 +819,23 @@ svg { display: block; }
 }
 
 .hero .hero-btn, .hs-charter .hs-btn, .hs-featured .hs-btn, .hs-about .hs-btn, .hs-howto .hs-btn, .closing .button {
-  width: auto; min-height: 50px; padding: 14px 30px; border: 1px solid currentColor !important; border-radius: 0;
-  background: transparent !important; box-shadow: none; font-size: 13px; font-weight: 600; letter-spacing: .22em;
-  text-transform: uppercase; transition: background-color .2s, color .2s; }
-.hero .hero-btn, .hs-featured .hs-btn, .hs-about .hs-btn, .closing .button { color: #fff !important; }
-.hs-charter .hs-btn, .hs-howto .hs-btn { color: var(--navy) !important; }
-.hero .hero-btn:hover, .hs-featured .hs-btn:hover, .hs-about .hs-btn:hover, .closing .button:hover { background: #fff !important; color: var(--navy) !important; }
-.hs-charter .hs-btn:hover, .hs-howto .hs-btn:hover { background: var(--navy) !important; color: #fff !important; }
-.hero .hero-btn .arrow, .hs-charter .hs-btn .arrow, .hs-featured .hs-btn .arrow, .hs-about .hs-btn .arrow, .hs-howto .hs-btn .arrow, .closing .button .arrow { display: none; }
-.hs-featured .hs-yacht .hs-btn { display: flex; width: max-content; margin-left: 0; margin-right: auto; }
-@media (max-width: 699.98px) { .hs-howto .hs-howto-btn { width: auto; } }
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: auto; min-height: 56px;
+  padding: 15px 30px; border: 0 !important; border-radius: 4px; font-size: 16px; font-weight: 800; line-height: 1.25;
+  letter-spacing: 0; text-transform: none; text-align: center; text-decoration: none;
+  transition: background-color .2s, transform .2s, box-shadow .2s; }
+.hero .hero-btn, .hs-featured .hs-btn, .hs-about .hs-btn, .closing .button {
+  background: var(--sea) !important; color: var(--navy) !important; box-shadow: 0 10px 28px rgba(0, 0, 0, .3); }
+.hs-charter .hs-btn, .hs-howto .hs-btn {
+  background: var(--navy) !important; color: #fff !important; box-shadow: 0 10px 24px rgba(10, 36, 51, .22); }
+.hero .hero-btn:hover, .hs-featured .hs-btn:hover, .hs-about .hs-btn:hover, .closing .button:hover { background: #DDF6F0 !important; transform: translateY(-2px); }
+.hs-charter .hs-btn:hover, .hs-howto .hs-btn:hover { background: var(--teal) !important; transform: translateY(-2px); }
+.hero .hero-btn .arrow, .hs-charter .hs-btn .arrow, .hs-featured .hs-btn .arrow, .hs-about .hs-btn .arrow, .hs-howto .hs-btn .arrow, .closing .button .arrow {
+  display: block; flex: none; width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
+.hs-btn .btn-wa { display: block; flex: none; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.hs-featured .hs-yacht .hs-btn { display: flex; width: max-content; min-height: 50px; padding: 13px 26px; margin-left: 0; margin-right: auto; }
+@media (max-width: 699.98px) {
+  .hs-charter .hs-btn, .hs-about .hs-btn, .hs-howto .hs-howto-btn, .closing .button { width: 100%; padding-inline: 20px; }
+}
 
 .hs-about .ab-icon { stroke: #fff; }
 .hs-about .ab-ic { background: rgba(255, 255, 255, .1); }
@@ -1561,7 +1568,7 @@ svg { display: block; }
           <h2 id="hs-about-title">Oceanic Odyssey Yacht Charter Phuket</h2>
           <p class="ab-lede">Oceanic Odyssey is a Phuket-based yacht charter company specialising in private yacht experiences across the Andaman Sea.</p><p class="ab-lede">We offer a curated collection of yachts for day charters, overnight journeys and private occasions.</p><p class="ab-lede">With local knowledge and personalised service, we help you discover Phuket and its surrounding islands by sea.</p>
           <ul class="ab-stats"><li><span class="ab-num">37</span><span class="ab-lab">private yachts</span></li><li><span class="ab-num">5.0</span><span class="ab-lab">on Google</span></li><li><span class="ab-num">1</span><span class="ab-lab">group per yacht, never shared</span></li></ul>
-          <a class="button hs-btn" href="https://wa.me/66644518232?text=Hi%2C%20I%20have%20a%20question%20about%20a%20private%20yacht%20in%20Phuket." target="_blank" rel="noopener noreferrer"><span>Ask us anything on WhatsApp</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="button hs-btn" href="https://wa.me/66644518232?text=Hi%2C%20I%20have%20a%20question%20about%20a%20private%20yacht%20in%20Phuket." target="_blank" rel="noopener noreferrer"><svg class="btn-wa" aria-hidden="true" viewBox="0 0 24 24"><use href="#wa"/></svg><span>Ask us anything on WhatsApp</span></a>
         </div>
       </div>
       <div class="ab-block">
@@ -1649,7 +1656,7 @@ svg { display: block; }
         <li class="hs-step"><span class="hs-step-n">2</span><h3>We find your yacht</h3><p>The perfect one for you, with the price.</p></li>
         <li class="hs-step"><span class="hs-step-n">3</span><h3>Confirm</h3><p>Pay by bank transfer or cash, and the yacht is yours for the day.</p></li>
       </ol>
-      <a class="button hs-btn hs-howto-btn" href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Budget%3A%20" target="_blank" rel="noopener noreferrer"><span>Send your details on WhatsApp</span><svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
+      <a class="button hs-btn hs-howto-btn" href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20private%20yacht%20in%20Phuket.%20Date%3A%20.%20Guests%3A%20.%20Budget%3A%20" target="_blank" rel="noopener noreferrer"><svg class="btn-wa" aria-hidden="true" viewBox="0 0 24 24"><use href="#wa"/></svg><span>Send your details on WhatsApp</span></a>
     </div>
   </section>
 
