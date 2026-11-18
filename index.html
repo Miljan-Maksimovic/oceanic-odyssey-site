@@ -1144,6 +1144,23 @@ svg { display: block; }
   .find-perks li { grid-template-columns: 1fr; align-content: start; align-items: start; gap: 16px; padding: 26px 24px; }
   .find-perks li + li { border-top: 0; border-left: 1px solid #E4ECEE; }
 }
+
+.find-stats { margin: 28px 0 0; padding: 26px 18px 28px; border: 1px solid #DCE6E9; border-radius: 14px; background: #fff; }
+.fs-title { margin: 0 0 22px; color: var(--navy); font-size: 22px; font-weight: 800; line-height: 1.25; }
+.fs-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; margin: 0; padding: 0; list-style: none; }
+.fs-grid li { display: grid; align-content: start; gap: 4px; min-width: 0; }
+
+.fs-value { color: var(--navy); font-size: clamp(22px, 6.2vw, 28px); font-weight: 800; line-height: 1.15; }
+.fs-grid strong { margin-top: 6px; color: var(--navy); font-size: 16px; font-weight: 800; line-height: 1.3; }
+.fs-line { color: #4F5E63; font-size: 14px; line-height: 1.45; }
+@media (min-width: 1000px) {
+  .find-stats { margin-top: 40px; padding: 34px 36px 36px; }
+  .fs-title { margin-bottom: 28px; font-size: 26px; }
+  .fs-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 32px; }
+  .fs-value { font-size: 34px; }
+  .fs-grid strong { font-size: 17px; }
+  .fs-line { font-size: 15px; }
+}
 @media (min-width: 700px) {
   .find { margin-top: -96px; padding-top: 0; background: transparent; }
   .find-panel { padding: 30px 32px 28px; border-radius: 18px; }
@@ -1273,7 +1290,7 @@ svg { display: block; }
             <select id="fy-type" name="type">
               <option value="all">All types</option>
               <option value="motor">Motor yacht</option>
-              <option value="catamaran">Power catamaran</option>
+              <option value="catamaran">Catamaran</option>
               <option value="sport">Sport yacht</option>
               <option value="superyacht">Superyacht</option>
             </select>
@@ -1297,12 +1314,15 @@ svg { display: block; }
         <p class="find-help"><a id="qualifier-wa" href="https://wa.me/66644518232?text=Hi%2C%20" target="_blank" rel="noopener noreferrer">Need help? Message us on WhatsApp</a></p>
       </form>
       </div>
-      <ul class="find-perks" aria-label="Why book with Oceanic Odyssey">
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span><span class="perk-t"><strong>Every price up front</strong><span>Captain and insurance are in the rate. Any extras go in your quote.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v7.5M12 14.5V22M2 12h7.5M14.5 12H22M4.9 4.9l5.3 5.3M13.8 13.8l5.3 5.3M19.1 4.9l-5.3 5.3M10.2 13.8l-5.3 5.3"/></svg></span><span class="perk-t"><strong>40 yachts, one message</strong><span>Send your date and we reply with the yachts that fit. A message books nothing.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></span><span class="perk-t"><strong>Bring your own food and drinks</strong><span>They come on board at no extra charge.</span></span></li>
-        <li><span class="perk-ic"><svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.7 6.3.9-4.55 4.45 1.07 6.25L12 17.2l-5.62 2.95 1.07-6.25L2.9 9.4l6.3-.9z"/></svg></span><span class="perk-t"><strong>Rated 5.0 on Google</strong><span><span class="rv-stars perk-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg></span><a href="#reviews">Read what our guests say</a></span></span></li>
-      </ul>
+      <div class="find-stats" role="region" aria-labelledby="fs-title">
+        <h2 class="fs-title" id="fs-title">The Experience Behind Every Journey.</h2>
+        <ul class="fs-grid">
+          <li><span class="fs-value">40+</span><strong>Yachts Available</strong><span class="fs-line">A curated collection of private yachts.</span></li>
+          <li><span class="fs-value">Up to 230 ft</span><strong>Yacht Selection</strong><span class="fs-line">From elegant cruisers to luxury superyachts.</span></li>
+          <li><span class="fs-value">Phuket</span><strong>Local Expertise</strong><span class="fs-line">Specialists in private charters across the Andaman Sea.</span></li>
+          <li><span class="fs-value">1:1</span><strong>Personal Service</strong><span class="fs-line">Personal assistance from enquiry to departure.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
   <section class="hs-charter section-pad" id="yacht-charter" aria-labelledby="hs-charter-title">
@@ -1323,7 +1343,7 @@ svg { display: block; }
         </a>
         <a class="ty-card" href="fleet.html?type=catamaran">
           <span class="ty-photo"><img src="assets/cards/apricity-53.jpg" srcset="assets/cards/apricity-53-480.webp 480w, assets/cards/apricity-53-800.webp 800w, assets/cards/apricity-53-1000.webp 1000w" width="1500" height="900" sizes="(min-width: 900px) 50vw, 100vw" alt="Apricity 53 under way on deep blue water" loading="lazy" decoding="async"></span>
-          <span class="ty-text"><span class="ty-name">Power <span class="ty-nw">catamarans<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
+          <span class="ty-text"><span class="ty-name"><span class="ty-nw">Catamarans<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
         </a>
         <a class="ty-card" href="fleet.html?type=sport">
           <span class="ty-photo"><img src="assets/cards/stay-gain-15.jpg" srcset="assets/cards/stay-gain-15-480.webp 480w, assets/cards/stay-gain-15-800.webp 800w, assets/cards/stay-gain-15-1000.webp 1000w" width="1080" height="648" sizes="(min-width: 900px) 50vw, 100vw" alt="Stay Gain 15 at anchor below a sea cliff" loading="lazy" decoding="async"></span>
