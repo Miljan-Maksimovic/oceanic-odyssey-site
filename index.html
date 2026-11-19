@@ -752,6 +752,14 @@ svg { display: block; }
 .hs-charter .ty-grid { grid-template-columns: 1fr; gap: 14px; }
 .hs-charter .ty-name { font-size: 18px; letter-spacing: .16em; }
 @media (min-width: 700px) { .hs-charter .ty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } .hs-charter .ty-name { font-size: 22px; } }
+
+@media (min-width: 700px) {
+  .hs-charter .ty-grid.ty-five { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .hs-charter .ty-five .ty-card { grid-column: span 2; }
+  .hs-charter .ty-five .ty-card:nth-child(n+4) { grid-column: span 3; }
+  .hs-charter .ty-five .ty-card:nth-child(-n+3) .ty-name { font-size: 17px; letter-spacing: .12em; }
+}
+@media (min-width: 1100px) { .hs-charter .ty-five .ty-card:nth-child(-n+3) .ty-name { font-size: 20px; letter-spacing: .16em; } }
 .ty-name .arrow { display: inline-block; width: 13px; height: 13px; margin-left: 8px; vertical-align: 0; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
 .ty-card:hover .ty-name .arrow { transform: translateX(3px); }
 .ty-count { display: block; color: var(--teal); font-size: 14px; font-weight: 600; line-height: 1.45; }
@@ -1290,7 +1298,7 @@ svg { display: block; }
             <select id="fy-type" name="type">
               <option value="all">All types</option>
               <option value="motor">Motor yacht</option>
-              <option value="catamaran">Catamaran</option>
+              <option value="catamaran">Power catamaran</option>
               <option value="sport">Sport yacht</option>
               <option value="superyacht">Superyacht</option>
             </select>
@@ -1332,7 +1340,7 @@ svg { display: block; }
         <h2 id="hs-charter-title">Explore Our Yacht Collection</h2>
         <p class="hs-lede">A selection of private yachts for meaningful moments at sea, quality time with your favourite people, and days spent exploring Phuket and the Andaman Sea.</p>
       </header>
-      <div class="ty-grid">
+      <div class="ty-grid ty-five">
         <a class="ty-card" href="fleet.html?type=motor">
           <span class="ty-photo"><img src="assets/cards/rose-65.jpg" srcset="assets/cards/rose-65-480.webp 480w, assets/cards/rose-65-800.webp 800w, assets/cards/rose-65-1000.webp 1000w" width="1500" height="900" sizes="(min-width: 900px) 50vw, 100vw" alt="Rose 65 under way off an island, a jet ski beside her" loading="lazy" decoding="async"></span>
           <span class="ty-text"><span class="ty-name">Motor <span class="ty-nw">yachts<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
@@ -1342,6 +1350,10 @@ svg { display: block; }
           <span class="ty-text"><span class="ty-name"><span class="ty-nw">Superyachts<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
         </a>
         <a class="ty-card" href="fleet.html?type=catamaran">
+          <span class="ty-photo"><img src="assets/cards/apricity-53.jpg" srcset="assets/cards/apricity-53-480.webp 480w, assets/cards/apricity-53-800.webp 800w, assets/cards/apricity-53-1000.webp 1000w" width="1500" height="900" sizes="(min-width: 900px) 50vw, 100vw" alt="Apricity 53 under way on deep blue water" loading="lazy" decoding="async"></span>
+          <span class="ty-text"><span class="ty-name">Power <span class="ty-nw">catamarans<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
+        </a>
+        <a class="ty-card" href="https://wa.me/66644518232?text=Hi%2C%20I%27d%20like%20a%20catamaran%20in%20Phuket." target="_blank" rel="noopener noreferrer">
           <span class="ty-photo"><img src="assets/home/type-catamaran.jpg" srcset="assets/home/type-catamaran-480.webp 480w, assets/home/type-catamaran-800.webp 800w, assets/home/type-catamaran-1200.webp 1200w" width="1280" height="768" sizes="(min-width: 900px) 50vw, 100vw" alt="A catamaran under sail on turquoise water off a sandy island" loading="lazy" decoding="async"></span>
           <span class="ty-text"><span class="ty-name"><span class="ty-nw">Catamarans<svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span></span>
         </a>
